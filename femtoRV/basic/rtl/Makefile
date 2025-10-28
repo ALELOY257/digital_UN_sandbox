@@ -14,7 +14,22 @@ EFINIX_SIM_CELLS   = sim_models_efx/efx_ff.v  sim_models_efx/efx_dpram_5k.v sim_
 ICE40_SIM_CELLS=$(shell yosys-config --datdir/ice40/cells_sim.v)
 
 
-COMM_OBJS= cores/cpu/femtorv32_quark_V2.v
+GOWIN_BOARD=nano_20k
+
+
+ifeq ($(GOWIN_BOARD),nano_20k)
+    DEVICE = GW2AR-LV18QN88C8/I7
+    FAMILY = GW2AR-18C
+else ifeq ($(GOWIN_BOARD),primer_25k)
+    DEVICE = GW5A-LV25MG121NC1/I0
+    FAMILY = GW5A-25A
+else
+    $(error GOWIN_BOARD=$(GOWIN_BOARD) no válido. Usa: nano_20k o primer_25k)
+endif
+
+TCL_SCRIPT = auto_generated.tcl
+
+COMM_OBJS+=  cores/cpu/femtorv32_quark_V2.v
 COMM_OBJS+= cores/uart/perip_uart.v
 COMM_OBJS+= cores/uart/uart.v
 
@@ -32,7 +47,6 @@ COMM_OBJS+= cores/mult_ASM/rsr.v
 COMM_OBJS+= cores/div/perip_div.v
 COMM_OBJS+= cores/div/div.v
 
-
 COMM_OBJS+= cores/sqrt_ASM/addc2.v
 COMM_OBJS+= cores/sqrt_ASM/count.v
 COMM_OBJS+= cores/sqrt_ASM/lsr.v 
@@ -40,7 +54,6 @@ COMM_OBJS+= cores/sqrt_ASM/perip_sqrt.v
 COMM_OBJS+= cores/sqrt_ASM/sqrt.v
 COMM_OBJS+= cores/sqrt_ASM/lsr2.v
 COMM_OBJS+= cores/sqrt_ASM/control.v
-
 
 COMM_OBJS+=cores/bin2bcd/add_sub_c2.v
 COMM_OBJS+=cores/bin2bcd/bin2bcd.v
@@ -54,10 +67,9 @@ COMM_OBJS+=cores/bin2bcd/reg_msb.v
 COMM_OBJS+=cores/bcd2bin/bcd2bin.v
 COMM_OBJS+=cores/bcd2bin/perip_bcd2bin.v
 COMM_OBJS+=cores/bcd2bin/rsr4.v
+COMM_OBJS += cores/bram/bram.v
+COMM_OBJS +=  SOC.v
 
-
-OBJS =  SOC.v
-OBJS += cores/bram/bram.v
 OBJS += $(COMM_OBJS)
 
 FLASH_OBJS =  $(COMM_OBJS)
@@ -69,13 +81,7 @@ SIM_OBJS   = cores/sim_spi_flash/spiflash.v
 
 BUILD_DIR = build
 
-all: $(TARGET).fs
-
-$(TARGET).fs: 
-	gw_sh  soc_src.tcl
-
-${TARGET}.svf : ${TARGET}.bit
-
+all: sim_quark
 
 sim_quark:
 	rm -f a.out *.vcd
@@ -257,8 +263,83 @@ configure_efinix_flash: outflow/$(TOP).bit
 clean_efinix_flash:
 	rm -rf work_pnr work_pt work_syn outflow $(TOP).peri.xml
 
-clean: clean_efinix_flash  clean_efinix
+clean: clean_efinix_flash  clean_efinix clean_gowin
 	rm -rf impl obj_dir *svg a.out *.vcd *.json *.bit build
 
-# export PATH=$PATH:/home/carlos/Embedded/Gowin/IDE/bin
+
+########################################################
+##                      GOWIN                         ##
+##           
+########################################################
+
+
+#  GOWIN TANG NANO
+del_tcl_script:
+#   GOWIN TANG NANO 20K
+	rm -rf $(TCL_SCRIPT)
+$(TCL_SCRIPT):del_tcl_script
+	@echo "# Script TCL generado automáticamente desde Makefile" > $@
+	@echo "# Fecha: $$(date)" >> $@
+	@echo "" >> $@
+	@echo "# Configurar dispositivo" >> $@
+	@echo "set_device -name $(FAMILY) $(DEVICE)" >> $@
+	@echo "" >> $@
+
+
+ifeq ($(GOWIN_BOARD),nano_20k)
+	@echo "add_file sipeed_tang_nano_20k.cst" >> $@
+	@echo "add_file sipeed_tang_nano_20k.sdc" >> $@
+else ifeq ($(GOWIN_BOARD),primer_25k)
+	@echo "add_file sipeed_tang_primer_25k.cst" >> $@
+	@echo "add_file sipeed_tang_primer_25k.sdc" >> $@
+else
+    $(error GOWIN_BOARD=$(GOWIN_BOARD) no válido. Usa: nano_20k o primer_25k)
+endif
+
+	@echo "# Agregar archivos fuente" >> $@
+	@for file in $(COMM_OBJS); do \
+		echo "add_file -type verilog $$file" >> $@; \
+	done
+	@echo "" >> $@
+	@echo "# Configurar opciones del proyecto" >> $@
+
+	@echo "set_option -use_mspi_as_gpio 1" >> $@
+ifeq ($(GOWIN_BOARD),nano_20k)
+	@echo "set_option -use_sspi_as_gpio 1" >> $@
+else ifeq ($(GOWIN_BOARD),primer_25k)
+	@echo "set_option -use_i2c_as_gpio 1" >> $@
+else
+    $(error GOWIN_BOARD=$(GOWIN_BOARD) no válido. Usa: nano_20k o primer_25k)
+endif
+
+	@echo "set_option -use_ready_as_gpio 1" >> $@
+	@echo "set_option -use_done_as_gpio 1" >> $@
+ifeq ($(GOWIN_BOARD),primer_25k)
+	@echo "set_option -use_cpu_as_gpio 1" >> $@
+endif
+
+	@echo "set_option -rw_check_on_ram 1" >> $@
+	@echo "run all" >> $@
+
+configure_tang_nano_20k: clean_gowin $(TCL_SCRIPT)
+	gw_sh  $(TCL_SCRIPT)
+	openFPGALoader --cable ft2232 --bitstream ./impl/pnr/project.fs
+
+clean_gowin:
+	rm -rf impl
+
+configure_tang_primer_25k: $(TCL_SCRIPT)
+	gw_sh  $(TCL_SCRIPT)
+	openFPGALoader --cable ft2232 --bitstream ./impl/pnr/project.fs
+
+
+
+
 #Install netlistsvg for svg generation
+
+
+
+#export PATH=$PATH:/Work/CAD/IDE/bin/
+#export QT_QPA_PLATFORM_PLUGIN_PATH=/Work/CAD/IDE/Programmer/bin/PyQt5/qt-plugins
+#export QT_QPA_PLATFORM=xcb
+#export QT_XCB_GL_INTEGRATION=none

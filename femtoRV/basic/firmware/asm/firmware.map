@@ -8,66 +8,89 @@ BRAM             0x0000000000000000 0x0000000000004000 xrw
 Linker script and memory map
 
 
-everything      0x0000000000000000      0x4aa
+everything      0x0000000000000000      0x652
                 0x0000000000000000                . = ALIGN (0x4)
  calculator.o(.text)
- .text          0x0000000000000000       0xc4 calculator.o
+ .text          0x0000000000000000       0x64 calculator.o
  *(.*)
- .data          0x00000000000000c4       0x3d calculator.o
- .bss           0x0000000000000101        0x0 calculator.o
+ .data          0x0000000000000064       0x36 calculator.o
+ .bss           0x000000000000009a        0x0 calculator.o
  .riscv.attributes
-                0x0000000000000101       0x1a calculator.o
- *fill*         0x000000000000011b        0x1 
- .text          0x000000000000011c       0xfc bin_to_bcd.o
-                0x000000000000011c                bin_to_bcd
- .data          0x0000000000000218        0x0 bin_to_bcd.o
- .bss           0x0000000000000218        0x0 bin_to_bcd.o
+                0x000000000000009a       0x1a calculator.o
+ .text          0x00000000000000b4       0xbc get_number.o
+                0x00000000000000b4                get_number
+ .data          0x0000000000000170        0x0 get_number.o
+ .bss           0x0000000000000170        0x0 get_number.o
  .riscv.attributes
-                0x0000000000000218       0x1a bin_to_bcd.o
- *fill*         0x0000000000000232        0x2 
- .text          0x0000000000000234       0x2c sqrt.o
-                0x0000000000000234                sqrt_hw
- .data          0x0000000000000260        0x0 sqrt.o
- .bss           0x0000000000000260        0x0 sqrt.o
+                0x0000000000000170       0x1a get_number.o
+ *fill*         0x000000000000018a        0x2 
+ .text          0x000000000000018c       0xa4 bin2bcd.o
+                0x000000000000018c                bin2bcd
+ .data          0x0000000000000230        0x0 bin2bcd.o
+ .bss           0x0000000000000230        0x0 bin2bcd.o
  .riscv.attributes
-                0x0000000000000260       0x1a sqrt.o
- *fill*         0x000000000000027a        0x2 
- .text          0x000000000000027c       0x78 mult.o
-                0x000000000000027c                mult
-                0x00000000000002c4                mult_hw
- .data          0x00000000000002f4        0x0 mult.o
- .bss           0x00000000000002f4        0x0 mult.o
+                0x0000000000000230       0x1a bin2bcd.o
+ *fill*         0x000000000000024a        0x2 
+ .text          0x000000000000024c       0x4c bcd2bin.o
+                0x000000000000024c                bcd2bin
+ .data          0x0000000000000298        0x0 bcd2bin.o
+ .bss           0x0000000000000298        0x0 bcd2bin.o
  .riscv.attributes
-                0x00000000000002f4       0x1a mult.o
- *fill*         0x000000000000030e        0x2 
- .text          0x0000000000000310       0x90 div.o
-                0x0000000000000310                div
-                0x0000000000000370                div_hw
- .data          0x00000000000003a0        0x0 div.o
- .bss           0x00000000000003a0        0x0 div.o
+                0x0000000000000298       0x1a bcd2bin.o
+ *fill*         0x00000000000002b2        0x2 
+ .text          0x00000000000002b4      0x10c bin_to_bcd.o
+                0x00000000000002b4                bin_to_bcd
+ .data          0x00000000000003c0        0x0 bin_to_bcd.o
+ .bss           0x00000000000003c0        0x0 bin_to_bcd.o
  .riscv.attributes
-                0x00000000000003a0       0x1a div.o
- *fill*         0x00000000000003ba        0x2 
- .text          0x00000000000003bc       0x24 wait.o
-                0x00000000000003bc                wait
- .data          0x00000000000003e0        0x0 wait.o
- .bss           0x00000000000003e0        0x0 wait.o
+                0x00000000000003c0       0x1a bin_to_bcd.o
+ *fill*         0x00000000000003da        0x2 
+ .text          0x00000000000003dc       0x2c sqrt.o
+                0x00000000000003dc                sqrt
+ .data          0x0000000000000408        0x0 sqrt.o
+ .bss           0x0000000000000408        0x0 sqrt.o
  .riscv.attributes
-                0x00000000000003e0       0x1a wait.o
- *fill*         0x00000000000003fa        0x2 
- .text          0x00000000000003fc       0x44 putchar.o
-                0x00000000000003fc                putchar
- .data          0x0000000000000440        0x0 putchar.o
- .bss           0x0000000000000440        0x0 putchar.o
+                0x0000000000000408       0x1a sqrt.o
+ *fill*         0x0000000000000422        0x2 
+ .text          0x0000000000000424       0x78 mult.o
+                0x0000000000000424                mult
+                0x000000000000046c                mult_hw
+ .data          0x000000000000049c        0x0 mult.o
+ .bss           0x000000000000049c        0x0 mult.o
  .riscv.attributes
-                0x0000000000000440       0x1a putchar.o
- *fill*         0x000000000000045a        0x2 
- .text          0x000000000000045c       0x34 getchar.o
-                0x000000000000045c                getchar
- .data          0x0000000000000490        0x0 getchar.o
- .bss           0x0000000000000490        0x0 getchar.o
+                0x000000000000049c       0x1a mult.o
+ *fill*         0x00000000000004b6        0x2 
+ .text          0x00000000000004b8       0x90 div.o
+                0x00000000000004b8                div
+                0x0000000000000518                div_hw
+ .data          0x0000000000000548        0x0 div.o
+ .bss           0x0000000000000548        0x0 div.o
  .riscv.attributes
-                0x0000000000000490       0x1a getchar.o
+                0x0000000000000548       0x1a div.o
+ *fill*         0x0000000000000562        0x2 
+ .text          0x0000000000000564       0x24 wait.o
+                0x0000000000000564                wait
+ .data          0x0000000000000588        0x0 wait.o
+ .bss           0x0000000000000588        0x0 wait.o
+ .riscv.attributes
+                0x0000000000000588       0x1a wait.o
+ *fill*         0x00000000000005a2        0x2 
+ .text          0x00000000000005a4       0x44 putchar.o
+                0x00000000000005a4                putchar
+ .data          0x00000000000005e8        0x0 putchar.o
+ .bss           0x00000000000005e8        0x0 putchar.o
+ .riscv.attributes
+                0x00000000000005e8       0x1a putchar.o
+ *fill*         0x0000000000000602        0x2 
+ .text          0x0000000000000604       0x34 getchar.o
+                0x0000000000000604                getchar
+ .data          0x0000000000000638        0x0 getchar.o
+ .bss           0x0000000000000638        0x0 getchar.o
+ .riscv.attributes
+                0x0000000000000638       0x1a getchar.o
+LOAD get_number.o
+LOAD bin2bcd.o
+LOAD bcd2bin.o
 LOAD bin_to_bcd.o
 LOAD sqrt.o
 LOAD mult.o

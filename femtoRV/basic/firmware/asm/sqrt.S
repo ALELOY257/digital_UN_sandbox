@@ -5,13 +5,13 @@
 .equ SQRT_DONE,   0x14
 
 .section .text
-.globl sqrt_hw
+.globl sqrt
 
 # a0
 
 #li   a0, 169   # se debe quitar después de la prueba
 
-sqrt_hw:
+sqrt:
   li   gp, SQRT_BASE 
   sw   a0, SQRT_OP_A(gp)  
   li   a0, 1

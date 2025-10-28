@@ -1,78 +1,32 @@
-.equ UART_BASE, 0x400000  
-.equ DPRAM_BASE, 0x450000  
-
-.equ IO_LEDS, 4
-.equ IO_UART_DAT, 8
-.equ IO_UART_CNTL, 16
 .section .text
 .globl start 
 .globl blinker
 .globl put_hello
 
 calculator:
-#   li   gp,UART_BASE
-#   li   gp, DPRAM_BASE
-#   li   sp,0x10040
    li   sp,0x1000
 
 loopM:	
 	la   a0, command
 	call putstring
 
-	# Receive first two digits decimal number	
-	call getchar    # 
-	call putchar    # echo
-	addi a0, a0, -0x30
-	li   a1, 10
-	call mult       # D0*10	
-	mv   a1, a0     # first digit operand
-
-	call getchar    # 
-	call putchar    # echo
-	addi a0, a0, -0x30
-	add  a2, a0, a1 # a2 = D0*10 + D1
-	
-	# Receive operator	
-	call getchar    # 
-	call putchar    # echo	
-        mv   a3, a0     # a3 = operator
-	
-	# Receive second two digits decimal number	
-	call getchar    # 
-	call putchar    # echo
-	addi a0, a0, -0x30
-	li   a1, 10
-	call mult       # D0*10	
-	mv   a1, a0     # first digit operand
-
-
-	call getchar    # 
-	call putchar    # echo
-	addi a0, a0, -0x30
-	add  a0, a0, a1 # a0 = D0*10 + D1
+	call get_number
+	call bcd2bin
 	mv   t0, a0
-	
 
-	la   a0, result
-	call putstring
-	
+	call get_number
+	call bcd2bin
+	mv   t1, a0
 
+    mv   a0, t0
+	mv   a1, t1
+    call mult_hw
+	call bin2bcd
 
-	mv   a1,t0
-	mv   a0,a2
-		
-	li   t0, '*'
-	bne  t0, a3, divide
-#	call mult
-	call mult_hw
-	j    print_res
-divide:
-#	call div
-	call div_hw
-
-print_res:		
-	call bin_to_bcd
 	j    loopM
+
+
+
 putstring:
 	addi sp,sp,-4 # save ra on the stack
 	sw ra,0(sp)   # (need to do that for functions that call functions)
@@ -88,7 +42,7 @@ putstring:
 
 .section .data
 command:
-	.asciz "\n\r - Enter two operands - \n\r"
+	.asciz "\n\r - Enter calc: - \n\r"
 operator:
 	.asciz "\n\rEnter operator \n\r"
 result:

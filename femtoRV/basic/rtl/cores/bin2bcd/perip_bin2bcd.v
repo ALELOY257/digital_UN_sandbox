@@ -31,7 +31,7 @@ else
 end//------------------address_decoder--------------------------------
 
 
-always @(negedge clk) begin//-------------------- escritura de registros 
+always @(posedge clk) begin//-------------------- escritura de registros 
 
   if(reset) begin
     init = 0;
@@ -47,7 +47,7 @@ always @(negedge clk) begin//-------------------- escritura de registros
 end//------------------------------------------- escritura de registros
 
 
-always @(negedge clk) begin//-----------------------mux_4 :  multiplexa salidas del periferico
+always @(posedge clk) begin//-----------------------mux_4 :  multiplexa salidas del periferico
   if(reset)
     d_out = 0;
   else if (cs) begin

@@ -1,26 +1,66 @@
-.equ SQRT_BASE,   0x440000  
-.equ SQRT_OP_A,   0x04
-.equ SQRT_INIT,   0x0C
-.equ SQRT_RESULT, 0x10
-.equ SQRT_DONE,   0x14
+.equ BIN2BCD_BASE,   0x440000  
+.equ BIN2BCD_OP_A,   0x04
+.equ BIN2BCD_INIT,   0x0C
+.equ BIN2BCD_RESULT, 0x10
+.equ BIN2BCD_DONE,   0x14
 
 .section .text
-.globl sqrt_hw
+.globl bin2bcd
 
 # a0
 
 #li   a0, 33333   # se debe quitar después de la prueba
 
-sqrt_hw:
-  li   gp, SQRT_BASE 
-  sw   a0, SQRT_OP_A(gp)  
+bin2bcd:
+  addi sp, sp, -12        # Reservar espacio en stack
+  sw ra, 8(sp)           # Guardar return address
+  sw t0, 4(sp)            # Guardar t0 (acumulador)
+  sw t1, 0(sp)            # Guardar t1 (signo)
+  li   gp, BIN2BCD_BASE 
+  sw   a0, BIN2BCD_OP_A(gp)  
   li   a0, 1
-  sw   a0,   SQRT_INIT(gp) 
-  sw   zero, SQRT_INIT(gp)  
+  sw   a0,   BIN2BCD_INIT(gp) 
+  sw   zero, BIN2BCD_INIT(gp)  
 .L0:
   li   t0, 1  
-  lw   t1, SQRT_DONE(gp)
+  lw   t1, BIN2BCD_DONE(gp)
   and  t1, t1, t0
   beqz t1, .L0  
-  lw   a0, SQRT_RESULT(gp)
+  lw   a0, BIN2BCD_RESULT(gp)
+  j    print_result
+#  ret
+
+
+
+print_result:
+  mv   a1, a0
+	li   a0,10
+	call putchar  
+	li   a0,13
+	call putchar
+  
+  mv   a0, a1
+  li   t3, 0x8       # 2 ^ bits to send  
+.L5:
+  mv   t0, a1
+  srli t0, t0, 12
+  andi t0, t0, 0x0F
+  addi t0, t0, 0x30
+  mv   a0, t0
+  call putchar
+  slli a1, a1, 4
+  srli t3, t3, 1
+  beqz t3, .PC0
+  j    .L5
+.PC0: 
+  li   a0,0xA
+  call putchar
+  li   a0,0x0D
+  call putchar   
+ 
+  lw t1, 0(sp)            # Guardar t1 (signo)
+  lw t0, 4(sp)            # Guardar t0 (acumulador)
+  lw ra, 8(sp)           # Guardar return address
+  addi sp, sp, 12
+  
   ret

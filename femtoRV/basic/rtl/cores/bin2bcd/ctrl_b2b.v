@@ -26,7 +26,7 @@ module ctrl_b2b( clk , rst , init, done, sh, ld, sel, ld_msb, add, z );
 
  
  reg [2:0] state;
- reg [3:0] count;
+ reg [5:0] count;
 
 always @(posedge clk) begin
   if (rst) begin
@@ -66,7 +66,7 @@ always @(posedge clk) begin
 
     END1: begin
       count = count + 1;
-      state = (count>9) ? START : END1;
+      state = (count>30) ? START : END1;
     end
 
     default: state = START;

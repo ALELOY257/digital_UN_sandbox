@@ -1,3 +1,4 @@
+`timescale 1ns / 1ps
 module SOC (
     input        clk,    // system clock 
     input        resetn, // reset button
@@ -5,12 +6,12 @@ module SOC (
     input        RXD,    // UART receive
     output       TXD     // UART transmit
 );
+
    wire [31:0] mem_addr;
    reg  [31:0] mem_rdata;
    wire mem_rstrb;
    wire [31:0] mem_wdata;
    wire [3:0]  mem_wmask;
-
    FemtoRV32 CPU(
       .clk(clk),
       .reset(resetn),
@@ -42,7 +43,9 @@ module SOC (
    wire [31:0] bcd2bin_dout;
 
   peripheral_uart #(
-     .clk_freq(26000000),    // 27000000 for gowin 33333333 for efinix
+     .clk_freq(50000000),    // for primer 25k
+//     .clk_freq(33333333),  // for efinix
+//     .clk_freq(27000000),  // for nano_20k
      .baud(115200)            // 57600 for gowin
    ) per_uart(
      .clk(clk),
@@ -91,7 +94,7 @@ module SOC (
 
    peripheral_bin2bcd bin2bcd0 (
       .clk(clk),
-      .reset(!reset),
+      .reset(!resetn),
       .d_in(mem_wdata[15:0]),
       .cs(cs[1]),
       .addr(mem_addr[4:0]), // 4 LSB from j1_io_addr
@@ -102,7 +105,7 @@ module SOC (
 
    peripheral_bcd2bin bcd2bin0 (
       .clk(clk),
-      .reset(!reset),
+      .reset(!resetn),
       .d_in(mem_wdata[19:0]),
       .cs(cs[7]),
       .addr(mem_addr[4:0]), // 4 LSB from j1_io_addr

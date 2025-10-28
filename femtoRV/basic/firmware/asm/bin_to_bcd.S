@@ -58,6 +58,10 @@ bin_to_bcd:
 
 # Print result
 .L6:
+	li   a0,10
+	call putchar
+	li   a0,13
+	call putchar
   li   t3, 0x8       # 2 ^ bits to send  
 .L5:
   mv   t0, a1
