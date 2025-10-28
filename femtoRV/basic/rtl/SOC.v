@@ -13,7 +13,7 @@ module SOC (
    wire [31:0] mem_wdata;
    wire [3:0]  mem_wmask;
    FemtoRV32 CPU(
-      .clk(clk),
+      .clk(clk),  
       .reset(resetn),
       .mem_addr(mem_addr),
       .mem_rdata(mem_rdata),

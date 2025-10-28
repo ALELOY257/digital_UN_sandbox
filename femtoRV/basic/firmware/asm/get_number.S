@@ -32,18 +32,6 @@ get_number_loop:
     # Verificar si es espacio (terminar)
     li t0, 32               # ' '
     beq a0, t0, get_number_done
-    
-    # Verificar si es signo negativo (solo al inicio)
-    beqz s2, skip_sign_check  # Si no es primer dígito, saltar
-    li t0, 45               # '-'
-    bne a0, t0, skip_sign_check
-    li s1, 1                # Marcar como negativo
-    li s2, 0                # Ya no es primer dígito
-    j get_number_loop       # Continuar leyendo
-    
-skip_sign_check:
-    li s2, 0                # Ya no es primer dígito
-    
     # Verificar si es dígito ('0'-'9')
     li t0, 48               # '0'
     blt a0, t0, get_number_loop  # Si < '0', ignorar
@@ -51,7 +39,6 @@ skip_sign_check:
     bgt a0, t0, get_number_loop  # Si > '9', ignorar
     
     # Convertir ASCII a número
-    #addi a0, a0, -48        # a0 = dígito (0-9)
     andi  a0, a0, 15
 
     # correr 4 posiciones: s0 = s0 << 4
@@ -63,11 +50,6 @@ skip_sign_check:
     j get_number_loop       # Continuar leyendo
     
 get_number_done:
-    # Aplicar signo si es negativo
-    beqz s1, get_number_positive
-    sub s0, zero, s0        # s0 = -s0 (complemento a 2)
-    
-get_number_positive:
     mv a0, s0               # Retornar resultado en a0
     
     # Restaurar registros

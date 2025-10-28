@@ -9,9 +9,34 @@ calculator:
 loopM:	
 	la   a0, command
 	call putstring
+	call get_number
+	call bcd2bin
+	call sqrt
+	call bin2bcd
 
 	call get_number
 	call bcd2bin
+	call sqrt
+	call bin2bcd
+
+
+
+
+
+	call get_number
+	call bcd2bin
+	call sqrt
+	call bin2bcd
+
+
+
+
+
+
+	j    loopM
+
+
+
 	mv   t0, a0
 
 	call get_number
@@ -42,7 +67,7 @@ putstring:
 
 .section .data
 command:
-	.asciz "\n\r - Enter calc: - \n\r"
+	.asciz "\n\r - Enter calc: - "
 operator:
 	.asciz "\n\rEnter operator \n\r"
 result:

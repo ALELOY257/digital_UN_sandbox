@@ -17,6 +17,8 @@ bcd2bin:
   sw t0, 4(sp)            # Guardar t0 (acumulador)
   sw t1, 0(sp)            # Guardar t1 (signo)
 
+
+
   li   gp, BCD2BIN_BASE 
   sw   a0, BCD2BIN_OP_A(gp)  
   li   a0, 1
@@ -28,6 +30,8 @@ bcd2bin:
   and  t1, t1, t0
   beqz t1, .L0  
   lw   a0, BCD2BIN_RESULT(gp)
+
+  
   lw t1, 0(sp)            # Guardar t1 (signo)
   lw t0, 4(sp)            # Guardar t0 (acumulador)
   lw ra, 8(sp)           # Guardar return address
