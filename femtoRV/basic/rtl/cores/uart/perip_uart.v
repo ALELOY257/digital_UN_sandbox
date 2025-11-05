@@ -16,7 +16,7 @@ module peripheral_uart#(
 );
 
 //------------------------------------ regs and wires-------------------------------
-reg [1:0] s; 	     //selector mux_4  and demux_4
+reg [1:0] s;             //selector mux_4  and demux_4
 reg [7:0] d_in_uart = 0; // data in uart
 reg [7:0] uart_ctrl = 0; // data in uart
 wire [7:0] rx_data;  // data received
@@ -46,7 +46,7 @@ always @(posedge clk) begin
 	case (s)
 		2'b01: d_out= {24'b0, rx_data};
 		2'b10: d_out= {22'b0, tx_busy, rx_avail, rx_error, 7'b0};
-		default: d_out=0;	
+		default: d_out=0;
 	endcase
 end
 

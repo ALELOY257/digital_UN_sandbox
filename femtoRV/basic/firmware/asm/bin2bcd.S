@@ -12,10 +12,6 @@
 #li   a0, 33333   # se debe quitar después de la prueba
 
 bin2bcd:
-
-
-
-
   addi sp, sp, -16        # Reservar espacio en stack
   sw ra, 12(sp)           # Guardar return address
   sw t0, 8(sp)            # Guardar t0 (acumulador)
@@ -31,33 +27,33 @@ bin2bcd:
   li   t0, 1  
   lw   t1, BIN2BCD_DONE(gp)
   and  t1, t1, t0
-  beqz t1, .L0  
+  beq  t1, zero, .L0  
   lw   a0, BIN2BCD_RESULT(gp)
-
+#
 #  print result
-  mv   a1, a0
+  add   a1, a0, zero
 	li   a0,10
 	call putchar  
 	li   a0,13
 	call putchar
   
-  mv   a0, a1
+  add   a0, a1, zero
   li   t3, 0x10       # 2 ^ bits to send  
 .L5:
-  mv   t0, a1
+  add   t0, a1, zero
   srli t0, t0, 16
   andi t0, t0, 0x0F
   addi t0, t0, 0x30
-  mv   a0, t0
+  add   a0, t0, zero
   call putchar
   slli a1, a1, 4
   srli t3, t3, 1
   beqz t3, .PC0
   j    .L5
 .PC0: 
-  li   a0,0xA
+  li   a0,10
   call putchar
-  li   a0,0x0D
+  li   a0,13
   call putchar   
 
   lw t3, 0(sp)            # Guardar t1 (signo) 

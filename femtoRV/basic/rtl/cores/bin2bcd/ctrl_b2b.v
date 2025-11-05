@@ -1,14 +1,8 @@
 module ctrl_b2b( clk , rst , init, done, sh, ld, sel, ld_msb, add, z );
-           
-           
-
-
-
  input       clk;
  input       rst;
  input       init;
  input       z;
-
 
  output reg sh;
  output reg ld;
@@ -36,6 +30,7 @@ always @(posedge clk) begin
   case(state)
 
     START:begin
+      count = 0;
       if(init)
         state = SHIFT_DEC;
       else

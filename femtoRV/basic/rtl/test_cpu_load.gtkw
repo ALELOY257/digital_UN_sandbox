@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.121 (w)1999-2024 BSI
-[*] Fri Oct 17 20:19:07 2025
+[*] Wed Nov  5 00:49:48 2025
 [*]
 [dumpfile] "/Work/Embedded/digital_UN/femtoRV/basic/rtl/bench.vcd"
-[dumpfile_mtime] "Fri Oct 17 20:12:37 2025"
-[dumpfile_size] 28530109
+[dumpfile_mtime] "Wed Nov  5 00:49:27 2025"
+[dumpfile_size] 256379936
 [savefile] "/Work/Embedded/digital_UN/femtoRV/basic/rtl/test_cpu_load.gtkw"
 [timestart] 0
 [size] 1648 951
-[pos] -1 -1
-*-8.770798 1079 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[pos] -325 -176
+*-59.770798 1079 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] bench.
 [treeopen] bench.uut.
 [treeopen] bench.uut.bcd2bin0.
@@ -412,7 +412,7 @@ bench.uut.bcd2bin0.A[19:0]
 (17)bench.uut.bcd2bin0.A[19:0]
 (18)bench.uut.bcd2bin0.A[19:0]
 (19)bench.uut.bcd2bin0.A[19:0]
-@1401202
+@1401200
 -group_end
 @22
 bench.uut.bcd2bin0.addr[4:0]
