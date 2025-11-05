@@ -15,8 +15,8 @@ mult:
   sw   a4,4(sp) 
   sw   a5,8(sp) 
 
-  mv    a4, a0
-  mv    a5, a1       # a4 * a5
+  add    a4, a0, zero
+  add    a5, a1, zero       # a4 * a5
   li    a0, 0        # PP = 0
 .L2:
   andi  a3, a5, 1    # 
