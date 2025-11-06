@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Module name="led_panel_8" Register="6" Alu="4" Lut="4" T_Register="31(6)" T_Alu="23(4)" T_Lut="30(4)" T_Bsram="1(0)">
- <SubModule name="count_row" Register="5" Alu="4" Lut="4" T_Register="5(5)" T_Alu="4(4)" T_Lut="4(4)"/>
- <SubModule name="count_col" Register="6" Alu="5" Lut="2" T_Register="6(6)" T_Alu="5(5)" T_Lut="2(2)"/>
- <SubModule name="count_delay" Register="11" Alu="10" Lut="1" T_Register="11(11)" T_Alu="10(10)" T_Lut="1(1)"/>
- <SubModule name="mem0" Bsram="1" T_Bsram="1(1)"/>
- <SubModule name="ctrl0" Register="3" Lut="19" T_Register="3(3)" T_Lut="19(19)"/>
-</Module>
