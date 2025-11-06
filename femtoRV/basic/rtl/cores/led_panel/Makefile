@@ -1,99 +1,170 @@
-DESIGN          = mult_32
-PINS            = $(DESIGN).ucf
-DEVICE          = xc6slx45-3csg324
-BGFLAGS         = -g TdoPin:PULLNONE -g DonePin:PULLUP \
-                  -g CRC:enable -g StartUpClk:CCLK
+TARGET = led_panel_8
+TOP    = led_panel_8
 
-XILINXCADROOT   = /opt/cad/Xilinx/14.4/ISE_DS/ISE/
-SIM_COMP_SCRIPT = simulation/$(DESIGN)_TB.do
-SIMGEN_OPTIONS  = -p $(FPGA_ARCH) -lang $(LANGUAGE)
-IVERILOG        = iverilog
+ICE40_SIM_CELLS=$(shell yosys-config --datdir/ice40/cells_sim.v)
 
-SRC             = $(DESIGN).v rsr.v lsr.v acc.v control_mult.v comp.v \
+COMM_OBJS += count.v 
+COMM_OBJS += ctrl_lp8.v
+COMM_OBJS += led_panel_8.v
+COMM_OBJS += memory.v
+COMM_OBJS += comp.v
 
-SIM_SRC = $(DESIGN)_TB.v          \
+SIM_OBJS =  ../../verilog_model/sky130_fd_sc_hd.v
+SIM_OBJS += ../../verilog_model/primitives.v
+
+PER_OBJS = perip_sqrt.v $(OBJS)
+
+BUILD_DIR = build
+
+TCL_SCRIPT = auto_generated.tcl
+GOWIN_BOARD=primer_25k
+
+
+ifeq ($(GOWIN_BOARD),nano_20k)
+    DEVICE = GW2AR-LV18QN88C8/I7
+    FAMILY = GW2AR-18C
+else ifeq ($(GOWIN_BOARD),primer_25k)
+    DEVICE = GW5A-LV25MG121NC1/I0
+    FAMILY = GW5A-25A
+else
+    $(error GOWIN_BOARD=$(GOWIN_BOARD) no válido. Usa: nano_20k o primer_25k)
+endif
 
 
 
- 
-all:            bits
+all: sim
 
-remake:         clean-build all
+sim:
+	rm -f a.out *.vcd
+	iverilog -DBENCH  $(TARGET)_TB.v $(COMM_OBJS)
+	vvp a.out
+	gtkwave $(TARGET)_TB.vcd
+sim_per:
+	rm -f a.out *.vcd
+	iverilog -DBENCH   perip_$(TARGET)_TB.v $(PER_OBJS)
+	vvp a.out
+	gtkwave perip_$(TARGET)_TB.vcd &
+$(TOP).json:
+	yosys -v3  -p ' read_verilog $(OBJS);  synth_ice40  -top $(TARGET); write_verilog $(TOP)_synth.v' -l ${TARGET}.rpt
+
+#	yosys -v3 -l synth.log -p 'synth_ice40 -top $(TOP) -json $(TOP).json; write_verilog -attr2comment $(TOP)_synth.v' $(OBJS)
+#	yosys -p "read_verilog $(TOP)_synth.v; read_verilog cells_sim.v; prep -top $(TOP); show -format svg -prefix yosys"  # Visualize
+
+
+## ---------------------
+## post-synth simulation
+## ---------------------
+sim_post_syn: $(TOP).json $(OBJS)
+	iverilog -g2012 -DSYNTH -o $@_PS.vpp -s $(TOP)_TB $(TARGET)_TB.v $(TOP)_synth.v $(ICE40_SIM_CELLS) 
+	vvp $@_PS.vpp
+	gtkwave $(TOP)_TB.vcd &
+sim_post_syn_sky:
+	yosys -l synth.log -c synth.tcl
+	cp out.v $(TOP)_synth_sky.v 
+	iverilog -DFUNCTIONAL -DUNIT_DELAY=#1 -o $@_PS.vpp -s $(TOP)_TB $(TARGET)_TB.v $(TOP)_synth_sky.v ${SIM_OBJS}
+	vvp $@_PS.vpp
+	./$@_PS.vpp
+	gtkwave $(TOP)_TB.vcd &
+	#netlistsvg ${TARGET}.json -o ${TARGET}.svg  #--skin default.svg
+	
+
+## ---------------------
+## post-route simulation
+## ---------------------
+$(TOP).asc: $(TOP).json
+	nextpnr-ice40 --hx8k --package ct256 --json $(TOP).json --pcf $(TOP).pcf --asc $@  --routed-svg $(TOP)_routed.svg --placed-svg $(TOP)_placed.svg #--pcf-allow-unconstrained
+sim_post_route: $(TOP).asc $(TOP).pcf
+	icebox_vlog -L -n $(TOP) -sp $(TOP).pcf $< > $(TOP)_route.v
+	iverilog -o $@.vpp -s $(TOP)_TB $(TARGET)_post_route_TB.v  $(TOP)_route.v  $(ICE40_SIM_CELLS)
+	chmod -x $@
+	vvp $@.vpp
+	gtkwave $(TOP)_TB.vcd &
+
+svg: $(OBJS)
+	yosys -p "prep -top ${TARGET}; write_json ${TARGET}.json" ${OBJS}
+	netlistsvg ${TARGET}.json -o ${TARGET}.svg  #--skin default.svg
+	yosys -p "prep -top ${TARGET} -flatten; write_json ${TARGET}_flat.json" ${OBJS}
+	netlistsvg ${TARGET}_flat.json -o ${TARGET}_flat.svg  #--skin default.svg
 
 clean:
-	rm -f *~ */*~ a.out *.log *.key *.edf *.ps trace.dat 
-	rm -f *.bit *.json
-
-cleanall: clean
-	rm -rf build simulation/work simulation/transcript  simulation/vsim.wlf simulation/$(DESIGN)_TB.vvp simulation/$(DESIGN)_TB.vcd
-
-bits:           $(DESIGN).bit
-
-#
-# Synthesis
-#
-build/project.src:
-	@[ -d build ] || mkdir build
-	@[ -d simulation ] || mkdir simulation
-	@rm -f $@
-	for i in $(SRC); do echo verilog work ../$$i >> $@; done
-	for i in $(SRC_HDL); do echo VHDL work ../$$i >> $@; done
-
-build/project.xst: build/project.src
-	echo "run" > $@
-	echo "-top $(DESIGN) " >> $@
-	echo "-p $(DEVICE)" >> $@
-	echo "-opt_mode Area" >> $@
-	echo "-opt_level 1" >> $@
-	echo "-ifn project.src" >> $@
-	echo "-ifmt mixed" >> $@
-	echo "-ofn project.ngc" >> $@
-	echo "-ofmt NGC" >> $@
-	echo "-rtlview yes" >> $@
-
-build/project.ngc: build/project.xst $(SRC)
-	cd build && xst -ifn project.xst -ofn project.log
-
-build/project.ngd: build/project.ngc $(PINS)
-	cd build && ngdbuild -p $(DEVICE) project.ngc -uc ../$(PINS)
-
-build/project.ncd: build/project.ngd
-	cd build && map -pr b -p $(DEVICE) project
-
-build/project_r.ncd: build/project.ncd
-	cd build && par -w project project_r.ncd
-
-build/project_r.twr: build/project_r.ncd
-	cd build && trce -v 25 project_r.ncd project.pcf
-
-$(DESIGN).bit:  build/project_r.ncd build/project_r.twr
-	cd build && bitgen project_r.ncd -l -w $(BGFLAGS)
-	@mv -f build/project_r.bit $@
-
-build/project_r.v: build/project_r.ncd
-	cd build &&  ngd2ver project.ngd  -w project.v
-
-postsim: build/project.ngc
-	cd build &&  netgen -sim -ofmt verilog -w project.ngc
-	cd build && iverilog -Wall \
-	-y $(XILINXCADROOT)/verilog/src/unisims \
-	-y $(XILINXCADROOT)/verilog/src/XilinxCoreLib \
-	project.v ../$(DESIGN)_TB.v -o $(DESIGN).bin
-	cd build && vvp $(DESIGN).bin
-	gtkwave build/$(DESIGN)_TB.vcd&
+	rm -rf *.out *.vcd *.svg *.json $(TOP)_synth.v *.vpp *.asc $(TOP)_route.v synth.log
 
 
-iversim:  build/project.src
-	$(IVERILOG) -o simulation/$(DESIGN)_TB.vvp $(VINCDIR) $(SRC) $(SIM_SRC) -s $(DESIGN)_TB
-	vvp simulation/$(DESIGN)_TB.vvp; mv $(DESIGN)_TB.vcd simulation/
-	gtkwave simulation/$(DESIGN)_TB.vcd&
-	
-simcontrol: 
-	$(IVERILOG) -o simulation/control_TB.vvp control.v control_TB.v -s control_TB
-	vvp simulation/control_TB.vvp; mv control_TB.vcd simulation/
-	gtkwave simulation/control_TB.vcd&
 
-	
-config: $(DESIGN).bit
-	djtgcfg init -d $(BOARD)
-	djtgcfg prog -d $(BOARD) --index 0 --file $(DESIGN).bit
+########################################################
+##                      GOWIN                         ##
+##           
+########################################################
+
+
+#  GOWIN TANG NANO
+del_tcl_script:
+#   GOWIN TANG NANO 20K
+	rm -rf $(TCL_SCRIPT)
+$(TCL_SCRIPT):del_tcl_script
+	@echo "# Script TCL generado automáticamente desde Makefile" > $@
+	@echo "# Fecha: $$(date)" >> $@
+	@echo "" >> $@
+	@echo "# Configurar dispositivo" >> $@
+	@echo "set_device -name $(FAMILY) $(DEVICE)" >> $@
+	@echo "" >> $@
+
+
+ifeq ($(GOWIN_BOARD),nano_20k)
+	@echo "add_file sipeed_tang_nano_20k.cst" >> $@
+	@echo "add_file sipeed_tang_nano_20k.sdc" >> $@
+else ifeq ($(GOWIN_BOARD),primer_25k)
+	@echo "add_file sipeed_tang_primer_25k.cst" >> $@
+	@echo "add_file sipeed_tang_primer_25k.sdc" >> $@
+else
+    $(error GOWIN_BOARD=$(GOWIN_BOARD) no válido. Usa: nano_20k o primer_25k)
+endif
+
+	@echo "# Agregar archivos fuente" >> $@
+	@for file in $(COMM_OBJS); do \
+		echo "add_file -type verilog $$file" >> $@; \
+	done
+	@echo "" >> $@
+	@echo "# Configurar opciones del proyecto" >> $@
+
+	@echo "set_option -use_mspi_as_gpio 1" >> $@
+ifeq ($(GOWIN_BOARD),nano_20k)
+	@echo "set_option -use_sspi_as_gpio 1" >> $@
+else ifeq ($(GOWIN_BOARD),primer_25k)
+	@echo "set_option -use_i2c_as_gpio 1" >> $@
+else
+    $(error GOWIN_BOARD=$(GOWIN_BOARD) no válido. Usa: nano_20k o primer_25k)
+endif
+
+	@echo "set_option -use_ready_as_gpio 1" >> $@
+	@echo "set_option -use_done_as_gpio 1" >> $@
+ifeq ($(GOWIN_BOARD),primer_25k)
+	@echo "set_option -use_cpu_as_gpio 1" >> $@
+endif
+
+	@echo "set_option -rw_check_on_ram 1" >> $@
+	@echo "run all" >> $@
+
+configure_tang_nano_20k: clean_gowin $(TCL_SCRIPT)
+	gw_sh  $(TCL_SCRIPT)
+	openFPGALoader --cable ft2232 --bitstream ./impl/pnr/project.fs
+
+clean_gowin:
+	rm -rf impl
+
+configure_tang_primer_25k: $(TCL_SCRIPT)
+	gw_sh  $(TCL_SCRIPT)
+	openFPGALoader --cable ft2232 --bitstream ./impl/pnr/project.fs
+
+
+
+
+
+#export PATH=$PATH:/Work/CAD/IDE/bin/
+#export QT_QPA_PLATFORM_PLUGIN_PATH=/Work/CAD/IDE/Programmer/bin/PyQt5/qt-plugins
+#export QT_QPA_PLATFORM=xcb
+#export QT_XCB_GL_INTEGRATION=none
+
+
+#https://stackoverflow.com/questions/35927650/is-it-possible-to-create-a-simulation-waveform-from-yosys-output
+

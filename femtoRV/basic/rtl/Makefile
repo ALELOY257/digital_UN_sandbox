@@ -14,7 +14,7 @@ EFINIX_SIM_CELLS   = sim_models_efx/efx_ff.v  sim_models_efx/efx_dpram_5k.v sim_
 ICE40_SIM_CELLS=$(shell yosys-config --datdir/ice40/cells_sim.v)
 
 
-GOWIN_BOARD=nano_20k
+GOWIN_BOARD=primer_25k
 
 
 ifeq ($(GOWIN_BOARD),nano_20k)

@@ -1,20 +1,11 @@
-module led_panel_8(clk , rst , init , ZR, ZC, ZD , RST_R, RST_C, RST_D, INC_R, INC_C, INC_D, LATCH, NOE, PX_CLK_EN, ROW, RGB0, RGB1);
+module led_panel_8(clk , rst , init, LP_CLK, LATCH, NOE, ROW, RGB0, RGB1);
 
     input         rst;
     input         clk;
     input         init;
-    input         ZR;
-    input         ZC;
-    input         ZD;
-    output        RST_R;
-    output        RST_C;
-    output        RST_D;
-    output        INC_R;
-    output        INC_C;
-    output        INC_D;
+    output        LP_CLK;
     output        LATCH;
     output        NOE;
-    output        PX_CLK_EN;
     output  [4:0] ROW;
     output  [2:0] RGB0;
     output  [2:0] RGB1;
@@ -29,21 +20,40 @@ module led_panel_8(clk , rst , init , ZR, ZC, ZD , RST_R, RST_C, RST_D, INC_R, I
     wire w_INC_R;
     wire w_INC_C;
     wire w_INC_D;
+    wire [10:0] delay;
 
-    parameter  DELAY = 1024;
+    parameter  DELAY = 10;
 
-    wire PIX_ADDR[10:0];
-    wire COL [5:0];
+    wire [10:0] PIX_ADDR;
+    wire [5:0]  COL ;
+
+    reg clk1;
+
+reg [4:0] clk_counter;
+   always @(posedge clk) begin
+      if (rst) begin
+        clk_counter <= 0;
+        clk1        <= 1;
+      end else begin
+         if(clk_counter == 8) begin
+            clk1    <= ~clk1;
+            clk_counter <= 0;
+         end
+         else
+            clk_counter <= clk_counter + 1;
+      end
+   end
 
     assign PIX_ADDR = {ROW, COL};
 
+    assign LP_CLK = clk1 & PX_CLK_EN;
 
-
-    count #(.width(5))    count_row( .clk(clk), .reset(RST_R), .inc(INC_R), .outc(ROW), .zero(w_ZR) );
-    count #(.width(6))    count_col( .clk(clk), .reset(RST_C), .inc(INC_C), .outc(COL), .zero(w_ZC) );
-    count #(.width (10))  count_delay( .clk(clk), .out(w_ZD));
-    memory  mem0 (.clk(clk), .address(PIX_ADDR), .rd(1'b1), .rdata({RGB0, RGB1}));
-    ctrl_lp8 ctrl0 (.clk(clk), .init(init), .ZR(w_ZR), .ZC(w_ZC), .ZD(w_ZD), .RST_R(w_RST_R), .RST_C(w_RST_C), .RST_D(w_RST_D)
+    count #(.width(4))     count_row(   .clk(clk1), .reset(w_RST_R), .inc(w_INC_R), .outc(ROW), .zero(w_ZR) );
+    count #(.width(5))     count_col(   .clk(clk1), .reset(w_RST_C), .inc(w_INC_C), .outc(COL), .zero(w_ZC) );
+    count #(.width (10))   count_delay( .clk(clk1), .reset(w_RST_D), .inc(w_INC_D), .outc(delay));
+    comp  #(.value(DELAY), .width(10) ) compa(.in1(delay), .out(w_ZD));
+    memory                 mem0 (.clk(clk1), .address(PIX_ADDR), .rd(1'b1), .rdata({RGB0, RGB1}));
+    ctrl_lp8 ctrl0 (.clk(clk1), .rst(rst), .init(1'b1), .ZR(w_ZR), .ZC(w_ZC), .ZD(w_ZD), .RST_R(w_RST_R), .RST_C(w_RST_C), .RST_D(w_RST_D),
                     .INC_R(w_INC_R),  .INC_C(w_INC_C), .INC_D(w_INC_D), .LATCH(LATCH), .NOE(NOE), .PX_CLK_EN(PX_CLK_EN)) ;
 
 endmodule

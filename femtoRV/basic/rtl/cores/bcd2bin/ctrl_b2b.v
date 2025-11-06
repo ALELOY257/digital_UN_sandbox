@@ -1,9 +1,4 @@
 module ctrl_b2b( clk , rst , init, done, sh, ld, sel, ld_msb, add, z );
-           
-           
-
-
-
  input       clk;
  input       rst;
  input       init;
