@@ -33,7 +33,7 @@ reg [4:0] clk_counter;
    always @(posedge clk) begin
       if (rst) begin
         clk_counter <= 0;
-        clk1        <= 1;
+        clk1        <= 0;
       end else begin
          if(clk_counter == 8) begin
             clk1    <= ~clk1;

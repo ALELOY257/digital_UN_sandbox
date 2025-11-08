@@ -84,7 +84,7 @@ always @(*) begin
       START: begin
         RST_R = 0; RST_C = 0; RST_D = 0;
         INC_R = 0; INC_C = 0; INC_D = 0;
-        LATCH = 0; NOE   = 0; PX_CLK_EN = 0;
+        LATCH = 0; NOE   = 1; PX_CLK_EN = 0;
       end
 
       GET_PIXEL: begin
@@ -126,7 +126,7 @@ always @(*) begin
       default: begin
         RST_R = 0; RST_C = 0; RST_D = 0;
         INC_R = 0; INC_C = 0; INC_D = 0;
-        LATCH = 0; NOE   = 0; PX_CLK_EN = 0;
+        LATCH = 0; NOE   = 1; PX_CLK_EN = 0;
       end
 
     endcase
