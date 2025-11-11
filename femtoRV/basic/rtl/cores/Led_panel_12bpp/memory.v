@@ -1,11 +1,14 @@
-module memory(
+module memory#(
+    parameter size = 2047,
+    parameter width = 11
+)(
   input             clk,
-  input  [10:0]     address,
+  input  [width:0]     address,
   input             rd,
   output reg [23:0]  rdata
 );
 
-reg [23:0] MEM [0:2047];
+reg [23:0] MEM [0:size];
 initial begin
     $readmemh("./image.hex",MEM);
 end
