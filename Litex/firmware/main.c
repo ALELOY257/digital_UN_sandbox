@@ -16,15 +16,13 @@ void my_busy_wait(unsigned int ms)
 }
 int main(void)
 {
-	irq_setmask(0);
-	irq_setie(1);
 	uart_init();
 	printf("Running Hola Mundo from SDRAM \n");
 	while(1) {
 		led_panel0_init_write(0);
-		my_busy_wait(100);
+		my_busy_wait(1000);
 		led_panel0_init_write(1);
-		my_busy_wait(100);
+		my_busy_wait(1000);
 	}
 	return 0;
 }
