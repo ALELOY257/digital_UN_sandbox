@@ -127,7 +127,14 @@ always @(*) begin
       ld     = 0;
       add    = 0;
     end
-
+    default: begin
+      done   = 0;
+      ld_msb = 0;
+      sel    = 0;
+      sh     = 0;
+      ld     = 1;
+      add    = 0;
+    end
   endcase
 end
 
