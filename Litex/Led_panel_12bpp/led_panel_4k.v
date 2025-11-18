@@ -1,4 +1,4 @@
-module led_panel_4k(clk , rst , init, LP_CLK, LATCH, NOE, ROW, RGB0, RGB1);
+module led_panel_4k(clk , rst , init, LP_CLK, LATCH, NOE, ROW, RGB0, RGB1, mem_w_data, mem_w_address, we_a);
 
     input         rst;
     input         clk;
@@ -10,6 +10,9 @@ module led_panel_4k(clk , rst , init, LP_CLK, LATCH, NOE, ROW, RGB0, RGB1);
     output  [2:0] RGB0;
     output  [2:0] RGB1;
 
+    input   [10:0]  mem_w_address;
+    input   [23:0]  mem_w_data;
+    input           we_a;
 
     wire w_ZR;
     wire w_ZC;
@@ -54,7 +57,7 @@ wire [2:0] tmp_rgb;
 wire tmp_noe;
 wire tmp_latch;
 
-assign LATCH = ~tmp_latch;
+assign LATCH = tmp_latch;
 assign NOE = tmp_noe;
 
 reg [4:0] clk_counter;
@@ -82,7 +85,7 @@ reg [4:0] clk_counter;
     count #(.width (1))   count_index( .clk(clk1), .reset(w_RST_I), .inc(w_INC_I), .outc(index), .zero(w_ZI));
     lsr_led #(.init_value(DELAY), .width(10)) lsr_led0( .clk(clk1), .load(w_LD), .shift(w_SHD), .s_A(delay));
     comp_4k #(.width(10) ) compa(.in1(delay), .in2(count_delay), .out(w_ZD));
-    memory  #(.size(NUM_PIXELS/2 -1), .width( $clog2(NUM_PIXELS)-2 ) ) mem0 (.clk(clk1), .address(PIX_ADDR), .rd(1'b1), .rdata(mem_data));
+    memory  #(.size(NUM_PIXELS/2 -1), .width( $clog2(NUM_PIXELS)-2 ) ) mem0 (.clk(clk1), .address(PIX_ADDR), .rd(1'b1), .rdata(mem_data), .w_address(mem_w_address), .w_data(mem_w_data), .we_a(we_a));
     mux_led                mux0 (.in0(mem_data), .out0({RGB0, RGB1}), .sel(index) );
     ctrl_lp4k ctrl0 (.clk(clk1), .rst(rst), .init(init), 
                     .ZR(w_ZR), .ZC(w_ZC), .ZD(w_ZD), .ZI(w_ZI),

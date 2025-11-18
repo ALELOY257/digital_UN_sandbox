@@ -16,13 +16,24 @@ void my_busy_wait(unsigned int ms)
 }
 int main(void)
 {
+	int tmp;
 	uart_init();
 	printf("Running Hola Mundo from SDRAM \n");
+    led_panel0_init_write(1);
+    for (tmp=0; tmp <1024; tmp ++){
+		led_panel0_mem_w_address_write(tmp);
+		led_panel0_mem_w_data_write(tmp & 0);
+	    led_panel0_we_a_write(1);
+	    led_panel0_we_a_write(0);
+		my_busy_wait(10);
+
+	}
+
 	while(1) {
-		led_panel0_init_write(0);
-		my_busy_wait(1000);
+//		led_panel0_init_write(0);
+//		my_busy_wait(1000);
 		led_panel0_init_write(1);
-		my_busy_wait(1000);
+//		my_busy_wait(1000);
 	}
 	return 0;
 }

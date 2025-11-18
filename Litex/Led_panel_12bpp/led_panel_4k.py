@@ -10,6 +10,11 @@ class LED_PANEL(Module,AutoCSR):
     self.rst            = ResetSignal()
     self.init           = CSRStorage()
 
+    self.we_a           = CSRStorage()
+    self.mem_w_address  = CSRStorage(11)
+    self.mem_w_data     = CSRStorage(24)
+
+
     self.LP_CLK         = data.LP_CLK
     self.LATCH          = data.LATCH
     self.NOE            = data.NOE
@@ -21,6 +26,9 @@ class LED_PANEL(Module,AutoCSR):
         i_clk            = self.clk,
         i_rst            = self.rst,
         i_init           = self.init.storage,
+        i_we_a           = self.we_a.storage,
+        i_mem_w_address  = self.mem_w_address.storage,
+        i_mem_w_data     = self.mem_w_data.storage,
         o_LP_CLK         = self.LP_CLK,
         o_LATCH          = self.LATCH,
         o_NOE            = self.NOE,
