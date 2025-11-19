@@ -1,5 +1,7 @@
 sudo openFPGALoader -c ft232RL --pins=TXD:CTS:DTR:RXD -m
 sudo openFPGALoader -b colorlight-i5 -m
+./icebreaker.py --cpu-type femtorv  --cpu-variant gracilis --build
+
 
 0. Carcasa para imprimir se encuentra en: ecb_T8_T113/PCB/ECB_T8_T113_V0.2
    case.scad       Openscad se incluye la placa para verificar las medidas

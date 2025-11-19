@@ -1,4 +1,4 @@
-module led_panel_8(clk , rst , init, LP_CLK, LATCH, NOE, ROW, RGB0, RGB1);
+module led_panel_4k(clk , rst , init, LP_CLK, LATCH, NOE, ROW, RGB0, RGB1);
 
     input         rst;
     input         clk;
@@ -41,7 +41,7 @@ parameter NUM_PIXELS = NUM_COLS*NUM_ROWS;
 parameter HALF_SCREEN = NUM_PIXELS/2;
 parameter BIT_DEPTH = 4;
 parameter TOTAL_BIT_DEPTH = 3*BIT_DEPTH;
-parameter DELAY = 50;
+parameter DELAY = 20;
 
 wire [($clog2(NUM_COLS)-1):0]		COL;
 // ----------------------------------------------

@@ -206,6 +206,21 @@ configure_i9: ${TARGET}_i9.bit   # TDI:TDO:TCK:TMS
 
 .PHONY: clean
 
+##########################
+#    ICEBREAKER
+##########################
+
+configure_icebreaker: 
+#set -e
+	yosys -l icebreaker.rpt -p 'verilog_defaults -push; verilog_defaults -add -defer; read_verilog  $(OBJS); verilog_defaults -pop; attrmap -tocase keep -imap keep="true" keep=1 -imap keep="false" keep=0 -remove keep=0; synth_ice40 -dsp -top ${TOP}; write_json  ${TOP}.json'
+	nextpnr-ice40 --json ${TOP}.json --pcf SOC_icebreaker.pcf --asc icebreaker.asc  --pre-pack icebreaker_pre_pack.py  --up5k --package sg48 --timing-allow-fail --seed 1 
+	icepack -s icebreaker.asc icebreaker.bin 
+	iceprog -d i:0x0403:0x6010 icebreaker.bin
+
+
+
+
+
 
 ##########################
 #    EFINIX ECB_T20_T113
