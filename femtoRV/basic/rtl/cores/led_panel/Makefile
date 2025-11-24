@@ -158,7 +158,13 @@ configure_tang_primer_25k: $(TCL_SCRIPT)
 
 
 
-
+configure_icebreaker: 
+#set -e
+	yosys -l icebreaker.rpt -p 'verilog_defaults -push; verilog_defaults -add -defer; read_verilog  $(COMM_OBJS); verilog_defaults -pop; attrmap -tocase keep -imap keep="true" keep=1 -imap keep="false" keep=0 -remove keep=0; synth_ice40 -dsp -top ${TOP}; write_json  ${TOP}.json'
+	nextpnr-ice40 --json ${TOP}.json --pcf led_panel_icebreaker.pcf --asc icebreaker.asc  --pre-pack icebreaker_pre_pack.py  --up5k --package sg48 --timing-allow-fail --seed 1  --pcf-allow-unconstrained
+	icepack -s icebreaker.asc icebreaker.bin 
+	iceprog -d i:0x0403:0x6010 icebreaker.bin
+	
 
 #export PATH=$PATH:/Work/CAD/IDE/bin/
 #export QT_QPA_PLATFORM_PLUGIN_PATH=/Work/CAD/IDE/Programmer/bin/PyQt5/qt-plugins
