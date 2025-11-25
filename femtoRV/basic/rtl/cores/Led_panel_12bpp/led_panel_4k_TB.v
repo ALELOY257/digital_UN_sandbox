@@ -12,7 +12,7 @@ module led_panel_4k_TB;
    wire  [2:0] RGB1;
 
 
-    led_panel_8 uut (
+    led_panel_4k uut (
         .clk(clk),
         .rst(rst),
         .init(init),
