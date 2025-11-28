@@ -4,7 +4,7 @@ Analyzing Verilog file '/Work/Embedded/digital_UN/femtoRV/basic/rtl/cores/Led_pa
 Analyzing Verilog file '/Work/Embedded/digital_UN/femtoRV/basic/rtl/cores/Led_panel_12bpp/ctrl_lp4k.v'
 Analyzing Verilog file '/Work/Embedded/digital_UN/femtoRV/basic/rtl/cores/Led_panel_12bpp/led_panel_4k.v'
 Undeclared symbol 'PX_CLK_EN', assumed default net type 'wire'("/Work/Embedded/digital_UN/femtoRV/basic/rtl/cores/Led_panel_12bpp/led_panel_4k.v":92)
-Analyzing Verilog file '/Work/Embedded/digital_UN/femtoRV/basic/rtl/cores/Led_panel_12bpp/memory.v'
+Analyzing Verilog file '/Work/Embedded/digital_UN/femtoRV/basic/rtl/cores/Led_panel_12bpp/memory_V2.v'
 Analyzing Verilog file '/Work/Embedded/digital_UN/femtoRV/basic/rtl/cores/Led_panel_12bpp/comp.v'
 Analyzing Verilog file '/Work/Embedded/digital_UN/femtoRV/basic/rtl/cores/Led_panel_12bpp/lsr_led.v'
 Analyzing Verilog file '/Work/Embedded/digital_UN/femtoRV/basic/rtl/cores/Led_panel_12bpp/mux_led.v'
@@ -20,8 +20,9 @@ Compiling module 'count(width=1)'("/Work/Embedded/digital_UN/femtoRV/basic/rtl/c
 WARN  (EX3791) : Expression size 3 truncated to fit in target size 2("/Work/Embedded/digital_UN/femtoRV/basic/rtl/cores/Led_panel_12bpp/count.v":15)
 Compiling module 'lsr_led(init_value=20)'("/Work/Embedded/digital_UN/femtoRV/basic/rtl/cores/Led_panel_12bpp/lsr_led.v":1)
 Compiling module 'comp_4k'("/Work/Embedded/digital_UN/femtoRV/basic/rtl/cores/Led_panel_12bpp/comp.v":1)
-Compiling module 'memory(width=10)'("/Work/Embedded/digital_UN/femtoRV/basic/rtl/cores/Led_panel_12bpp/memory.v":1)
-Extracting RAM for identifier 'MEM'("/Work/Embedded/digital_UN/femtoRV/basic/rtl/cores/Led_panel_12bpp/memory.v":11)
+Compiling module 'memory(width=10)'("/Work/Embedded/digital_UN/femtoRV/basic/rtl/cores/Led_panel_12bpp/memory_V2.v":1)
+Extracting RAM for identifier 'MEM0'("/Work/Embedded/digital_UN/femtoRV/basic/rtl/cores/Led_panel_12bpp/memory_V2.v":11)
+Extracting RAM for identifier 'MEM1'("/Work/Embedded/digital_UN/femtoRV/basic/rtl/cores/Led_panel_12bpp/memory_V2.v":12)
 WARN  (EX3670) : Actual bit length 12 differs from formal bit length 11 for port 'address'("/Work/Embedded/digital_UN/femtoRV/basic/rtl/cores/Led_panel_12bpp/led_panel_4k.v":85)
 Compiling module 'mux_led'("/Work/Embedded/digital_UN/femtoRV/basic/rtl/cores/Led_panel_12bpp/mux_led.v":1)
 Compiling module 'ctrl_lp4k'("/Work/Embedded/digital_UN/femtoRV/basic/rtl/cores/Led_panel_12bpp/ctrl_lp4k.v":1)

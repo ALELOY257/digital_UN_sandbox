@@ -80,7 +80,7 @@ class BaseSoC(SoCCore):
         platform = sipeed_tang_primer_25k.Platform(toolchain=toolchain)
         platform.add_source("Led_panel_12bpp/led_panel_4k.v")
         platform.add_source("Led_panel_12bpp/mux_led.v")
-        platform.add_source("Led_panel_12bpp/memory.v")
+        platform.add_source("Led_panel_12bpp/memory_V2.v")
         platform.add_source("Led_panel_12bpp/lsr_led.v")
         platform.add_source("Led_panel_12bpp/ctrl_lp4k.v")
         platform.add_source("Led_panel_12bpp/count.v")

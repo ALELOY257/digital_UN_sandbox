@@ -11,7 +11,7 @@ class LED_PANEL(Module,AutoCSR):
     self.init           = CSRStorage()
 
     self.we_a           = CSRStorage()
-    self.mem_w_address  = CSRStorage(11)
+    self.mem_w_address  = CSRStorage(12)
     self.mem_w_data     = CSRStorage(24)
 
 

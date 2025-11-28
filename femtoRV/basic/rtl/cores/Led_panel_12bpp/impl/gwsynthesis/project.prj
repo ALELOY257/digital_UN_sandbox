@@ -7,7 +7,7 @@
         <File path="/Work/Embedded/digital_UN/femtoRV/basic/rtl/cores/Led_panel_12bpp/count.v" type="verilog"/>
         <File path="/Work/Embedded/digital_UN/femtoRV/basic/rtl/cores/Led_panel_12bpp/ctrl_lp4k.v" type="verilog"/>
         <File path="/Work/Embedded/digital_UN/femtoRV/basic/rtl/cores/Led_panel_12bpp/led_panel_4k.v" type="verilog"/>
-        <File path="/Work/Embedded/digital_UN/femtoRV/basic/rtl/cores/Led_panel_12bpp/memory.v" type="verilog"/>
+        <File path="/Work/Embedded/digital_UN/femtoRV/basic/rtl/cores/Led_panel_12bpp/memory_V2.v" type="verilog"/>
         <File path="/Work/Embedded/digital_UN/femtoRV/basic/rtl/cores/Led_panel_12bpp/comp.v" type="verilog"/>
         <File path="/Work/Embedded/digital_UN/femtoRV/basic/rtl/cores/Led_panel_12bpp/lsr_led.v" type="verilog"/>
         <File path="/Work/Embedded/digital_UN/femtoRV/basic/rtl/cores/Led_panel_12bpp/mux_led.v" type="verilog"/>

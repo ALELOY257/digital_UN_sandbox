@@ -1,5 +1,5 @@
 # Script TCL generado automáticamente desde Makefile
-# Fecha: Thu Nov 27 09:19:31 PM -05 2025
+# Fecha: Thu Nov 27 10:15:55 PM -05 2025
 
 # Configurar dispositivo
 set_device -name GW5A-25A GW5A-LV25MG121NC1/I0
@@ -10,7 +10,7 @@ add_file sipeed_tang_primer_25k.sdc
 add_file -type verilog count.v
 add_file -type verilog ctrl_lp4k.v
 add_file -type verilog led_panel_4k.v
-add_file -type verilog memory.v
+add_file -type verilog memory_V2.v
 add_file -type verilog comp.v
 add_file -type verilog lsr_led.v
 add_file -type verilog mux_led.v

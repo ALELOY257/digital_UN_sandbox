@@ -57,7 +57,7 @@ wire [2:0] tmp_rgb;
 wire tmp_noe;
 wire tmp_latch;
 
-assign LATCH = tmp_latch;
+assign LATCH = ~tmp_latch;
 assign NOE = tmp_noe;
 
 reg [4:0] clk_counter;
