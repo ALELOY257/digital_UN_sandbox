@@ -165,17 +165,16 @@ class BaseSoC(SoCCore):
         SoCCore.__init__(self, platform, int(sys_clk_freq), ident="LiteX SoC on Colorlight " + board.upper(), **kwargs)
 
         # SDR SDRAM --------------------------------------------------------------------------------
-        if not self.integrated_main_ram_size:
-            sdrphy_cls = HalfRateGENSDRPHY if sdram_rate == "1:2" else GENSDRPHY
-            self.sdrphy = sdrphy_cls(platform.request("sdram"), sys_clk_freq)
-            sdram_cls  = M12L64322A
-            self.add_sdram("sdram",
-                phy                     = self.sdrphy,
-                module                  = sdram_cls(sys_clk_freq, sdram_rate),
-                l2_cache_size           = kwargs.get("l2_size", 8192),
-                l2_cache_full_memory_we = False,
+        sdrphy_cls = HalfRateGENSDRPHY if sdram_rate == "1:2" else GENSDRPHY
+        self.sdrphy = sdrphy_cls(platform.request("sdram"), sys_clk_freq)
+        sdram_cls  = M12L64322A
+        self.add_sdram("sdram",
+            phy                     = self.sdrphy,
+            module                  = sdram_cls(sys_clk_freq, sdram_rate),
+            l2_cache_size           = kwargs.get("l2_size", 8192),
+            l2_cache_full_memory_we = False,
 
-            )
+        )
 
         # Ethernet / Etherbone ---------------------------------------------------------------------
         if with_ethernet or with_etherbone:

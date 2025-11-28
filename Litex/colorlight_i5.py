@@ -145,14 +145,13 @@ class BaseSoC(SoCCore):
         self.add_spi_flash(mode="1x", module=SpiFlashModule(Codes.READ_1_1_1))
 
         # SDR SDRAM --------------------------------------------------------------------------------
-        if not self.integrated_main_ram_size:
-            sdrphy_cls = HalfRateGENSDRPHY if sdram_rate == "1:2" else GENSDRPHY
-            self.sdrphy = sdrphy_cls(platform.request("sdram"))
-            self.add_sdram("sdram",
-                phy           = self.sdrphy,
-                module        = M12L64322A(sys_clk_freq, sdram_rate),
-                l2_cache_size = kwargs.get("l2_size", 8192)
-            )
+        sdrphy_cls = HalfRateGENSDRPHY if sdram_rate == "1:2" else GENSDRPHY
+        self.sdrphy = sdrphy_cls(platform.request("sdram"))
+        self.add_sdram("sdram",
+            phy           = self.sdrphy,
+            module        = M12L64322A(sys_clk_freq, sdram_rate),
+            l2_cache_size = kwargs.get("l2_size", 8192)
+        )
         #LED_PANEL module
         SoCCore.add_csr(self,"led_panel0")
         self.submodules.led_panel0 = led_panel_4k.LED_PANEL(platform.request("led_panel",0))
