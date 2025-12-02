@@ -113,7 +113,7 @@ _io_v6_0 = [
 
 # From https://github.com/q3k/chubby75/blob/master/5a-75e/hardware_V6.0.md
 _connectors_v6_0 = [
-    ("j1",  "C4  D4  E4  - D3  E3  F4  N4 N5 N3 P3 P4 M3 N1 M4 -"),
+    ("j1",  " -   -  E4  - D3  E3  F4  N4 N5 N3 P3 P4 M3 N1 M4 -"),
     ("j2",  "F3  F5  G3  - G4  H3  H4  N4 N5 N3 P3 P4 M3 N1 M4 -"),
     ("j3",  "G5  H5  J5  - J4  B1  C2  N4 N5 N3 P3 P4 M3 N1 M4 -"),
     ("j4",  "C1  D1  E2  - E1  F2  F1  N4 N5 N3 P3 P4 M3 N1 M4 -"),
@@ -147,5 +147,5 @@ class Platform(LatticeECP5Platform):
     def do_finalize(self, fragment):
         LatticeECP5Platform.do_finalize(self, fragment)
         self.add_period_constraint(self.lookup_request("clk25",            loose=True), 1e9/25e6)
-        self.add_period_constraint(self.lookup_request("eth_clocks:rx", 0, loose=True), 1e9/125e6)
-        self.add_period_constraint(self.lookup_request("eth_clocks:rx", 1, loose=True), 1e9/125e6)
+#        self.add_period_constraint(self.lookup_request("eth_clocks:rx", 0, loose=True), 1e9/125e6)
+#        self.add_period_constraint(self.lookup_request("eth_clocks:rx", 1, loose=True), 1e9/125e6)

@@ -12,27 +12,27 @@
   <Part Number>: GW5A-LV25MG121NC1/I0
   <Device>: GW5A-25
   <Device Version>: A
-  <Created Time>:Thu Nov 27 22:15:59 2025
+  <Created Time>:Mon Dec  1 10:53:37 2025
 
 
 2. PnR Details
 
   Running placement:
     Placement Phase 0: CPU time = 0h 0m 0.013s, Elapsed time = 0h 0m 0.013s
-    Placement Phase 1: CPU time = 0h 0m 0.103s, Elapsed time = 0h 0m 0.103s
+    Placement Phase 1: CPU time = 0h 0m 0.104s, Elapsed time = 0h 0m 0.104s
     Placement Phase 2: CPU time = 0h 0m 0.001s, Elapsed time = 0h 0m 0.001s
-    Placement Phase 3: CPU time = 0h 0m 0.138s, Elapsed time = 0h 0m 0.138s
-    Total Placement: CPU time = 0h 0m 0.255s, Elapsed time = 0h 0m 0.255s
+    Placement Phase 3: CPU time = 0h 0m 0.14s, Elapsed time = 0h 0m 0.14s
+    Total Placement: CPU time = 0h 0m 0.258s, Elapsed time = 0h 0m 0.258s
  Running routing:
     Routing Phase 0: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0s
-    Routing Phase 1: CPU time = 0h 0m 0.376s, Elapsed time = 0h 0m 0.376s
+    Routing Phase 1: CPU time = 0h 0m 0.379s, Elapsed time = 0h 0m 0.379s
     Routing Phase 2: CPU time = 0h 0m 0.014s, Elapsed time = 0h 0m 0.014s
     Routing Phase 3: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0s
-    Total Routing: CPU time = 0h 0m 0.39s, Elapsed time = 0h 0m 0.39s
+    Total Routing: CPU time = 0h 0m 0.393s, Elapsed time = 0h 0m 0.393s
  Generate output files:
-    CPU time = 0h 0m 0.62s, Elapsed time = 0h 0m 0.62s
+    CPU time = 0h 0m 0.615s, Elapsed time = 0h 0m 0.62s
 
- Total Time and Memory Usage: CPU time = 0h 0m 1s, Elapsed time = 0h 0m 1s, Peak memory usage = 514MB
+ Total Time and Memory Usage: CPU time = 0h 0m 1s, Elapsed time = 0h 0m 1s, Peak memory usage = 515MB
 
 
 3. Resource Usage Summary

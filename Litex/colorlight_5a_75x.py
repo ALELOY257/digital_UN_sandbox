@@ -69,7 +69,7 @@ from Led_panel_12bpp import led_panel_4k
 # CRG ----------------------------------------------------------------------------------------------
 
 class _CRG(LiteXModule):
-    def __init__(self, platform, sys_clk_freq, use_internal_osc=False, with_usb_pll=False, with_rst=True, sdram_rate="1:1"):
+    def __init__(self, platform, sys_clk_freq, use_internal_osc=False, with_usb_pll=False, sdram_rate="1:1"):
         self.rst    = Signal()
         self.cd_sys = ClockDomain()
         if sdram_rate == "1:2":
@@ -81,18 +81,14 @@ class _CRG(LiteXModule):
         # # #
 
         # Clk / Rst
-        if not use_internal_osc:
-            clk = platform.request("clk25")
-            clk_freq = 25e6
-        else:
-            clk = Signal()
-            div = 5
-            self.specials += Instance("OSCG",
-                                p_DIV = div,
-                                o_OSC = clk)
-            clk_freq = 310e6/div
+        clk = Signal()
+        div = 5
+        self.specials += Instance("OSCG",
+                            p_DIV = div,
+                            o_OSC = clk)
+        clk_freq = 310e6/div
 
-        rst_n = 1 if not with_rst else platform.request("user_btn_n", 0)
+        rst_n = platform.request("user_btn_n", 0)
 
         # PLL
         self.pll = pll = ECP5PLL()
@@ -123,7 +119,7 @@ class _CRG(LiteXModule):
 
 class BaseSoC(SoCCore):
     def __init__(self, board, revision, sys_clk_freq=60e6, toolchain="trellis",
-        with_ethernet    = False,
+        with_ethernet    = True,
         with_etherbone   = False,
         eth_ip           = "192.168.1.50",
         eth_phy          = 0,
@@ -136,7 +132,7 @@ class BaseSoC(SoCCore):
         platform = colorlight_5a_75e.Platform(revision=revision, toolchain=toolchain)
         platform.add_source("Led_panel_12bpp/led_panel_4k.v")
         platform.add_source("Led_panel_12bpp/mux_led.v")
-        platform.add_source("Led_panel_12bpp/memory.v")
+        platform.add_source("Led_panel_12bpp/memory_V2.v")
         platform.add_source("Led_panel_12bpp/lsr_led.v")
         platform.add_source("Led_panel_12bpp/ctrl_lp4k.v")
         platform.add_source("Led_panel_12bpp/count.v")
@@ -145,14 +141,9 @@ class BaseSoC(SoCCore):
 #            assert use_internal_osc, "You cannot use the 25MHz clock as system clock since it is provided by the Ethernet PHY and will stop during PHY reset."
 
         # CRG --------------------------------------------------------------------------------------
-        with_rst     = kwargs["uart_name"] not in ["serial", "crossover"] # serial_rx shared with user_btn_n.
-        if board == "i5a-907":
-            with_rst = True
         with_usb_pll = kwargs.get("uart_name", None) == "usb_acm"
         self.crg = _CRG(platform, sys_clk_freq,
-            use_internal_osc = use_internal_osc,
             with_usb_pll     = with_usb_pll,
-            with_rst         = with_rst,
             sdram_rate       = sdram_rate
         )
 
@@ -177,15 +168,14 @@ class BaseSoC(SoCCore):
         )
 
         # Ethernet / Etherbone ---------------------------------------------------------------------
-        if with_ethernet or with_etherbone:
-            self.ethphy = LiteEthPHYRGMII(
-                clock_pads = self.platform.request("eth_clocks", eth_phy),
-                pads       = self.platform.request("eth", eth_phy),
-                tx_delay   = 0e-9)
-            if with_ethernet:
-                self.add_ethernet(phy=self.ethphy, data_width=32)
-            if with_etherbone:
-                self.add_etherbone(phy=self.ethphy, ip_address=eth_ip, data_width=32)
+        self.ethphy = LiteEthPHYRGMII(
+            clock_pads = self.platform.request("eth_clocks", eth_phy),
+            pads       = self.platform.request("eth", eth_phy),
+            tx_delay   = 0e-9)
+#        if with_ethernet:
+        self.add_ethernet(phy=self.ethphy, data_width=32)
+#        if with_etherbone:
+#            self.add_etherbone(phy=self.ethphy, ip_address=eth_ip, data_width=32)
 
         # Leds -------------------------------------------------------------------------------------
         # Disable leds when serial is used.

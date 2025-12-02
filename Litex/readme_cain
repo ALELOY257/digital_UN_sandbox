@@ -213,3 +213,10 @@ gcc reset_fpga.c -L/usr/lib/x86_64-linux-gnu/ -lftdi1 -o reset_fpga
 
 sudo tcpdump -ni any udp port 69 and host 192.168.1.50 -i enx00e04c360769
 
+
+
+
+_________________________________________________
+colorlight 5A network
+_________________________________________________
+./colorlight_5a_75x.py  --build --uart-name=serial --use-internal-osc  --with-ethernet

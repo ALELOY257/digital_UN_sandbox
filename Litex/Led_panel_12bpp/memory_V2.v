@@ -11,8 +11,8 @@ module memory#(
   input  [23:0]      w_data
 );
 
-reg [11:0] MEM0 [0:size];
-reg [11:0] MEM1 [0:size];
+reg [11:0] MEM0 [0:size/2];
+reg [11:0] MEM1 [0:size/2];
 
 initial begin
     $readmemh("./image0.hex",MEM0);

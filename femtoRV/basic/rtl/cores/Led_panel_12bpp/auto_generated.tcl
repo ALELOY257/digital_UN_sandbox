@@ -1,5 +1,5 @@
 # Script TCL generado automáticamente desde Makefile
-# Fecha: Thu Nov 27 10:15:55 PM -05 2025
+# Fecha: Mon Dec  1 10:53:33 AM -05 2025
 
 # Configurar dispositivo
 set_device -name GW5A-25A GW5A-LV25MG121NC1/I0
