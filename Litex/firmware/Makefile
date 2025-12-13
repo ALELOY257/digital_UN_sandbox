@@ -1,4 +1,4 @@
-BUILD_DIR=../build/sipeed_tang_primer_25k
+BUILD_DIR=/Work/Embedded/digital_UN/Litex/build/
 SERIAL?=/dev/ttyUSB1
 include $(BUILD_DIR)/software/include/generated/variables.mak
 include $(SOC_DIRECTORY)/software/common.mak
@@ -9,6 +9,7 @@ all: firmware.bin
 %.bin: %.elf
 	$(OBJCOPY) -O binary $< $@
 	chmod -x $@
+	cp firmware.bin /srv/tftp/boot.bin
 firmware.elf: $(OBJECTS)
 	$(CC) $(LDFLAGS) \
 		-T linker.ld \
@@ -17,7 +18,7 @@ firmware.elf: $(OBJECTS)
 		$(PACKAGES:%=-L$(BUILD_DIR)/software/%) \
 		$(LIBS:lib%=-l%)
 	chmod -x $@
-	@riscv64-unknown-elf-objdump  -h -S $< > firmware.lst
+#	@riscv64-unknown-elf-objdump  -h -S $< > firmware.lst
 main.o: main.c
 	$(compile)
 crt0.o: $(CPU_DIRECTORY)/crt0.S
