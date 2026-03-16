@@ -3,8 +3,9 @@ import os
 import sys
 import pprint
 
-home = "/home/carlos/Embedded/efinity/2023.2"
+home = "/Work/CAD/efinity/2024.2/"
 
+os.environ["EFINITY_HOME"]  = home
 os.environ["EFXPT_HOME"]  = home + "/pt"
 os.environ["EFXPGM_HOME"] = home + "/pgm"
 os.environ["EFXDBG_HOME"] = home + "/debugger"

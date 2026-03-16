@@ -1,12 +1,10 @@
 #include <irq.h>
 #include <stdio.h>
-//#include <system.h>
-//#include <stdlib.h>
-//#include <string.h>
-//#include <stdlib.h>
-//#include <irq.h>
+#include <stdlib.h>    // ← AGREGA ESTO
+#include <string.h>    // ← AGREGA ESTO
 #include <uart.h>
-//#include <console.h>
+#include <console.h>   // ← ESTA ES LA CLAVE
+
 
 #include <generated/csr.h>
 #include <generated/mem.h>

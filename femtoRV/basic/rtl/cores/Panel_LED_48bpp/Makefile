@@ -1,7 +1,7 @@
-TARGET = led_panel_4
+TARGET = led_panel_4k
 
 
-k
+
 TOP    = led_panel_4k
 
 ICE40_SIM_CELLS=$(shell yosys-config --datdir/ice40/cells_sim.v)

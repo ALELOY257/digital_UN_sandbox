@@ -48,7 +48,7 @@ module led_panel_4k_TB;
    initial begin: TEST_CASE
      $dumpfile("led_panel_4k_TB.vcd");
      $dumpvars(-1, led_panel_4k_TB);
-    for(idx = 0; idx < 100; idx = idx +1)  $dumpvars(0, led_panel_4k_TB.uut.mem0.MEM[idx]);
+//    for(idx = 0; idx < 100; idx = idx +1)  $dumpvars(0, led_panel_4k_TB.uut.mem0.MEM[idx]);
      #(PERIOD*100000) $finish;
    end
 

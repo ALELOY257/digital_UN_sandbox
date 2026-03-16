@@ -44,9 +44,9 @@ module SOC (
 
   peripheral_uart #(
 //     .clk_freq(50000000),    // for primer 25k
-//     .clk_freq(33333333),  // for efinix
+     .clk_freq(33333333),  // for efinix
 //     .clk_freq(27000000),  // for nano_20k
-     .clk_freq(12000000),
+//     .clk_freq(12000000),
      .baud(57600)            // 57600 for gowin
    ) per_uart(
      .clk(clk),
@@ -114,7 +114,7 @@ module SOC (
       .wr(wr),
       .d_out(bcd2bin_dout)
    );
-
+3'b000: Y = ;       
   // ============== Chip_Select (Addres decoder) ======================== 
   // se hace con los 8 bits mas significativos de mem_addr
   // Se asigna el rango de la memoria de programa 0x00000000 - 0x003FFFFF
@@ -160,5 +160,16 @@ module SOC (
    end
 `endif
 
+
+case ({Cin, A, B})
+  3'b000 : S = 0;
+  3'b001 : S = 1;
+  3'b010 : S = 1;
+  3'b011 : S = 0;
+  3'b100 : S = 1;
+  3'b101 : S = 0;
+  3'b110 : S = 0;
+  3'b111 : S = 1;
+endcase
 
 endmodule

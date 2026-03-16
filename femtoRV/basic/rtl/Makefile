@@ -224,36 +224,37 @@ configure_icebreaker:
 
 ##########################
 #    EFINIX ECB_T20_T113
+#    Files:
+#    SOC_peri.xml   pines
+#    SOC.xml        source code
 ##########################
-EFINITY_HOME=/home/carlos/Embedded/efinity/2023.2/
+EFINITY_HOME=/Work/CAD/efinity/2024.2/
 EFXPT_HOME=$(EFINITY_HOME)/pt
 create_files:
-	export EFINITY_HOME=/home/carlos/Embedded/efinity/2023.2/
-	export EFXPT_HOME=$(EFINITY_HOME)/pt
+#	export EFINITY_HOME=/Work/CAD/efinity/2024.2/
+#	export PATH=$$PATH:/Work/CAD/efinity/2024.2/bin
+#	export EFXPT_HOME=$(EFINITY_HOME)/pt
 	$(EFINITY_HOME)/bin/python3  femtorv32.py
-synth: create_files
-	$(EFINITY_HOME)/bin/efx_map --project "$(TOP)" --root "$(TOP)" --write-efx-verilog "outflow/$(TOP).map.v" --write-premap-module "outflow/$(TOP).elab.vdb" --binary-db "outflow/$(TOP).vdb" --device "T20Q144" --family "Trion" --veri_option "verilog_mode=verilog_2k,vhdl_mode=vhdl_2008" --work-dir "work_syn" --output-dir "outflow" --project-xml "$(TOP).xml" --I "."
-place_and_route: synth
-	$(EFINITY_HOME)/bin/python3  "/home/carlos/Embedded/efinity/2023.2/scripts/efx_run_pt.py"  "$(TOP)"  "Trion"  "T20Q144"
-	$(EFINITY_HOME)/bin/efx_pnr --circuit "$(TOP)" --family "Trion" --device "T20Q144" --operating_conditions "C3" --pack --place --vdb_file "outflow/$(TOP).vdb" --use_vdb_file "on" --place_file "outflow/$(TOP).place" --route_file "outflow/$(TOP).route" --sdc_file "$(TOP).sdc" --sync_file "outflow/$(TOP).interface.csv" --seed "1" --placer_effort_level "2" --max_threads "-1" --print_critical_path "10" --work_dir "work_pnr" --output_dir "outflow" --timing_analysis "on" --load_delay_matrix
-	$(EFINITY_HOME)/bin/efx_pnr --circuit "$(TOP)" --family "Trion" --device "T20Q144" --operating_conditions "C3" --route --vdb_file "outflow/$(TOP).vdb" --use_vdb_file "on" --place_file "outflow/$(TOP).place" --route_file "outflow/$(TOP).route" --sdc_file "$(TOP).sdc" --sync_file "outflow/$(TOP).interface.csv" --seed "1" --placer_effort_level "2" --max_threads "-1" --print_critical_path "10" --work_dir "work_pnr" --output_dir "outflow" --timing_analysis "on" --load_delay_matrix
-bitstream: place_and_route
+synth_efinix: create_files
+	efx_map --project "$(TOP)" --root "$(TOP)" --write-efx-verilog "outflow/$(TOP).map.v" --write-premap-module "outflow/$(TOP).elab.vdb" --binary-db "outflow/$(TOP).vdb" --device "T20Q144" --family "Trion" --veri_option "verilog_mode=verilog_2k,vhdl_mode=vhdl_2008" --work-dir "work_syn" --output-dir "outflow" --project-xml "$(TOP).xml" --I "."
+place_and_route_efinix: synth_efinix
+#	efx_run_pt.py  "$(TOP)"  "Trion"  "T20Q144"
+	efx_pnr --circuit "$(TOP)" --family "Trion" --device "T20Q144" --operating_conditions "C3" --pack --place --vdb_file "outflow/$(TOP).vdb" --use_vdb_file "on" --place_file "outflow/$(TOP).place" --route_file "outflow/$(TOP).route" --sdc_file "$(TOP).sdc" --sync_file "outflow/$(TOP).interface.csv" --seed "1" --placer_effort_level "2" --max_threads "-1" --print_critical_path "10" --work_dir "work_pnr" --output_dir "outflow" --timing_analysis "on" --load_delay_matrix
+	efx_pnr --circuit "$(TOP)" --family "Trion" --device "T20Q144" --operating_conditions "C3" --route --vdb_file "outflow/$(TOP).vdb" --use_vdb_file "on" --place_file "outflow/$(TOP).place" --route_file "outflow/$(TOP).route" --sdc_file "$(TOP).sdc" --sync_file "outflow/$(TOP).interface.csv" --seed "1" --placer_effort_level "2" --max_threads "-1" --print_critical_path "10" --work_dir "work_pnr" --output_dir "outflow" --timing_analysis "on" --load_delay_matrix
+bitstream_efinix: place_and_route_efinix
 	$(EFINITY_HOME)/bin/efx_pgm --source "work_pnr/$(TOP).lbf" --dest "outflow/$(TOP).hex" --device "T20Q144" --family "Trion" --periph "outflow/$(TOP).lpf" --interface_designer_settings "outflow/$(TOP)_or.ini" --enable_external_master_clock "off" --oscillator_clock_divider "DIV8" --active_capture_clk_edge "posedge" --spi_low_power_mode "on" --io_weak_pullup "on" --enable_roms "smart" --mode "active" --width "1" --release_tri_then_reset "on"
-configure_efinix: outflow/$(TOP).bit
+configure_efinix: bitstream_efinix
 	openFPGALoader -b trion_t120_bga576  outflow/$(TOP).bit
 clean_efinix:
 	rm -rf work_pnr work_pt work_syn outflow $(TOP).peri.xml
 
-######################
-#    SPI  FLASH      #
-######################
 
 ##########################
-#    EFINIX ECB_T20_T113
+#    EFINIX TI60
 ##########################
 
-EFINITY_HOME=/home/carlos/Embedded/efinity/2023.2/
-EFXPT_HOME=$(EFINITY_HOME)/pt
+#EFINITY_HOME=/home/carlos/Embedded/efinity/2023.2/
+#EFXPT_HOME=$(EFINITY_HOME)/pt
 
 svg_flash: $(FLASH_OBJS)
 	yosys -p "prep -top ${TARGET}; write_json ${TARGET}.json" -DPASSTHROUGH_PLL -DBOARD_FREQ=27 -DCPU_FREQ=27  ${FLASH_OBJS}
