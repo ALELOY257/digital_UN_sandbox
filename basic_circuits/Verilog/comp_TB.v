@@ -11,7 +11,7 @@ module comp_TB;
     B = 16'h007F;
    end
 
-   initial begin // Reset the system, Start the image capture process
+   initial begin //
         #10 B = 16'h007F;
         #10 B = 16'h00AA;
         #10 B = 16'h0000;
