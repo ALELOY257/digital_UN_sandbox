@@ -13,7 +13,7 @@ always @(negedge clk)
     if(shift) 
 //      s_A <= s_A << 1 ;
       s_A[4:0] <= {s_A[3:0], 1'b0};
-    else  
+    else
       s_A <= s_A;
    end
 

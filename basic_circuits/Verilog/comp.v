@@ -6,6 +6,6 @@ module comp(B, z);
     if (B==0)
       z <= 1;
     else
-      z <= 0; 
+      z <= 0;
 
 endmodule
