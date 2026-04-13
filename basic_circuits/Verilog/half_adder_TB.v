@@ -12,7 +12,7 @@ module half_adder_TB;
     a = 0; b = 0; cin = 0;
    end
 
-   initial begin // Reset the system, Start the image capture process
+   initial begin
         #10 a = 0; b = 0; cin = 0;
         #10 a = 0; b = 1; cin = 0;
         #10 a = 1; b = 0; cin = 0;

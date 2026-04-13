@@ -28,7 +28,7 @@ module lsr_TB;
       load = 0; shift = 0; in_A = 5'h0A;
    end
 
-   reg [2:0] i;
+   reg [3:0] i;
    initial begin // Reset the system, Start the image capture process
         #20 load = 1;
         @ (posedge clk);
