@@ -5,12 +5,12 @@ module lsr (clk , in_A , shift , load , s_A);
   input shift;
   output reg [4:0]s_A;
 
-always @(negedge clk)
+always @(posedge clk)
   if(load)
      s_A = in_A ;
   else
    begin
-    if(shift) 
+    if(shift)
 //      s_A <= s_A << 1 ;
       s_A[4:0] <= {s_A[3:0], 1'b0};
     else

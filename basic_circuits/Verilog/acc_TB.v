@@ -1,14 +1,14 @@
 `timescale 1ns / 1ps
 `define SIMULATION
 
-module lsr_TB;
+module acc_TB;
 
    reg clk;
-   reg load;
-   reg shift;
-   reg [4:0]in_A;
+   reg add;
+   reg rst;
+   reg [4:0]A;
 
-   lsr uut( .clk(clk) , .in_A(in_A) , .shift(shift) , .load(load)  );
+   acc uut( .clk(clk) , .A(A) , .add(add) , .rst(rst)  );
 
    parameter PERIOD          = 20;
    parameter real DUTY_CYCLE = 0.5;
@@ -25,18 +25,19 @@ module lsr_TB;
    end
 
    initial begin // Reset the system, Start the image capture process
-      load = 0; shift = 0; in_A = 5'h0A;
+      rst = 0; add = 0; A = 5'h00;
    end
 
    reg [2:0] i;
    initial begin // Reset the system, Start the image capture process
-        #20 load = 1;
+        #20 rst = 1;
+        A = 1;
         @ (posedge clk);
         @ (negedge clk);
-        load = 0;
+        rst = 0;
         @ (posedge clk);
         @ (negedge clk);
-        shift = 1;
+        add = 1;
        for(i=0; i<10; i=i+1) begin
          @ (posedge clk);
        end
@@ -44,7 +45,7 @@ module lsr_TB;
 
 
    initial begin: TEST_CASE
-     $dumpfile("lsr_TB.vcd");
+     $dumpfile("acc_TB.vcd");
      $dumpvars(-1, uut);
      #(1000) $finish;
    end

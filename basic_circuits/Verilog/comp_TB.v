@@ -16,7 +16,6 @@ module comp_TB;
         #10 B = 16'h00AA;
         #10 B = 16'h0000;
         #10 B = 16'h00FF;
-
    end
 
    initial begin: TEST_CASE

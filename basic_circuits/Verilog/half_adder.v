@@ -16,6 +16,7 @@ module half_adder (
             3'b101: begin sum = 1'b0; carry = 1'b1; end
             3'b110: begin sum = 1'b0; carry = 1'b1; end
             3'b111: begin sum = 1'b1; carry = 1'b1; end
+            default: begin sum = 1'b0; carry = 1'b0; end
         endcase
     end
 
