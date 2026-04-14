@@ -4,7 +4,7 @@ ICE40_SIM_CELLS=$(shell yosys-config --datdir/ecp5/cells_sim.v)
 
 sim:
 	rm -f a.out *.vcd
-	iverilog  $(TARGET)_TB.v $(OBJS)
+	iverilog  -DBENCH $(TARGET)_TB.v $(OBJS)
 	vvp a.out
 	gtkwave $(TARGET)_TB.vcd
 sim_post_syn:
@@ -14,7 +14,7 @@ sim_post_syn:
 	gtkwave $(TARGET)_TB.vcd
 svg: $(OBJS)
 	rm -rf *svg *out *dot
-	yosys -p "prep -top ${TARGET}; memory_map; opt; opt_expr; techmap; abc -g AND,OR,XOR,DFF; write_json ${TARGET}.json" ${OBJS}
+	yosys -p "prep -top ${TARGET}; memory_map; opt; opt_expr; techmap; abc -g AND,OR,XOR; write_json ${TARGET}.json" ${OBJS}
 	yosys -p "read_verilog ${TARGET}.v; proc; memory_map; opt; opt_expr; techmap; abc -g AND,OR,XOR; show -format dot -prefix ${TARGET}_out"
 	netlistsvg ${TARGET}.json -o ${TARGET}.svg
 	google-chrome ${TARGET}.svg

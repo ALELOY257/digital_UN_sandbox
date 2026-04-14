@@ -5,7 +5,7 @@ module lsr (clk , in_A , shift , load , s_A);
   input shift;
   output reg [4:0]s_A;
 
-always @(posedge clk)
+always @(negedge clk)
   if(load)
      s_A = in_A ;
   else
