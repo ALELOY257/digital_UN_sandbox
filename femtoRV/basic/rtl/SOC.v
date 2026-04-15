@@ -114,7 +114,6 @@ module SOC (
       .wr(wr),
       .d_out(bcd2bin_dout)
    );
-3'b000: Y = ;       
   // ============== Chip_Select (Addres decoder) ======================== 
   // se hace con los 8 bits mas significativos de mem_addr
   // Se asigna el rango de la memoria de programa 0x00000000 - 0x003FFFFF
@@ -159,17 +158,5 @@ module SOC (
       end
    end
 `endif
-
-
-case ({Cin, A, B})
-  3'b000 : S = 0;
-  3'b001 : S = 1;
-  3'b010 : S = 1;
-  3'b011 : S = 0;
-  3'b100 : S = 1;
-  3'b101 : S = 0;
-  3'b110 : S = 0;
-  3'b111 : S = 1;
-endcase
 
 endmodule

@@ -16,7 +16,7 @@ module bram (
    end
 
    wire [29:0] word_addr = mem_addr[31:2];
-   
+
    always @(posedge clk) begin
       if(mem_rstrb) begin
          mem_rdata <= MEM[word_addr];

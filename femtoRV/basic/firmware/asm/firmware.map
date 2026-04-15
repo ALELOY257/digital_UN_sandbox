@@ -8,104 +8,15 @@ BRAM             0x0000000000000000 0x0000000000004000 xrw
 Linker script and memory map
 
 
-everything      0x0000000000000000      0x6ae
+everything      0x0000000000000000       0x36
                 0x0000000000000000                . = ALIGN (0x4)
- calculator.o(.text)
- .text          0x0000000000000000       0x98 calculator.o
+ for.o(.text)
+ .text          0x0000000000000000       0x1c for.o
+                0x0000000000000000                for
  *(.*)
- .data          0x0000000000000098       0x23 calculator.o
- .bss           0x00000000000000bb        0x0 calculator.o
+ .data          0x000000000000001c        0x0 for.o
+ .bss           0x000000000000001c        0x0 for.o
  .riscv.attributes
-                0x00000000000000bb       0x1a calculator.o
- *fill*         0x00000000000000d5        0x3 
- .text          0x00000000000000d8       0x80 get_number.o
-                0x00000000000000d8                get_number
- .data          0x0000000000000158        0x0 get_number.o
- .bss           0x0000000000000158        0x0 get_number.o
- .riscv.attributes
-                0x0000000000000158       0x1a get_number.o
- *fill*         0x0000000000000172        0x2 
- .text          0x0000000000000174       0xa8 bin2bcd.o
-                0x0000000000000174                bin2bcd
- .data          0x000000000000021c        0x0 bin2bcd.o
- .bss           0x000000000000021c        0x0 bin2bcd.o
- .riscv.attributes
-                0x000000000000021c       0x1a bin2bcd.o
- *fill*         0x0000000000000236        0x2 
- .text          0x0000000000000238       0x4c bcd2bin.o
-                0x0000000000000238                bcd2bin
- .data          0x0000000000000284        0x0 bcd2bin.o
- .bss           0x0000000000000284        0x0 bcd2bin.o
- .riscv.attributes
-                0x0000000000000284       0x1a bcd2bin.o
- *fill*         0x000000000000029e        0x2 
- .text          0x00000000000002a0      0x10c bin_to_bcd.o
-                0x00000000000002a0                bin_to_bcd
- .data          0x00000000000003ac        0x0 bin_to_bcd.o
- .bss           0x00000000000003ac        0x0 bin_to_bcd.o
- .riscv.attributes
-                0x00000000000003ac       0x1a bin_to_bcd.o
- *fill*         0x00000000000003c6        0x2 
- .text          0x00000000000003c8       0x3c sqrt.o
-                0x00000000000003c8                sqrt
- .data          0x0000000000000404        0x0 sqrt.o
- .bss           0x0000000000000404        0x0 sqrt.o
- .riscv.attributes
-                0x0000000000000404       0x1a sqrt.o
- *fill*         0x000000000000041e        0x2 
- .text          0x0000000000000420       0x78 mult.o
-                0x0000000000000420                mult
-                0x0000000000000468                mult_hw
- .data          0x0000000000000498        0x0 mult.o
- .bss           0x0000000000000498        0x0 mult.o
- .riscv.attributes
-                0x0000000000000498       0x1a mult.o
- *fill*         0x00000000000004b2        0x2 
- .text          0x00000000000004b4       0x90 div.o
-                0x00000000000004b4                div
-                0x0000000000000514                div_hw
- .data          0x0000000000000544        0x0 div.o
- .bss           0x0000000000000544        0x0 div.o
- .riscv.attributes
-                0x0000000000000544       0x1a div.o
- *fill*         0x000000000000055e        0x2 
- .text          0x0000000000000560       0x24 wait.o
-                0x0000000000000560                wait
- .data          0x0000000000000584        0x0 wait.o
- .bss           0x0000000000000584        0x0 wait.o
- .riscv.attributes
-                0x0000000000000584       0x1a wait.o
- *fill*         0x000000000000059e        0x2 
- .text          0x00000000000005a0       0x4c putchar.o
-                0x00000000000005a0                putchar
- .data          0x00000000000005ec        0x0 putchar.o
- .bss           0x00000000000005ec        0x0 putchar.o
- .riscv.attributes
-                0x00000000000005ec       0x1a putchar.o
- *fill*         0x0000000000000606        0x2 
- .text          0x0000000000000608       0x3c getchar.o
-                0x0000000000000608                getchar
- .data          0x0000000000000644        0x0 getchar.o
- .bss           0x0000000000000644        0x0 getchar.o
- .riscv.attributes
-                0x0000000000000644       0x1a getchar.o
- *fill*         0x000000000000065e        0x2 
- .text          0x0000000000000660       0x34 putstring.o
-                0x0000000000000660                putstring
- .data          0x0000000000000694        0x0 putstring.o
- .bss           0x0000000000000694        0x0 putstring.o
- .riscv.attributes
-                0x0000000000000694       0x1a putstring.o
-LOAD get_number.o
-LOAD bin2bcd.o
-LOAD bcd2bin.o
-LOAD bin_to_bcd.o
-LOAD sqrt.o
-LOAD mult.o
-LOAD div.o
-LOAD wait.o
-LOAD putchar.o
-LOAD getchar.o
-LOAD calculator.o
-LOAD putstring.o
+                0x000000000000001c       0x1a for.o
+LOAD for.o
 OUTPUT(firmware.elf elf32-littleriscv)
