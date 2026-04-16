@@ -8,7 +8,7 @@ module control_mult_TB;
  reg lsb_B;
  reg init;
  reg z;
- control_mult uut( .clk(clk), .rst(rst), .lsb_B(lsb_B), .init(init), .z(z) );
+ control_mult2 uut( .clk(clk), .rst(rst), .lsb_B(lsb_B), .init(init), .z(z) );
 
    parameter PERIOD          = 20;
    parameter real DUTY_CYCLE = 0.5;

@@ -86,6 +86,9 @@ always @(posedge clk) begin
   end
 end
 
+
+
+
 `ifdef BENCH
 reg [8*40:1] state_name;
 always @(*) begin
