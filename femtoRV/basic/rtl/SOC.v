@@ -12,6 +12,14 @@ module SOC (
    wire mem_rstrb;
    wire [31:0] mem_wdata;
    wire [3:0]  mem_wmask;
+
+  // ============== Chip_Select (Addres decoder) ======================== 
+  // se hace con los 8 bits mas significativos de mem_addr
+  // Se asigna el rango de la memoria de programa 0x00000000 - 0x003FFFFF
+  // ====================================================================
+  reg [7:0]cs;  // CHIP-SELECT
+
+  
    FemtoRV32 CPU(
       .clk(clk),  
       .reset(resetn),
@@ -114,11 +122,7 @@ module SOC (
       .wr(wr),
       .d_out(bcd2bin_dout)
    );
-  // ============== Chip_Select (Addres decoder) ======================== 
-  // se hace con los 8 bits mas significativos de mem_addr
-  // Se asigna el rango de la memoria de programa 0x00000000 - 0x003FFFFF
-  // ====================================================================
-  reg [7:0]cs;  // CHIP-SELECT
+
   always @*
   begin
       case (mem_addr[31:16])	// direcciones - chip_select
