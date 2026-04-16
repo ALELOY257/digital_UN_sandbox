@@ -425,22 +425,42 @@
     </visualElement>
     <visualElement>
       <elementName>LED</elementName>
-      <elementAttributes/>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>O3</string>
+        </entry>
+      </elementAttributes>
       <pos x="3160" y="740"/>
     </visualElement>
     <visualElement>
       <elementName>LED</elementName>
-      <elementAttributes/>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>O2</string>
+        </entry>
+      </elementAttributes>
       <pos x="3160" y="860"/>
     </visualElement>
     <visualElement>
       <elementName>LED</elementName>
-      <elementAttributes/>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>O1</string>
+        </entry>
+      </elementAttributes>
       <pos x="3160" y="980"/>
     </visualElement>
     <visualElement>
       <elementName>LED</elementName>
-      <elementAttributes/>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>O0</string>
+        </entry>
+      </elementAttributes>
       <pos x="3160" y="1100"/>
     </visualElement>
     <visualElement>
@@ -460,7 +480,12 @@
     </visualElement>
     <visualElement>
       <elementName>Clock</elementName>
-      <elementAttributes/>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>CLK</string>
+        </entry>
+      </elementAttributes>
       <pos x="2460" y="1280"/>
     </visualElement>
     <visualElement>
@@ -928,6 +953,16 @@
         </entry>
       </elementAttributes>
       <pos x="1620" y="1720"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Data</elementName>
+      <elementAttributes>
+        <entry>
+          <string>maxStepCount</string>
+          <int>200</int>
+        </entry>
+      </elementAttributes>
+      <pos x="3460" y="920"/>
     </visualElement>
   </visualElements>
   <wires>
