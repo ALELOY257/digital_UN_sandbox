@@ -19,7 +19,7 @@ module SOC (
   // ====================================================================
   reg [7:0]cs;  // CHIP-SELECT
 
-  
+   
    FemtoRV32 CPU(
       .clk(clk),  
       .reset(resetn),
