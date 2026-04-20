@@ -1,3 +1,5 @@
+`ifndef CELLS_FF_VH
+`define CELLS_FF_VH
 // Diamond flip-flops
 module FD1P3AX(input     D, SP, CK, output Q); parameter GSR = "ENABLED"; TRELLIS_FF #(.GSR(GSR), .CEMUX("CE"), .CLKMUX("CLK"), .LSRMUX("LSR"), .REGSET("RESET"), .SRMODE("ASYNC"))        _TECHMAP_REPLACE_ (.CLK(CK), .LSR(|0), .CE(SP), .DI(D), .Q(Q)); endmodule
 module FD1P3AY(input     D, SP, CK, output Q); parameter GSR = "ENABLED"; TRELLIS_FF #(.GSR(GSR), .CEMUX("CE"), .CLKMUX("CLK"), .LSRMUX("LSR"), .REGSET("SET"),   .SRMODE("ASYNC"))        _TECHMAP_REPLACE_ (.CLK(CK), .LSR(|0), .CE(SP), .DI(D), .Q(Q)); endmodule
@@ -38,3 +40,4 @@ module OFS1P3JX(input PD, D, SP, SCLK, output Q); parameter GSR = "ENABLED"; (* 
 // module IFS1S1D(input CD, D, SCLK, output Q); endmodule
 // module IFS1S1I(input PD, D, SCLK, output Q); endmodule
 // module IFS1S1J(input CD, D, SCLK, output Q); endmodule
+`endif

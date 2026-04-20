@@ -1,6 +1,6 @@
 TARGET = comp
 OBJS   = ${TARGET}.v
-ICE40_SIM_CELLS=$(shell yosys-config --datdir/ecp5/cells_sim.v)
+ICE40_SIM_CELLS=./lattice_sim/cells_sim_ecp5.v
 
 sim:
 	rm -f a.out *.vcd
@@ -9,7 +9,7 @@ sim:
 	gtkwave $(TARGET)_TB.vcd
 sim_post_syn:
 	yosys -v3 -l synth.log -p 'synth_ecp5 -top $(TARGET) -json $(TARGET).json; write_verilog -attr2comment $(TARGET)_synth.v' $(OBJS)
-	iverilog  $(TARGET)_TB.v $(TARGET)_synth.v $(ICE40_SIM_CELLS) 
+	iverilog  -I ./lattice_sim  $(TARGET)_TB.v $(TARGET)_synth.v $(ICE40_SIM_CELLS) 
 	vvp a.out
 	gtkwave $(TARGET)_TB.vcd
 svg: $(OBJS)

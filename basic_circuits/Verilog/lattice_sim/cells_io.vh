@@ -1,3 +1,5 @@
+`ifndef CELLS_IO_VH
+`define CELLS_IO_VH
 // Diamond I/O buffers
 module IB   ((* iopad_external_pin *) input I,     output O); (* PULLMODE="NONE" *) TRELLIS_IO #(.DIR("INPUT"))  _TECHMAP_REPLACE_ (.B(I), .O(O)); endmodule
 module IBPU ((* iopad_external_pin *) input I,     output O); (* PULLMODE="UP"   *) TRELLIS_IO #(.DIR("INPUT"))  _TECHMAP_REPLACE_ (.B(I), .O(O)); endmodule
@@ -12,3 +14,4 @@ module BBPU (input I, T,  output O, (* iopad_external_pin *) inout B); (* PULLMO
 module BBPD (input I, T,  output O, (* iopad_external_pin *) inout B); (* PULLMODE="DOWN" *) TRELLIS_IO #(.DIR("BIDIR")) _TECHMAP_REPLACE_ (.B(B), .I(I), .O(O), .T(T)); endmodule
 module ILVDS(input A, AN, (* iopad_external_pin *) output Z    ); TRELLIS_IO #(.DIR("INPUT"))  _TECHMAP_REPLACE_ (.B(A), .O(Z)); endmodule
 module OLVDS(input A,     (* iopad_external_pin *) output Z, output ZN); TRELLIS_IO #(.DIR("OUTPUT")) _TECHMAP_REPLACE_ (.B(Z), .I(A)); endmodule
+`endif

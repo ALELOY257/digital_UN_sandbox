@@ -1,3 +1,5 @@
+`ifndef COMMON_SIM_VH
+`define COMMON_SIM_VH
 // ---------------------------------------
 
 (* abc9_lut=1, lib_whitebox *)
@@ -408,4 +410,5 @@ endmodule
 `include "cells_ff.vh"
 `include "cells_io.vh"
 
+`endif
 `endif
