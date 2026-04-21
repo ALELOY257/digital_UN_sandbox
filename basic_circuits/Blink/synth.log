@@ -1,16 +1,15 @@
 
  /----------------------------------------------------------------------------\
  |  yosys -- Yosys Open SYnthesis Suite                                       |
- |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
  |  Distributed under an ISC-like license, type "license" to see terms        |
  \----------------------------------------------------------------------------/
- Yosys 0.59+62 (git sha1 9aa2dde7e, g++ 14.2.0-19ubuntu2 -fPIC -O3)
+ Yosys 0.64+68 (git sha1 413169663-dirty, x86_64-apple-darwin23.5-clang++ 18.1.8 -fPIC -O3)
 
 -- Parsing `blink.v' using frontend ` -vlog2k' --
 
 1. Executing Verilog-2005 frontend: blink.v
 Parsing Verilog input from `blink.v' to AST representation.
-verilog frontend filename blink.v
 Storing AST representation for module `$abstract\blink'.
 Successfully finished Verilog frontend.
 
@@ -20,9 +19,8 @@ Successfully finished Verilog frontend.
 
 3. Executing SYNTH_LATTICE pass.
 
-3.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/lattice/cells_sim_ecp5.v
-Parsing Verilog input from `/usr/local/bin/../share/yosys/lattice/cells_sim_ecp5.v' to AST representation.
-verilog frontend filename /usr/local/bin/../share/yosys/lattice/cells_sim_ecp5.v
+3.1. Executing Verilog-2005 frontend: /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_sim_ecp5.v
+Parsing Verilog input from `/opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_sim_ecp5.v' to AST representation.
 Generating RTLIL representation for module `\LUT4'.
 Generating RTLIL representation for module `\$__ABC9_LUT5'.
 Generating RTLIL representation for module `\$__ABC9_LUT6'.
@@ -74,77 +72,76 @@ Generating RTLIL representation for module `\ILVDS'.
 Generating RTLIL representation for module `\OLVDS'.
 Generating RTLIL representation for module `\CCU2C'.
 Generating RTLIL representation for module `\DP16KD'.
-Replacing existing blackbox module `\FD1P3AX' at /usr/local/bin/../share/yosys/lattice/cells_ff.vh:2.1-2.261.
+Replacing existing blackbox module `\FD1P3AX' at /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_ff.vh:2.1-2.261.
 Generating RTLIL representation for module `\FD1P3AX'.
-Replacing existing blackbox module `\FD1P3AY' at /usr/local/bin/../share/yosys/lattice/cells_ff.vh:3.1-3.261.
+Replacing existing blackbox module `\FD1P3AY' at /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_ff.vh:3.1-3.261.
 Generating RTLIL representation for module `\FD1P3AY'.
-Replacing existing blackbox module `\FD1P3BX' at /usr/local/bin/../share/yosys/lattice/cells_ff.vh:4.1-4.261.
+Replacing existing blackbox module `\FD1P3BX' at /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_ff.vh:4.1-4.261.
 Generating RTLIL representation for module `\FD1P3BX'.
-Replacing existing blackbox module `\FD1P3DX' at /usr/local/bin/../share/yosys/lattice/cells_ff.vh:5.1-5.261.
+Replacing existing blackbox module `\FD1P3DX' at /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_ff.vh:5.1-5.261.
 Generating RTLIL representation for module `\FD1P3DX'.
-Replacing existing blackbox module `\FD1P3IX' at /usr/local/bin/../share/yosys/lattice/cells_ff.vh:6.1-6.261.
+Replacing existing blackbox module `\FD1P3IX' at /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_ff.vh:6.1-6.261.
 Generating RTLIL representation for module `\FD1P3IX'.
-Replacing existing blackbox module `\FD1P3JX' at /usr/local/bin/../share/yosys/lattice/cells_ff.vh:7.1-7.261.
+Replacing existing blackbox module `\FD1P3JX' at /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_ff.vh:7.1-7.261.
 Generating RTLIL representation for module `\FD1P3JX'.
-Replacing existing blackbox module `\FD1S3AX' at /usr/local/bin/../share/yosys/lattice/cells_ff.vh:8.1-8.261.
+Replacing existing blackbox module `\FD1S3AX' at /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_ff.vh:8.1-8.261.
 Generating RTLIL representation for module `\FD1S3AX'.
-Replacing existing blackbox module `\FD1S3AY' at /usr/local/bin/../share/yosys/lattice/cells_ff.vh:9.1-9.261.
+Replacing existing blackbox module `\FD1S3AY' at /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_ff.vh:9.1-9.261.
 Generating RTLIL representation for module `\FD1S3AY'.
-Replacing existing blackbox module `\FD1S3BX' at /usr/local/bin/../share/yosys/lattice/cells_ff.vh:10.1-10.261.
+Replacing existing blackbox module `\FD1S3BX' at /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_ff.vh:10.1-10.261.
 Generating RTLIL representation for module `\FD1S3BX'.
-Replacing existing blackbox module `\FD1S3DX' at /usr/local/bin/../share/yosys/lattice/cells_ff.vh:11.1-11.261.
+Replacing existing blackbox module `\FD1S3DX' at /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_ff.vh:11.1-11.261.
 Generating RTLIL representation for module `\FD1S3DX'.
-Replacing existing blackbox module `\FD1S3IX' at /usr/local/bin/../share/yosys/lattice/cells_ff.vh:12.1-12.261.
+Replacing existing blackbox module `\FD1S3IX' at /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_ff.vh:12.1-12.261.
 Generating RTLIL representation for module `\FD1S3IX'.
-Replacing existing blackbox module `\FD1S3JX' at /usr/local/bin/../share/yosys/lattice/cells_ff.vh:13.1-13.261.
+Replacing existing blackbox module `\FD1S3JX' at /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_ff.vh:13.1-13.261.
 Generating RTLIL representation for module `\FD1S3JX'.
-Replacing existing blackbox module `\IFS1P3BX' at /usr/local/bin/../share/yosys/lattice/cells_ff.vh:26.1-26.301.
+Replacing existing blackbox module `\IFS1P3BX' at /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_ff.vh:26.1-26.301.
 Generating RTLIL representation for module `\IFS1P3BX'.
-Replacing existing blackbox module `\IFS1P3DX' at /usr/local/bin/../share/yosys/lattice/cells_ff.vh:27.1-27.301.
+Replacing existing blackbox module `\IFS1P3DX' at /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_ff.vh:27.1-27.301.
 Generating RTLIL representation for module `\IFS1P3DX'.
-Replacing existing blackbox module `\IFS1P3IX' at /usr/local/bin/../share/yosys/lattice/cells_ff.vh:28.1-28.301.
+Replacing existing blackbox module `\IFS1P3IX' at /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_ff.vh:28.1-28.301.
 Generating RTLIL representation for module `\IFS1P3IX'.
-Replacing existing blackbox module `\IFS1P3JX' at /usr/local/bin/../share/yosys/lattice/cells_ff.vh:29.1-29.301.
+Replacing existing blackbox module `\IFS1P3JX' at /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_ff.vh:29.1-29.301.
 Generating RTLIL representation for module `\IFS1P3JX'.
-Replacing existing blackbox module `\OFS1P3BX' at /usr/local/bin/../share/yosys/lattice/cells_ff.vh:31.1-31.302.
+Replacing existing blackbox module `\OFS1P3BX' at /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_ff.vh:31.1-31.302.
 Generating RTLIL representation for module `\OFS1P3BX'.
-Replacing existing blackbox module `\OFS1P3DX' at /usr/local/bin/../share/yosys/lattice/cells_ff.vh:32.1-32.302.
+Replacing existing blackbox module `\OFS1P3DX' at /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_ff.vh:32.1-32.302.
 Generating RTLIL representation for module `\OFS1P3DX'.
-Replacing existing blackbox module `\OFS1P3IX' at /usr/local/bin/../share/yosys/lattice/cells_ff.vh:33.1-33.302.
+Replacing existing blackbox module `\OFS1P3IX' at /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_ff.vh:33.1-33.302.
 Generating RTLIL representation for module `\OFS1P3IX'.
-Replacing existing blackbox module `\OFS1P3JX' at /usr/local/bin/../share/yosys/lattice/cells_ff.vh:34.1-34.302.
+Replacing existing blackbox module `\OFS1P3JX' at /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_ff.vh:34.1-34.302.
 Generating RTLIL representation for module `\OFS1P3JX'.
-Replacing existing blackbox module `\IB' at /usr/local/bin/../share/yosys/lattice/cells_io.vh:2.1-2.157.
+Replacing existing blackbox module `\IB' at /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_io.vh:2.1-2.157.
 Generating RTLIL representation for module `\IB'.
-Replacing existing blackbox module `\IBPU' at /usr/local/bin/../share/yosys/lattice/cells_io.vh:3.1-3.157.
+Replacing existing blackbox module `\IBPU' at /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_io.vh:3.1-3.157.
 Generating RTLIL representation for module `\IBPU'.
-Replacing existing blackbox module `\IBPD' at /usr/local/bin/../share/yosys/lattice/cells_io.vh:4.1-4.157.
+Replacing existing blackbox module `\IBPD' at /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_io.vh:4.1-4.157.
 Generating RTLIL representation for module `\IBPD'.
-Replacing existing blackbox module `\OB' at /usr/local/bin/../share/yosys/lattice/cells_io.vh:5.1-5.157.
+Replacing existing blackbox module `\OB' at /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_io.vh:5.1-5.157.
 Generating RTLIL representation for module `\OB'.
-Replacing existing blackbox module `\OBZ' at /usr/local/bin/../share/yosys/lattice/cells_io.vh:6.1-6.164.
+Replacing existing blackbox module `\OBZ' at /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_io.vh:6.1-6.164.
 Generating RTLIL representation for module `\OBZ'.
-Replacing existing blackbox module `\OBZPU' at /usr/local/bin/../share/yosys/lattice/cells_io.vh:7.1-7.164.
+Replacing existing blackbox module `\OBZPU' at /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_io.vh:7.1-7.164.
 Generating RTLIL representation for module `\OBZPU'.
-Replacing existing blackbox module `\OBZPD' at /usr/local/bin/../share/yosys/lattice/cells_io.vh:8.1-8.164.
+Replacing existing blackbox module `\OBZPD' at /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_io.vh:8.1-8.164.
 Generating RTLIL representation for module `\OBZPD'.
-Replacing existing blackbox module `\OBCO' at /usr/local/bin/../share/yosys/lattice/cells_io.vh:9.1-9.90.
+Replacing existing blackbox module `\OBCO' at /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_io.vh:9.1-9.90.
 Generating RTLIL representation for module `\OBCO'.
-Replacing existing blackbox module `\BB' at /usr/local/bin/../share/yosys/lattice/cells_io.vh:10.1-10.179.
+Replacing existing blackbox module `\BB' at /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_io.vh:10.1-10.179.
 Generating RTLIL representation for module `\BB'.
-Replacing existing blackbox module `\BBPU' at /usr/local/bin/../share/yosys/lattice/cells_io.vh:11.1-11.179.
+Replacing existing blackbox module `\BBPU' at /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_io.vh:11.1-11.179.
 Generating RTLIL representation for module `\BBPU'.
-Replacing existing blackbox module `\BBPD' at /usr/local/bin/../share/yosys/lattice/cells_io.vh:12.1-12.179.
+Replacing existing blackbox module `\BBPD' at /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_io.vh:12.1-12.179.
 Generating RTLIL representation for module `\BBPD'.
-Replacing existing blackbox module `\ILVDS' at /usr/local/bin/../share/yosys/lattice/cells_io.vh:13.1-13.139.
+Replacing existing blackbox module `\ILVDS' at /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_io.vh:13.1-13.139.
 Generating RTLIL representation for module `\ILVDS'.
-Replacing existing blackbox module `\OLVDS' at /usr/local/bin/../share/yosys/lattice/cells_io.vh:14.1-14.146.
+Replacing existing blackbox module `\OLVDS' at /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_io.vh:14.1-14.146.
 Generating RTLIL representation for module `\OLVDS'.
 Successfully finished Verilog frontend.
 
-3.2. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/lattice/cells_bb_ecp5.v
-Parsing Verilog input from `/usr/local/bin/../share/yosys/lattice/cells_bb_ecp5.v' to AST representation.
-verilog frontend filename /usr/local/bin/../share/yosys/lattice/cells_bb_ecp5.v
+3.2. Executing Verilog-2005 frontend: /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_bb_ecp5.v
+Parsing Verilog input from `/opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_bb_ecp5.v' to AST representation.
 Generating RTLIL representation for module `\GSR'.
 Generating RTLIL representation for module `\PUR'.
 Generating RTLIL representation for module `\SGSR'.
@@ -263,6 +260,8 @@ Optimizing module blink.
 
 3.12.2. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\blink'.
+Computing hashes of 4 cells of `\blink'.
+Finding duplicate cells in `\blink'.
 Removed a total of 0 cells.
 
 3.12.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
@@ -279,6 +278,8 @@ Performed a total of 0 changes.
 
 3.12.5. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\blink'.
+Computing hashes of 4 cells of `\blink'.
+Finding duplicate cells in `\blink'.
 Removed a total of 0 cells.
 
 3.12.6. Executing OPT_DFF pass (perform DFF optimizations).
@@ -317,6 +318,8 @@ Optimizing module blink.
 
 3.14.2. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\blink'.
+Computing hashes of 4 cells of `\blink'.
+Finding duplicate cells in `\blink'.
 Removed a total of 0 cells.
 
 3.14.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
@@ -333,6 +336,8 @@ Performed a total of 0 changes.
 
 3.14.5. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\blink'.
+Computing hashes of 4 cells of `\blink'.
+Finding duplicate cells in `\blink'.
 Removed a total of 0 cells.
 
 3.14.6. Executing OPT_DFF pass (perform DFF optimizations).
@@ -360,6 +365,8 @@ Performed a total of 0 changes.
 
 3.14.12. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\blink'.
+Computing hashes of 3 cells of `\blink'.
+Finding duplicate cells in `\blink'.
 Removed a total of 0 cells.
 
 3.14.13. Executing OPT_DFF pass (perform DFF optimizations).
@@ -376,7 +383,6 @@ Optimizing module blink.
 Removed top 31 bits (of 32) from port B of cell blink.$add$blink.v:15$229 ($add).
 Removed top 5 bits (of 32) from port Y of cell blink.$add$blink.v:15$229 ($add).
 Removed top 5 bits (of 32) from wire blink.$add$blink.v:15$229_Y.
-Removed top 14 bits (of 27) from wire blink.counter.
 
 3.16. Executing PEEPOPT pass (run peephole optimizers).
 
@@ -389,9 +395,8 @@ Removed 0 unused cells and 1 unused wires.
 
 3.19. Executing TECHMAP pass (map to technology primitives).
 
-3.19.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/cmp2lut.v
-Parsing Verilog input from `/usr/local/bin/../share/yosys/cmp2lut.v' to AST representation.
-verilog frontend filename /usr/local/bin/../share/yosys/cmp2lut.v
+3.19.1. Executing Verilog-2005 frontend: /opt/oss-cad-suite/libexec/../share/yosys/cmp2lut.v
+Parsing Verilog input from `/opt/oss-cad-suite/libexec/../share/yosys/cmp2lut.v' to AST representation.
 Generating RTLIL representation for module `\_90_lut_cmp_'.
 Successfully finished Verilog frontend.
 
@@ -407,9 +412,8 @@ Finding unused cells or wires in module \blink..
 
 3.22. Executing TECHMAP pass (map to technology primitives).
 
-3.22.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/mul2dsp.v
-Parsing Verilog input from `/usr/local/bin/../share/yosys/mul2dsp.v' to AST representation.
-verilog frontend filename /usr/local/bin/../share/yosys/mul2dsp.v
+3.22.1. Executing Verilog-2005 frontend: /opt/oss-cad-suite/libexec/../share/yosys/mul2dsp.v
+Parsing Verilog input from `/opt/oss-cad-suite/libexec/../share/yosys/mul2dsp.v' to AST representation.
 Generating RTLIL representation for module `\_80_mul'.
 Generating RTLIL representation for module `\_90_soft_mul'.
 Successfully finished Verilog frontend.
@@ -420,10 +424,9 @@ No more expansions possible.
 
 3.23. Executing TECHMAP pass (map to technology primitives).
 
-3.23.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/lattice/dsp_map_18x18.v
-Parsing Verilog input from `/usr/local/bin/../share/yosys/lattice/dsp_map_18x18.v' to AST representation.
-verilog frontend filename /usr/local/bin/../share/yosys/lattice/dsp_map_18x18.v
-Generating RTLIL representation for module `\$__MUL18X18'.
+3.23.1. Executing Verilog-2005 frontend: /opt/oss-cad-suite/libexec/../share/yosys/lattice/dsp_map_18x18.v
+Parsing Verilog input from `/opt/oss-cad-suite/libexec/../share/yosys/lattice/dsp_map_18x18.v' to AST representation.
+Generating RTLIL representation for module `$__MUL18X18'.
 Successfully finished Verilog frontend.
 
 3.23.2. Continuing TECHMAP pass.
@@ -434,7 +437,7 @@ No more expansions possible.
 Extracting $alu and $macc cells in module blink:
   creating $macc model for $add$blink.v:15$229 ($add).
   creating $alu model for $macc $add$blink.v:15$229.
-  creating $alu cell for $add$blink.v:15$229: $auto$alumacc.cc:512:replace_alu$238
+  creating $alu cell for $add$blink.v:15$229: $auto$alumacc.cc:512:replace_alu$237
   created 1 $alu and 0 $macc cells.
 
 3.25. Executing OPT pass (performing simple optimizations).
@@ -444,6 +447,8 @@ Optimizing module blink.
 
 3.25.2. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\blink'.
+Computing hashes of 3 cells of `\blink'.
+Finding duplicate cells in `\blink'.
 Removed a total of 0 cells.
 
 3.25.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
@@ -458,6 +463,8 @@ Performed a total of 0 changes.
 
 3.25.5. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\blink'.
+Computing hashes of 3 cells of `\blink'.
+Finding duplicate cells in `\blink'.
 Removed a total of 0 cells.
 
 3.25.6. Executing OPT_DFF pass (perform DFF optimizations).
@@ -504,17 +511,15 @@ Finding unused cells or wires in module \blink..
 
 3.29. Executing TECHMAP pass (map to technology primitives).
 
-3.29.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/lattice/lutrams_map_trellis.v
-Parsing Verilog input from `/usr/local/bin/../share/yosys/lattice/lutrams_map_trellis.v' to AST representation.
-verilog frontend filename /usr/local/bin/../share/yosys/lattice/lutrams_map_trellis.v
-Generating RTLIL representation for module `\$__TRELLIS_DPR16X4_'.
+3.29.1. Executing Verilog-2005 frontend: /opt/oss-cad-suite/libexec/../share/yosys/lattice/lutrams_map_trellis.v
+Parsing Verilog input from `/opt/oss-cad-suite/libexec/../share/yosys/lattice/lutrams_map_trellis.v' to AST representation.
+Generating RTLIL representation for module `$__TRELLIS_DPR16X4_'.
 Successfully finished Verilog frontend.
 
-3.29.2. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/lattice/brams_map_16kd.v
-Parsing Verilog input from `/usr/local/bin/../share/yosys/lattice/brams_map_16kd.v' to AST representation.
-verilog frontend filename /usr/local/bin/../share/yosys/lattice/brams_map_16kd.v
-Generating RTLIL representation for module `\$__DP16KD_'.
-Generating RTLIL representation for module `\$__PDPW16KD_'.
+3.29.2. Executing Verilog-2005 frontend: /opt/oss-cad-suite/libexec/../share/yosys/lattice/brams_map_16kd.v
+Parsing Verilog input from `/opt/oss-cad-suite/libexec/../share/yosys/lattice/brams_map_16kd.v' to AST representation.
+Generating RTLIL representation for module `$__DP16KD_'.
+Generating RTLIL representation for module `$__PDPW16KD_'.
 Successfully finished Verilog frontend.
 
 3.29.3. Continuing TECHMAP pass.
@@ -528,6 +533,8 @@ Optimizing module blink.
 
 3.30.2. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\blink'.
+Computing hashes of 3 cells of `\blink'.
+Finding duplicate cells in `\blink'.
 Removed a total of 0 cells.
 
 3.30.3. Executing OPT_DFF pass (perform DFF optimizations).
@@ -546,6 +553,8 @@ Optimizing module blink.
 
 3.32.2. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\blink'.
+Computing hashes of 3 cells of `\blink'.
+Finding duplicate cells in `\blink'.
 Removed a total of 0 cells.
 
 3.32.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
@@ -560,6 +569,8 @@ Performed a total of 0 changes.
 
 3.32.5. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\blink'.
+Computing hashes of 3 cells of `\blink'.
+Finding duplicate cells in `\blink'.
 Removed a total of 0 cells.
 
 3.32.6. Executing OPT_DFF pass (perform DFF optimizations).
@@ -574,9 +585,8 @@ Optimizing module blink.
 
 3.33. Executing TECHMAP pass (map to technology primitives).
 
-3.33.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/techmap.v
-Parsing Verilog input from `/usr/local/bin/../share/yosys/techmap.v' to AST representation.
-verilog frontend filename /usr/local/bin/../share/yosys/techmap.v
+3.33.1. Executing Verilog-2005 frontend: /opt/oss-cad-suite/libexec/../share/yosys/techmap.v
+Parsing Verilog input from `/opt/oss-cad-suite/libexec/../share/yosys/techmap.v' to AST representation.
 Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
 Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
 Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
@@ -590,24 +600,23 @@ Generating RTLIL representation for module `\_90_lcu_brent_kung'.
 Generating RTLIL representation for module `\_90_alu'.
 Generating RTLIL representation for module `\_90_macc'.
 Generating RTLIL representation for module `\_90_alumacc'.
-Generating RTLIL representation for module `\$__div_mod_u'.
-Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `$__div_mod_u'.
+Generating RTLIL representation for module `$__div_mod_trunc'.
 Generating RTLIL representation for module `\_90_div'.
 Generating RTLIL representation for module `\_90_mod'.
-Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `$__div_mod_floor'.
 Generating RTLIL representation for module `\_90_divfloor'.
 Generating RTLIL representation for module `\_90_modfloor'.
 Generating RTLIL representation for module `\_90_pow'.
 Generating RTLIL representation for module `\_90_pmux'.
 Generating RTLIL representation for module `\_90_demux'.
 Generating RTLIL representation for module `\_90_lut'.
-Generating RTLIL representation for module `\$connect'.
-Generating RTLIL representation for module `\$input_port'.
+Generating RTLIL representation for module `$connect'.
+Generating RTLIL representation for module `$input_port'.
 Successfully finished Verilog frontend.
 
-3.33.2. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/lattice/arith_map_ccu2c.v
-Parsing Verilog input from `/usr/local/bin/../share/yosys/lattice/arith_map_ccu2c.v' to AST representation.
-verilog frontend filename /usr/local/bin/../share/yosys/lattice/arith_map_ccu2c.v
+3.33.2. Executing Verilog-2005 frontend: /opt/oss-cad-suite/libexec/../share/yosys/lattice/arith_map_ccu2c.v
+Parsing Verilog input from `/opt/oss-cad-suite/libexec/../share/yosys/lattice/arith_map_ccu2c.v' to AST representation.
 Generating RTLIL representation for module `\_80_ccu2c_alu'.
 Successfully finished Verilog frontend.
 
@@ -631,6 +640,10 @@ Optimizing module blink.
 
 3.34.2. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\blink'.
+Computing hashes of 83 cells of `\blink'.
+Finding duplicate cells in `\blink'.
+Computing hashes of 81 cells of `\blink'.
+Finding duplicate cells in `\blink'.
 <suppressed ~6 debug messages>
 Removed a total of 2 cells.
 
@@ -650,50 +663,53 @@ Finding unused cells or wires in module \blink..
 
 3.37. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\blink'.
+Computing hashes of 61 cells of `\blink'.
+Finding duplicate cells in `\blink'.
+Computing hashes of 38 cells of `\blink'.
+Finding duplicate cells in `\blink'.
 <suppressed ~69 debug messages>
 Removed a total of 23 cells.
 
 3.38. Executing TECHMAP pass (map to technology primitives).
 
-3.38.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/lattice/cells_map_trellis.v
-Parsing Verilog input from `/usr/local/bin/../share/yosys/lattice/cells_map_trellis.v' to AST representation.
-verilog frontend filename /usr/local/bin/../share/yosys/lattice/cells_map_trellis.v
-Generating RTLIL representation for module `\$_DFF_N_'.
-Generating RTLIL representation for module `\$_DFF_P_'.
-Generating RTLIL representation for module `\$_DFFE_NN_'.
-Generating RTLIL representation for module `\$_DFFE_PN_'.
-Generating RTLIL representation for module `\$_DFFE_NP_'.
-Generating RTLIL representation for module `\$_DFFE_PP_'.
-Generating RTLIL representation for module `\$_DFF_NP0_'.
-Generating RTLIL representation for module `\$_DFF_NP1_'.
-Generating RTLIL representation for module `\$_DFF_PP0_'.
-Generating RTLIL representation for module `\$_DFF_PP1_'.
-Generating RTLIL representation for module `\$_SDFF_NP0_'.
-Generating RTLIL representation for module `\$_SDFF_NP1_'.
-Generating RTLIL representation for module `\$_SDFF_PP0_'.
-Generating RTLIL representation for module `\$_SDFF_PP1_'.
-Generating RTLIL representation for module `\$_DFFE_NP0P_'.
-Generating RTLIL representation for module `\$_DFFE_NP1P_'.
-Generating RTLIL representation for module `\$_DFFE_PP0P_'.
-Generating RTLIL representation for module `\$_DFFE_PP1P_'.
-Generating RTLIL representation for module `\$_DFFE_NP0N_'.
-Generating RTLIL representation for module `\$_DFFE_NP1N_'.
-Generating RTLIL representation for module `\$_DFFE_PP0N_'.
-Generating RTLIL representation for module `\$_DFFE_PP1N_'.
-Generating RTLIL representation for module `\$_SDFFE_NP0P_'.
-Generating RTLIL representation for module `\$_SDFFE_NP1P_'.
-Generating RTLIL representation for module `\$_SDFFE_PP0P_'.
-Generating RTLIL representation for module `\$_SDFFE_PP1P_'.
-Generating RTLIL representation for module `\$_SDFFE_NP0N_'.
-Generating RTLIL representation for module `\$_SDFFE_NP1N_'.
-Generating RTLIL representation for module `\$_SDFFE_PP0N_'.
-Generating RTLIL representation for module `\$_SDFFE_PP1N_'.
-Generating RTLIL representation for module `\$_ALDFF_NP_'.
-Generating RTLIL representation for module `\$_ALDFF_PP_'.
-Generating RTLIL representation for module `\$_ALDFFE_NPN_'.
-Generating RTLIL representation for module `\$_ALDFFE_NPP_'.
-Generating RTLIL representation for module `\$_ALDFFE_PPN_'.
-Generating RTLIL representation for module `\$_ALDFFE_PPP_'.
+3.38.1. Executing Verilog-2005 frontend: /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_map_trellis.v
+Parsing Verilog input from `/opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_map_trellis.v' to AST representation.
+Generating RTLIL representation for module `$_DFF_N_'.
+Generating RTLIL representation for module `$_DFF_P_'.
+Generating RTLIL representation for module `$_DFFE_NN_'.
+Generating RTLIL representation for module `$_DFFE_PN_'.
+Generating RTLIL representation for module `$_DFFE_NP_'.
+Generating RTLIL representation for module `$_DFFE_PP_'.
+Generating RTLIL representation for module `$_DFF_NP0_'.
+Generating RTLIL representation for module `$_DFF_NP1_'.
+Generating RTLIL representation for module `$_DFF_PP0_'.
+Generating RTLIL representation for module `$_DFF_PP1_'.
+Generating RTLIL representation for module `$_SDFF_NP0_'.
+Generating RTLIL representation for module `$_SDFF_NP1_'.
+Generating RTLIL representation for module `$_SDFF_PP0_'.
+Generating RTLIL representation for module `$_SDFF_PP1_'.
+Generating RTLIL representation for module `$_DFFE_NP0P_'.
+Generating RTLIL representation for module `$_DFFE_NP1P_'.
+Generating RTLIL representation for module `$_DFFE_PP0P_'.
+Generating RTLIL representation for module `$_DFFE_PP1P_'.
+Generating RTLIL representation for module `$_DFFE_NP0N_'.
+Generating RTLIL representation for module `$_DFFE_NP1N_'.
+Generating RTLIL representation for module `$_DFFE_PP0N_'.
+Generating RTLIL representation for module `$_DFFE_PP1N_'.
+Generating RTLIL representation for module `$_SDFFE_NP0P_'.
+Generating RTLIL representation for module `$_SDFFE_NP1P_'.
+Generating RTLIL representation for module `$_SDFFE_PP0P_'.
+Generating RTLIL representation for module `$_SDFFE_PP1P_'.
+Generating RTLIL representation for module `$_SDFFE_NP0N_'.
+Generating RTLIL representation for module `$_SDFFE_NP1N_'.
+Generating RTLIL representation for module `$_SDFFE_PP0N_'.
+Generating RTLIL representation for module `$_SDFFE_PP1N_'.
+Generating RTLIL representation for module `$_ALDFF_NP_'.
+Generating RTLIL representation for module `$_ALDFF_PP_'.
+Generating RTLIL representation for module `$_ALDFFE_NPN_'.
+Generating RTLIL representation for module `$_ALDFFE_NPP_'.
+Generating RTLIL representation for module `$_ALDFFE_PPN_'.
+Generating RTLIL representation for module `$_ALDFFE_PPP_'.
 Generating RTLIL representation for module `\FD1P3AX'.
 Generating RTLIL representation for module `\FD1P3AY'.
 Generating RTLIL representation for module `\FD1P3BX'.
@@ -730,12 +746,13 @@ Generating RTLIL representation for module `\OLVDS'.
 Successfully finished Verilog frontend.
 
 3.38.2. Continuing TECHMAP pass.
-Using template \$_SDFF_PP0_ for cells of type $_SDFF_PP0_.
+Using template $_SDFF_PP0_ for cells of type $_SDFF_PP0_.
 No more expansions possible.
 <suppressed ~95 debug messages>
 
 3.39. Executing OPT_EXPR pass (perform const folding).
 Optimizing module blink.
+<suppressed ~3 debug messages>
 
 3.40. Executing SIMPLEMAP pass (map simple cells to gate primitives).
 
@@ -751,11 +768,10 @@ Removed 0 unused cells and 143 unused wires.
 
 3.44. Executing TECHMAP pass (map to technology primitives).
 
-3.44.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/lattice/latches_map.v
-Parsing Verilog input from `/usr/local/bin/../share/yosys/lattice/latches_map.v' to AST representation.
-verilog frontend filename /usr/local/bin/../share/yosys/lattice/latches_map.v
-Generating RTLIL representation for module `\$_DLATCH_N_'.
-Generating RTLIL representation for module `\$_DLATCH_P_'.
+3.44.1. Executing Verilog-2005 frontend: /opt/oss-cad-suite/libexec/../share/yosys/lattice/latches_map.v
+Parsing Verilog input from `/opt/oss-cad-suite/libexec/../share/yosys/lattice/latches_map.v' to AST representation.
+Generating RTLIL representation for module `$_DLATCH_N_'.
+Generating RTLIL representation for module `$_DLATCH_P_'.
 Successfully finished Verilog frontend.
 
 3.44.2. Continuing TECHMAP pass.
@@ -776,9 +792,8 @@ Found 0 SCCs.
 
 3.45.5. Executing TECHMAP pass (map to technology primitives).
 
-3.45.5.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/techmap.v
-Parsing Verilog input from `/usr/local/bin/../share/yosys/techmap.v' to AST representation.
-verilog frontend filename /usr/local/bin/../share/yosys/techmap.v
+3.45.5.1. Executing Verilog-2005 frontend: /opt/oss-cad-suite/libexec/../share/yosys/techmap.v
+Parsing Verilog input from `/opt/oss-cad-suite/libexec/../share/yosys/techmap.v' to AST representation.
 Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
 Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
 Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
@@ -792,19 +807,19 @@ Generating RTLIL representation for module `\_90_lcu_brent_kung'.
 Generating RTLIL representation for module `\_90_alu'.
 Generating RTLIL representation for module `\_90_macc'.
 Generating RTLIL representation for module `\_90_alumacc'.
-Generating RTLIL representation for module `\$__div_mod_u'.
-Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `$__div_mod_u'.
+Generating RTLIL representation for module `$__div_mod_trunc'.
 Generating RTLIL representation for module `\_90_div'.
 Generating RTLIL representation for module `\_90_mod'.
-Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `$__div_mod_floor'.
 Generating RTLIL representation for module `\_90_divfloor'.
 Generating RTLIL representation for module `\_90_modfloor'.
 Generating RTLIL representation for module `\_90_pow'.
 Generating RTLIL representation for module `\_90_pmux'.
 Generating RTLIL representation for module `\_90_demux'.
 Generating RTLIL representation for module `\_90_lut'.
-Generating RTLIL representation for module `\$connect'.
-Generating RTLIL representation for module `\$input_port'.
+Generating RTLIL representation for module `$connect'.
+Generating RTLIL representation for module `$input_port'.
 Successfully finished Verilog frontend.
 
 3.45.5.2. Continuing TECHMAP pass.
@@ -837,18 +852,16 @@ Removed a total of 0 cells.
 
 3.45.7. Executing TECHMAP pass (map to technology primitives).
 
-3.45.7.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/abc9_map.v
-Parsing Verilog input from `/usr/local/bin/../share/yosys/abc9_map.v' to AST representation.
-verilog frontend filename /usr/local/bin/../share/yosys/abc9_map.v
+3.45.7.1. Executing Verilog-2005 frontend: /opt/oss-cad-suite/libexec/../share/yosys/abc9_map.v
+Parsing Verilog input from `/opt/oss-cad-suite/libexec/../share/yosys/abc9_map.v' to AST representation.
 Successfully finished Verilog frontend.
 
 3.45.7.2. Continuing TECHMAP pass.
 No more expansions possible.
 <suppressed ~2 debug messages>
 
-3.45.8. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/abc9_model.v
-Parsing Verilog input from `/usr/local/bin/../share/yosys/abc9_model.v' to AST representation.
-verilog frontend filename /usr/local/bin/../share/yosys/abc9_model.v
+3.45.8. Executing Verilog-2005 frontend: /opt/oss-cad-suite/libexec/../share/yosys/abc9_model.v
+Parsing Verilog input from `/opt/oss-cad-suite/libexec/../share/yosys/abc9_model.v' to AST representation.
 Generating RTLIL representation for module `$__ABC9_DELAY'.
 Generating RTLIL representation for module `$__ABC9_SCC_BREAKER'.
 Generating RTLIL representation for module `$__DFF_N__$abc9_flop'.
@@ -865,9 +878,8 @@ Successfully finished Verilog frontend.
 
 3.45.12. Executing TECHMAP pass (map to technology primitives).
 
-3.45.12.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/techmap.v
-Parsing Verilog input from `/usr/local/bin/../share/yosys/techmap.v' to AST representation.
-verilog frontend filename /usr/local/bin/../share/yosys/techmap.v
+3.45.12.1. Executing Verilog-2005 frontend: /opt/oss-cad-suite/libexec/../share/yosys/techmap.v
+Parsing Verilog input from `/opt/oss-cad-suite/libexec/../share/yosys/techmap.v' to AST representation.
 Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
 Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
 Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
@@ -881,19 +893,19 @@ Generating RTLIL representation for module `\_90_lcu_brent_kung'.
 Generating RTLIL representation for module `\_90_alu'.
 Generating RTLIL representation for module `\_90_macc'.
 Generating RTLIL representation for module `\_90_alumacc'.
-Generating RTLIL representation for module `\$__div_mod_u'.
-Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `$__div_mod_u'.
+Generating RTLIL representation for module `$__div_mod_trunc'.
 Generating RTLIL representation for module `\_90_div'.
 Generating RTLIL representation for module `\_90_mod'.
-Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `$__div_mod_floor'.
 Generating RTLIL representation for module `\_90_divfloor'.
 Generating RTLIL representation for module `\_90_modfloor'.
 Generating RTLIL representation for module `\_90_pow'.
 Generating RTLIL representation for module `\_90_pmux'.
 Generating RTLIL representation for module `\_90_demux'.
 Generating RTLIL representation for module `\_90_lut'.
-Generating RTLIL representation for module `\$connect'.
-Generating RTLIL representation for module `\$input_port'.
+Generating RTLIL representation for module `$connect'.
+Generating RTLIL representation for module `$input_port'.
 Successfully finished Verilog frontend.
 
 3.45.12.2. Continuing TECHMAP pass.
@@ -916,6 +928,10 @@ Optimizing module blink.
 
 3.45.13.2. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\blink'.
+Computing hashes of 59 cells of `\blink'.
+Finding duplicate cells in `\blink'.
+Computing hashes of 57 cells of `\blink'.
+Finding duplicate cells in `\blink'.
 <suppressed ~6 debug messages>
 Removed a total of 2 cells.
 
@@ -931,6 +947,8 @@ Performed a total of 0 changes.
 
 3.45.13.5. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\blink'.
+Computing hashes of 57 cells of `\blink'.
+Finding duplicate cells in `\blink'.
 Removed a total of 0 cells.
 
 3.45.13.6. Executing OPT_DFF pass (perform DFF optimizations).
@@ -957,6 +975,8 @@ Performed a total of 0 changes.
 
 3.45.13.12. Executing OPT_MERGE pass (detect identical cells).
 Finding identical cells in module `\blink'.
+Computing hashes of 57 cells of `\blink'.
+Finding duplicate cells in `\blink'.
 Removed a total of 0 cells.
 
 3.45.13.13. Executing OPT_DFF pass (perform DFF optimizations).
@@ -999,8 +1019,7 @@ Extracted 0 AND gates and 66 wires from module `blink' to a netlist network with
 
 3.45.15.5. Executing ABC9.
 Running ABC command: "<yosys-exe-dir>/yosys-abc" -s -f <abc-temp-dir>/abc.script 2>&1
-ABC: ABC command line: "source <abc-temp-dir>/abc.script".
-ABC: 
+ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
 ABC: + read_lut <abc-temp-dir>/input.lut 
 ABC: + read_box <abc-temp-dir>/input.box 
 ABC: + &read <abc-temp-dir>/input.xaig 
@@ -1015,7 +1034,7 @@ ABC: + &ps
 ABC: <abc-temp-dir>/input : i/o =     26/     26  and =       0  lev =    0 (0.00)  mem = 0.00 MB  ch =    0  box = 12  bb = 0
 ABC: cst =       0  cls =      0  lit =       0  unused =      62  proof =     0
 ABC: + &if -W 300 -v 
-ABC: K = 7. Memory (bytes): Truth =    0. Cut =   64. Obj =  148. Set =  672. CutMin = no
+ABC: K = 7. Memory (bytes): Truth =    0. Cut =   76. Obj =  156. Set =  780. CutMin = no
 ABC: Node =       0.  Ch =     0.  Total mem =    0.03 MB. Peak cut mem =    0.00 MB.
 ABC: P:  Del = 1219.00.  Ar =       0.0.  Edge =        0.  Cut =        0.  T =     0.00 sec
 ABC: P:  Del = 1219.00.  Ar =       0.0.  Edge =        0.  Cut =        0.  T =     0.00 sec
@@ -1032,76 +1051,76 @@ ABC: <abc-temp-dir>/input : i/o =     26/     26  and =       0  lev =    0 (0.0
 ABC: Mapping (K=0)  :  lut =      0  edge =       0  lev =    0 (0.00)  levB =   12  mem = 0.00 MB
 ABC: LUT = 0 : Ave = 0.00
 ABC: + &write -n <abc-temp-dir>/output.aig 
+ABC: + &verify 
+ABC: Networks are equivalent.  Time =     0.00 sec
 ABC: + time 
-ABC: elapse: 0.00 seconds, total: 0.00 seconds
+ABC: elapse: 0.01 seconds, total: 0.01 seconds
 
 3.45.15.6. Executing AIGER frontend.
-<suppressed ~116 debug messages>
-Removed 0 unused cells and 232 unused wires.
+<suppressed ~114 debug messages>
+Removed 0 unused cells and 221 unused wires.
 
 3.45.15.7. Executing ABC9_OPS pass (helper functions for ABC9).
 ABC RESULTS:              $lut cells:        3
 ABC RESULTS:   $paramod$838872d5a4bab89607f53482b205c0fd50d8b82e\CCU2C cells:       12
-ABC RESULTS:           input signals:        4
+ABC RESULTS:           input signals:        3
 ABC RESULTS:          output signals:        3
 Removing temp directory.
 
 3.45.16. Executing TECHMAP pass (map to technology primitives).
 
-3.45.16.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/abc9_unmap.v
-Parsing Verilog input from `/usr/local/bin/../share/yosys/abc9_unmap.v' to AST representation.
-verilog frontend filename /usr/local/bin/../share/yosys/abc9_unmap.v
-Generating RTLIL representation for module `\$__DFF_x__$abc9_flop'.
-Generating RTLIL representation for module `\$__ABC9_SCC_BREAKER'.
+3.45.16.1. Executing Verilog-2005 frontend: /opt/oss-cad-suite/libexec/../share/yosys/abc9_unmap.v
+Parsing Verilog input from `/opt/oss-cad-suite/libexec/../share/yosys/abc9_unmap.v' to AST representation.
+Generating RTLIL representation for module `$__DFF_x__$abc9_flop'.
+Generating RTLIL representation for module `$__ABC9_SCC_BREAKER'.
 Successfully finished Verilog frontend.
 
 3.45.16.2. Continuing TECHMAP pass.
 Using template $paramod$838872d5a4bab89607f53482b205c0fd50d8b82e\CCU2C for cells of type $paramod$838872d5a4bab89607f53482b205c0fd50d8b82e\CCU2C.
 No more expansions possible.
 <suppressed ~18 debug messages>
-Removed 0 unused cells and 167 unused wires.
+Removed 0 unused cells and 177 unused wires.
 
 3.46. Executing TECHMAP pass (map to technology primitives).
 
-3.46.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/lattice/cells_map_trellis.v
-Parsing Verilog input from `/usr/local/bin/../share/yosys/lattice/cells_map_trellis.v' to AST representation.
-verilog frontend filename /usr/local/bin/../share/yosys/lattice/cells_map_trellis.v
-Generating RTLIL representation for module `\$_DFF_N_'.
-Generating RTLIL representation for module `\$_DFF_P_'.
-Generating RTLIL representation for module `\$_DFFE_NN_'.
-Generating RTLIL representation for module `\$_DFFE_PN_'.
-Generating RTLIL representation for module `\$_DFFE_NP_'.
-Generating RTLIL representation for module `\$_DFFE_PP_'.
-Generating RTLIL representation for module `\$_DFF_NP0_'.
-Generating RTLIL representation for module `\$_DFF_NP1_'.
-Generating RTLIL representation for module `\$_DFF_PP0_'.
-Generating RTLIL representation for module `\$_DFF_PP1_'.
-Generating RTLIL representation for module `\$_SDFF_NP0_'.
-Generating RTLIL representation for module `\$_SDFF_NP1_'.
-Generating RTLIL representation for module `\$_SDFF_PP0_'.
-Generating RTLIL representation for module `\$_SDFF_PP1_'.
-Generating RTLIL representation for module `\$_DFFE_NP0P_'.
-Generating RTLIL representation for module `\$_DFFE_NP1P_'.
-Generating RTLIL representation for module `\$_DFFE_PP0P_'.
-Generating RTLIL representation for module `\$_DFFE_PP1P_'.
-Generating RTLIL representation for module `\$_DFFE_NP0N_'.
-Generating RTLIL representation for module `\$_DFFE_NP1N_'.
-Generating RTLIL representation for module `\$_DFFE_PP0N_'.
-Generating RTLIL representation for module `\$_DFFE_PP1N_'.
-Generating RTLIL representation for module `\$_SDFFE_NP0P_'.
-Generating RTLIL representation for module `\$_SDFFE_NP1P_'.
-Generating RTLIL representation for module `\$_SDFFE_PP0P_'.
-Generating RTLIL representation for module `\$_SDFFE_PP1P_'.
-Generating RTLIL representation for module `\$_SDFFE_NP0N_'.
-Generating RTLIL representation for module `\$_SDFFE_NP1N_'.
-Generating RTLIL representation for module `\$_SDFFE_PP0N_'.
-Generating RTLIL representation for module `\$_SDFFE_PP1N_'.
-Generating RTLIL representation for module `\$_ALDFF_NP_'.
-Generating RTLIL representation for module `\$_ALDFF_PP_'.
-Generating RTLIL representation for module `\$_ALDFFE_NPN_'.
-Generating RTLIL representation for module `\$_ALDFFE_NPP_'.
-Generating RTLIL representation for module `\$_ALDFFE_PPN_'.
-Generating RTLIL representation for module `\$_ALDFFE_PPP_'.
+3.46.1. Executing Verilog-2005 frontend: /opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_map_trellis.v
+Parsing Verilog input from `/opt/oss-cad-suite/libexec/../share/yosys/lattice/cells_map_trellis.v' to AST representation.
+Generating RTLIL representation for module `$_DFF_N_'.
+Generating RTLIL representation for module `$_DFF_P_'.
+Generating RTLIL representation for module `$_DFFE_NN_'.
+Generating RTLIL representation for module `$_DFFE_PN_'.
+Generating RTLIL representation for module `$_DFFE_NP_'.
+Generating RTLIL representation for module `$_DFFE_PP_'.
+Generating RTLIL representation for module `$_DFF_NP0_'.
+Generating RTLIL representation for module `$_DFF_NP1_'.
+Generating RTLIL representation for module `$_DFF_PP0_'.
+Generating RTLIL representation for module `$_DFF_PP1_'.
+Generating RTLIL representation for module `$_SDFF_NP0_'.
+Generating RTLIL representation for module `$_SDFF_NP1_'.
+Generating RTLIL representation for module `$_SDFF_PP0_'.
+Generating RTLIL representation for module `$_SDFF_PP1_'.
+Generating RTLIL representation for module `$_DFFE_NP0P_'.
+Generating RTLIL representation for module `$_DFFE_NP1P_'.
+Generating RTLIL representation for module `$_DFFE_PP0P_'.
+Generating RTLIL representation for module `$_DFFE_PP1P_'.
+Generating RTLIL representation for module `$_DFFE_NP0N_'.
+Generating RTLIL representation for module `$_DFFE_NP1N_'.
+Generating RTLIL representation for module `$_DFFE_PP0N_'.
+Generating RTLIL representation for module `$_DFFE_PP1N_'.
+Generating RTLIL representation for module `$_SDFFE_NP0P_'.
+Generating RTLIL representation for module `$_SDFFE_NP1P_'.
+Generating RTLIL representation for module `$_SDFFE_PP0P_'.
+Generating RTLIL representation for module `$_SDFFE_PP1P_'.
+Generating RTLIL representation for module `$_SDFFE_NP0N_'.
+Generating RTLIL representation for module `$_SDFFE_NP1N_'.
+Generating RTLIL representation for module `$_SDFFE_PP0N_'.
+Generating RTLIL representation for module `$_SDFFE_PP1N_'.
+Generating RTLIL representation for module `$_ALDFF_NP_'.
+Generating RTLIL representation for module `$_ALDFF_PP_'.
+Generating RTLIL representation for module `$_ALDFFE_NPN_'.
+Generating RTLIL representation for module `$_ALDFFE_NPP_'.
+Generating RTLIL representation for module `$_ALDFFE_PPN_'.
+Generating RTLIL representation for module `$_ALDFFE_PPP_'.
 Generating RTLIL representation for module `\FD1P3AX'.
 Generating RTLIL representation for module `\FD1P3AY'.
 Generating RTLIL representation for module `\FD1P3BX'.
@@ -1135,21 +1154,21 @@ Generating RTLIL representation for module `\BBPU'.
 Generating RTLIL representation for module `\BBPD'.
 Generating RTLIL representation for module `\ILVDS'.
 Generating RTLIL representation for module `\OLVDS'.
-Generating RTLIL representation for module `\$lut'.
+Generating RTLIL representation for module `$lut'.
 Successfully finished Verilog frontend.
 
 3.46.2. Continuing TECHMAP pass.
-Using template $paramod\$lut\WIDTH=32'00000000000000000000000000000001\LUT=2'01 for cells of type $lut.
+Using template $paramod$lut\WIDTH=32'00000000000000000000000000000001\LUT=2'01 for cells of type $lut.
 No more expansions possible.
 <suppressed ~88 debug messages>
 
 3.47. Executing OPT_LUT_INS pass (discard unused LUT inputs).
 Optimizing LUTs in blink.
-Removed 0 unused cells and 5 unused wires.
+Removed 0 unused cells and 6 unused wires.
 
 3.48. Executing AUTONAME pass.
-Renamed 56 objects in module blink (16 iterations).
-<suppressed ~56 debug messages>
+Renamed 54 objects in module blink (10 iterations).
+<suppressed ~54 debug messages>
 
 3.49. Executing HIERARCHY pass (managing design hierarchy).
 Attribute `top' found on module `blink'. Setting top module to blink.
@@ -1167,10 +1186,10 @@ Removed 0 unused modules.
 
         +----------Local Count, excluding submodules.
         | 
-       21 wires
-       85 wire bits
-       21 public wires
-       85 public wire bits
+       19 wires
+       71 wire bits
+       19 public wires
+       71 public wire bits
         3 ports
         3 port bits
        39 submodules
@@ -1186,10 +1205,10 @@ Removed 0 unused modules.
 
         +----------Count including submodules.
         | 
-       21 wires
-       85 wire bits
-       21 public wires
-       85 public wire bits
+       19 wires
+       71 wire bits
+       19 public wires
+       71 public wire bits
         3 ports
         3 port bits
         - memories
@@ -1207,6 +1226,6 @@ Found and reported 0 problems.
 
 4. Executing JSON backend.
 
-End of script. Logfile hash: 53d68c84bd, CPU: user 0.20s system 0.01s, MEM: 30.61 MB peak
-Yosys 0.59+62 (git sha1 9aa2dde7e, g++ 14.2.0-19ubuntu2 -fPIC -O3)
-Time spent: 61% 21x read_verilog (0 sec), 9% 1x abc9_exe (0 sec), ...
+End of script. Logfile hash: dc12c994d7, time: 4.04s, user: 0.32s, system: 0.10s, MEM: 29.66 MB peak
+Yosys 0.64+68 (git sha1 413169663-dirty, x86_64-apple-darwin23.5-clang++ 18.1.8 -fPIC -O3)
+Time spent: 67% 21x read_verilog (0 sec), 15% 1x abc9_exe (0 sec), ...

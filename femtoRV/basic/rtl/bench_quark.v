@@ -1,3 +1,4 @@
+`timescale 1ns/1ps    // ← primera línea del archivo
 module bench();
 // Testbench uses a 10 MHz clock
 // Want to interface to 115200 baud UART
@@ -67,7 +68,7 @@ always #(tck/2) CLK <= ~CLK;
    initial begin
 
     $dumpfile("bench.vcd");
-    $dumpvars(-1,bench);
+    $dumpvars(0,bench);
   `ifndef SYNTH
     for(idx = 0; idx < 32; idx = idx +1)  $dumpvars(0, bench.uut.CPU.registerFile[idx]);
     for(idx = 1020; idx < 1025; idx = idx +1)  $dumpvars(0, bench.uut.RAM.MEM[idx]);
