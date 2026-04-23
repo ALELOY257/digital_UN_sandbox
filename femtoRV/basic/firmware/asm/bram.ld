@@ -6,7 +6,7 @@ SECTIONS
     everything :
     {
         . = ALIGN(4);
-        call_mult.o (.text)
+        call_div.o (.text)
         *(.*)
     } >BRAM
 }
