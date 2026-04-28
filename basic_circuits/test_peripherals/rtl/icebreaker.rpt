@@ -197,13 +197,13 @@ Generating RTLIL representation for module `\peripheral_bin2bcd'.
 
 25.3.4. Executing AST frontend in derive mode using pre-parsed AST for module `\peripheral_test'.
 Generating RTLIL representation for module `\peripheral_test'.
-Parameter \clk_freq = 33333333
+Parameter \clk_freq = 12000000
 Parameter \baud = 57600
 
 25.3.5. Executing AST frontend in derive mode using pre-parsed AST for module `\peripheral_uart'.
-Parameter \clk_freq = 33333333
+Parameter \clk_freq = 12000000
 Parameter \baud = 57600
-Generating RTLIL representation for module `$paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart'.
+Generating RTLIL representation for module `$paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart'.
 
 25.3.6. Executing AST frontend in derive mode using pre-parsed AST for module `\bram'.
 Generating RTLIL representation for module `\bram'.
@@ -216,7 +216,7 @@ Top module:  \SOC
 Used module:     \peripheral_bcd2bin
 Used module:     \peripheral_bin2bcd
 Used module:     \peripheral_test
-Used module:     $paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart
+Used module:     $paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart
 Used module:     \bram
 Used module:     \FemtoRV32
 
@@ -228,13 +228,13 @@ Generating RTLIL representation for module `\bin2bcd'.
 
 25.3.11. Executing AST frontend in derive mode using pre-parsed AST for module `\bcd2bin'.
 Generating RTLIL representation for module `\bcd2bin'.
-Parameter \freq_hz = 33333333
+Parameter \freq_hz = 12000000
 Parameter \baud = 57600
 
 25.3.12. Executing AST frontend in derive mode using pre-parsed AST for module `\uart'.
-Parameter \freq_hz = 33333333
+Parameter \freq_hz = 12000000
 Parameter \baud = 57600
-Generating RTLIL representation for module `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart'.
+Generating RTLIL representation for module `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart'.
 
 25.3.13. Analyzing design hierarchy..
 Top module:  \SOC
@@ -244,8 +244,8 @@ Used module:     \peripheral_bin2bcd
 Used module:         \bin2bcd
 Used module:     \peripheral_test
 Used module:         \mult_32
-Used module:     $paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart
-Used module:         $paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart
+Used module:     $paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart
+Used module:         $paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart
 Used module:     \bram
 Used module:     \FemtoRV32
 
@@ -305,8 +305,8 @@ Used module:             \acc
 Used module:             \comp
 Used module:             \lsr_mult
 Used module:             \rsr
-Used module:     $paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart
-Used module:         $paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart
+Used module:     $paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart
+Used module:         $paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart
 Used module:     \bram
 Used module:     \FemtoRV32
 
@@ -330,8 +330,8 @@ Used module:             \acc
 Used module:             \comp
 Used module:             \lsr_mult
 Used module:             \rsr
-Used module:     $paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart
-Used module:         $paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart
+Used module:     $paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart
+Used module:         $paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart
 Used module:     \bram
 Used module:     \FemtoRV32
 Removing unused module `$abstract\SOC'.
@@ -378,16 +378,16 @@ Marked 1 switch rules as full_case in process $proc$cores/bin2bcd/reg_msb.v:14$6
 Marked 2 switch rules as full_case in process $proc$cores/bin2bcd/count.v:11$635 in module cnt_bin2bcd.
 Marked 1 switch rules as full_case in process $proc$cores/bin2bcd/ctrl_b2b.v:73$634 in module ctrl_b2b.
 Marked 4 switch rules as full_case in process $proc$cores/bin2bcd/ctrl_b2b.v:25$630 in module ctrl_b2b.
-Marked 4 switch rules as full_case in process $proc$cores/uart/uart.v:122$620 in module $paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.
-Marked 5 switch rules as full_case in process $proc$cores/uart/uart.v:66$612 in module $paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.
-Marked 1 switch rules as full_case in process $proc$cores/uart/uart.v:34$608 in module $paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.
+Marked 4 switch rules as full_case in process $proc$cores/uart/uart.v:122$620 in module $paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.
+Marked 5 switch rules as full_case in process $proc$cores/uart/uart.v:66$612 in module $paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.
+Marked 1 switch rules as full_case in process $proc$cores/uart/uart.v:34$608 in module $paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.
 Marked 1 switch rules as full_case in process $proc$cores/cpu/femtorv32_quark_V2.v:290$601 in module FemtoRV32.
 Marked 2 switch rules as full_case in process $proc$cores/cpu/femtorv32_quark_V2.v:249$588 in module FemtoRV32.
 Marked 1 switch rules as full_case in process $proc$cores/cpu/femtorv32_quark_V2.v:188$551 in module FemtoRV32.
 Marked 3 switch rules as full_case in process $proc$cores/cpu/femtorv32_quark_V2.v:179$534 in module FemtoRV32.
 Marked 4 switch rules as full_case in process $proc$cores/bram/bram.v:20$425 in module bram.
-Marked 1 switch rules as full_case in process $proc$cores/uart/perip_uart.v:45$417 in module $paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart.
-Marked 1 switch rules as full_case in process $proc$cores/uart/perip_uart.v:29$409 in module $paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart.
+Marked 1 switch rules as full_case in process $proc$cores/uart/perip_uart.v:45$417 in module $paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart.
+Marked 1 switch rules as full_case in process $proc$cores/uart/perip_uart.v:29$409 in module $paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart.
 Marked 3 switch rules as full_case in process $proc$cores/test/perip_test.v:56$408 in module peripheral_test.
 Marked 2 switch rules as full_case in process $proc$cores/test/perip_test.v:38$403 in module peripheral_test.
 Marked 2 switch rules as full_case in process $proc$cores/test/perip_test.v:20$402 in module peripheral_test.
@@ -421,11 +421,11 @@ Found init rule in `\cnt_bin2bcd.$proc$cores/bin2bcd/count.v:8$639'.
 Found init rule in `\FemtoRV32.$proc$cores/cpu/femtorv32_quark_V2.v:298$605'.
   Set init value: \cycles = 0
   Set init value: \aluShamt = 5'00000
-Found init rule in `$paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart.$proc$cores/uart/perip_uart.v:21$420'.
+Found init rule in `$paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart.$proc$cores/uart/perip_uart.v:21$420'.
   Set init value: \uart_ctrl = 8'00000000
-Found init rule in `$paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart.$proc$cores/uart/perip_uart.v:20$419'.
+Found init rule in `$paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart.$proc$cores/uart/perip_uart.v:20$419'.
   Set init value: \d_in_uart = 8'00000000
-Found init rule in `$paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart.$proc$cores/uart/perip_uart.v:15$418'.
+Found init rule in `$paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart.$proc$cores/uart/perip_uart.v:15$418'.
   Set init value: \ledout = 1'0
 
 25.4.5. Executing PROC_ARST pass (detect async resets in processes).
@@ -502,13 +502,13 @@ Creating decoders for process `\ctrl_b2b.$proc$cores/bin2bcd/ctrl_b2b.v:25$630'.
      4/6: $2\count[5:0]
      5/6: $1\count[5:0]
      6/6: $1\state[2:0]
-Creating decoders for process `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.$proc$cores/uart/uart.v:122$620'.
+Creating decoders for process `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.$proc$cores/uart/uart.v:122$620'.
      1/5: $0\txd_reg[7:0]
      2/5: $0\tx_count16[3:0]
      3/5: $0\tx_bitcount[3:0]
      4/5: $0\uart_txd[0:0]
      5/5: $0\tx_busy[0:0]
-Creating decoders for process `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.$proc$cores/uart/uart.v:66$612'.
+Creating decoders for process `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.$proc$cores/uart/uart.v:66$612'.
      1/7: $0\rxd_reg[7:0]
      2/7: $0\rx_bitcount[3:0]
      3/7: $0\rx_count16[3:0]
@@ -516,8 +516,8 @@ Creating decoders for process `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44
      5/7: $0\rx_avail[0:0]
      6/7: $0\rx_error[0:0]
      7/7: $0\rx_data[7:0]
-Creating decoders for process `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.$proc$cores/uart/uart.v:52$611'.
-Creating decoders for process `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.$proc$cores/uart/uart.v:34$608'.
+Creating decoders for process `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.$proc$cores/uart/uart.v:52$611'.
+Creating decoders for process `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.$proc$cores/uart/uart.v:34$608'.
      1/1: $0\enable16_counter[15:0]
 Creating decoders for process `\FemtoRV32.$proc$cores/cpu/femtorv32_quark_V2.v:298$605'.
 Creating decoders for process `\FemtoRV32.$proc$cores/cpu/femtorv32_quark_V2.v:290$601'.
@@ -556,13 +556,13 @@ Creating decoders for process `\bram.$proc$cores/bram/bram.v:20$425'.
     11/13: $1$memwr$\MEM$cores/bram/bram.v:24$421_DATA[31:0]$440
     12/13: $1$memwr$\MEM$cores/bram/bram.v:24$421_ADDR[29:0]$439
     13/13: $0\mem_rdata[31:0]
-Creating decoders for process `$paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart.$proc$cores/uart/perip_uart.v:21$420'.
-Creating decoders for process `$paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart.$proc$cores/uart/perip_uart.v:20$419'.
-Creating decoders for process `$paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart.$proc$cores/uart/perip_uart.v:15$418'.
-Creating decoders for process `$paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart.$proc$cores/uart/perip_uart.v:45$417'.
+Creating decoders for process `$paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart.$proc$cores/uart/perip_uart.v:21$420'.
+Creating decoders for process `$paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart.$proc$cores/uart/perip_uart.v:20$419'.
+Creating decoders for process `$paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart.$proc$cores/uart/perip_uart.v:15$418'.
+Creating decoders for process `$paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart.$proc$cores/uart/perip_uart.v:45$417'.
      1/1: $1\d_out[31:0]
-Creating decoders for process `$paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart.$proc$cores/uart/perip_uart.v:38$412'.
-Creating decoders for process `$paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart.$proc$cores/uart/perip_uart.v:29$409'.
+Creating decoders for process `$paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart.$proc$cores/uart/perip_uart.v:38$412'.
+Creating decoders for process `$paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart.$proc$cores/uart/perip_uart.v:29$409'.
      1/1: $1\s[1:0]
 Creating decoders for process `\peripheral_test.$proc$cores/test/perip_test.v:56$408'.
      1/3: $3\d_out[31:0]
@@ -620,7 +620,7 @@ No latch inferred for signal `\ctrl_b2b.\sel' from process `\ctrl_b2b.$proc$core
 No latch inferred for signal `\ctrl_b2b.\ld' from process `\ctrl_b2b.$proc$cores/bin2bcd/ctrl_b2b.v:73$634'.
 No latch inferred for signal `\ctrl_b2b.\ld_msb' from process `\ctrl_b2b.$proc$cores/bin2bcd/ctrl_b2b.v:73$634'.
 No latch inferred for signal `\FemtoRV32.$memwr$\registerFile$cores/cpu/femtorv32_quark_V2.v:301$455_EN' from process `\FemtoRV32.$proc$cores/cpu/femtorv32_quark_V2.v:298$605'.
-No latch inferred for signal `$paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart.\s' from process `$paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart.$proc$cores/uart/perip_uart.v:29$409'.
+No latch inferred for signal `$paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart.\s' from process `$paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart.$proc$cores/uart/perip_uart.v:29$409'.
 No latch inferred for signal `\peripheral_test.\s' from process `\peripheral_test.$proc$cores/test/perip_test.v:20$402'.
 No latch inferred for signal `\peripheral_bin2bcd.\s' from process `\peripheral_bin2bcd.$proc$cores/bin2bcd/perip_bin2bcd.v:19$396'.
 No latch inferred for signal `\peripheral_bcd2bin.\s' from process `\peripheral_bcd2bin.$proc$cores/bcd2bin/perip_bcd2bin.v:19$390'.
@@ -660,35 +660,35 @@ Creating register for signal `\ctrl_b2b.\state' using process `\ctrl_b2b.$proc$c
   created $dff cell `$procdff$1571' with positive edge clock.
 Creating register for signal `\ctrl_b2b.\count' using process `\ctrl_b2b.$proc$cores/bin2bcd/ctrl_b2b.v:25$630'.
   created $dff cell `$procdff$1572' with positive edge clock.
-Creating register for signal `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.\tx_busy' using process `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.$proc$cores/uart/uart.v:122$620'.
+Creating register for signal `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.\tx_busy' using process `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.$proc$cores/uart/uart.v:122$620'.
   created $dff cell `$procdff$1573' with positive edge clock.
-Creating register for signal `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.\uart_txd' using process `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.$proc$cores/uart/uart.v:122$620'.
+Creating register for signal `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.\uart_txd' using process `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.$proc$cores/uart/uart.v:122$620'.
   created $dff cell `$procdff$1574' with positive edge clock.
-Creating register for signal `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.\tx_bitcount' using process `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.$proc$cores/uart/uart.v:122$620'.
+Creating register for signal `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.\tx_bitcount' using process `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.$proc$cores/uart/uart.v:122$620'.
   created $dff cell `$procdff$1575' with positive edge clock.
-Creating register for signal `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.\tx_count16' using process `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.$proc$cores/uart/uart.v:122$620'.
+Creating register for signal `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.\tx_count16' using process `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.$proc$cores/uart/uart.v:122$620'.
   created $dff cell `$procdff$1576' with positive edge clock.
-Creating register for signal `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.\txd_reg' using process `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.$proc$cores/uart/uart.v:122$620'.
+Creating register for signal `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.\txd_reg' using process `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.$proc$cores/uart/uart.v:122$620'.
   created $dff cell `$procdff$1577' with positive edge clock.
-Creating register for signal `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.\rx_data' using process `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.$proc$cores/uart/uart.v:66$612'.
+Creating register for signal `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.\rx_data' using process `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.$proc$cores/uart/uart.v:66$612'.
   created $dff cell `$procdff$1578' with positive edge clock.
-Creating register for signal `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.\rx_error' using process `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.$proc$cores/uart/uart.v:66$612'.
+Creating register for signal `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.\rx_error' using process `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.$proc$cores/uart/uart.v:66$612'.
   created $dff cell `$procdff$1579' with positive edge clock.
-Creating register for signal `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.\rx_avail' using process `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.$proc$cores/uart/uart.v:66$612'.
+Creating register for signal `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.\rx_avail' using process `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.$proc$cores/uart/uart.v:66$612'.
   created $dff cell `$procdff$1580' with positive edge clock.
-Creating register for signal `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.\rx_busy' using process `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.$proc$cores/uart/uart.v:66$612'.
+Creating register for signal `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.\rx_busy' using process `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.$proc$cores/uart/uart.v:66$612'.
   created $dff cell `$procdff$1581' with positive edge clock.
-Creating register for signal `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.\rx_count16' using process `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.$proc$cores/uart/uart.v:66$612'.
+Creating register for signal `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.\rx_count16' using process `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.$proc$cores/uart/uart.v:66$612'.
   created $dff cell `$procdff$1582' with positive edge clock.
-Creating register for signal `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.\rx_bitcount' using process `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.$proc$cores/uart/uart.v:66$612'.
+Creating register for signal `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.\rx_bitcount' using process `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.$proc$cores/uart/uart.v:66$612'.
   created $dff cell `$procdff$1583' with positive edge clock.
-Creating register for signal `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.\rxd_reg' using process `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.$proc$cores/uart/uart.v:66$612'.
+Creating register for signal `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.\rxd_reg' using process `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.$proc$cores/uart/uart.v:66$612'.
   created $dff cell `$procdff$1584' with positive edge clock.
-Creating register for signal `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.\uart_rxd1' using process `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.$proc$cores/uart/uart.v:52$611'.
+Creating register for signal `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.\uart_rxd1' using process `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.$proc$cores/uart/uart.v:52$611'.
   created $dff cell `$procdff$1585' with positive edge clock.
-Creating register for signal `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.\uart_rxd2' using process `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.$proc$cores/uart/uart.v:52$611'.
+Creating register for signal `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.\uart_rxd2' using process `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.$proc$cores/uart/uart.v:52$611'.
   created $dff cell `$procdff$1586' with positive edge clock.
-Creating register for signal `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.\enable16_counter' using process `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.$proc$cores/uart/uart.v:34$608'.
+Creating register for signal `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.\enable16_counter' using process `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.$proc$cores/uart/uart.v:34$608'.
   created $dff cell `$procdff$1587' with positive edge clock.
 Creating register for signal `\FemtoRV32.\cycles' using process `\FemtoRV32.$proc$cores/cpu/femtorv32_quark_V2.v:290$601'.
   created $dff cell `$procdff$1588' with positive edge clock.
@@ -740,13 +740,13 @@ Creating register for signal `\bram.$memwr$\MEM$cores/bram/bram.v:27$424_DATA' u
   created $dff cell `$procdff$1611' with positive edge clock.
 Creating register for signal `\bram.$memwr$\MEM$cores/bram/bram.v:27$424_EN' using process `\bram.$proc$cores/bram/bram.v:20$425'.
   created $dff cell `$procdff$1612' with positive edge clock.
-Creating register for signal `$paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart.\d_out' using process `$paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart.$proc$cores/uart/perip_uart.v:45$417'.
+Creating register for signal `$paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart.\d_out' using process `$paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart.$proc$cores/uart/perip_uart.v:45$417'.
   created $dff cell `$procdff$1613' with positive edge clock.
-Creating register for signal `$paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart.\ledout' using process `$paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart.$proc$cores/uart/perip_uart.v:38$412'.
+Creating register for signal `$paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart.\ledout' using process `$paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart.$proc$cores/uart/perip_uart.v:38$412'.
   created $dff cell `$procdff$1614' with positive edge clock.
-Creating register for signal `$paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart.\d_in_uart' using process `$paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart.$proc$cores/uart/perip_uart.v:38$412'.
+Creating register for signal `$paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart.\d_in_uart' using process `$paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart.$proc$cores/uart/perip_uart.v:38$412'.
   created $dff cell `$procdff$1615' with positive edge clock.
-Creating register for signal `$paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart.\uart_ctrl' using process `$paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart.$proc$cores/uart/perip_uart.v:38$412'.
+Creating register for signal `$paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart.\uart_ctrl' using process `$paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart.$proc$cores/uart/perip_uart.v:38$412'.
   created $dff cell `$procdff$1616' with positive edge clock.
 Creating register for signal `\peripheral_test.\d_out' using process `\peripheral_test.$proc$cores/test/perip_test.v:56$408'.
   created $dff cell `$procdff$1617' with positive edge clock.
@@ -802,13 +802,13 @@ Found and cleaned up 1 empty switch in `\ctrl_b2b.$proc$cores/bin2bcd/ctrl_b2b.v
 Removing empty process `ctrl_b2b.$proc$cores/bin2bcd/ctrl_b2b.v:73$634'.
 Found and cleaned up 4 empty switches in `\ctrl_b2b.$proc$cores/bin2bcd/ctrl_b2b.v:25$630'.
 Removing empty process `ctrl_b2b.$proc$cores/bin2bcd/ctrl_b2b.v:25$630'.
-Found and cleaned up 7 empty switches in `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.$proc$cores/uart/uart.v:122$620'.
-Removing empty process `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.$proc$cores/uart/uart.v:122$620'.
-Found and cleaned up 10 empty switches in `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.$proc$cores/uart/uart.v:66$612'.
-Removing empty process `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.$proc$cores/uart/uart.v:66$612'.
-Removing empty process `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.$proc$cores/uart/uart.v:52$611'.
-Found and cleaned up 2 empty switches in `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.$proc$cores/uart/uart.v:34$608'.
-Removing empty process `$paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.$proc$cores/uart/uart.v:34$608'.
+Found and cleaned up 7 empty switches in `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.$proc$cores/uart/uart.v:122$620'.
+Removing empty process `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.$proc$cores/uart/uart.v:122$620'.
+Found and cleaned up 10 empty switches in `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.$proc$cores/uart/uart.v:66$612'.
+Removing empty process `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.$proc$cores/uart/uart.v:66$612'.
+Removing empty process `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.$proc$cores/uart/uart.v:52$611'.
+Found and cleaned up 2 empty switches in `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.$proc$cores/uart/uart.v:34$608'.
+Removing empty process `$paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.$proc$cores/uart/uart.v:34$608'.
 Removing empty process `FemtoRV32.$proc$cores/cpu/femtorv32_quark_V2.v:298$605'.
 Found and cleaned up 1 empty switch in `\FemtoRV32.$proc$cores/cpu/femtorv32_quark_V2.v:290$601'.
 Removing empty process `FemtoRV32.$proc$cores/cpu/femtorv32_quark_V2.v:290$601'.
@@ -820,14 +820,14 @@ Found and cleaned up 3 empty switches in `\FemtoRV32.$proc$cores/cpu/femtorv32_q
 Removing empty process `FemtoRV32.$proc$cores/cpu/femtorv32_quark_V2.v:179$534'.
 Found and cleaned up 5 empty switches in `\bram.$proc$cores/bram/bram.v:20$425'.
 Removing empty process `bram.$proc$cores/bram/bram.v:20$425'.
-Removing empty process `$paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart.$proc$cores/uart/perip_uart.v:21$420'.
-Removing empty process `$paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart.$proc$cores/uart/perip_uart.v:20$419'.
-Removing empty process `$paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart.$proc$cores/uart/perip_uart.v:15$418'.
-Found and cleaned up 1 empty switch in `$paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart.$proc$cores/uart/perip_uart.v:45$417'.
-Removing empty process `$paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart.$proc$cores/uart/perip_uart.v:45$417'.
-Removing empty process `$paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart.$proc$cores/uart/perip_uart.v:38$412'.
-Found and cleaned up 1 empty switch in `$paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart.$proc$cores/uart/perip_uart.v:29$409'.
-Removing empty process `$paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart.$proc$cores/uart/perip_uart.v:29$409'.
+Removing empty process `$paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart.$proc$cores/uart/perip_uart.v:21$420'.
+Removing empty process `$paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart.$proc$cores/uart/perip_uart.v:20$419'.
+Removing empty process `$paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart.$proc$cores/uart/perip_uart.v:15$418'.
+Found and cleaned up 1 empty switch in `$paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart.$proc$cores/uart/perip_uart.v:45$417'.
+Removing empty process `$paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart.$proc$cores/uart/perip_uart.v:45$417'.
+Removing empty process `$paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart.$proc$cores/uart/perip_uart.v:38$412'.
+Found and cleaned up 1 empty switch in `$paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart.$proc$cores/uart/perip_uart.v:29$409'.
+Removing empty process `$paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart.$proc$cores/uart/perip_uart.v:29$409'.
 Found and cleaned up 3 empty switches in `\peripheral_test.$proc$cores/test/perip_test.v:56$408'.
 Removing empty process `peripheral_test.$proc$cores/test/perip_test.v:56$408'.
 Found and cleaned up 2 empty switches in `\peripheral_test.$proc$cores/test/perip_test.v:38$403'.
@@ -873,7 +873,7 @@ Optimizing module cnt_bin2bcd.
 <suppressed ~1 debug messages>
 Optimizing module ctrl_b2b.
 <suppressed ~3 debug messages>
-Optimizing module $paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.
+Optimizing module $paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.
 <suppressed ~16 debug messages>
 Optimizing module bcd2bin.
 Optimizing module bin2bcd.
@@ -881,7 +881,7 @@ Optimizing module mult_32.
 Optimizing module FemtoRV32.
 <suppressed ~34 debug messages>
 Optimizing module bram.
-Optimizing module $paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart.
+Optimizing module $paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart.
 Optimizing module peripheral_test.
 Optimizing module peripheral_bin2bcd.
 Optimizing module peripheral_bcd2bin.
@@ -900,13 +900,13 @@ Deleting now unused module add_sub_c2.
 Deleting now unused module reg_msb.
 Deleting now unused module cnt_bin2bcd.
 Deleting now unused module ctrl_b2b.
-Deleting now unused module $paramod$a29b9b2ea00f81f688f94be239f0a1a025804d44\uart.
+Deleting now unused module $paramod$206f9b3f434d95c80cb6e831afc1736968fea37b\uart.
 Deleting now unused module bcd2bin.
 Deleting now unused module bin2bcd.
 Deleting now unused module mult_32.
 Deleting now unused module FemtoRV32.
 Deleting now unused module bram.
-Deleting now unused module $paramod$82a313a687d13e6b8936a4fd33a06f57ea398f23\peripheral_uart.
+Deleting now unused module $paramod$26bd946efcf927954a3c20ebc38b9ad2c343f36b\peripheral_uart.
 Deleting now unused module peripheral_test.
 Deleting now unused module peripheral_bin2bcd.
 Deleting now unused module peripheral_bcd2bin.
@@ -1532,7 +1532,7 @@ Adding EN signal on $auto$ff.cc:337:slice$1902 ($sdff) from module SOC (D = $fla
 Adding SRST signal on $flatten\per_uart.\uart0.$procdff$1583 ($dff) from module SOC (D = $flatten\per_uart.\uart0.$procmux$1107_Y, Q = \per_uart.uart0.rx_bitcount, rval = 4'0000).
 Adding EN signal on $auto$ff.cc:337:slice$1908 ($sdff) from module SOC (D = $flatten\per_uart.\uart0.$procmux$1105_Y, Q = \per_uart.uart0.rx_bitcount).
 Adding EN signal on $flatten\per_uart.\uart0.$procdff$1584 ($dff) from module SOC (D = { \per_uart.uart0.uart_rxd2 \per_uart.uart0.rxd_reg [7:1] }, Q = \per_uart.uart0.rxd_reg).
-Adding SRST signal on $flatten\per_uart.\uart0.$procdff$1587 ($dff) from module SOC (D = $flatten\per_uart.\uart0.$sub$cores/uart/uart.v:39$609_Y [15:0], Q = \per_uart.uart0.enable16_counter, rval = 16'0000000000100011).
+Adding SRST signal on $flatten\per_uart.\uart0.$procdff$1587 ($dff) from module SOC (D = $flatten\per_uart.\uart0.$sub$cores/uart/uart.v:39$609_Y [15:0], Q = \per_uart.uart0.enable16_counter, rval = 16'0000000000001100).
 Adding EN signal on $flatten\per_uart.$procdff$1616 ($dff) from module SOC (D = { \CPU.rs2 [7:3] \CPU.rs2 [1:0] }, Q = { \per_uart.uart_ctrl [7:3] \per_uart.uart_ctrl [1:0] }).
 Adding EN signal on $flatten\per_uart.$procdff$1615 ($dff) from module SOC (D = \CPU.rs2 [7:0], Q = \per_uart.d_in_uart).
 Adding SRST signal on $flatten\mult1.\mult1.\lsr0.$procdff$1558 ($dff) from module SOC (D = $flatten\mult1.\mult1.\lsr0.$2\s_A[31:0] [31:16], Q = \mult1.mult1.lsr0.s_A [31:16], rval = 16'0000000000000000).
@@ -2104,22 +2104,22 @@ Successfully finished Verilog frontend.
 
 25.32.3. Continuing TECHMAP pass.
 Using template $paramod$ebe66b55f16503cfb3235e64ecb13100f9bd0376$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
-Using template $paramod$443e8f7f7f6027f98a0ebcc0c0d3d879967d3c20$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
-Using template $paramod$b54094ee169dddc581b859c44afd6a27ea4af31d$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
-Using template $paramod$d34335148b545983d471b8928cfa68b445a2b0ad$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
-Using template $paramod$799e87d6935157bcf86af3f178be1a2443e3988b$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
-Using template $paramod$43043d30dfeda8d35808995fea7d748cff27ccea$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
-Using template $paramod$c14462d2d5733021ef54f56fe706c89295bb7594$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
-Using template $paramod$6144e8bd1004a032a9f325536bb616613445a294$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
-Using template $paramod$6742ceb88e489f3380c61016c2315f94b2694b9e$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
-Using template $paramod$606efa89231473d2c34bc309e210b185b8d1b4e7$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
-Using template $paramod$36be43429690e79b8404b7f34d3ef7540fb5d318$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
-Using template $paramod$36a392007e9d9a9233cd8db0a120ea6112ff7463$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
-Using template $paramod$caf66f30fafa3c6c3f8e993034dcd81f9904b715$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
-Using template $paramod$1a3ec841ac1e09b9c48f14a222da9a3e555c287e$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
-Using template $paramod$6833dda4ee367db0af935324eda763678a39c4df$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
-Using template $paramod$4bbcd1ab697f770ea6dc9b87cf51bf4d26924480$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
-Using template $paramod$65dd012be59c42773ef3ea06856592688d715059$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+Using template $paramod$bb98398ab9a8cca2503a19190a94679cc0b7befb$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+Using template $paramod$81289db26c8415911bd229f59292648634fa8425$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+Using template $paramod$c71e78bcf2f0ae7602fec1a9cd3620e59ef2e101$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+Using template $paramod$41356d71dac7df3432fb6f3f172c2191e2f90d91$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+Using template $paramod$f6ea0a2c2df689e78bd9ef8c2d0e38ececd51764$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+Using template $paramod$082544bde3fa64e295322f15e993ba6d24f7f23c$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+Using template $paramod$d0de02b9259ab6504c4a17e1aaa6cdc4f5f32000$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+Using template $paramod$764cb96004162f9887992ec0e375bb1f850fb9bb$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+Using template $paramod$a2ad58d00e70f5c9c50ade38bb8883e3600e16fb$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+Using template $paramod$2bd6729b12e75ef87b5853bc6cdb0062ecacb335$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+Using template $paramod$cf4ff9049dce54187dfbd9bf1eeae90a14de55b9$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+Using template $paramod$3c188b4c65c5a6be80425306dfe61c64d56fc443$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+Using template $paramod$676fcc5e2d1163477176498bac09f50a20851ce7$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+Using template $paramod$72f3da313d8a30e9f47e0aff164cb01b9465b654$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+Using template $paramod$daacd7e13a50ca6a682e39a76eb14a7894389106$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
+Using template $paramod$9f30f844d2af252f2e58132cbf7eb20c5ea4bf6c$__ICE40_RAM4K_ for cells of type $__ICE40_RAM4K_.
 No more expansions possible.
 <suppressed ~383 debug messages>
 
@@ -3055,8 +3055,8 @@ Module SOC: replaced 1603 cells with 9004 new cells, skipped 4204 cells.
       43 $scopeinfo
       61 SB_DFF
      180 SB_DFFE
-     100 SB_DFFSR
-       5 SB_DFFSS
+     101 SB_DFFSR
+       4 SB_DFFSS
      193 SB_DFFESR
        1 SB_DFFESS
        2 SB_DFFN
@@ -3071,22 +3071,22 @@ Module SOC: replaced 1603 cells with 9004 new cells, skipped 4204 cells.
      320 $paramod$__ABC9_DELAY\DELAY=32'00000000000000000000000100010010
      714 $paramod$__ABC9_DELAY\DELAY=32'00000000000000000000000000010101
      626 $paramod$__ABC9_DELAY\DELAY=32'00000000000000000000000011001011
-       1 $paramod$3f309552dd02f16c71436f90c96fdc7b2f0d4b37\SB_RAM40_4K
-       1 $paramod$54081407c0b010b67fbccfe3a2bc89e195fc2040\SB_RAM40_4K
-       1 $paramod$c6d85cf581d8f7b73d83f231af75b4289867b052\SB_RAM40_4K
-       1 $paramod$4fecbedb80ba22bd8bbd2e836b60c965590ebee4\SB_RAM40_4K
-       1 $paramod$fb696545e8505c39529529b066620ef48657dfc6\SB_RAM40_4K
-       1 $paramod$bf7e2140f8dd2f63bca840fccc5ab2a27ea654d8\SB_RAM40_4K
-       1 $paramod$93c1dfe78fda84875bc6e3d64773172509d94c0c\SB_RAM40_4K
-       1 $paramod$a4285e3a0bf7e76d951fdfd18a4d46ee3695bb46\SB_RAM40_4K
-       1 $paramod$8ef38e4a047f840d083a4c09947e72d825d4f9d7\SB_RAM40_4K
-       1 $paramod$c05c5f183d8a04370f741e27817fcdadcfaa6c2d\SB_RAM40_4K
-       1 $paramod$aa88d6222e7724464b52638aa94f997890e21315\SB_RAM40_4K
-       1 $paramod$17ff67a9550bdcb2a4f58fde6057fdf1a835419e\SB_RAM40_4K
-       1 $paramod$c96ae4103217d8394cc4ed43bc96f92f9f42895c\SB_RAM40_4K
-       1 $paramod$b6127255bcd5a436ca01173f2cf8cfbfd2195805\SB_RAM40_4K
-       1 $paramod$9c733953359a9135a4d7de4cf1de45b8d49a169e\SB_RAM40_4K
-       1 $paramod$c91f44f0520ac651e148e430aea9319a9a1bf708\SB_RAM40_4K
+       1 $paramod$f7866204ea477825153074027ce509a082f4933b\SB_RAM40_4K
+       1 $paramod$f56b800c742debb6950b3de3f9239b2a0427275f\SB_RAM40_4K
+       1 $paramod$e30f84e058eea46e05d56351f6e7c80112990fa1\SB_RAM40_4K
+       1 $paramod$f2077f9ada18e223547e6ceb77b94078cb033954\SB_RAM40_4K
+       1 $paramod$74dbbc30849b563820656f164ad4e9ad65bad98a\SB_RAM40_4K
+       1 $paramod$f83c507e37c78ebf72ef3c7a270d37f4aef89c32\SB_RAM40_4K
+       1 $paramod$70b50d38da48a321928ca2bc2730aeb67b538b34\SB_RAM40_4K
+       1 $paramod$1daf0b4dbfaa6886b376a96dc3bf1800e168f3ef\SB_RAM40_4K
+       1 $paramod$9b76a3ee01b0f9bf3f0dafae5e0a6aefbc7f41dc\SB_RAM40_4K
+       1 $paramod$e990613d2095990dbb6cab5949682c1f6eaa548d\SB_RAM40_4K
+       1 $paramod$da80bac6b08baf756238bae26971f123ad7baf04\SB_RAM40_4K
+       1 $paramod$fbf3f7989023b69e938f1b8e976714c35a756e93\SB_RAM40_4K
+       1 $paramod$7c3ed35a167ff06fa7cb2cd53b3976b5f21251c1\SB_RAM40_4K
+       1 $paramod$3886c1caee5d25529e958f14fea172c97c1a514c\SB_RAM40_4K
+       1 $paramod$d9568e5b6b7b6bd76a92f8e3887cb6f133e332d0\SB_RAM40_4K
+       1 $paramod$1aa20afad978973f8cd0770233d848c1ec5bc1ea\SB_RAM40_4K
        4 $paramod$29bb1207a66f35afe7dbcd2e3c2d130659b0964f\SB_RAM40_4K
      285 $paramod$__ICE40_CARRY_WRAPPER\LUT=16'0110100110010110\I3_IS_CI=1'1
 
@@ -3136,7 +3136,7 @@ ABC: + &write -n <abc-temp-dir>/output.aig
 ABC: + &verify 
 ABC: Networks are equivalent.  Time =     0.06 sec
 ABC: + time 
-ABC: elapse: 0.47 seconds, total: 0.47 seconds
+ABC: elapse: 0.48 seconds, total: 0.48 seconds
 
 25.48.15.6. Executing AIGER frontend.
 <suppressed ~6353 debug messages>
@@ -3160,22 +3160,22 @@ Successfully finished Verilog frontend.
 25.48.16.2. Continuing TECHMAP pass.
 Using template $paramod$__ICE40_CARRY_WRAPPER\LUT=16'0110100110010110\I3_IS_CI=1'1 for cells of type $paramod$__ICE40_CARRY_WRAPPER\LUT=16'0110100110010110\I3_IS_CI=1'1.
 Using template $paramod$29bb1207a66f35afe7dbcd2e3c2d130659b0964f\SB_RAM40_4K for cells of type $paramod$29bb1207a66f35afe7dbcd2e3c2d130659b0964f\SB_RAM40_4K.
-Using template $paramod$8ef38e4a047f840d083a4c09947e72d825d4f9d7\SB_RAM40_4K for cells of type $paramod$8ef38e4a047f840d083a4c09947e72d825d4f9d7\SB_RAM40_4K.
-Using template $paramod$c05c5f183d8a04370f741e27817fcdadcfaa6c2d\SB_RAM40_4K for cells of type $paramod$c05c5f183d8a04370f741e27817fcdadcfaa6c2d\SB_RAM40_4K.
-Using template $paramod$aa88d6222e7724464b52638aa94f997890e21315\SB_RAM40_4K for cells of type $paramod$aa88d6222e7724464b52638aa94f997890e21315\SB_RAM40_4K.
-Using template $paramod$17ff67a9550bdcb2a4f58fde6057fdf1a835419e\SB_RAM40_4K for cells of type $paramod$17ff67a9550bdcb2a4f58fde6057fdf1a835419e\SB_RAM40_4K.
-Using template $paramod$c96ae4103217d8394cc4ed43bc96f92f9f42895c\SB_RAM40_4K for cells of type $paramod$c96ae4103217d8394cc4ed43bc96f92f9f42895c\SB_RAM40_4K.
-Using template $paramod$b6127255bcd5a436ca01173f2cf8cfbfd2195805\SB_RAM40_4K for cells of type $paramod$b6127255bcd5a436ca01173f2cf8cfbfd2195805\SB_RAM40_4K.
-Using template $paramod$3f309552dd02f16c71436f90c96fdc7b2f0d4b37\SB_RAM40_4K for cells of type $paramod$3f309552dd02f16c71436f90c96fdc7b2f0d4b37\SB_RAM40_4K.
-Using template $paramod$54081407c0b010b67fbccfe3a2bc89e195fc2040\SB_RAM40_4K for cells of type $paramod$54081407c0b010b67fbccfe3a2bc89e195fc2040\SB_RAM40_4K.
-Using template $paramod$c6d85cf581d8f7b73d83f231af75b4289867b052\SB_RAM40_4K for cells of type $paramod$c6d85cf581d8f7b73d83f231af75b4289867b052\SB_RAM40_4K.
-Using template $paramod$4fecbedb80ba22bd8bbd2e836b60c965590ebee4\SB_RAM40_4K for cells of type $paramod$4fecbedb80ba22bd8bbd2e836b60c965590ebee4\SB_RAM40_4K.
-Using template $paramod$fb696545e8505c39529529b066620ef48657dfc6\SB_RAM40_4K for cells of type $paramod$fb696545e8505c39529529b066620ef48657dfc6\SB_RAM40_4K.
-Using template $paramod$bf7e2140f8dd2f63bca840fccc5ab2a27ea654d8\SB_RAM40_4K for cells of type $paramod$bf7e2140f8dd2f63bca840fccc5ab2a27ea654d8\SB_RAM40_4K.
-Using template $paramod$93c1dfe78fda84875bc6e3d64773172509d94c0c\SB_RAM40_4K for cells of type $paramod$93c1dfe78fda84875bc6e3d64773172509d94c0c\SB_RAM40_4K.
-Using template $paramod$a4285e3a0bf7e76d951fdfd18a4d46ee3695bb46\SB_RAM40_4K for cells of type $paramod$a4285e3a0bf7e76d951fdfd18a4d46ee3695bb46\SB_RAM40_4K.
-Using template $paramod$9c733953359a9135a4d7de4cf1de45b8d49a169e\SB_RAM40_4K for cells of type $paramod$9c733953359a9135a4d7de4cf1de45b8d49a169e\SB_RAM40_4K.
-Using template $paramod$c91f44f0520ac651e148e430aea9319a9a1bf708\SB_RAM40_4K for cells of type $paramod$c91f44f0520ac651e148e430aea9319a9a1bf708\SB_RAM40_4K.
+Using template $paramod$9b76a3ee01b0f9bf3f0dafae5e0a6aefbc7f41dc\SB_RAM40_4K for cells of type $paramod$9b76a3ee01b0f9bf3f0dafae5e0a6aefbc7f41dc\SB_RAM40_4K.
+Using template $paramod$e990613d2095990dbb6cab5949682c1f6eaa548d\SB_RAM40_4K for cells of type $paramod$e990613d2095990dbb6cab5949682c1f6eaa548d\SB_RAM40_4K.
+Using template $paramod$da80bac6b08baf756238bae26971f123ad7baf04\SB_RAM40_4K for cells of type $paramod$da80bac6b08baf756238bae26971f123ad7baf04\SB_RAM40_4K.
+Using template $paramod$fbf3f7989023b69e938f1b8e976714c35a756e93\SB_RAM40_4K for cells of type $paramod$fbf3f7989023b69e938f1b8e976714c35a756e93\SB_RAM40_4K.
+Using template $paramod$7c3ed35a167ff06fa7cb2cd53b3976b5f21251c1\SB_RAM40_4K for cells of type $paramod$7c3ed35a167ff06fa7cb2cd53b3976b5f21251c1\SB_RAM40_4K.
+Using template $paramod$3886c1caee5d25529e958f14fea172c97c1a514c\SB_RAM40_4K for cells of type $paramod$3886c1caee5d25529e958f14fea172c97c1a514c\SB_RAM40_4K.
+Using template $paramod$f7866204ea477825153074027ce509a082f4933b\SB_RAM40_4K for cells of type $paramod$f7866204ea477825153074027ce509a082f4933b\SB_RAM40_4K.
+Using template $paramod$f56b800c742debb6950b3de3f9239b2a0427275f\SB_RAM40_4K for cells of type $paramod$f56b800c742debb6950b3de3f9239b2a0427275f\SB_RAM40_4K.
+Using template $paramod$e30f84e058eea46e05d56351f6e7c80112990fa1\SB_RAM40_4K for cells of type $paramod$e30f84e058eea46e05d56351f6e7c80112990fa1\SB_RAM40_4K.
+Using template $paramod$f2077f9ada18e223547e6ceb77b94078cb033954\SB_RAM40_4K for cells of type $paramod$f2077f9ada18e223547e6ceb77b94078cb033954\SB_RAM40_4K.
+Using template $paramod$74dbbc30849b563820656f164ad4e9ad65bad98a\SB_RAM40_4K for cells of type $paramod$74dbbc30849b563820656f164ad4e9ad65bad98a\SB_RAM40_4K.
+Using template $paramod$f83c507e37c78ebf72ef3c7a270d37f4aef89c32\SB_RAM40_4K for cells of type $paramod$f83c507e37c78ebf72ef3c7a270d37f4aef89c32\SB_RAM40_4K.
+Using template $paramod$70b50d38da48a321928ca2bc2730aeb67b538b34\SB_RAM40_4K for cells of type $paramod$70b50d38da48a321928ca2bc2730aeb67b538b34\SB_RAM40_4K.
+Using template $paramod$1daf0b4dbfaa6886b376a96dc3bf1800e168f3ef\SB_RAM40_4K for cells of type $paramod$1daf0b4dbfaa6886b376a96dc3bf1800e168f3ef\SB_RAM40_4K.
+Using template $paramod$d9568e5b6b7b6bd76a92f8e3887cb6f133e332d0\SB_RAM40_4K for cells of type $paramod$d9568e5b6b7b6bd76a92f8e3887cb6f133e332d0\SB_RAM40_4K.
+Using template $paramod$1aa20afad978973f8cd0770233d848c1ec5bc1ea\SB_RAM40_4K for cells of type $paramod$1aa20afad978973f8cd0770233d848c1ec5bc1ea\SB_RAM40_4K.
 No more expansions possible.
 <suppressed ~328 debug messages>
 
@@ -3462,8 +3462,8 @@ Removed 0 unused modules.
        65   SB_DFFNE
       103   SB_DFFNESR
         4   SB_DFFNESS
-      100   SB_DFFSR
-        5   SB_DFFSS
+      101   SB_DFFSR
+        4   SB_DFFSS
      1438   SB_LUT4
 
 === design hierarchy ===
@@ -3496,8 +3496,8 @@ Removed 0 unused modules.
        65   SB_DFFNE
       103   SB_DFFNESR
         4   SB_DFFNESS
-      100   SB_DFFSR
-        5   SB_DFFSS
+      101   SB_DFFSR
+        4   SB_DFFSS
      1438   SB_LUT4
 
 25.56. Executing CHECK pass (checking for obvious problems).
@@ -3507,6 +3507,6 @@ Found and reported 0 problems.
 26. Executing JSON backend.
 
 Warnings: 64 unique messages, 64 total
-End of script. Logfile hash: f4721c7aeb, time: 5.78s, user: 5.31s, system: 0.04s, MEM: 121.14 MB peak
+End of script. Logfile hash: ce670a183b, time: 5.87s, user: 5.37s, system: 0.05s, MEM: 122.42 MB peak
 Yosys 0.64 (git sha1 d8dab5b32666564eca8e18f412973853ce006e61, clang++ 21.0.0 -fPIC -O3)
 Time spent: 71% 12x techmap (4 sec), 8% 1x abc9_exe (0 sec), ...

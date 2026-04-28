@@ -6,8 +6,8 @@
 calculator:
 
 loopM:	
-   li   sp,0x2000
-   li   sp,0x2000
+   li   sp,0x1000
+   li   sp,0x1000
 
 	la   a0, number
 	call putstring
@@ -24,10 +24,6 @@ loopM:
 	add  a0, t1, zero
 	add  a1, t3, zero
 	call test
-	j    print_result
-    
-print_result:
-#    la   a0, result
 	call bin2bcd
 	j    loopM
 

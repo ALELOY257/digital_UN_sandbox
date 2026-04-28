@@ -201,7 +201,7 @@ configure_i9: ${TARGET}_i9.bit   # TDI:TDO:TCK:TMS
 ##########################
 #    ICEBREAKER
 ##########################
-
+# minicom -D /dev/tty.usbserial-ibIkUv2U1 -b57600. en macOS
 configure_icebreaker: 
 #set -e
 	yosys -l icebreaker.rpt -p 'verilog_defaults -push; verilog_defaults -add -defer; read_verilog  $(OBJS); verilog_defaults -pop; attrmap -tocase keep -imap keep="true" keep=1 -imap keep="false" keep=0 -remove keep=0; synth_ice40 -dsp -top ${TOP}; write_json  ${TOP}.json'
