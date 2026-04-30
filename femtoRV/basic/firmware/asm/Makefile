@@ -12,6 +12,11 @@
 #OBJS =  calculator.o #cambiar por todas las unidades .o del proyecto
 #OBJS    = for.o # cambiar por el main del proyecto
 #OBJECTS = for.o
+
+#export PATH=$(PATH):/Work/Embedded/toolchain/bin/
+
+
+
 TARGET  = mult
 OBJS    = call_$(TARGET).o # cambiar por el main del proyecto
 OBJECTS = $(OBJS) $(TARGET).o
@@ -23,8 +28,10 @@ LD      = $(CROSS)-ld
 OBJCOPY = $(CROSS)-objcopy
 OBJDUMP = $(CROSS)-objdump
 AFLAGS  = -march=rv32i -mabi=ilp32
+all: install_toolchain firmware.hex 
 
-all:firmware.hex 
+install_toolchain:
+	echo "${BRed} DON'T FORGET TYPE:  ${Red} export PATH=$PATH:/xxxx_xxxx/toolchain/bin/ ${Color_Off}"
 
 firmware.bin: firmware.elf
 	$(OBJCOPY) -O verilog $< firmware_flash.hex
