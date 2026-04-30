@@ -15,16 +15,16 @@ mult:
   sw   a4,4(sp) 
   sw   a5,8(sp) 
 
-  add    a4, a0, zero
-  add    a5, a1, zero       # a4 * a5
-  li    a0, 0        # PP = 0
+  add    a4, a0, zero# a4 = OP_A
+  add    a5, a1, zero# a5 = OP_B (a4 * a5)
+  li     a0, 0       # PP = 0
 .L2:
-  andi  a3, a5, 1    # 
+  andi  a3, a5, 1    # a3 = a5 & 1
   beqz  a3, .L1      # LSB of a5 = 0 ?
-  add   a0, a0, a4   # PP = PP + a4
+  add   a0, a0, a4   # a0 = a0 + a4 (PP = PP + a4)
 .L1:
   srli  a5, a5, 1    # a5 = a5/2
-  slli  a4, a4, 1    # a0 = a0*2
+  slli  a4, a4, 1    # a4 = a4*2
   bnez  a5, .L2      # loop until a5 = 0 
 
   lw   a3,0(sp)  # 
