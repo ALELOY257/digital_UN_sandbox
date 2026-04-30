@@ -65,14 +65,12 @@ always @(posedge clk) begin//-----------------------mux_4 :  multiplexa salidas 
   end
 end//-----------------------------------------------mux_4
 
-mult_32 ws2812 ( 
+ws2812_0 ws2812 ( 
 	.rst(reset), 
 	.clk(clk), 
 	.init(init), 
 	.done(done),
-	.pp(result), 
 	.A(A), 
-	.B(B)
  );
 
 endmodule

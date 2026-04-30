@@ -125,6 +125,12 @@ module SOC (
       .d_out(bcd2bin_dout)
    );
 
+//   *********************************
+//  Instanciar el periferico WS2812
+//   *********************************
+
+
+
   always @*
   begin
       case (mem_addr[31:16])	// direcciones - chip_select
