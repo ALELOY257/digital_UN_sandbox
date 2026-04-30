@@ -19,9 +19,8 @@ module SOC (
   // ====================================================================
   reg [7:0]cs;  // CHIP-SELECT
 
-   
    FemtoRV32 CPU(
-      .clk(clk),  
+      .clk(clk),
       .reset(resetn),
       .mem_addr(mem_addr),
       .mem_rdata(mem_rdata),
@@ -43,18 +42,19 @@ module SOC (
       .mem_wdata(mem_wdata),
       .mem_wmask({4{cs[0]}}&mem_wmask)
    );
+
    wire [31:0] uart_dout;
-   wire [31:0] mult_dout;
+   wire [31:0] test_dout;
    wire [31:0] div_dout;
    wire [31:0] sqrt_dout;
    wire [31:0] bin2bcd_dout;
    wire [31:0] bcd2bin_dout;
 
   peripheral_uart #(
-//     .clk_freq(50000000),    // for primer 25k
+//     .clk_freq(50000000),  // for primer 25k
 //     .clk_freq(33333333),  // for efinix
 //     .clk_freq(27000000),  // for nano_20k
-     .clk_freq(12000000),  // for icebreaker
+     .clk_freq(12000000),    // for icebreaker
      .baud(57600)            // 57600 for gowin
    ) per_uart(
      .clk(clk),
@@ -68,22 +68,7 @@ module SOC (
      .uart_tx(TXD),
      .uart_rx(RXD),
      .ledout(LEDS)
-   ); 
-
-
-   peripheral_test mult1 (
-      .clk(clk),
-      .reset(!resetn),
-      .d_in(mem_wdata[15:0]),
-      .cs(cs[3]),
-      .addr(mem_addr[4:0]),
-      .rd(rd),
-      .wr(wr),
-      .d_out(mult_dout)
    );
-
-
- 
 
    peripheral_bin2bcd bin2bcd0 (
       .clk(clk),
@@ -105,6 +90,23 @@ module SOC (
       .rd(rd),
       .wr(wr),
       .d_out(bcd2bin_dout)
+   );
+
+
+// --------------------------------------------------------------#
+// --------------------------------------------------------------#
+// --------Instanciacion del periferico a probar ----------------#
+// --------------------------------------------------------------#
+// --------------------------------------------------------------#
+   peripheral_test mult1 (
+      .clk(clk),
+      .reset(!resetn),
+      .d_in(mem_wdata[15:0]),
+      .cs(cs[3]),
+      .addr(mem_addr[4:0]),
+      .rd(rd),
+      .wr(wr),
+      .d_out(test_dout)
    );
 
   always @*
@@ -129,7 +131,7 @@ module SOC (
         8'b10000000: mem_rdata = bcd2bin_dout;
         8'b00100000: mem_rdata = uart_dout;
         8'b00010000: mem_rdata = sqrt_dout;
-        8'b00001000: mem_rdata = mult_dout;
+        8'b00001000: mem_rdata = test_dout;
         8'b00000100: mem_rdata = div_dout;
         8'b00000010: mem_rdata = bin2bcd_dout;
         8'b00000001: mem_rdata = RAM_rdata;

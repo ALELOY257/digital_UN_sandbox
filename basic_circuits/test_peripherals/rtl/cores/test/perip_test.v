@@ -28,12 +28,9 @@ if (cs) begin
     default: s = 5'b00000;
   endcase
 end
-else 
+else
   s = 5'b00000;
 end//------------------address_decoder--------------------------------
-
-
-
 
 always @(posedge clk) begin//-------------------- escritura de registros 
 
@@ -44,14 +41,13 @@ always @(posedge clk) begin//-------------------- escritura de registros
   end
   else begin
     if (cs && wr) begin
-		   A    = s[0] ? d_in    : A;	//Write Registers
-		   B    = s[1] ? d_in    : B;	//Write Registers
-		   init = s[2] ? d_in[0] : init;
+      A    = s[0] ? d_in    : A;	//Write Registers
+      B    = s[1] ? d_in    : B;	//Write Registers
+      init = s[2] ? d_in[0] : init;
     end
   end
 
 end//------------------------------------------- escritura de registros
-
 
 always @(posedge clk) begin//-----------------------mux_4 :  multiplexa salidas del periferico
   if(reset)
@@ -59,24 +55,26 @@ always @(posedge clk) begin//-----------------------mux_4 :  multiplexa salidas 
   else 
   if (cs) begin
     case (s[4:0])
-      5'b01000: d_out    =  result;            
+      5'b01000: d_out    =  result;
       5'b10000: d_out    = {31'b0, done};
     endcase
   end
 end//-----------------------------------------------mux_4
 
+//# ---------------------------------------#
+//# ---------------------------------------#
+//# Instanciacion del periferico a probar--#
+//# ---------------------------------------#
+//# ---------------------------------------#
 
-
-//  Instanciar su módulo acá
-
-mult_32 mult1 ( 
-	.rst(reset), 
-	.clk(clk), 
-	.init(init), 
-	.done(done),
-	.pp(result), 
-	.A(A), 
-	.B(B)
+mult_32 mult1 (
+  .rst(reset),
+  .clk(clk),
+  .init(init),
+  .done(done),
+  .pp(result),
+  .A(A),
+  .B(B)
  );
 
 endmodule

@@ -29,23 +29,9 @@ endif
 
 TCL_SCRIPT = auto_generated.tcl
 
-COMM_OBJS+=  cores/cpu/femtorv32_quark_V2.v
+COMM_OBJS+= cores/cpu/femtorv32_quark_V2.v
 COMM_OBJS+= cores/uart/perip_uart.v
 COMM_OBJS+= cores/uart/uart.v
-
-
-
-# Incluir los archivos que hacen parte del periférico a probar
-COMM_OBJS+= cores/test/perip_test.v
-COMM_OBJS+= cores/test/mult/mult_32.v
-COMM_OBJS+= cores/test/mult/acc.v
-COMM_OBJS+= cores/test/mult/comp.v
-COMM_OBJS+= cores/test/mult/lsr_mult.v
-COMM_OBJS+= cores/test/mult/control_mult.v
-COMM_OBJS+= cores/test/mult/rsr.v
-
-
-
 
 COMM_OBJS+=cores/bin2bcd/add_sub_c2.v
 COMM_OBJS+=cores/bin2bcd/bin2bcd.v
@@ -60,6 +46,21 @@ COMM_OBJS+=cores/bcd2bin/bcd2bin.v
 COMM_OBJS+=cores/bcd2bin/perip_bcd2bin.v
 COMM_OBJS+=cores/bcd2bin/rsr4.v
 COMM_OBJS += cores/bram/bram.v
+
+# --------------------------------------------------------------#
+# --------------------------------------------------------------#
+# Incluir los archivos que hacen parte del periférico a probar--#
+# --------------------------------------------------------------#
+# --------------------------------------------------------------#
+
+COMM_OBJS+= cores/test/perip_test.v
+COMM_OBJS+= cores/test/mult/mult_32.v
+COMM_OBJS+= cores/test/mult/acc.v
+COMM_OBJS+= cores/test/mult/comp.v
+COMM_OBJS+= cores/test/mult/lsr_mult.v
+COMM_OBJS+= cores/test/mult/control_mult.v
+COMM_OBJS+= cores/test/mult/rsr.v
+
 COMM_OBJS +=  SOC.v
 
 OBJS += $(COMM_OBJS)
@@ -209,11 +210,6 @@ configure_icebreaker:
 	icepack -s icebreaker.asc icebreaker.bin 
 	iceprog -d i:0x0403:0x6010 icebreaker.bin
 
-
-
-
-
-
 ##########################
 #    EFINIX ECB_T20_T113
 #    Files:
@@ -240,7 +236,6 @@ configure_efinix: bitstream_efinix
 clean_efinix:
 	rm -rf work_pnr work_pt work_syn outflow $(TOP).peri.xml
 
-
 ##########################
 #    EFINIX TI60
 ##########################
@@ -253,8 +248,6 @@ svg_flash: $(FLASH_OBJS)
 	netlistsvg ${TARGET}.json -o ${TARGET}_flash.svg  #--skin default.svg
 	yosys -p "prep -top ${TARGET} -flatten; write_json ${TARGET}_flat.json" ${FLASH_OBJS}
 	netlistsvg ${TARGET}_flat.json -o ${TARGET}_flat_flash.svg  #--skin default.svg
-
-
 
 create_files_flash:
 	$(EFINITY_HOME)/bin/python3  femtorv32_flash.py

@@ -23,4 +23,3 @@ test:
    beqz t1, .L0  
    lw   a0, TEST_RESULT(gp)
   ret
-

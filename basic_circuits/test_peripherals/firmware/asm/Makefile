@@ -12,8 +12,13 @@
 #OBJS =  calculator.o #cambiar por todas las unidades .o del proyecto
 #OBJS    = for.o # cambiar por el main del proyecto
 #OBJECTS = for.o
+
+#export PATH=$PATH:/Work/Embedded/toolchain/bin/
+
+
+
 TARGET  = test
-OBJS    = call_$(TARGET).o #get_number.o bin2bcd.o bcd2bin.o bin_to_bcd.o putchar.o getchar.o putstring.o
+OBJS    = call_$(TARGET).o get_number.o bin2bcd.o bcd2bin.o bin_to_bcd.o putchar.o getchar.o putstring.o
 OBJECTS = $(OBJS) $(TARGET).o
 
 CROSS   = riscv32-unknown-elf
@@ -23,8 +28,13 @@ LD      = $(CROSS)-ld
 OBJCOPY = $(CROSS)-objcopy
 OBJDUMP = $(CROSS)-objdump
 AFLAGS  = -march=rv32i -mabi=ilp32
+BRed    =\033[1;31m         # Red
+Color_Off=\033[0m       # Text Reset
 
-all:firmware.hex 
+all: install_toolchain firmware.hex 
+
+install_toolchain:
+#	echo "${BRed} DON'T FORGET TYPE:  ${Red} export PATH=$PATH:/xxxx_xxxx/toolchain/bin/ ${Color_Off}"
 
 firmware.bin: firmware.elf
 	$(OBJCOPY) -O verilog $< firmware_flash.hex
