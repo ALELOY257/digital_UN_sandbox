@@ -28,6 +28,10 @@ LD      = $(CROSS)-ld
 OBJCOPY = $(CROSS)-objcopy
 OBJDUMP = $(CROSS)-objdump
 AFLAGS  = -march=rv32i -mabi=ilp32
+BRed    =\033[1;31m         # Red
+Color_Off=\033[0m       # Text Reset
+
+
 all: install_toolchain firmware.hex 
 
 install_toolchain:
