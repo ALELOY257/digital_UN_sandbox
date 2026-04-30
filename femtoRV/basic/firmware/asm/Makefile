@@ -8,8 +8,9 @@
 # a:
 # COMMONFLAGS += -flto
 # *************************************************
-#OBJECTS =  get_number.o bin2bcd.o bcd2bin.o bin_to_bcd.o sqrt.o mult.o div.o wait.o putchar.o getchar.o calculator.o putstring.o#hello.o 
-#OBJS =  calculator.o #cambiar por todas las unidades .o del proyecto
+OBJECTS =  get_number.o bin2bcd.o bcd2bin.o bin_to_bcd.o sqrt.o mult.o div.o wait.o putchar.o getchar.o calculator.o putstring.o#hello.o 
+OBJS    =  calculator.o #cambiar por todas las unidades .o del proyecto
+OBJECTS += $(OBJS)
 #OBJS    = for.o # cambiar por el main del proyecto
 #OBJECTS = for.o
 
@@ -17,9 +18,9 @@
 
 
 
-TARGET  = mult
-OBJS    = call_$(TARGET).o # cambiar por el main del proyecto
-OBJECTS = $(OBJS) $(TARGET).o
+#TARGET  = mult
+#OBJS    = call_$(TARGET).o # cambiar por el main del proyecto
+#OBJECTS = $(OBJS) $(TARGET).o
 
 CROSS   = riscv32-unknown-elf
 CC      = $(CROSS)-gcc
