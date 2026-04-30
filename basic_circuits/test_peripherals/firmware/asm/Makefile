@@ -34,7 +34,7 @@ Color_Off=\033[0m       # Text Reset
 all: install_toolchain firmware.hex 
 
 install_toolchain:
-#	echo "${BRed} DON'T FORGET TYPE:  ${Red} export PATH=$PATH:/xxxx_xxxx/toolchain/bin/ ${Color_Off}"
+	echo "${BRed} DON'T FORGET TYPE:  ${Red} export PATH=$PATH:/xxxx_xxxx/toolchain/bin/ ${Color_Off}"
 
 firmware.bin: firmware.elf
 	$(OBJCOPY) -O verilog $< firmware_flash.hex
