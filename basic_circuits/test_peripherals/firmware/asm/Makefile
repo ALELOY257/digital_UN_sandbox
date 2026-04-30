@@ -13,7 +13,7 @@
 #OBJS    = for.o # cambiar por el main del proyecto
 #OBJECTS = for.o
 
-#export PATH=$PATH:/Work/Embedded/toolchain/bin/
+#export PATH=$(PATH):/Work/Embedded/toolchain/bin/
 
 
 
