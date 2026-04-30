@@ -17,7 +17,7 @@ module SOC (
   // se hace con los 8 bits mas significativos de mem_addr
   // Se asigna el rango de la memoria de programa 0x00000000 - 0x003FFFFF
   // ====================================================================
-  reg [7:0]cs;  // CHIP-SELECT
+  reg [8:0]cs;  // CHIP-SELECT
 
    
    FemtoRV32 CPU(
@@ -49,13 +49,14 @@ module SOC (
    wire [31:0] sqrt_dout;
    wire [31:0] bin2bcd_dout;
    wire [31:0] bcd2bin_dout;
+   wire [31:0] ws2812_dout;
 
   peripheral_uart #(
-//     .clk_freq(50000000),    // for primer 25k
+//     .clk_freq(50000000),  // for primer 25k
 //     .clk_freq(33333333),  // for efinix
-       .clk_freq(25000000),
+       .clk_freq(25000000),    //for TEST
 //     .clk_freq(27000000),  // for nano_20k
-//     .clk_freq(12000000),
+//     .clk_freq(12000000),  // for icebreaker
      .baud(57600)            // 57600 for gowin
    ) per_uart(
      .clk(clk),
@@ -127,15 +128,16 @@ module SOC (
   always @*
   begin
       case (mem_addr[31:16])	// direcciones - chip_select
-        16'h0040: cs= 8'b00100000; //uart
-        16'h0041: cs= 8'b00010000; //sqrt
-        16'h0042: cs= 8'b00001000; //mult
-        16'h0043: cs= 8'b00000100; //div
-        16'h0044: cs= 8'b00000010; //bin_to_bcd
-        16'h0045: cs= 8'b01000000; //dpRAM
-        16'h0046: cs= 8'b10000000; //bcd_to_bin
-        16'h0000: cs= 8'b00000001; //RAM
-        default:  cs= 8'b00000001;
+        16'h0040: cs= 9'b000100000; //uart
+        16'h0041: cs= 9'b000010000; //sqrt
+        16'h0042: cs= 9'b000001000; //mult
+        16'h0043: cs= 9'b000000100; //div
+        16'h0044: cs= 9'b000000010; //bin_to_bcd
+        16'h0045: cs= 9'b001000000; //dpRAM
+        16'h0046: cs= 9'b010000000; //bcd_to_bin
+        16'h0047: cs= 9'b100000000; //ws2812
+        16'h0000: cs= 9'b000000001; //RAM
+        default:  cs= 9'b000000001;
       endcase
   end
   // ============== MUX ========================  // se encarga de lecturas del RV32
@@ -143,13 +145,14 @@ module SOC (
   begin
       case (cs)
 //        7'b1000000: mem_rdata = dpram_dout;
-        8'b10000000: mem_rdata = bcd2bin_dout;
-        8'b00100000: mem_rdata = uart_dout;
-        8'b00010000: mem_rdata = sqrt_dout;
-        8'b00001000: mem_rdata = mult_dout;
-        8'b00000100: mem_rdata = div_dout;
-        8'b00000010: mem_rdata = bin2bcd_dout;
-        8'b00000001: mem_rdata = RAM_rdata;
+        9'b100000000: mem_rdata = ws2812_dout;
+        9'b010000000: mem_rdata = bcd2bin_dout;
+        9'b000100000: mem_rdata = uart_dout;
+        9'b000010000: mem_rdata = sqrt_dout;
+        9'b000001000: mem_rdata = mult_dout;
+        9'b000000100: mem_rdata = div_dout;
+        9'b000000010: mem_rdata = bin2bcd_dout;
+        9'b000000001: mem_rdata = RAM_rdata;
         default:  mem_rdata = RAM_rdata;
       endcase
   end
