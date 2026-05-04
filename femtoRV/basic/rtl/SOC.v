@@ -54,9 +54,9 @@ module SOC (
   peripheral_uart #(
 //     .clk_freq(50000000),  // for primer 25k
 //     .clk_freq(33333333),  // for efinix
-       .clk_freq(25000000),    //for TEST
+//       .clk_freq(25000000),    //for TEST
 //     .clk_freq(27000000),  // for nano_20k
-//     .clk_freq(12000000),  // for icebreaker
+     .clk_freq(12000000),  // for icebreaker
      .baud(57600)            // 57600 for gowin
    ) per_uart(
      .clk(clk),
