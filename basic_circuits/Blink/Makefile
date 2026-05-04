@@ -130,8 +130,7 @@ configure_i9: ${TARGET}_i9.bit   # TDI:TDO:TCK:TMS
 configure_icebreaker: 
 #set -e
 	yosys -l icebreaker.rpt -p 'verilog_defaults -push; verilog_defaults -add -defer; read_verilog  $(OBJS); verilog_defaults -pop; attrmap -tocase keep -imap keep="true" keep=1 -imap keep="false" keep=0 -remove keep=0; synth_ice40 -dsp -top ${TARGET}; write_json  ${TOP}.json'
-	nextpnr-ice4            3'b000: begin sum = 1'b0; carry = 1'b0; end
-0 --json ${TOP}.json --pcf SOC_icebreaker.pcf --asc icebreaker.asc  --pre-pack icebreaker_pre_pack.py  --up5k --package sg48 --timing-allow-fail --seed 1 
+	nextpnr-ice4  --json ${TOP}.json --pcf SOC_icebreaker.pcf --asc icebreaker.asc  --pre-pack icebreaker_pre_pack.py  --up5k --package sg48 --timing-allow-fail --seed 1 
 	icepack -s icebreaker.asc icebreaker.bin 
 	iceprog -d i:0x0403:0x6010 icebreaker.bin
 
@@ -267,6 +266,47 @@ configure_tang_primer_25k: $(TCL_SCRIPT)
 	openFPGALoader --cable ft2232 --bitstream ./impl/pnr/project.fs
 
 
+########################################################
+##                      ALTERA                         ##
+##           
+########################################################
+#export PATH=$PATH:/home/carlos/altera_lite/25.1std/quartus/bin/
+top        := blink
+B          := build
+Q          := /home/carlos/altera_lite/25.1std/quartus/bin
+PINS_FILE  := altera.tcl
+CONF_DEV   := EPCS16
+FLASH_LOADER := EP4CE10
+INDEX_DEV  := 1
+
+
+syn_altera: $(top).qpf
+	$Q/quartus_sh --flow compile $(top).qpf
+
+$(TARGET).qpf:  
+	@printf '%s\n' \
+	    'package require ::quartus::project' \
+	    'project_new -overwrite $(top)' \
+	    'set_global_assignment -name FAMILY {Cyclone IV E}' \
+	    'set_global_assignment -name DEVICE EP4CE10E22C8' \
+	    'set_global_assignment -name TOP_LEVEL_ENTITY $(top)' \
+	    'set_global_assignment -name PROJECT_OUTPUT_DIRECTORY $(B)' \
+	    'set_global_assignment -name VERILOG_INPUT_VERSION VERILOG_2001' \
+	    $(foreach f,$(OBJS),'set_global_assignment -name VERILOG_FILE $(f)') \
+	    'source $(PINS_FILE)' \
+	    'export_assignments' \
+	    'project_close' \
+	    > .init.tcl
+	$Q/quartus_sh -t .init.tcl
+#	@rm -f .init.tcl
+
+configure_altera: $(top).qpf syn_altera
+	$Q/quartus_pgm -m JTAG -o "p;$B/$(top).sof@$(INDEX_DEV)"
+
+
+
+clean_altera:
+	rm -rf db incremental_db $(B) *.qpf *.qsf *.pin *.smsg *.done .init.tcl
 
 
 #Install netlistsvg for svg generation

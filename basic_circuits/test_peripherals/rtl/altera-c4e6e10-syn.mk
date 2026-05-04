@@ -7,7 +7,7 @@ top_NAME=SOC
 ##############################################
 top?=$(top_NAME)
 # Ruta donde está quartus instalado
-PATH_QUARTUS?=~/gitPackages/quartus/quartus/bin
+PATH_QUARTUS?=/home/carlos/altera_lite/25.1std/quartus/bin/
 # Cable programador
 CABLE?=USB-Blaster
 # Configuration device

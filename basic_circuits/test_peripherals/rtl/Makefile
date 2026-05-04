@@ -336,6 +336,49 @@ configure_tang_primer_25k: $(TCL_SCRIPT)
 
 
 
+
+########################################################
+##                      ALTERA                         ##
+##           
+########################################################
+#export PATH=$PATH:/home/carlos/altera_lite/25.1std/quartus/bin/
+top        := SOC
+B          := build
+Q          := /home/carlos/altera_lite/25.1std/quartus/bin
+PINS_FILE  := altera.tcl
+CONF_DEV   := EPCS16
+FLASH_LOADER := EP4CE10
+INDEX_DEV  := 1
+
+
+syn_altera: $(top).qpf
+	$Q/quartus_sh --flow compile $(top).qpf
+
+$(top).qpf: $(PINS_FILE) $(OBJS)
+	@printf '%s\n' \
+	    'package require ::quartus::project' \
+	    'project_new -overwrite $(top)' \
+	    'set_global_assignment -name FAMILY {Cyclone IV E}' \
+	    'set_global_assignment -name DEVICE EP4CE10E22C8' \
+	    'set_global_assignment -name TOP_LEVEL_ENTITY $(top)' \
+	    'set_global_assignment -name PROJECT_OUTPUT_DIRECTORY $(B)' \
+	    'set_global_assignment -name VERILOG_INPUT_VERSION VERILOG_2001' \
+	    $(foreach f,$(OBJS),'set_global_assignment -name VERILOG_FILE $(f)') \
+	    'source $(PINS_FILE)' \
+	    'export_assignments' \
+	    'project_close' \
+	    > .init.tcl
+	$Q/quartus_sh -t .init.tcl
+	@rm -f .init.tcl
+
+configure_altera:
+	$Q/quartus_pgm -m JTAG -o "p;$B/$(top).sof@$(INDEX_DEV)"
+
+clean_altera:
+	rm -rf db incremental_db $(B) *.qpf *.qsf *.pin *.smsg *.done .init.tcl
+
+
+
 #Install netlistsvg for svg generation
 
 

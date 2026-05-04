@@ -355,7 +355,7 @@ configure_tang_primer_25k: $(TCL_SCRIPT)
 
 
 
-#export PATH=$PATH:/Work/CAD/IDE/bin/
-#export QT_QPA_PLATFORM_PLUGIN_PATH=/Work/CAD/IDE/Programmer/bin/PyQt5/qt-plugins
-#export QT_QPA_PLATFORM=xcb
-#export QT_XCB_GL_INTEGRATION=none
+# export PATH=$PATH:/Work/CAD/IDE/bin/
+# export QT_QPA_PLATFORM_PLUGIN_PATH=/Work/CAD/IDE/Programmer/bin/PyQt5/qt-plugins
+# export QT_QPA_PLATFORM=xcb
+# export QT_XCB_GL_INTEGRATION=none

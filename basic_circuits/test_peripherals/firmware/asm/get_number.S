@@ -1,4 +1,4 @@
-.section .text
+    .section .text
 .globl get_number
 
 get_number:
