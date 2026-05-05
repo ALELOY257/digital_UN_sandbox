@@ -29,6 +29,8 @@ endif
 
 TCL_SCRIPT = auto_generated.tcl
 
+#COMM_OBJS+= cores/cpu/femtorv32_quark_V2.v
+
 COMM_OBJS+= cores/cpu/femtorv32_quark_V2.v
 COMM_OBJS+= cores/uart/perip_uart.v
 COMM_OBJS+= cores/uart/uart.v

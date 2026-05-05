@@ -8,7 +8,7 @@ calculator:
 loopM:	
    li   sp,0x2000
    li   sp,0x2000
-
+loop:
 	la   a0, number
 	call putstring
 	call get_number      # first number
@@ -25,7 +25,8 @@ loopM:
 	add  a1, t3, zero
 	call test
 	call bin2bcd
-	j    loopM
+	
+	j    loop
 
 .section .data
 number:
