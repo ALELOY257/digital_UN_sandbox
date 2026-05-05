@@ -103,6 +103,25 @@ always #(tck/2) CLK <= ~CLK;
     UART_WRITE_BYTE(8'h0A);
     #(tck*2500)
 
+    #(tck*90000)
+    UART_WRITE_BYTE(8'h30);
+    #(tck*1500)
+    UART_WRITE_BYTE(8'h30);
+    #(tck*1500)
+    UART_WRITE_BYTE(8'h36);    // Operator *
+    #(tck*1500)  
+    UART_WRITE_BYTE(8'h37);
+    #(tck*1500)
+    UART_WRITE_BYTE(8'h0A);
+
+
+    #(tck*90000)
+    UART_WRITE_BYTE(8'h39);
+    #(tck*1500)
+    UART_WRITE_BYTE(8'h0A);
+    #(tck*2500)
+
+
 
     
     @(posedge CLK);

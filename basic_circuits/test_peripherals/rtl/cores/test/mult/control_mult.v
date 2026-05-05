@@ -29,7 +29,7 @@ module control_mult( clk , rst , lsb_B , init , z , done , sh , reset , add );
   state = 0;
  end
 
-reg [3:0] count;
+reg [4:0] count;
 
 always @(posedge clk) begin
     if (rst) begin
