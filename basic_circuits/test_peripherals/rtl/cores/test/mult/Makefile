@@ -8,7 +8,7 @@ OBJS     = mult_32.v acc.v  comp.v  control_mult.v  lsr_mult.v rsr.v
 SIM_OBJS =  ../../verilog_model/sky130_fd_sc_hd.v
 SIM_OBJS += ../../verilog_model/primitives.v
 
-PER_OBJS = perip_mult.v $(OBJS)
+PER_OBJS = ../perip_test.v $(OBJS)
 
 BUILD_DIR = build
 
