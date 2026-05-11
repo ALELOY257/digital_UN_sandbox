@@ -40,13 +40,25 @@ module mult_TB;
         #(PERIOD*2)
         init = 0;
         #(PERIOD*50);
+      
+        op_A = 16'h0044; 
+        op_B = 16'h0011;
+        #(PERIOD*4)
+        init = 0;
+        @ (posedge clk);
+        init = 1;
+        #(PERIOD*2)
+        init = 0;
+        #(PERIOD*50);
+
+
    end
 	 
 
    initial begin: TEST_CASE
      $dumpfile("mult_TB.vcd");
      $dumpvars(-1, mult_TB);
-     #(PERIOD*50) $finish;
+     #(PERIOD*150) $finish;
    end
 
 endmodule
