@@ -1,0 +1,28 @@
+module ws2812 (
+    input        clk,
+    input        init_t,
+    input [1:0]  sel,
+    output       dout,
+    output       done_t
+);
+
+parameter fcia = 25000000;
+parameter T0H = 10;
+parameter T1H = 20;
+parameter PER = 31;
+parameter RES = 1250;
+
+wire rst;
+wire inc;
+wire  [1:0] sel_tim;
+wire z;
+wire [10:0] count_out;
+wire [10:0] mux_out;
+
+
+count_ws  count0 ( .clk(clk), .rst(rst), .inc(inc), .cnt_out(count_out) );
+comp_ws   comp0  ( .in1(mux_out), .in2(count_out), .z(z) );
+mux_ws    mux0   ( .in1(TOH), .in2(T1H), .in3(RES), .in4(PER), .y(mux_out) );
+ctrl_ws   ctrl0  ( .clk(clk), .init_t(init_t), .sel(sel), .z(z), .dout(dout), .done(done_t), .rst(rst), .inc(inc), .sel_tim(sel_tim) );
+
+endmodule
