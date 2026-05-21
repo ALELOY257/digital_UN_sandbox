@@ -6,7 +6,6 @@ module mux_ws (
     input       [1:0]  sel,
     output reg [10:0]    y
 );
-
 always @(*) begin
     case (sel)
         2'b00:   y = in1;
