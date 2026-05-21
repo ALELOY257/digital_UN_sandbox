@@ -6,7 +6,7 @@ ifeq ($(TARGET), ws2812)
 else ifeq ($(TARGET), ws2812_led)
     OBJS = comp_ws.v  count_ws.v  ctrl_ws.v  mux_ws.v  ws2812.v lsr_wsled.v count_wsled.v ctrl_wsled.v ws2812_led.v
 else ifeq ($(TARGET), ws2812_array)
-    OBJS = comp_ws.v  count_ws.v  ctrl_ws.v  mux_ws.v  ws2812.v
+    OBJS = comp_ws.v  count_ws.v  ctrl_ws.v  mux_ws.v  ws2812.v lsr_wsled.v count_wsled.v ctrl_wsled.v ws2812_led.v 
 else
     OBJS = ${TARGET}.v
 endif

@@ -29,26 +29,34 @@ module ws2812_led_TB;
         @ (posedge clk);
         reset = 0;
         @ (posedge clk);
-//      SEND ZERO
+//      SEND DATA
         init = 1;
         @ (posedge clk);
         init = 0;
         wait(ws2812_led_TB.uut.done == 1);
-        @ (posedge clk);
-        @ (posedge clk);
+//      SEND DATA
+        repeat (4) @ (posedge clk);
         rgb = 24'hAA5588;
+        @ (posedge clk);
         init = 1;
         @ (posedge clk);
         init = 0;
         wait(ws2812_led_TB.uut.done == 1);
-
-
+//      SEND DATA
+        repeat (4) @ (posedge clk);
+        rgb = 24'hFF00FF;
+        rst_cmd = 1;
+        @ (posedge clk);
+        init = 1;
+        @ (posedge clk);
+        init = 0;
+        wait(ws2812_led_TB.uut.done == 1);
    end
 
    initial begin: TEST_CASE
      $dumpfile("ws2812_led_TB.vcd");
      $dumpvars(-1, uut);
-     #(40000) $finish;
+     #(60000) $finish;
    end
 
 endmodule
