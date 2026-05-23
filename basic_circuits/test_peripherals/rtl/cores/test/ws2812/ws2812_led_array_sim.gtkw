@@ -1,0 +1,28 @@
+[*]
+[*] GTKWave Analyzer v3.3.121 (w)1999-2024 BSI
+[*] Sat May 23 22:39:55 2026
+[*]
+[dumpfile] "/Work/Embedded/digital_UN/basic_circuits/test_peripherals/rtl/cores/test/ws2812/ws2812_led_array_TB.vcd"
+[dumpfile_mtime] "Sat May 23 22:35:51 2026"
+[dumpfile_size] 4471605
+[savefile] "/Work/Embedded/digital_UN/basic_circuits/test_peripherals/rtl/cores/test/ws2812/ws2812_led_array_sim.gtkw"
+[timestart] 817390000
+[size] 1648 951
+[pos] -325 -176
+*-23.000000 843020000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] ws2812_led_array_TB.
+[sst_width] 278
+[signals_width] 126
+[sst_expanded] 1
+[sst_vpaned_height] 279
+@28
+ws2812_led_array_TB.uut.clk
+ws2812_led_array_TB.uut.reset
+ws2812_led_array_TB.uut.init_m
+ws2812_led_array_TB.uut.dout
+@23
+ws2812_led_array_TB.uut.address[5:0]
+@28
+ws2812_led_array_TB.uut.done
+[pattern_trace] 1
+[pattern_trace] 0
