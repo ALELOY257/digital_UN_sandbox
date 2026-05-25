@@ -67,14 +67,24 @@ end//-----------------------------------------------mux_4
 //# ---------------------------------------#
 //# ---------------------------------------#
 
-mult_32 mult1 (
-  .rst(reset),
+// mult_32 mult1 (
+//   .rst(reset),
+//   .clk(clk),
+//   .init(init),
+//   .done(done),
+//   .pp(result),
+//   .A(A),
+//   .B(B)
+//  );
+
+div_top div1(
   .clk(clk),
+  .rst(reset),
   .init(init),
-  .done(done),
-  .pp(result),
-  .A(A),
-  .B(B)
- );
+  .dividend(A),
+  .divisor(B),
+  .res(result),
+  .done(done)
+);
 
 endmodule

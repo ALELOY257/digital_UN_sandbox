@@ -1,0 +1,5 @@
+*.vcd
+*.log
+*.bit
+build/
+a.out

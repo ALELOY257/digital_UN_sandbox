@@ -56,12 +56,19 @@ COMM_OBJS += cores/bram/bram.v
 # --------------------------------------------------------------#
 
 COMM_OBJS+= cores/test/perip_test.v
-COMM_OBJS+= cores/test/mult/mult_32.v
-COMM_OBJS+= cores/test/mult/acc.v
-COMM_OBJS+= cores/test/mult/comp.v
-COMM_OBJS+= cores/test/mult/lsr_mult.v
-COMM_OBJS+= cores/test/mult/control_mult.v
-COMM_OBJS+= cores/test/mult/rsr.v
+# COMM_OBJS+= cores/test/mult/mult_32.v
+# COMM_OBJS+= cores/test/mult/acc.v
+# COMM_OBJS+= cores/test/mult/comp.v
+# COMM_OBJS+= cores/test/mult/lsr_mult.v
+# COMM_OBJS+= cores/test/mult/control_mult.v
+# COMM_OBJS+= cores/test/mult/rsr.v
+
+COMM_OBJS+=cores/test/div/ca2_sub.v
+COMM_OBJS+=cores/test/div/comp_helper.v
+COMM_OBJS+=cores/test/div/control_divisor.v
+COMM_OBJS+=cores/test/div/div_top.v
+COMM_OBJS+=cores/test/div/helper_accumulator.v
+COMM_OBJS+=cores/test/div/lsr.v 
 
 COMM_OBJS +=  SOC.v
 
