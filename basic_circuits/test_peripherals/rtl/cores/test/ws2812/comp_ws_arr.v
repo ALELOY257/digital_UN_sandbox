@@ -1,6 +1,6 @@
 module comp_ws_arr (
-    input [5:0] in1,
-    input [5:0] in2,
+    input [7:0] in1,
+    input [7:0] in2,
     output reg   z
 );
 

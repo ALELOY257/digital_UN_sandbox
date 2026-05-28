@@ -7,17 +7,19 @@ module ws2812_led_array (
     output   done
 );
 
-parameter N_LEDS = 6'd64;
+parameter SIZE   = 8;
+parameter N_LEDS = 2**SIZE;
 
 wire init_led;
 wire rst_addr;
 wire inc_addr;
 wire done_led;
 wire z;
-wire [5:0] address;
+wire [SIZE-1:0] address;
 wire [23:0] rgb;
 
-led_mem     mem0    ( .clk(clk), .address(address), .data_r(rgb) );
+
+led_mem     #(.addr_lenght( SIZE ) )  mem0  ( .clk(clk), .address(address), .data_r(rgb) );
 ws2812_led  ws2812_0( .clk(clk), .reset(reset), .rgb(rgb), .init(init_led), .rst_cmd(rst_cmd), .dout(dout), .done(done_led) );
 count_addr  count0  ( .clk(clk), .rst(reset), .inc(inc), .address(address) );
 ctrl_ws_arr ctrl0   ( .clk(clk), .reset(reset), .init_m(init_m), .done_led(done_led), .z(z), .done(done), .init_led(init_led), .rst(rst), .inc(inc) );

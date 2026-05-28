@@ -38,7 +38,7 @@ module ws2812_led_array_TB;
    initial begin: TEST_CASE
      $dumpfile("ws2812_led_array_TB.vcd");
      $dumpvars(-1, uut);
-     #(1200000) $finish;
+     #(6000000) $finish;
    end
 
 endmodule

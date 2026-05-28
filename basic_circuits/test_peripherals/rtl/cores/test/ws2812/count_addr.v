@@ -2,7 +2,7 @@ module count_addr (
     input            clk,
     input            rst,
     input            inc,
-    output reg [5:0] address
+    output reg [7:0] address
 
 );
     always @(negedge clk ) begin

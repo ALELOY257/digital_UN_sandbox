@@ -22,7 +22,7 @@ Info:     24 FFs paired with LUTs.
 Info: Generating derived timing constraints...
 Info: Promoting globals...
 Info:     promoting clock net clk$TRELLIS_IO_IN to global network
-Info: Checksum: 0x0c9b53c0
+Info: Checksum: 0xe99a011a
 
 Info: Device utilisation:
 Info: 	          TRELLIS_IO:       3/    197     1%
@@ -55,31 +55,29 @@ Info: 	        TRELLIS_COMB:      33/  24288     0%
 Info: 	        TRELLIS_RAMW:       0/   3036     0%
 
 Info: Placed 3 cells based on constraints.
-Info: Creating initial analytic placement for 5 cells, random placement wirelen = 315.
-Info:     at initial placer iter 0, wirelen = 33
-Info:     at initial placer iter 1, wirelen = 33
-Info:     at initial placer iter 2, wirelen = 33
-Info:     at initial placer iter 3, wirelen = 33
+Info: Creating initial analytic placement for 5 cells, random placement wirelen = 303.
+Info:     at initial placer iter 0, wirelen = 36
+Info:     at initial placer iter 1, wirelen = 36
+Info:     at initial placer iter 2, wirelen = 36
+Info:     at initial placer iter 3, wirelen = 36
 Info: Running main analytical placer, max placement attempts per cell = 10000.
-Info:     at iteration #1, type TRELLIS_COMB: wirelen solved = 33, spread = 38, legal = 49; time = 0.01s
+Info:     at iteration #1, type TRELLIS_COMB: wirelen solved = 36, spread = 50, legal = 47; time = 0.00s
 Info:     at iteration #2, type TRELLIS_COMB: wirelen solved = 35, spread = 54, legal = 50; time = 0.00s
 Info:     at iteration #3, type TRELLIS_COMB: wirelen solved = 35, spread = 54, legal = 50; time = 0.00s
-Info:     at iteration #4, type TRELLIS_COMB: wirelen solved = 38, spread = 50, legal = 50; time = 0.00s
-Info:     at iteration #5, type TRELLIS_COMB: wirelen solved = 37, spread = 51, legal = 51; time = 0.00s
-Info:     at iteration #6, type TRELLIS_COMB: wirelen solved = 41, spread = 48, legal = 48; time = 0.00s
-Info: HeAP Placer Time: 0.03s
-Info:   of which solving equations: 0.01s
+Info:     at iteration #4, type TRELLIS_COMB: wirelen solved = 37, spread = 46, legal = 46; time = 0.00s
+Info: HeAP Placer Time: 0.02s
+Info:   of which solving equations: 0.00s
 Info:   of which spreading cells: 0.00s
 Info:   of which strict legalisation: 0.00s
 
 Info: Running simulated annealing placer for refinement.
-Info:   at iteration #1: temp = 0.000000, timing cost = 1, wirelen = 48
-Info:   at iteration #4: temp = 0.000000, timing cost = 1, wirelen = 44 
+Info:   at iteration #1: temp = 0.000000, timing cost = 1, wirelen = 46
+Info:   at iteration #4: temp = 0.000000, timing cost = 1, wirelen = 42 
 Info: SA placement time 0.00s
 
 Info: Max frequency for clock '$glbnet$clk$TRELLIS_IO_IN': 357.65 MHz (PASS at 25.00 MHz)
 
-Info: Max delay <async>                           -> posedge $glbnet$clk$TRELLIS_IO_IN: 2.90 ns
+Info: Max delay <async>                           -> posedge $glbnet$clk$TRELLIS_IO_IN: 2.42 ns
 Info: Max delay posedge $glbnet$clk$TRELLIS_IO_IN -> <async>                          : 2.68 ns
 
 Info: Slack histogram:
@@ -105,7 +103,7 @@ Info: [ 38836,  38938) |
 Info: [ 38938,  39040) | 
 Info: [ 39040,  39142) | 
 Info: [ 39142,  39244) |* 
-Info: Checksum: 0xf0ecf9bd
+Info: Checksum: 0xbdb80377
 Info: Routing globals...
 Info:     routing clock net $glbnet$clk$TRELLIS_IO_IN using global 0
 
@@ -117,191 +115,193 @@ Info:    IterCnt |  w/ripup   wo/ripup |  w/r  wo/r |      arcs| batch(sec) tota
 Info:         94 |        0         80 |    0    80 |         0|       0.01       0.01|
 Info: Routing complete.
 Info: Router1 time 0.01s
-Info: Checksum: 0xe422a165
+Info: Checksum: 0x92ea69ce
 
 Info: Critical path report for clock '$glbnet$clk$TRELLIS_IO_IN' (posedge -> posedge):
 Info:       type curr  total name
-Info:   clk-to-q  0.52  0.52 Source counter_TRELLIS_FF_Q_13.Q
-Info:    routing  1.10  1.62 Net counter[0] (3,45) -> (3,46)
-Info:                          Sink counter_CCU2C_B1$CCU2_COMB0.B
-Info:                          Defined in:
-Info:                               blink.v:6.13-6.20
-Info:      logic  0.45  2.07 Source counter_CCU2C_B1$CCU2_COMB0.FCO
-Info:    routing  0.00  2.07 Net counter_CCU2C_B1$CCU2_FCI_INT (3,46) -> (3,46)
-Info:                          Sink counter_CCU2C_B1$CCU2_COMB1.FCI
-Info:      logic  0.00  2.07 Source counter_CCU2C_B1$CCU2_COMB1.FCO
-Info:    routing  0.00  2.07 Net counter_CCU2C_B1_COUT (3,46) -> (3,46)
-Info:                          Sink counter_CCU2C_B1_5$CCU2_COMB0.FCI
+Info:   clk-to-q  0.52  0.52 Source counter_TRELLIS_FF_Q_12.Q
+Info:    routing  0.88  1.41 Net LED_LUT4_Z_D_CCU2C_B1_B0[0] (4,48) -> (4,47)
+Info:                          Sink LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S1$CCU2_COMB0.B
 Info:                          Defined in:
 Info:                               blink.v:15.18-15.29
-Info:                               /opt/oss-cad-suite/libexec/../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
-Info:                               /opt/oss-cad-suite/libexec/../share/yosys/lattice/ccu2c_sim.vh:9.9-9.13
-Info:      logic  0.07  2.14 Source counter_CCU2C_B1_5$CCU2_COMB0.FCO
-Info:    routing  0.00  2.14 Net counter_CCU2C_B1_5$CCU2_FCI_INT (3,46) -> (3,46)
-Info:                          Sink counter_CCU2C_B1_5$CCU2_COMB1.FCI
-Info:      logic  0.00  2.14 Source counter_CCU2C_B1_5$CCU2_COMB1.FCO
-Info:    routing  0.00  2.14 Net counter_CCU2C_B1_5_COUT (3,46) -> (3,46)
-Info:                          Sink counter_CCU2C_B1_6$CCU2_COMB0.FCI
+Info:                               /usr/local/bin/../share/yosys/lattice/arith_map_ccu2c.v:32.22-32.23
+Info:      logic  0.45  1.85 Source LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S1$CCU2_COMB0.FCO
+Info:    routing  0.00  1.85 Net LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S1$CCU2_FCI_INT (4,47) -> (4,47)
+Info:                          Sink LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S1$CCU2_COMB1.FCI
+Info:      logic  0.00  1.85 Source LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S1$CCU2_COMB1.FCO
+Info:    routing  0.00  1.85 Net LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S1_COUT (4,47) -> (4,47)
+Info:                          Sink LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_3$CCU2_COMB0.FCI
 Info:                          Defined in:
 Info:                               blink.v:15.18-15.29
-Info:                               /opt/oss-cad-suite/libexec/../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
-Info:                               /opt/oss-cad-suite/libexec/../share/yosys/lattice/ccu2c_sim.vh:9.9-9.13
-Info:      logic  0.07  2.21 Source counter_CCU2C_B1_6$CCU2_COMB0.FCO
-Info:    routing  0.00  2.21 Net counter_CCU2C_B1_6$CCU2_FCI_INT (3,46) -> (3,46)
-Info:                          Sink counter_CCU2C_B1_6$CCU2_COMB1.FCI
-Info:      logic  0.00  2.21 Source counter_CCU2C_B1_6$CCU2_COMB1.FCO
-Info:    routing  0.00  2.21 Net counter_CCU2C_B1_6_COUT (3,46) -> (4,46)
-Info:                          Sink counter_CCU2C_B1_1$CCU2_COMB0.FCI
+Info:                               /usr/local/bin/../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
+Info:                               /usr/local/bin/../share/yosys/lattice/ccu2c_sim.vh:9.9-9.13
+Info:      logic  0.07  1.92 Source LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_3$CCU2_COMB0.FCO
+Info:    routing  0.00  1.92 Net LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_3$CCU2_FCI_INT (4,47) -> (4,47)
+Info:                          Sink LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_3$CCU2_COMB1.FCI
+Info:      logic  0.00  1.92 Source LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_3$CCU2_COMB1.FCO
+Info:    routing  0.00  1.92 Net LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_3_COUT (4,47) -> (4,47)
+Info:                          Sink LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_2$CCU2_COMB0.FCI
 Info:                          Defined in:
 Info:                               blink.v:15.18-15.29
-Info:                               /opt/oss-cad-suite/libexec/../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
-Info:                               /opt/oss-cad-suite/libexec/../share/yosys/lattice/ccu2c_sim.vh:9.9-9.13
-Info:      logic  0.07  2.28 Source counter_CCU2C_B1_1$CCU2_COMB0.FCO
-Info:    routing  0.00  2.28 Net counter_CCU2C_B1_1$CCU2_FCI_INT (4,46) -> (4,46)
-Info:                          Sink counter_CCU2C_B1_1$CCU2_COMB1.FCI
-Info:      logic  0.00  2.28 Source counter_CCU2C_B1_1$CCU2_COMB1.FCO
-Info:    routing  0.00  2.28 Net counter_CCU2C_B1_1_COUT (4,46) -> (4,46)
-Info:                          Sink counter_CCU2C_B1_7$CCU2_COMB0.FCI
+Info:                               /usr/local/bin/../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
+Info:                               /usr/local/bin/../share/yosys/lattice/ccu2c_sim.vh:9.9-9.13
+Info:      logic  0.07  2.00 Source LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_2$CCU2_COMB0.FCO
+Info:    routing  0.00  2.00 Net LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_2$CCU2_FCI_INT (4,47) -> (4,47)
+Info:                          Sink LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_2$CCU2_COMB1.FCI
+Info:      logic  0.00  2.00 Source LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_2$CCU2_COMB1.FCO
+Info:    routing  0.00  2.00 Net LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_2_COUT (4,47) -> (5,47)
+Info:                          Sink LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_1$CCU2_COMB0.FCI
 Info:                          Defined in:
 Info:                               blink.v:15.18-15.29
-Info:                               /opt/oss-cad-suite/libexec/../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
-Info:                               /opt/oss-cad-suite/libexec/../share/yosys/lattice/ccu2c_sim.vh:9.9-9.13
-Info:      logic  0.07  2.36 Source counter_CCU2C_B1_7$CCU2_COMB0.FCO
-Info:    routing  0.00  2.36 Net counter_CCU2C_B1_7$CCU2_FCI_INT (4,46) -> (4,46)
-Info:                          Sink counter_CCU2C_B1_7$CCU2_COMB1.FCI
-Info:      logic  0.00  2.36 Source counter_CCU2C_B1_7$CCU2_COMB1.FCO
-Info:    routing  0.00  2.36 Net counter_CCU2C_B1_7_COUT (4,46) -> (4,46)
-Info:                          Sink counter_CCU2C_B1_2$CCU2_COMB0.FCI
+Info:                               /usr/local/bin/../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
+Info:                               /usr/local/bin/../share/yosys/lattice/ccu2c_sim.vh:9.9-9.13
+Info:      logic  0.07  2.07 Source LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_1$CCU2_COMB0.FCO
+Info:    routing  0.00  2.07 Net LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_1$CCU2_FCI_INT (5,47) -> (5,47)
+Info:                          Sink LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_1$CCU2_COMB1.FCI
+Info:      logic  0.00  2.07 Source LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_1$CCU2_COMB1.FCO
+Info:    routing  0.00  2.07 Net LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_1_COUT (5,47) -> (5,47)
+Info:                          Sink LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0$CCU2_COMB0.FCI
 Info:                          Defined in:
 Info:                               blink.v:15.18-15.29
-Info:                               /opt/oss-cad-suite/libexec/../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
-Info:                               /opt/oss-cad-suite/libexec/../share/yosys/lattice/ccu2c_sim.vh:9.9-9.13
-Info:      logic  0.07  2.43 Source counter_CCU2C_B1_2$CCU2_COMB0.FCO
-Info:    routing  0.00  2.43 Net counter_CCU2C_B1_2$CCU2_FCI_INT (4,46) -> (4,46)
-Info:                          Sink counter_CCU2C_B1_2$CCU2_COMB1.FCI
-Info:      logic  0.00  2.43 Source counter_CCU2C_B1_2$CCU2_COMB1.FCO
-Info:    routing  0.00  2.43 Net counter_CCU2C_B1_2_COUT (4,46) -> (4,46)
-Info:                          Sink counter_CCU2C_B1_4$CCU2_COMB0.FCI
+Info:                               /usr/local/bin/../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
+Info:                               /usr/local/bin/../share/yosys/lattice/ccu2c_sim.vh:9.9-9.13
+Info:      logic  0.07  2.14 Source LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0$CCU2_COMB0.FCO
+Info:    routing  0.00  2.14 Net LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0$CCU2_FCI_INT (5,47) -> (5,47)
+Info:                          Sink LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0$CCU2_COMB1.FCI
+Info:      logic  0.00  2.14 Source LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0$CCU2_COMB1.FCO
+Info:    routing  0.00  2.14 Net LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_COUT (5,47) -> (5,47)
+Info:                          Sink LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_9$CCU2_COMB0.FCI
 Info:                          Defined in:
 Info:                               blink.v:15.18-15.29
-Info:                               /opt/oss-cad-suite/libexec/../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
-Info:                               /opt/oss-cad-suite/libexec/../share/yosys/lattice/ccu2c_sim.vh:9.9-9.13
-Info:      logic  0.07  2.50 Source counter_CCU2C_B1_4$CCU2_COMB0.FCO
-Info:    routing  0.00  2.50 Net counter_CCU2C_B1_4$CCU2_FCI_INT (4,46) -> (4,46)
-Info:                          Sink counter_CCU2C_B1_4$CCU2_COMB1.FCI
-Info:      logic  0.00  2.50 Source counter_CCU2C_B1_4$CCU2_COMB1.FCO
-Info:    routing  0.00  2.50 Net counter_CCU2C_B1_4_COUT (4,46) -> (5,46)
-Info:                          Sink counter_CCU2C_B1_11$CCU2_COMB0.FCI
+Info:                               /usr/local/bin/../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
+Info:                               /usr/local/bin/../share/yosys/lattice/ccu2c_sim.vh:9.9-9.13
+Info:      logic  0.07  2.21 Source LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_9$CCU2_COMB0.FCO
+Info:    routing  0.00  2.21 Net LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_9$CCU2_FCI_INT (5,47) -> (5,47)
+Info:                          Sink LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_9$CCU2_COMB1.FCI
+Info:      logic  0.00  2.21 Source LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_9$CCU2_COMB1.FCO
+Info:    routing  0.00  2.21 Net LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_9_COUT (5,47) -> (5,47)
+Info:                          Sink LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_8$CCU2_COMB0.FCI
 Info:                          Defined in:
 Info:                               blink.v:15.18-15.29
-Info:                               /opt/oss-cad-suite/libexec/../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
-Info:                               /opt/oss-cad-suite/libexec/../share/yosys/lattice/ccu2c_sim.vh:9.9-9.13
-Info:      logic  0.07  2.57 Source counter_CCU2C_B1_11$CCU2_COMB0.FCO
-Info:    routing  0.00  2.57 Net counter_CCU2C_B1_11$CCU2_FCI_INT (5,46) -> (5,46)
-Info:                          Sink counter_CCU2C_B1_11$CCU2_COMB1.FCI
-Info:      logic  0.00  2.57 Source counter_CCU2C_B1_11$CCU2_COMB1.FCO
-Info:    routing  0.00  2.57 Net counter_CCU2C_B1_11_COUT (5,46) -> (5,46)
-Info:                          Sink counter_CCU2C_B1_10$CCU2_COMB0.FCI
+Info:                               /usr/local/bin/../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
+Info:                               /usr/local/bin/../share/yosys/lattice/ccu2c_sim.vh:9.9-9.13
+Info:      logic  0.07  2.28 Source LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_8$CCU2_COMB0.FCO
+Info:    routing  0.00  2.28 Net LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_8$CCU2_FCI_INT (5,47) -> (5,47)
+Info:                          Sink LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_8$CCU2_COMB1.FCI
+Info:      logic  0.00  2.28 Source LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_8$CCU2_COMB1.FCO
+Info:    routing  0.00  2.28 Net LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_8_COUT (5,47) -> (6,47)
+Info:                          Sink LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_7$CCU2_COMB0.FCI
 Info:                          Defined in:
 Info:                               blink.v:15.18-15.29
-Info:                               /opt/oss-cad-suite/libexec/../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
-Info:                               /opt/oss-cad-suite/libexec/../share/yosys/lattice/ccu2c_sim.vh:9.9-9.13
-Info:      logic  0.07  2.64 Source counter_CCU2C_B1_10$CCU2_COMB0.FCO
-Info:    routing  0.00  2.64 Net counter_CCU2C_B1_10$CCU2_FCI_INT (5,46) -> (5,46)
-Info:                          Sink counter_CCU2C_B1_10$CCU2_COMB1.FCI
-Info:      logic  0.00  2.64 Source counter_CCU2C_B1_10$CCU2_COMB1.FCO
-Info:    routing  0.00  2.64 Net counter_CCU2C_B1_10_COUT (5,46) -> (5,46)
-Info:                          Sink counter_CCU2C_B1_8$CCU2_COMB0.FCI
+Info:                               /usr/local/bin/../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
+Info:                               /usr/local/bin/../share/yosys/lattice/ccu2c_sim.vh:9.9-9.13
+Info:      logic  0.07  2.35 Source LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_7$CCU2_COMB0.FCO
+Info:    routing  0.00  2.35 Net LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_7$CCU2_FCI_INT (6,47) -> (6,47)
+Info:                          Sink LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_7$CCU2_COMB1.FCI
+Info:      logic  0.00  2.35 Source LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_7$CCU2_COMB1.FCO
+Info:    routing  0.00  2.35 Net LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_7_COUT (6,47) -> (6,47)
+Info:                          Sink LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_6$CCU2_COMB0.FCI
 Info:                          Defined in:
 Info:                               blink.v:15.18-15.29
-Info:                               /opt/oss-cad-suite/libexec/../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
-Info:                               /opt/oss-cad-suite/libexec/../share/yosys/lattice/ccu2c_sim.vh:9.9-9.13
-Info:      logic  0.07  2.71 Source counter_CCU2C_B1_8$CCU2_COMB0.FCO
-Info:    routing  0.00  2.71 Net counter_CCU2C_B1_8$CCU2_FCI_INT (5,46) -> (5,46)
-Info:                          Sink counter_CCU2C_B1_8$CCU2_COMB1.FCI
-Info:      logic  0.00  2.71 Source counter_CCU2C_B1_8$CCU2_COMB1.FCO
-Info:    routing  0.00  2.71 Net counter_CCU2C_B1_8_COUT (5,46) -> (5,46)
-Info:                          Sink counter_CCU2C_B1_9$CCU2_COMB0.FCI
+Info:                               /usr/local/bin/../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
+Info:                               /usr/local/bin/../share/yosys/lattice/ccu2c_sim.vh:9.9-9.13
+Info:      logic  0.07  2.42 Source LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_6$CCU2_COMB0.FCO
+Info:    routing  0.00  2.42 Net LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_6$CCU2_FCI_INT (6,47) -> (6,47)
+Info:                          Sink LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_6$CCU2_COMB1.FCI
+Info:      logic  0.00  2.42 Source LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_6$CCU2_COMB1.FCO
+Info:    routing  0.00  2.42 Net LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_6_COUT (6,47) -> (6,47)
+Info:                          Sink LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_5$CCU2_COMB0.FCI
 Info:                          Defined in:
 Info:                               blink.v:15.18-15.29
-Info:                               /opt/oss-cad-suite/libexec/../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
-Info:                               /opt/oss-cad-suite/libexec/../share/yosys/lattice/ccu2c_sim.vh:9.9-9.13
-Info:      logic  0.07  2.78 Source counter_CCU2C_B1_9$CCU2_COMB0.FCO
-Info:    routing  0.00  2.78 Net counter_CCU2C_B1_9$CCU2_FCI_INT (5,46) -> (5,46)
-Info:                          Sink counter_CCU2C_B1_9$CCU2_COMB1.FCI
-Info:      logic  0.00  2.78 Source counter_CCU2C_B1_9$CCU2_COMB1.FCO
-Info:    routing  0.00  2.78 Net counter_CCU2C_B1_9_COUT (5,46) -> (6,46)
-Info:                          Sink counter_CCU2C_B1_3$CCU2_COMB0.FCI
+Info:                               /usr/local/bin/../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
+Info:                               /usr/local/bin/../share/yosys/lattice/ccu2c_sim.vh:9.9-9.13
+Info:      logic  0.07  2.49 Source LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_5$CCU2_COMB0.FCO
+Info:    routing  0.00  2.49 Net LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_5$CCU2_FCI_INT (6,47) -> (6,47)
+Info:                          Sink LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_5$CCU2_COMB1.FCI
+Info:      logic  0.00  2.49 Source LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_5$CCU2_COMB1.FCO
+Info:    routing  0.00  2.49 Net LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_5_COUT (6,47) -> (6,47)
+Info:                          Sink LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_4$CCU2_COMB0.FCI
 Info:                          Defined in:
 Info:                               blink.v:15.18-15.29
-Info:                               /opt/oss-cad-suite/libexec/../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
-Info:                               /opt/oss-cad-suite/libexec/../share/yosys/lattice/ccu2c_sim.vh:9.9-9.13
-Info:      logic  0.07  2.85 Source counter_CCU2C_B1_3$CCU2_COMB0.FCO
-Info:    routing  0.00  2.85 Net counter_CCU2C_B1_3$CCU2_FCI_INT (6,46) -> (6,46)
-Info:                          Sink counter_CCU2C_B1_3$CCU2_COMB1.FCI
-Info:      logic  0.40  3.26 Source counter_CCU2C_B1_3$CCU2_COMB1.F
-Info:    routing  0.13  3.38 Net counter_TRELLIS_FF_Q_DI[23] (6,46) -> (6,46)
-Info:                          Sink counter_TRELLIS_FF_Q.DI
+Info:                               /usr/local/bin/../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
+Info:                               /usr/local/bin/../share/yosys/lattice/ccu2c_sim.vh:9.9-9.13
+Info:      logic  0.07  2.56 Source LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_4$CCU2_COMB0.FCO
+Info:    routing  0.00  2.56 Net LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_4$CCU2_FCI_INT (6,47) -> (6,47)
+Info:                          Sink LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_4$CCU2_COMB1.FCI
+Info:      logic  0.00  2.56 Source LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_4$CCU2_COMB1.FCO
+Info:    routing  0.00  2.56 Net LED_LUT4_Z_D_CCU2C_B1_S0_CCU2C_S0_4_COUT (6,47) -> (7,47)
+Info:                          Sink LED_LUT4_Z_D_CCU2C_B1$CCU2_COMB0.FCI
 Info:                          Defined in:
 Info:                               blink.v:15.18-15.29
-Info:                               /opt/oss-cad-suite/libexec/../share/yosys/lattice/arith_map_ccu2c.v:34.26-34.27
-Info:      setup  0.00  3.38 Source counter_TRELLIS_FF_Q.DI
-Info: 2.16 ns logic, 1.23 ns routing
+Info:                               /usr/local/bin/../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
+Info:                               /usr/local/bin/../share/yosys/lattice/ccu2c_sim.vh:9.9-9.13
+Info:      logic  0.07  2.63 Source LED_LUT4_Z_D_CCU2C_B1$CCU2_COMB0.FCO
+Info:    routing  0.00  2.63 Net LED_LUT4_Z_D_CCU2C_B1$CCU2_FCI_INT (7,47) -> (7,47)
+Info:                          Sink LED_LUT4_Z_D_CCU2C_B1$CCU2_COMB1.FCI
+Info:      logic  0.40  3.04 Source LED_LUT4_Z_D_CCU2C_B1$CCU2_COMB1.F
+Info:    routing  0.13  3.17 Net LED_LUT4_Z_D_CCU2C_B1_S0[23] (7,47) -> (7,47)
+Info:                          Sink LED_LUT4_Z_D_TRELLIS_FF_Q.DI
+Info:                          Defined in:
+Info:                               blink.v:15.18-15.29
+Info:                               /usr/local/bin/../share/yosys/lattice/arith_map_ccu2c.v:34.26-34.27
+Info:      setup  0.00  3.17 Source LED_LUT4_Z_D_TRELLIS_FF_Q.DI
+Info: 2.16 ns logic, 1.01 ns routing
 
 Info: Critical path report for cross-domain path '<async>' -> 'posedge $glbnet$clk$TRELLIS_IO_IN':
 Info:       type curr  total name
 Info:     source  0.00  0.00 Source rst$tr_io.O
-Info:    routing  0.83  0.83 Net rst$TRELLIS_IO_IN (6,50) -> (6,47)
+Info:    routing  0.82  0.82 Net rst$TRELLIS_IO_IN (6,50) -> (6,48)
 Info:                          Sink rst_LUT4_D.D
 Info:                          Defined in:
 Info:                               blink.v:3.12-3.15
-Info:      logic  0.24  1.06 Source rst_LUT4_D.F
-Info:    routing  0.96  2.03 Net rst_LUT4_D_Z (6,47) -> (5,46)
-Info:                          Sink counter_TRELLIS_FF_Q_9.LSR
-Info:      setup  0.42  2.45 Source counter_TRELLIS_FF_Q_9.LSR
-Info: 0.66 ns logic, 1.79 ns routing
+Info:      logic  0.24  1.05 Source rst_LUT4_D.F
+Info:    routing  0.62  1.67 Net rst_LUT4_D_Z (6,48) -> (6,47)
+Info:                          Sink clk_TRELLIS_FF_CLK_8.LSR
+Info:      setup  0.42  2.09 Source clk_TRELLIS_FF_CLK_8.LSR
+Info: 0.66 ns logic, 1.43 ns routing
 
 Info: Critical path report for cross-domain path 'posedge $glbnet$clk$TRELLIS_IO_IN' -> '<async>':
 Info:       type curr  total name
-Info:   clk-to-q  0.52  0.52 Source counter_TRELLIS_FF_Q.Q
-Info:    routing  0.89  1.41 Net counter[23] (6,46) -> (6,47)
+Info:   clk-to-q  0.52  0.52 Source LED_LUT4_Z_D_TRELLIS_FF_Q.Q
+Info:    routing  0.73  1.25 Net LED_LUT4_Z_D (7,47) -> (6,48)
 Info:                          Sink LED_LUT4_Z.D
 Info:                          Defined in:
-Info:                               blink.v:6.13-6.20
-Info:      logic  0.24  1.65 Source LED_LUT4_Z.F
-Info:    routing  0.63  2.28 Net LED$TRELLIS_IO_OUT (6,47) -> (4,50)
+Info:                               blink.v:15.18-15.29
+Info:                               /usr/local/bin/../share/yosys/lattice/arith_map_ccu2c.v:32.22-32.23
+Info:      logic  0.24  1.49 Source LED_LUT4_Z.F
+Info:    routing  1.04  2.52 Net LED$TRELLIS_IO_OUT (6,48) -> (4,50)
 Info:                          Sink LED$tr_io.I
 Info:                          Defined in:
 Info:                               blink.v:4.12-4.15
-Info: 0.76 ns logic, 1.52 ns routing
+Info: 0.76 ns logic, 1.76 ns routing
 
-Info: Max frequency for clock '$glbnet$clk$TRELLIS_IO_IN': 295.42 MHz (PASS at 25.00 MHz)
+Info: Max frequency for clock '$glbnet$clk$TRELLIS_IO_IN': 315.76 MHz (PASS at 25.00 MHz)
 
-Info: Max delay <async>                           -> posedge $glbnet$clk$TRELLIS_IO_IN: 2.45 ns
-Info: Max delay posedge $glbnet$clk$TRELLIS_IO_IN -> <async>                          : 2.28 ns
+Info: Max delay <async>                           -> posedge $glbnet$clk$TRELLIS_IO_IN: 2.09 ns
+Info: Max delay posedge $glbnet$clk$TRELLIS_IO_IN -> <async>                          : 2.52 ns
 
 Info: Slack histogram:
 Info:  legend: * represents 1 endpoint(s)
 Info:          + represents [1,1) endpoint(s)
-Info: [ 36615,  36729) |**** 
-Info: [ 36729,  36843) |** 
-Info: [ 36843,  36957) |**** 
-Info: [ 36957,  37071) |** 
-Info: [ 37071,  37185) |***** 
-Info: [ 37185,  37299) |*** 
-Info: [ 37299,  37413) |** 
-Info: [ 37413,  37527) |* 
-Info: [ 37527,  37641) | 
-Info: [ 37641,  37755) | 
-Info: [ 37755,  37869) | 
-Info: [ 37869,  37983) | 
-Info: [ 37983,  38097) | 
-Info: [ 38097,  38211) | 
-Info: [ 38211,  38325) | 
-Info: [ 38325,  38439) | 
-Info: [ 38439,  38553) | 
-Info: [ 38553,  38667) | 
-Info: [ 38667,  38781) | 
-Info: [ 38781,  38895) |* 
+Info: [ 36833,  36936) |**** 
+Info: [ 36936,  37039) |* 
+Info: [ 37039,  37142) |**** 
+Info: [ 37142,  37245) |*** 
+Info: [ 37245,  37348) |** 
+Info: [ 37348,  37451) |**** 
+Info: [ 37451,  37554) |** 
+Info: [ 37554,  37657) |*** 
+Info: [ 37657,  37760) | 
+Info: [ 37760,  37863) | 
+Info: [ 37863,  37966) | 
+Info: [ 37966,  38069) | 
+Info: [ 38069,  38172) | 
+Info: [ 38172,  38275) | 
+Info: [ 38275,  38378) | 
+Info: [ 38378,  38481) | 
+Info: [ 38481,  38584) | 
+Info: [ 38584,  38687) | 
+Info: [ 38687,  38790) | 
+Info: [ 38790,  38893) |* 
 
 Info: Program finished normally.
