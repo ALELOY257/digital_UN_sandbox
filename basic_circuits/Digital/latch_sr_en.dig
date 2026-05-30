@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<circuit>
+  <version>2</version>
+  <attributes/>
+  <visualElements>
+    <visualElement>
+      <elementName>NOr</elementName>
+      <elementAttributes/>
+      <pos x="1460" y="880"/>
+    </visualElement>
+    <visualElement>
+      <elementName>NOr</elementName>
+      <elementAttributes/>
+      <pos x="1460" y="1000"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Out</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>Q</string>
+        </entry>
+      </elementAttributes>
+      <pos x="1600" y="900"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Out</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>~Q</string>
+        </entry>
+      </elementAttributes>
+      <pos x="1600" y="1020"/>
+    </visualElement>
+    <visualElement>
+      <elementName>In</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>R</string>
+        </entry>
+      </elementAttributes>
+      <pos x="1120" y="860"/>
+    </visualElement>
+    <visualElement>
+      <elementName>In</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>S</string>
+        </entry>
+      </elementAttributes>
+      <pos x="1120" y="1060"/>
+    </visualElement>
+    <visualElement>
+      <elementName>And</elementName>
+      <elementAttributes>
+        <entry>
+          <string>wideShape</string>
+          <boolean>true</boolean>
+        </entry>
+      </elementAttributes>
+      <pos x="1240" y="860"/>
+    </visualElement>
+    <visualElement>
+      <elementName>And</elementName>
+      <elementAttributes>
+        <entry>
+          <string>wideShape</string>
+          <boolean>true</boolean>
+        </entry>
+      </elementAttributes>
+      <pos x="1240" y="1020"/>
+    </visualElement>
+    <visualElement>
+      <elementName>In</elementName>
+      <elementAttributes>
+        <entry>
+          <string>Label</string>
+          <string>C</string>
+        </entry>
+      </elementAttributes>
+      <pos x="1120" y="960"/>
+    </visualElement>
+    <visualElement>
+      <elementName>Data</elementName>
+      <elementAttributes/>
+      <pos x="1680" y="900"/>
+    </visualElement>
+  </visualElements>
+  <wires>
+    <wire>
+      <p1 x="1440" y="980"/>
+      <p2 x="1560" y="940"/>
+    </wire>
+    <wire>
+      <p1 x="1560" y="980"/>
+      <p2 x="1440" y="940"/>
+    </wire>
+    <wire>
+      <p1 x="1120" y="960"/>
+      <p2 x="1200" y="960"/>
+    </wire>
+    <wire>
+      <p1 x="1320" y="1040"/>
+      <p2 x="1460" y="1040"/>
+    </wire>
+    <wire>
+      <p1 x="1320" y="880"/>
+      <p2 x="1460" y="880"/>
+    </wire>
+    <wire>
+      <p1 x="1540" y="900"/>
+      <p2 x="1560" y="900"/>
+    </wire>
+    <wire>
+      <p1 x="1200" y="900"/>
+      <p2 x="1240" y="900"/>
+    </wire>
+    <wire>
+      <p1 x="1560" y="900"/>
+      <p2 x="1600" y="900"/>
+    </wire>
+    <wire>
+      <p1 x="1120" y="1060"/>
+      <p2 x="1240" y="1060"/>
+    </wire>
+    <wire>
+      <p1 x="1440" y="1000"/>
+      <p2 x="1460" y="1000"/>
+    </wire>
+    <wire>
+      <p1 x="1440" y="920"/>
+      <p2 x="1460" y="920"/>
+    </wire>
+    <wire>
+      <p1 x="1120" y="860"/>
+      <p2 x="1240" y="860"/>
+    </wire>
+    <wire>
+      <p1 x="1540" y="1020"/>
+      <p2 x="1560" y="1020"/>
+    </wire>
+    <wire>
+      <p1 x="1200" y="1020"/>
+      <p2 x="1240" y="1020"/>
+    </wire>
+    <wire>
+      <p1 x="1560" y="1020"/>
+      <p2 x="1600" y="1020"/>
+    </wire>
+    <wire>
+      <p1 x="1440" y="980"/>
+      <p2 x="1440" y="1000"/>
+    </wire>
+    <wire>
+      <p1 x="1440" y="920"/>
+      <p2 x="1440" y="940"/>
+    </wire>
+    <wire>
+      <p1 x="1200" y="900"/>
+      <p2 x="1200" y="960"/>
+    </wire>
+    <wire>
+      <p1 x="1200" y="960"/>
+      <p2 x="1200" y="1020"/>
+    </wire>
+    <wire>
+      <p1 x="1560" y="900"/>
+      <p2 x="1560" y="940"/>
+    </wire>
+    <wire>
+      <p1 x="1560" y="980"/>
+      <p2 x="1560" y="1020"/>
+    </wire>
+  </wires>
+  <measurementOrdering/>
+</circuit>
