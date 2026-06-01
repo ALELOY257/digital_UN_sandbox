@@ -1,0 +1,28 @@
+[*]
+[*] GTKWave Analyzer v3.3.121 (w)1999-2024 BSI
+[*] Mon Jun  1 17:27:16 2026
+[*]
+[dumpfile] "/Work/Embedded/digital_UN/basic_circuits/Verilog/acc_TB.vcd"
+[dumpfile_mtime] "Mon Jun  1 17:26:10 2026"
+[dumpfile_size] 1849
+[savefile] "/Work/Embedded/digital_UN/basic_circuits/Verilog/acc_sim.gtkw"
+[timestart] 0
+[size] 1000 314
+[pos] -1 -1
+*-18.000000 640000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] acc_TB.
+[sst_width] 278
+[signals_width] 101
+[sst_expanded] 1
+[sst_vpaned_height] 58
+@28
+acc_TB.uut.clk
+acc_TB.uut.rst
+@22
+acc_TB.uut.A[3:0]
+@29
+acc_TB.uut.add
+@22
+acc_TB.uut.pp[3:0]
+[pattern_trace] 1
+[pattern_trace] 0

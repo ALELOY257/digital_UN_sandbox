@@ -1,0 +1,35 @@
+[*]
+[*] GTKWave Analyzer v3.3.121 (w)1999-2024 BSI
+[*] Mon Jun  1 17:34:07 2026
+[*]
+[dumpfile] "/Work/Embedded/digital_UN/basic_circuits/Verilog/lsr_TB.vcd"
+[dumpfile_mtime] "Mon Jun  1 17:30:42 2026"
+[dumpfile_size] 1551
+[savefile] "/Work/Embedded/digital_UN/basic_circuits/Verilog/lsr_sim.gtkw"
+[timestart] 0
+[size] 1000 600
+[pos] -1 -1
+*-16.000000 166700 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] lsr_TB.
+[sst_width] 278
+[signals_width] 102
+[sst_expanded] 1
+[sst_vpaned_height] 157
+@28
+lsr_TB.uut.clk
+lsr_TB.uut.load
+lsr_TB.uut.shift
+@22
+lsr_TB.uut.in_A[4:0]
+@c00029
+lsr_TB.uut.s_A[4:0]
+@28
+(0)lsr_TB.uut.s_A[4:0]
+(1)lsr_TB.uut.s_A[4:0]
+(2)lsr_TB.uut.s_A[4:0]
+(3)lsr_TB.uut.s_A[4:0]
+(4)lsr_TB.uut.s_A[4:0]
+@1401209
+-group_end
+[pattern_trace] 1
+[pattern_trace] 0

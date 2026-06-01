@@ -1,0 +1,33 @@
+[*]
+[*] GTKWave Analyzer v3.3.121 (w)1999-2024 BSI
+[*] Mon Jun  1 17:38:26 2026
+[*]
+[dumpfile] "/Work/Embedded/digital_UN/basic_circuits/Verilog/blink_TB.vcd"
+[dumpfile_mtime] "Mon Jun  1 17:35:14 2026"
+[dumpfile_size] 16825
+[savefile] "/Work/Embedded/digital_UN/basic_circuits/Verilog/blink_sim.gtkw"
+[timestart] 0
+[size] 999 600
+[pos] 0 -1
+*-18.000000 753000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] blink_TB.
+[sst_width] 278
+[signals_width] 110
+[sst_expanded] 1
+[sst_vpaned_height] 157
+@28
+blink_TB.uut.LED
+blink_TB.uut.clk
+@800022
+blink_TB.uut.count[5:0]
+@28
+(0)blink_TB.uut.count[5:0]
+(1)blink_TB.uut.count[5:0]
+(2)blink_TB.uut.count[5:0]
+(3)blink_TB.uut.count[5:0]
+(4)blink_TB.uut.count[5:0]
+(5)blink_TB.uut.count[5:0]
+@1001200
+-group_end
+[pattern_trace] 1
+[pattern_trace] 0
