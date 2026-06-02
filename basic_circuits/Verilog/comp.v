@@ -4,8 +4,8 @@ module comp(B, z);
 
   always@(*)
     if (B==0)
-      z <= 1;
+      z = 1;
     else
-      z <= 0;
+      z = 0;
 
 endmodule

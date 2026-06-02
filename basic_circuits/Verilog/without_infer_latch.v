@@ -5,8 +5,8 @@ module without_infer_latch (
 );
     always @(*) begin
         if (en)
-            q <= d;
+            q = d;
         else
-            q <= 0;
+            q = 0;
     end
 endmodule

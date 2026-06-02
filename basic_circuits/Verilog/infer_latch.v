@@ -5,6 +5,6 @@ module infer_latch (
 );
     always @(*) begin
         if (en)
-            q <= d;
+            q = d;
     end
 endmodule
