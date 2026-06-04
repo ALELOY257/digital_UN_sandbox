@@ -186,7 +186,6 @@ class BaseSoC(SoCCore):
                 sys_clk_freq = sys_clk_freq)
 
 
-
         #LED_PANEL module
         SoCCore.add_csr(self,"led_panel0")
         self.submodules.led_panel0 = led_panel_4k.LED_PANEL(platform.request("led_panel",0))

@@ -45,7 +45,13 @@ COMM_OBJS+= cores/mult_ASM/rsr.v
 
 
 COMM_OBJS+= cores/div/perip_div.v
-COMM_OBJS+= cores/div/div.v
+COMM_OBJS+= cores/div/div_16.v
+COMM_OBJS+= cores/div/control_div.v 
+COMM_OBJS+= cores/div/counter_div.v
+COMM_OBJS+= cores/div/subtractor.v
+COMM_OBJS+= cores/div/lsr_div.v 
+            
+
 
 COMM_OBJS+= cores/sqrt_ASM/addc2.v
 COMM_OBJS+= cores/sqrt_ASM/count.v

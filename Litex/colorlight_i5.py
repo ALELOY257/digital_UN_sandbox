@@ -12,7 +12,7 @@ from litex.gen import *
 
 from litex.build.io import DDROutput
 
-from board import colorlight_i5
+from litex_boards.platforms import colorlight_i5
 
 from litex.soc.cores.clock import *
 from litex.soc.integration.soc_core import *
@@ -26,7 +26,10 @@ from litedram.modules import M12L64322A # Compatible with EM638325-6H.
 from litedram.phy import GENSDRPHY, HalfRateGENSDRPHY
 
 from liteeth.phy.ecp5rgmii import LiteEthPHYRGMII
-from Led_panel_12bpp import led_panel_4k
+
+from mult import mult_32
+
+
 
 # CRG ----------------------------------------------------------------------------------------------
 
@@ -110,13 +113,17 @@ class BaseSoC(SoCCore):
         board = board.lower()
         assert board in ["i5", "i9"]
         platform = colorlight_i5.Platform(board=board, revision=revision, toolchain=toolchain)
-        platform.add_source("Led_panel_12bpp/led_panel_4k.v")
-        platform.add_source("Led_panel_12bpp/mux_led.v")
-        platform.add_source("Led_panel_12bpp/memory.v")
-        platform.add_source("Led_panel_12bpp/lsr_led.v")
-        platform.add_source("Led_panel_12bpp/ctrl_lp4k.v")
-        platform.add_source("Led_panel_12bpp/count.v")
-        platform.add_source("Led_panel_12bpp/comp.v")
+
+########################################################################################################
+######                        INCLUIR LOS ARCHIVOS VERILOG ACA                              ############
+########################################################################################################
+
+#        for src in ["rsr.v", "lsr_mult.v", "comp.v", "acc.v", "control_mult.v", "mult_32.v"]:
+#            platform.add_source(os.path.join(src_dir, src))
+
+########################################################################################################
+
+
         # CRG --------------------------------------------------------------------------------------
         with_usb_pll   = kwargs.get("uart_name", None) == "usb_acm"
         with_video_pll = with_video_terminal or with_video_framebuffer
@@ -135,6 +142,11 @@ class BaseSoC(SoCCore):
             ledn = platform.request_all("user_led_n")
             self.leds = LedChaser(pads=ledn, sys_clk_freq=sys_clk_freq)
 
+
+        #MULTIPLIER
+        SoCCore.add_csr(self,"mult0")
+        self.submodules.mult0 = mult_32.Mult32(platform)
+
         # SPI Flash --------------------------------------------------------------------------------
         if board == "i5":
             from litespi.modules import GD25Q16 as SpiFlashModule
@@ -145,17 +157,14 @@ class BaseSoC(SoCCore):
         self.add_spi_flash(mode="1x", module=SpiFlashModule(Codes.READ_1_1_1))
 
         # SDR SDRAM --------------------------------------------------------------------------------
-        sdrphy_cls = HalfRateGENSDRPHY if sdram_rate == "1:2" else GENSDRPHY
-        self.sdrphy = sdrphy_cls(platform.request("sdram"))
-        self.add_sdram("sdram",
-            phy           = self.sdrphy,
-            module        = M12L64322A(sys_clk_freq, sdram_rate),
-            l2_cache_size = kwargs.get("l2_size", 8192)
-        )
-        #LED_PANEL module
-        SoCCore.add_csr(self,"led_panel0")
-        self.submodules.led_panel0 = led_panel_4k.LED_PANEL(platform.request("led_panel",0))
-
+        if not self.integrated_main_ram_size:
+            sdrphy_cls = HalfRateGENSDRPHY if sdram_rate == "1:2" else GENSDRPHY
+            self.sdrphy = sdrphy_cls(platform.request("sdram"))
+            self.add_sdram("sdram",
+                phy           = self.sdrphy,
+                module        = M12L64322A(sys_clk_freq, sdram_rate),
+                l2_cache_size = kwargs.get("l2_size", 8192)
+            )
 
         # Ethernet / Etherbone ---------------------------------------------------------------------
         if with_ethernet or with_etherbone:

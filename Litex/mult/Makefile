@@ -1,13 +1,14 @@
 TARGET=mult_32
 TOP=mult_32
 
-ICE40_SIM_CELLS=$(shell yosys-config --datdir/ecp5/cells_sim.v)
+ICE40_SIM_CELLS=./lattice_sim/cells_sim_ecp5.v
+
 
 OBJS     = mult_32.v acc.v  comp.v  control_mult.v  lsr_mult.v rsr.v
 SIM_OBJS =  ../../verilog_model/sky130_fd_sc_hd.v
 SIM_OBJS += ../../verilog_model/primitives.v
 
-PER_OBJS = perip_mult.v $(OBJS)
+PER_OBJS = ../perip_test.v $(OBJS)
 
 BUILD_DIR = build
 
@@ -20,19 +21,17 @@ sim:
 	gtkwave $(TARGET)_TB.vcd
 sim_per:
 	rm -f a.out *.vcd
-	iverilog -DBENCH -DSIM -DPASSTHROUGH_PLL -DBOARD_FREQ=27 -DCPU_FREQ=27  perip_$(TARGET)_TB.v $(PER_OBJS)
+	iverilog -I ./lattice_sim  perip_$(TARGET)_TB.v $(PER_OBJS)
 	vvp a.out
 	gtkwave perip_$(TARGET)_TB.vcd &
 $(TOP).json:
-	yosys -v3 -l synth.log -p 'synth_ecp5 -top $(TOP) -json $(TOP).json; write_verilog -attr2comment $(TOP)_synth.v' $(OBJS)
-#	yosys -p "read_verilog $(TOP)_synth.v; read_verilog cells_sim.v; prep -top $(TOP); show -format svg -prefix yosys"  # Visualize
-
+	yosys -v3 -l synth.log -p 'synth_ecp5 -top $(TARGET) -json $(TARGET).json; write_verilog -attr2comment $(TARGET)_synth.v' $(OBJS)
 
 ## ---------------------
 ## post-synth simulation
 ## ---------------------
 sim_post_syn: $(TOP).json $(OBJS)
-	iverilog -o $@_PS.vpp -s $(TOP)_TB $(TARGET)_TB.v $(TOP)_synth.v $(ICE40_SIM_CELLS) 
+	iverilog -I ./lattice_sim -o $@_PS.vpp -s $(TOP)_TB $(TARGET)_TB.v $(TOP)_synth.v $(ICE40_SIM_CELLS) 
 	vvp $@_PS.vpp
 	gtkwave $(TOP)_TB.vcd &
 sim_post_syn_sky:
@@ -72,7 +71,8 @@ svg: $(OBJS)
 	netlistsvg ${TARGET}_flat.json -o ${TARGET}_flat.svg  #--skin default.svg
 
 clean:
-	rm -rf *.out *.vcd *.svg *.json $(TOP)_synth.v *.vpp *.asc $(TOP)_route.v synth.log
+	rm -rf *.out *.vcd *.svg *.json $(TOP)_synth.v *.vpp *.asc $(TOP)_route.v synth.log *.bit *lpf *pcf *scf \
+	*svf *tcf *.config
 
 
 #https://stackoverflow.com/questions/35927650/is-it-possible-to-create-a-simulation-waveform-from-yosys-output
