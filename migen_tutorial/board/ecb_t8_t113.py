@@ -19,8 +19,8 @@ _io = [
 #        IOStandard("3.3_V_LVTTL_/_LVCMOS") , Misc("WEAK_PULLUP")
 #    ),
     # Leds
-    ("user_led", 0, Pins("20"), IOStandard("3.3_V_LVTTL_/_LVCMOS"), Misc("DRIVE_STRENGTH=3")),
-    ("user_led", 1, Pins("76"), IOStandard("3.3_V_LVTTL_/_LVCMOS"), Misc("DRIVE_STRENGTH=3")),
+    ("user_led_n", 0, Pins("20"), IOStandard("3.3_V_LVTTL_/_LVCMOS"), Misc("DRIVE_STRENGTH=3")),
+    ("user_led_n", 1, Pins("76"), IOStandard("3.3_V_LVTTL_/_LVCMOS"), Misc("DRIVE_STRENGTH=3")),
     # Buttons
     ("user_btn_n", 0, Pins("74"), IOStandard("3.3_V_LVTTL_/_LVCMOS"), Misc("WEAK_PULLUP")),
 
