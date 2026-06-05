@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 import argparse
 import os
+import sys
 import env_efinity 
 from migen import *
+
+from platforms import get_platform, load_bitstream, parse_args, BUILD_DIR
 
 
 class Blink(Module):
@@ -21,41 +24,25 @@ class Blink(Module):
 ##############################################################################
 ##############################################################################
 
-def get_platform(name):
-    if name == "colorlight_i9":
-        from litex_boards.platforms import colorlight_i5
-        return colorlight_i5.Platform(board="i9", revision="7.2", toolchain="trellis"), 25e6, "user_led_n", "top.bit"
-    elif name == "ecb_t8":
-        from board import ecb_t8_t113
-        return ecb_t8_t113.Platform(), 33.333e6, "user_led_n", "outflow/top.hex"
-    else:
-        raise ValueError(f"Plataforma desconocida: {name}")
+# Top-level
+TopModule = Blink  # <-- cambia aquí el módulo a sintetizar
 
-def load_bitstream(platform_name, build_dir, bitstream):
-    bitstream_file = f"{build_dir}/{bitstream}"
-    if platform_name == "ecb_t8":
-        efinity = "/Work/CAD/efinity/2024.2"
-        os.system(
-            f'{efinity}/bin/python3 {efinity}/pgm/bin/efx_pgm/ftdi_program.py '
-            f'{bitstream_file} -m passive '
-            f'-b "Generic Board Profile Using FT2232H" '
-            f'--url ftdi://0x0403:0x6010/1'
-        )
-    else:
-        prog = platform.create_programmer()
-        prog.load_bitstream(bitstream_file)
+def _test(dut):
+    for i in range(20000):
+        yield
 
-parser = argparse.ArgumentParser()
-parser.add_argument("--platform", default="colorlight_i9",
-                    choices=["colorlight_i9", "ecb_t8"])
-args = parser.parse_args()
+if len(sys.argv) > 1 and sys.argv[1] == "sim":
+    pwm_out = Signal()
+    dut     = TopModule(pwm_out, 8, 5)
+    dut.clock_domains.cd_sys = ClockDomain("sys")
+    run_simulation(dut, _test(dut), vcd_name="pwm_fade.vcd")
+else:
+    args = parse_args()
+    os.makedirs(BUILD_DIR, exist_ok=True)
 
-build_dir = os.path.abspath("build/gateware")
-os.makedirs(build_dir, exist_ok=True)
+    platform, sys_clk_freq, led_name, bitstream = get_platform(args.platform)
+    led = platform.request(led_name)
+    top = TopModule(1, sys_clk_freq, led)
 
-platform, sys_clk_freq, led_name, bitstream = get_platform(args.platform)
-led = platform.request(led_name, 0)
-my_blinker = Blink(1, sys_clk_freq, led)
-
-platform.build(my_blinker, build_dir=build_dir)
-load_bitstream(args.platform, build_dir, bitstream)
+    platform.build(top, build_dir=BUILD_DIR)
+    load_bitstream(platform, args.platform, BUILD_DIR, bitstream)
