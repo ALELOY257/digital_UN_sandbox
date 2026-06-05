@@ -1,8 +1,20 @@
-BUILD_DIR=/Work/Embedded/digital_UN/Litex/build/
+BUILD_DIR=../build/colorlight_i5/
 SERIAL?=/dev/ttyUSB1
+
+COMMONFLAGS += -DUART_POLLING 
+
 include $(BUILD_DIR)/software/include/generated/variables.mak
 include $(SOC_DIRECTORY)/software/common.mak
-OBJECTS= crt0.o isr.o helpers.o main.o 
+OBJECTS= crt0.o isr.o helpers.o main.o uart.o
+CFLAGS += -DUART_POLLING 
+
+
+define compile
+$(CC) -c $(CFLAGS) $(1) $< -o $@
+endef
+
+
+
 all: firmware.bin
 # pull in dependency info for *existing* .o files
 -include $(OBJECTS:.o=.d)
@@ -16,8 +28,9 @@ firmware.elf: $(OBJECTS)
 		-N -o $@ \
 		$(OBJECTS) \
 		$(PACKAGES:%=-L$(BUILD_DIR)/software/%) \
-		$(LIBS:lib%=-l%)
+		-Wl,--start-group $(LIBS:lib%=-l%) -Wl,--end-group
 	chmod -x $@
+
 #	@riscv64-unknown-elf-objdump  -h -S $< > firmware.lst
 main.o: main.c
 	$(compile)
@@ -31,5 +44,5 @@ litex_term: firmware.bin
 	@ls ${SERIAL} || (echo "\n\nNo se encuentra ${SERIAL} conectado, verifique conexión o cambie el valor de SERIAL=${SERIAL} por un puerto serial existente\n\n"; exit 123;)
 	litex_term ${SERIAL} --kernel firmware.bin
 clean:
-	$(RM) $(OBJECTS) $(OBJECTS:.o=.d) firmware.elf firmware.bin .*~ *~
+	$(RM) $(OBJECTS) $(OBJECTS:.o=.d) firmware.elf firmware.bin .*~ *~ *lst
 .PHONY: all main.o clean load

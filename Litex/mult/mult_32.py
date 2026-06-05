@@ -1,7 +1,6 @@
 from migen import *
 from litex.soc.interconnect.csr import *
 import os
-
 src_dir = os.path.dirname(os.path.abspath(__file__))
 
 class Mult32(Module, AutoCSR):
