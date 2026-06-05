@@ -1,0 +1,28 @@
+[*]
+[*] GTKWave Analyzer v3.3.121 (w)1999-2024 BSI
+[*] Mon Jun 23 22:24:35 2025
+[*]
+[dumpfile] "/Work/VeriVolt/TSNSensors/gateware/peripherals/adc_reader/spi_driver_TB.vcd"
+[dumpfile_mtime] "Mon Jun 23 22:23:08 2025"
+[dumpfile_size] 3492
+[savefile] "/Work/VeriVolt/TSNSensors/gateware/peripherals/adc_reader/spi_driver.gtkw"
+[timestart] 0
+[size] 1440 821
+[pos] -221 -111
+*-8.000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] spi_driver_TB.
+[sst_width] 278
+[signals_width] 102
+[sst_expanded] 1
+[sst_vpaned_height] 234
+@28
+spi_driver_TB.clk
+spi_driver_TB.reset
+spi_driver_TB.busy
+spi_driver_TB.end_frame
+spi_driver_TB.mem_busy
+spi_driver_TB.ncs
+spi_driver_TB.rb_en
+spi_driver_TB.sclk
+[pattern_trace] 1
+[pattern_trace] 0

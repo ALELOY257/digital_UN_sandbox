@@ -1,0 +1,50 @@
+[*]
+[*] GTKWave Analyzer v3.3.121 (w)1999-2024 BSI
+[*] Fri Aug 22 13:24:05 2025
+[*]
+[dumpfile] "/Work/VeriVolt/VeriSOM/gateware/migen_tutorial/DMA_cpu/cdc-slow-to-fast.vcd"
+[dumpfile_mtime] "Fri Aug 22 13:19:26 2025"
+[dumpfile_size] 5308
+[savefile] "/Work/VeriVolt/VeriSOM/gateware/migen_tutorial/DMA_cpu/cdc_stream.gtkw"
+[timestart] 0
+[size] 1648 951
+[pos] -325 -176
+*-5.629781 51 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 278
+[signals_width] 238
+[sst_expanded] 1
+[sst_vpaned_height] 498
+@28
+AsyncFIFO.usb_clk
+[color] 3
+AsyncFIFO.sink_ready
+[color] 3
+AsyncFIFO.sink_valid
+@23
+[color] 7
+AsyncFIFO.sink_payload_data[7:0]
+@28
+[color] 2
+AsyncFIFO.sink_first
+[color] 2
+AsyncFIFO.sink_last
+AsyncFIFO.asyncfifo_we
+AsyncFIFO.wrport_adr[1:0]
+@22
+AsyncFIFO.wrport_dat_w[9:0]
+AsyncFIFO.storage_data_0[9:0]
+AsyncFIFO.storage_data_1[9:0]
+AsyncFIFO.storage_data_2[9:0]
+AsyncFIFO.storage_data_3[9:0]
+AsyncFIFO.rdport_dat_r[9:0]
+@28
+AsyncFIFO.sys_clk
+AsyncFIFO.source_ready
+AsyncFIFO.source_valid
+@22
+AsyncFIFO.source_payload_data[7:0]
+@28
+AsyncFIFO.source_first
+AsyncFIFO.source_last
+[pattern_trace] 1
+[pattern_trace] 0

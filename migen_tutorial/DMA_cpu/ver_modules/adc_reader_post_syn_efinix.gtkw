@@ -1,0 +1,57 @@
+[*]
+[*] GTKWave Analyzer v3.3.121 (w)1999-2024 BSI
+[*] Tue Jul 22 22:12:39 2025
+[*]
+[dumpfile] "/Work/VeriVolt/VeriSOM/gateware/migen_tutorial/DMA_cpu/ver_modules/adc_reader_TB.vcd"
+[dumpfile_mtime] "Tue Jul 22 22:12:39 2025"
+[dumpfile_size] 2604171264
+[savefile] "/Work/VeriVolt/VeriSOM/gateware/migen_tutorial/DMA_cpu/ver_modules/adc_reader_post_syn_efinix.gtkw"
+[timestart] 165080000
+[size] 1440 853
+[pos] -1 -1
+*-22.000000 174040500 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] adc_reader_tb.
+[treeopen] adc_reader_tb.uut.
+[sst_width] 278
+[signals_width] 286
+[sst_expanded] 1
+[sst_vpaned_height] 510
+@22
+adc_reader_tb.uut.dat_b[15:0]
+adc_reader_tb.adr_b[12:0]
+@28
+adc_reader_tb.uut.reset
+[color] 2
+adc_reader_tb.uut.ncs
+[color] 2
+adc_reader_tb.uut.sclk
+[color] 3
+adc_reader_tb.uut.rstrb
+[color] 3
+adc_reader_tb.uut.dout
+[color] 3
+adc_reader_tb.uut.st_capture
+@29
+adc_reader_tb.uut.\mem_wr0.end_frame
+@28
+[color] 3
+adc_reader_tb.uut.\spi0.state_tx[2:0]
+@22
+adc_reader_tb.uut.data_in[7:0]
+adc_reader_tb.delay_counter[3:0]
+@8022
+adc_reader_tb.uut.dat_b[15:0]
+@22
+adc_reader_tb.adr_b[12:0]
+adc_reader_tb.uut.spi_rx_data[15:0]
+@28
+adc_reader_tb.uut.done_capture
+adc_reader_tb.uut.\mem_wr0.reset
+adc_reader_tb.uut.\mem_wr0.st_capture
+adc_reader_tb.uut.\mem_wr0.state[1:0]
+@22
+adc_reader_tb.uut.\dpram0.adr_a[15:0]
+adc_reader_tb.uut.\dpram0.dat_a[15:0]
+adc_reader_tb.uut.\spi0.next_state[3:0]
+[pattern_trace] 1
+[pattern_trace] 0

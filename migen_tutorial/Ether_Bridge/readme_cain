@@ -1,0 +1,4 @@
+./base.py
+./load.py
+litex_server --udp --udp-ip=10.42.0.220 
+./test_pwm

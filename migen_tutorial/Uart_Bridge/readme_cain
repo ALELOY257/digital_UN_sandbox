@@ -1,0 +1,4 @@
+./base.py
+./load.py
+litex_server --uart --uart-port=/dev/ttyUSBX
+./test_pwm

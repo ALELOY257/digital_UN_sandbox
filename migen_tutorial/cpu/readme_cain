@@ -1,0 +1,12 @@
+./base.py
+./load.py
+cd firmware
+make
+make litex_term
+//press <enter> key to get access to Litex's console
+//enter serialboot command
+litex> serialboot
+you must see the message:
+Running PWM demo. 
+And the led "beating"
+// press twice <CTRL+c> to exit litexterm and return to console

@@ -1,0 +1,28 @@
+[*]
+[*] GTKWave Analyzer v3.3.121 (w)1999-2024 BSI
+[*] Sun Jun 22 00:03:01 2025
+[*]
+[dumpfile] "/Work/VeriVolt/TSNSensors/gateware/peripherals/adc_reader/memory_writer_TB.vcd"
+[dumpfile_mtime] "Sun Jun 22 00:02:50 2025"
+[dumpfile_size] 2027
+[savefile] "/Work/VeriVolt/TSNSensors/gateware/peripherals/adc_reader/memor_writer.gtkw"
+[timestart] 0
+[size] 1440 821
+[pos] -1 -1
+*-6.372393 151 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] memory_writer_tb.
+[sst_width] 278
+[signals_width] 134
+[sst_expanded] 1
+[sst_vpaned_height] 234
+@25
+memory_writer_tb.address[12:0]
+@28
+memory_writer_tb.clk
+memory_writer_tb.end_frame
+memory_writer_tb.mem_busy
+memory_writer_tb.rb_sel
+memory_writer_tb.reset
+memory_writer_tb.we_a
+[pattern_trace] 1
+[pattern_trace] 0

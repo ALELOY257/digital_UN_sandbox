@@ -1,0 +1,96 @@
+[*]
+[*] GTKWave Analyzer v3.3.121 (w)1999-2024 BSI
+[*] Mon Jul 21 16:26:49 2025
+[*]
+[dumpfile] "/Work/VeriVolt/VeriSOM/gateware/migen_tutorial/DMA_cpu/ver_modules/adc_reader_TB.vcd"
+[dumpfile_mtime] "Mon Jul 21 16:18:11 2025"
+[dumpfile_size] 159626972
+[savefile] "/Work/VeriVolt/VeriSOM/gateware/migen_tutorial/DMA_cpu/ver_modules/adc_reader2.gtkw"
+[timestart] 0
+[size] 1440 821
+[pos] -221 -111
+*-14.000000 19330 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] adc_reader_tb.
+[treeopen] adc_reader_tb.uut.
+[treeopen] adc_reader_tb.uut.reg_bank0.
+[sst_width] 278
+[signals_width] 286
+[sst_expanded] 1
+[sst_vpaned_height] 510
+@28
+adc_reader_tb.uut.clk
+adc_reader_tb.uut.reset
+adc_reader_tb.uut.clk
+[color] 2
+adc_reader_tb.uut.spi0.busy
+@200
+-
+-spi_driver
+@28
+adc_reader_tb.uut.st_capture
+adc_reader_tb.init
+[color] 2
+adc_reader_tb.uut.ncs
+@29
+[color] 2
+adc_reader_tb.uut.sclk
+@28
+adc_reader_tb.uut.spi0.done_tx
+@22
+adc_reader_tb.uut.spi0.spi_tx_data[15:0]
+@28
+adc_reader_tb.uut.spi0.rstrb
+adc_reader_tb.uut.spi0.state_tx[2:0]
+@22
+adc_reader_tb.uut.spi0.bit_count[3:0]
+adc_reader_tb.uut.spi0.next_state[3:0]
+@28
+[color] 2
+adc_reader_tb.uut.end_frame
+[color] 2
+adc_reader_tb.uut.rb_sel
+[color] 2
+adc_reader_tb.uut.spi0.rb_en
+[color] 2
+adc_reader_tb.uut.dout
+adc_reader_tb.uut.reg_bank1.addr[2:0]
+adc_reader_tb.uut.mem_wr0.mem_busy
+adc_reader_tb.uut.st_conv
+adc_reader_tb.uut.rstrb
+@200
+-register_bank
+@c00022
+adc_reader_tb.uut.data_in[7:0]
+@28
+(0)adc_reader_tb.uut.data_in[7:0]
+(1)adc_reader_tb.uut.data_in[7:0]
+(2)adc_reader_tb.uut.data_in[7:0]
+(3)adc_reader_tb.uut.data_in[7:0]
+(4)adc_reader_tb.uut.data_in[7:0]
+(5)adc_reader_tb.uut.data_in[7:0]
+(6)adc_reader_tb.uut.data_in[7:0]
+(7)adc_reader_tb.uut.data_in[7:0]
+@1401200
+-group_end
+@28
+adc_reader_tb.uut.reg_bank0.addr[2:0]
+@22
+adc_reader_tb.delay_counter[3:0]
+@8022
+[color] 1
+adc_reader_tb.uut.dat_b[15:0]
+[color] 1
+adc_reader_tb.sin_dat[15:0]
+@22
+adc_reader_tb.adr_b[12:0]
+adc_reader_tb.uut.reg_bank0.\RegisterBank[0][15:0]
+adc_reader_tb.uut.reg_bank1.\RegisterBank[0][15:0]
+@28
+adc_reader_tb.uut.spi0.end_frame
+@22
+adc_reader_tb.uut.dpram0.\ram[0][15:0]
+adc_reader_tb.uut.dpram0.\ram[8][15:0]
+adc_reader_tb.uut.dpram0.\ram[16][15:0]
+adc_reader_tb.uut.dpram0.\ram[24][15:0]
+[pattern_trace] 1
+[pattern_trace] 0

@@ -1,0 +1,10 @@
+config,None,data_width,14
+config,None,depth,512
+config,None,samplerate,33333000
+signal,0,spi_adc0_sclk,1
+signal,0,spi_adc0_busy,1
+signal,0,spi_adc0_ncs,1
+signal,0,spi_adc0_st_conv,1
+signal,0,spi_adc0_data_in,8
+signal,0,spi_adc0_reset_ad,1
+signal,0,spi_adc0_dout,1

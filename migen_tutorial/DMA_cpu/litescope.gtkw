@@ -1,0 +1,42 @@
+[*]
+[*] GTKWave Analyzer v3.3.121 (w)1999-2024 BSI
+[*] Wed Jul  9 21:13:09 2025
+[*]
+[dumpfile] "/Work/VeriVolt/VeriSOM/gateware/migen_tutorial/DMA_cpu/dump.vcd"
+[dumpfile_mtime] "Wed Jul  9 21:12:47 2025"
+[dumpfile_size] 11386
+[savefile] "/Work/VeriVolt/VeriSOM/gateware/migen_tutorial/DMA_cpu/litescope.gtkw"
+[timestart] 0
+[size] 1440 853
+[pos] -1 -1
+*-21.000000 3610000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 278
+[signals_width] 198
+[sst_expanded] 1
+[sst_vpaned_height] 245
+@28
+scope_clk
+scope_trig
+spi_adc0_busy
+@c08022
+spi_adc0_data_in[7:0]
+@8028
+(0)spi_adc0_data_in[7:0]
+@28
+(1)spi_adc0_data_in[7:0]
+(2)spi_adc0_data_in[7:0]
+(3)spi_adc0_data_in[7:0]
+(4)spi_adc0_data_in[7:0]
+(5)spi_adc0_data_in[7:0]
+(6)spi_adc0_data_in[7:0]
+(7)spi_adc0_data_in[7:0]
+@1401200
+-group_end
+@28
+spi_adc0_ncs
+spi_adc0_reset_ad
+spi_adc0_sclk
+spi_adc0_st_conv
+spi_adc0_dout
+[pattern_trace] 1
+[pattern_trace] 0

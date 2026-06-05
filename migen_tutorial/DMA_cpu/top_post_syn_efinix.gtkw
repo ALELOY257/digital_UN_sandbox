@@ -1,0 +1,142 @@
+[*]
+[*] GTKWave Analyzer v3.3.121 (w)1999-2024 BSI
+[*] Thu Jul 10 14:37:01 2025
+[*]
+[dumpfile] "/Work/VeriVolt/VeriSOM/gateware/migen_tutorial/DMA_cpu/top_TB.vcd"
+[dumpfile_mtime] "Thu Jul 10 14:37:01 2025"
+[dumpfile_size] 1662287872
+[savefile] "/Work/VeriVolt/VeriSOM/gateware/migen_tutorial/DMA_cpu/top_post_syn_efinix.gtkw"
+[timestart] 0
+[size] 1440 821
+[pos] -221 -111
+*-13.000000 3560 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] top_tb.
+[treeopen] top_tb.uut.FemtoRV32.
+[sst_width] 278
+[signals_width] 406
+[sst_expanded] 1
+[sst_vpaned_height] 510
+@28
+top_tb.CLK
+@22
+top_tb.uut.\FemtoRV32.PC[31:0]
+@28
+top_tb.TXD
+top_tb.RXD
+top_tb.RXD
+[color] 3
+top_tb.uut.spi_adc0_busy
+[color] 3
+top_tb.uut.\adc_reader.st_conv
+[color] 6
+top_tb.uut.spi_adc0_sclk
+[color] 6
+top_tb.uut.spi_adc0_ncs
+@22
+top_tb.uut.\adc_reader.spi0.bit_count[3:0]
+@c00022
+[color] 6
+top_tb.spi_adc0_data_in[7:0]
+@28
+[color] 2
+(0)top_tb.spi_adc0_data_in[7:0]
+[color] 2
+(1)top_tb.spi_adc0_data_in[7:0]
+[color] 2
+(2)top_tb.spi_adc0_data_in[7:0]
+[color] 2
+(3)top_tb.spi_adc0_data_in[7:0]
+[color] 2
+(4)top_tb.spi_adc0_data_in[7:0]
+[color] 2
+(5)top_tb.spi_adc0_data_in[7:0]
+[color] 2
+(6)top_tb.spi_adc0_data_in[7:0]
+[color] 2
+(7)top_tb.spi_adc0_data_in[7:0]
+@1401200
+-group_end
+@28
+top_tb.uut.\adc_reader.reset
+[color] 3
+top_tb.uut.\adc_reader.spi0.done_tx
+[color] 3
+top_tb.uut.\adc_reader.spi0.rstrb
+[color] 3
+top_tb.uut.spi_adc0_reset_ad
+@23
+[color] 3
+top_tb.uut.\adc_reader.spi_tx_data[15:0]
+@22
+[color] 3
+top_tb.uut.\adc_reader.spi0.state[3:0]
+@28
+[color] 3
+top_tb.uut.\adc_reader.spi0.state_tx[2:0]
+@22
+[color] 3
+top_tb.uut.\adc_reader.spi0.next_state[3:0]
+@28
+[color] 3
+top_tb.uut.\adc_reader.spi0.csn_tx
+[color] 3
+top_tb.uut.\adc_reader.spi0.done_tx
+[color] 3
+top_tb.uut.\adc_reader.dout
+@22
+[color] 3
+top_tb.uut.\adc_reader.spi0.snd_bitcount[5:0]
+@c00022
+[color] 2
+top_tb.spi_adc0_data_in[7:0]
+@8028
+(0)top_tb.spi_adc0_data_in[7:0]
+@28
+(1)top_tb.spi_adc0_data_in[7:0]
+(2)top_tb.spi_adc0_data_in[7:0]
+(3)top_tb.spi_adc0_data_in[7:0]
+(4)top_tb.spi_adc0_data_in[7:0]
+(5)top_tb.spi_adc0_data_in[7:0]
+(6)top_tb.spi_adc0_data_in[7:0]
+(7)top_tb.spi_adc0_data_in[7:0]
+@1401200
+-group_end
+@22
+[color] 2
+top_tb.uut.\adc_reader.reg_bank0.RegisterBank[0][15:0]
+[color] 2
+top_tb.uut.\adc_reader.reg_bank0.RegisterBank[1][15:0]
+[color] 2
+top_tb.uut.\adc_reader.reg_bank0.RegisterBank[2][15:0]
+[color] 2
+top_tb.uut.\adc_reader.reg_bank0.RegisterBank[3][15:0]
+[color] 2
+top_tb.uut.\adc_reader.reg_bank0.RegisterBank[4][15:0]
+[color] 2
+top_tb.uut.\adc_reader.reg_bank0.RegisterBank[5][15:0]
+[color] 2
+top_tb.uut.\adc_reader.reg_bank0.RegisterBank[6][15:0]
+[color] 2
+top_tb.uut.\adc_reader.reg_bank0.RegisterBank[7][15:0]
+[color] 2
+top_tb.uut.\adc_reader.reg_bank1.RegisterBank[0][15:0]
+[color] 2
+top_tb.uut.\adc_reader.reg_bank1.RegisterBank[1][15:0]
+[color] 2
+top_tb.uut.\adc_reader.reg_bank1.RegisterBank[2][15:0]
+[color] 2
+top_tb.uut.\adc_reader.reg_bank1.RegisterBank[3][15:0]
+[color] 2
+top_tb.uut.\adc_reader.reg_bank1.RegisterBank[4][15:0]
+[color] 2
+top_tb.uut.\adc_reader.reg_bank1.RegisterBank[5][15:0]
+[color] 2
+top_tb.uut.\adc_reader.reg_bank1.RegisterBank[6][15:0]
+[color] 2
+top_tb.uut.\adc_reader.reg_bank1.RegisterBank[7][15:0]
+top_tb.uut.\adc_reader.dpram0.dat_a[15:0]
+top_tb.uut.\adc_reader.dpram0.adr_a[12:0]
+@28
+top_tb.uut.\adc_reader.dpram0.en_a
+[pattern_trace] 1
+[pattern_trace] 0

@@ -1,0 +1,38 @@
+[*]
+[*] GTKWave Analyzer v3.3.121 (w)1999-2024 BSI
+[*] Wed Aug 20 17:13:23 2025
+[*]
+[dumpfile] "/Work/VeriVolt/VeriSOM/gateware/migen_tutorial/DMA_cpu/rs232-tx.vcd"
+[dumpfile_mtime] "Wed Aug 20 17:04:46 2025"
+[dumpfile_size] 990422
+[savefile] "/Work/VeriVolt/VeriSOM/gateware/migen_tutorial/DMA_cpu/uart_stream.gtkw"
+[timestart] 43380
+[size] 1648 951
+[pos] -325 -176
+*-4.000000 43425 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[sst_width] 278
+[signals_width] 206
+[sst_expanded] 1
+[sst_vpaned_height] 280
+@28
+RS232PHYTX.sys_clk
+@200
+-SINK
+@28
+RS232PHYTX.sink_ready
+RS232PHYTX.sink_valid
+@22
+RS232PHYTX.sink_payload_data[7:0]
+@200
+-UART
+@28
++{RS232PHYTX.enable(busy)} RS232PHYTX.enable
+RS232PHYTX.tick
+@200
+-OUTPUT
+@28
+RS232PHYTX.pads_tx
+@200
+-
+[pattern_trace] 1
+[pattern_trace] 0

@@ -1,0 +1,25 @@
+{
+    "config": {
+        "legacy_mode": false,
+        "fast_spi_active_mode": false,
+        "creset_before_jtag_config": false,
+        "hw_servers": [],
+        "codebug_mode": false
+    },
+
+    "debugger": {
+        "always_launch_new_wave_window": false
+    },
+
+    "programmer": {
+
+    },
+
+    "svf_player": {
+
+    },
+
+    "connections": {
+
+    }
+}

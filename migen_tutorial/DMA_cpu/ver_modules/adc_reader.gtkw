@@ -1,0 +1,83 @@
+[*]
+[*] GTKWave Analyzer v3.3.121 (w)1999-2024 BSI
+[*] Sat Jul 12 13:55:25 2025
+[*]
+[dumpfile] "/Work/VeriVolt/VeriSOM/gateware/migen_tutorial/DMA_cpu/ver_modules/adc_reader_TB.vcd"
+[dumpfile_mtime] "Sat Jul 12 13:54:53 2025"
+[dumpfile_size] 158866765
+[savefile] "/Work/VeriVolt/VeriSOM/gateware/migen_tutorial/DMA_cpu/ver_modules/adc_reader.gtkw"
+[timestart] 0
+[size] 1440 821
+[pos] -221 -111
+*-23.000000 201500 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] adc_reader_tb.
+[treeopen] adc_reader_tb.uut.
+[treeopen] adc_reader_tb.uut.reg_bank0.
+[sst_width] 278
+[signals_width] 236
+[sst_expanded] 1
+[sst_vpaned_height] 510
+@28
+adc_reader_tb.uut.clk
+adc_reader_tb.uut.reset
+adc_reader_tb.uut.clk
+[color] 2
+adc_reader_tb.uut.spi0.busy
+@200
+-
+-spi_driver
+@28
+[color] 2
+adc_reader_tb.uut.ncs
+[color] 2
+adc_reader_tb.uut.sclk
+[color] 2
+adc_reader_tb.uut.end_frame
+[color] 2
+adc_reader_tb.uut.rb_sel
+[color] 2
+adc_reader_tb.uut.spi0.rb_en
+adc_reader_tb.uut.reg_bank1.addr[2:0]
+adc_reader_tb.uut.mem_wr0.mem_busy
+@200
+-register_bank
+@c00022
+adc_reader_tb.uut.data_in[7:0]
+@28
+(0)adc_reader_tb.uut.data_in[7:0]
+(1)adc_reader_tb.uut.data_in[7:0]
+(2)adc_reader_tb.uut.data_in[7:0]
+(3)adc_reader_tb.uut.data_in[7:0]
+(4)adc_reader_tb.uut.data_in[7:0]
+(5)adc_reader_tb.uut.data_in[7:0]
+(6)adc_reader_tb.uut.data_in[7:0]
+(7)adc_reader_tb.uut.data_in[7:0]
+@1401200
+-group_end
+@28
+adc_reader_tb.uut.reg_bank0.addr[2:0]
+@c10023
+adc_reader_tb.bit_counter[15:0]
+@28
+(0)adc_reader_tb.bit_counter[15:0]
+(1)adc_reader_tb.bit_counter[15:0]
+(2)adc_reader_tb.bit_counter[15:0]
+(3)adc_reader_tb.bit_counter[15:0]
+(4)adc_reader_tb.bit_counter[15:0]
+(5)adc_reader_tb.bit_counter[15:0]
+(6)adc_reader_tb.bit_counter[15:0]
+(7)adc_reader_tb.bit_counter[15:0]
+(8)adc_reader_tb.bit_counter[15:0]
+(9)adc_reader_tb.bit_counter[15:0]
+(10)adc_reader_tb.bit_counter[15:0]
+(11)adc_reader_tb.bit_counter[15:0]
+(12)adc_reader_tb.bit_counter[15:0]
+(13)adc_reader_tb.bit_counter[15:0]
+(14)adc_reader_tb.bit_counter[15:0]
+(15)adc_reader_tb.bit_counter[15:0]
+@1401201
+-group_end
+@22
+adc_reader_tb.delay_counter[3:0]
+[pattern_trace] 1
+[pattern_trace] 0

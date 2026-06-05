@@ -1,0 +1,76 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2025  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.53+81 (git sha1 378add372, g++ 14.2.0-19ubuntu2 -fPIC -O3)
+
+-- Parsing `adc_reader.v' using frontend ` -vlog2k' --
+
+1. Executing Verilog-2005 frontend: adc_reader.v
+Parsing Verilog input from `adc_reader.v' to AST representation.
+Storing AST representation for module `$abstract\adc_reader'.
+Successfully finished Verilog frontend.
+
+-- Parsing `dpram.v' using frontend ` -vlog2k' --
+
+2. Executing Verilog-2005 frontend: dpram.v
+Parsing Verilog input from `dpram.v' to AST representation.
+Storing AST representation for module `$abstract\dpram'.
+Successfully finished Verilog frontend.
+
+-- Parsing `memory_writer.v' using frontend ` -vlog2k' --
+
+3. Executing Verilog-2005 frontend: memory_writer.v
+Parsing Verilog input from `memory_writer.v' to AST representation.
+Storing AST representation for module `$abstract\memory_writer'.
+Successfully finished Verilog frontend.
+
+-- Parsing `register_bank.v' using frontend ` -vlog2k' --
+
+4. Executing Verilog-2005 frontend: register_bank.v
+Parsing Verilog input from `register_bank.v' to AST representation.
+Storing AST representation for module `$abstract\register_bank'.
+Successfully finished Verilog frontend.
+
+-- Parsing `spi_driver.v' using frontend ` -vlog2k' --
+
+5. Executing Verilog-2005 frontend: spi_driver.v
+Parsing Verilog input from `spi_driver.v' to AST representation.
+Storing AST representation for module `$abstract\spi_driver'.
+Successfully finished Verilog frontend.
+
+-- Running command ` synth_efinix -top adc_reader -json adc_reader.json; write_verilog -attr2comment adc_reader_synth.v' --
+
+6. Executing SYNTH_EFINIX pass.
+
+6.1. Executing Verilog-2005 frontend: /usr/local/bin/../share/yosys/efinix/cells_sim.v
+Parsing Verilog input from `/usr/local/bin/../share/yosys/efinix/cells_sim.v' to AST representation.
+Generating RTLIL representation for module `\EFX_LUT4'.
+Generating RTLIL representation for module `\EFX_ADD'.
+Generating RTLIL representation for module `\EFX_FF'.
+Generating RTLIL representation for module `\EFX_GBUFCE'.
+Generating RTLIL representation for module `\EFX_RAM_5K'.
+Successfully finished Verilog frontend.
+
+6.2. Executing HIERARCHY pass (managing design hierarchy).
+
+6.3. Executing AST frontend in derive mode using pre-parsed AST for module `\adc_reader'.
+Generating RTLIL representation for module `\adc_reader'.
+
+6.3.1. Analyzing design hierarchy..
+Top module:  \adc_reader
+Parameter \adr_width = 14
+Parameter \dat_width = 16
+
+6.3.2. Executing AST frontend in derive mode using pre-parsed AST for module `\dpram'.
+Parameter \adr_width = 14
+Parameter \dat_width = 16
+Generating RTLIL representation for module `$paramod$991cc943f5643b041a7daa0f8e4fc9ac88c1aee9\dpram'.
+Parameter \adr_width = 14
+
+6.3.3. Executing AST frontend in derive mode using pre-parsed AST for module `\memory_writer'.
+Parameter \adr_width = 14
+Generating RTLIL representation for module `$paramod\memory_writer\adr_width=s32'00000000000000000000000000001110'.
+ERROR: Module `\timmer_sample' referenced in module `\adc_reader' in cell `\timmer0' is not part of the design.
