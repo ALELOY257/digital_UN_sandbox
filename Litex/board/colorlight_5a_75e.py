@@ -197,8 +197,8 @@ _io_v6_0 = [
 
     # Serial
     ("serial", 0,
-        Subsignal("tx", Pins("T6")), # led (J19 DATA_LED-)
-        Subsignal("rx", Pins("R7")), # btn (J19 KEY+)
+        Subsignal("tx", Pins("C4")), # led (J19 DATA_LED-)
+        Subsignal("rx", Pins("D4")), # btn (J19 KEY+)
         IOStandard("LVCMOS33")
     ),
 
