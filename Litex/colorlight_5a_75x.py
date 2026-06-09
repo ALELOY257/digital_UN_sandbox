@@ -63,7 +63,9 @@ from litedram.phy import GENSDRPHY, HalfRateGENSDRPHY
 
 from liteeth.phy.ecp5rgmii import LiteEthPHYRGMII
 
-from Led_panel_12bpp import led_panel_4k
+#from Led_panel_12bpp import led_panel_4k
+from mult import mult_32
+from ws2812 import ws2812
 
 
 # CRG ----------------------------------------------------------------------------------------------
@@ -177,6 +179,15 @@ class BaseSoC(SoCCore):
 #        if with_etherbone:
 #            self.add_etherbone(phy=self.ethphy, ip_address=eth_ip, data_width=32)
 
+        #MULTIPLIER
+        SoCCore.add_csr(self,"mult0")
+        self.submodules.mult0 = mult_32.Mult32(platform)
+
+        # LED MATRIX
+        SoCCore.add_csr(self,"disp0")
+        self.submodules.disp0 = ws2812.WS2812(platform, platform.request("led_matrix",0))
+
+
         # Leds -------------------------------------------------------------------------------------
         # Disable leds when serial is used.
         if (platform.lookup_request("serial", loose=True) is None and with_led_chaser
@@ -187,8 +198,8 @@ class BaseSoC(SoCCore):
 
 
         #LED_PANEL module
-        SoCCore.add_csr(self,"led_panel0")
-        self.submodules.led_panel0 = led_panel_4k.LED_PANEL(platform.request("led_panel",0))
+#        SoCCore.add_csr(self,"led_panel0")
+#        self.submodules.led_panel0 = led_panel_4k.LED_PANEL(platform.request("led_panel",0))
 
 
 

@@ -46,13 +46,12 @@ static int read_int(void)
 int main(void)
 {
 	int a,b,c;
-	printf("Testing verilog multiplier \n");
+	printf("Testing verilog hw multiplier \n");
 	while(1) {
         printf("Ingrese A: ");
         a = read_int();
         printf("Ingrese B: ");
         b = read_int();
-
 		mult0__A_write(a);
 		mult0__B_write(b);
 		mult0_init_write(1);

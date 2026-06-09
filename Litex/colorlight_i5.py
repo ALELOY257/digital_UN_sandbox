@@ -12,7 +12,7 @@ from litex.gen import *
 
 from litex.build.io import DDROutput
 
-from litex_boards.platforms import colorlight_i5
+from board import colorlight_i5
 
 from litex.soc.cores.clock import *
 from litex.soc.integration.soc_core import *
@@ -28,6 +28,7 @@ from litedram.phy import GENSDRPHY, HalfRateGENSDRPHY
 from liteeth.phy.ecp5rgmii import LiteEthPHYRGMII
 
 from mult import mult_32
+from ws2812 import ws2812
 
 
 
@@ -146,6 +147,10 @@ class BaseSoC(SoCCore):
         #MULTIPLIER
         SoCCore.add_csr(self,"mult0")
         self.submodules.mult0 = mult_32.Mult32(platform)
+
+        # LED MATRIX
+        SoCCore.add_csr(self,"disp0")
+        self.submodules.disp0 = ws2812.WS2812(platform, platform.request("led_matrix",0))
 
         # SPI Flash --------------------------------------------------------------------------------
         if board == "i5":

@@ -11,8 +11,7 @@ import copy
 
 from litex.build.generic_platform import *
 from litex.build.lattice import LatticeECP5Platform
-from litex.build.lattice.programmer import  EcpDapProgrammer
-
+from litex.build.lattice.programmer import EcpDapProgrammer
 
 # IOs ----------------------------------------------------------------------------------------------
 
@@ -99,6 +98,10 @@ _io_v7_0 = [ # Documented by @smunaut
         IOStandard("LVCMOS33")
     ),
 
+    ("led_matrix", 0,
+        Subsignal("dout",   Pins("G5")),
+    ),
+
     # GPDI
     ("gpdi", 0,
         Subsignal("clk_p",   Pins("J19"), IOStandard("LVCMOS33D"), Misc("DRIVE=4")),
@@ -109,18 +112,6 @@ _io_v7_0 = [ # Documented by @smunaut
         #Subsignal("data1_n", Pins("F19"), IOStandard("LVCMOS33D"), Misc("DRIVE=4")),
         Subsignal("data2_p", Pins("C20"), IOStandard("LVCMOS33D"), Misc("DRIVE=4")),
         #Subsignal("data2_n", Pins("D19"), IOStandard("LVCMOS33D"), Misc("DRIVE=4")),
-    ),
-    #LED_panel
-    ("led_panel", 0,
-        Subsignal("LP_CLK", Pins("N2"),   IOStandard("LVCMOS33")),  # clock panel
-        Subsignal("LATCH",  Pins("M1"),   IOStandard("LVCMOS33")),  # latch / LAT
-        Subsignal("NOE",    Pins("V1"),   IOStandard("LVCMOS33")),  # OE (activo bajo)
-        # ROW: usamos 5 pines (A,B,C,D,E) — la Tang usó 5 también
-        Subsignal("ROW",    Pins("T3 M3 T2 N3 R3"), IOStandard("LVCMOS33")),
-        # RGB0 = R0,G0,B0
-        Subsignal("RGB0",   Pins("J18 J16 P16"), IOStandard("LVCMOS33")),
-        # RGB1 = R1,G1,B1
-        Subsignal("RGB1",   Pins("L4 M4 N4"), IOStandard("LVCMOS33")),
     ),
 ]
 
@@ -218,7 +209,7 @@ class Platform(LatticeECP5Platform):
         LatticeECP5Platform.__init__(self, device, io, connectors=connectors, toolchain=toolchain)
 
     def create_programmer(self):
-        return OpenFPGALoader()
+        return EcpDapProgrammer()
 
     def do_finalize(self, fragment):
         LatticeECP5Platform.do_finalize(self, fragment)
