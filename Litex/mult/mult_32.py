@@ -29,7 +29,7 @@ class Mult32(Module, AutoCSR):
 
 '''
 mem_write 0xf0000000 200
-mem_write 0xf0000004 200
+mem_write 0xf0000004 400
 mem_write 0xf0000008 1
 mem_write 0xf0000008 0
 mem_read  0xf000000C 

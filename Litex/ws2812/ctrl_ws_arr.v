@@ -48,7 +48,10 @@ always @(posedge clk ) begin
                 else
                     state = START_SEND;
             END_SEND:
-                state = END_SEND;
+                if(init_m)
+                    state = START;
+                else 
+                    state = END_SEND;
             default:
                 state = START;
 

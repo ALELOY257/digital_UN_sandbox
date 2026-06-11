@@ -15,6 +15,13 @@ else ifeq ($(TARGET), DEMO_ws2812_led_array)
 	lsr_wsled.v count_wsled.v ctrl_wsled.v ws2812_led.v         \
 	led_mem.v count_addr.v ctrl_ws_arr.v comp_ws_arr.v ws2812_led_array.v \
 	DEMO_ws2812_led_array.v
+else ifeq ($(TARGET), ws2812_periph)
+    OBJS = comp_ws.v  count_ws.v  ctrl_ws.v  mux_ws.v  ws2812.v \
+	lsr_wsled.v count_wsled.v ctrl_wsled.v ws2812_led.v         \
+	led_mem_dual.v count_addr.v ctrl_ws_arr.v comp_ws_arr.v \
+	ws2812_periph.v
+
+
 else
     OBJS = ${TARGET}.v
 endif

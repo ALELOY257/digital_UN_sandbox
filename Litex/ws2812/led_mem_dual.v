@@ -25,7 +25,7 @@ module led_mem_dual#(
     always @(negedge clk)
     begin
         if (we_a) begin
-            MEM[w_address[addr_lenght -1 :0]] <= w_data;
+            MEM[w_address] <= w_data;
         end 
     end
 

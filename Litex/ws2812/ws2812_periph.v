@@ -12,7 +12,7 @@ module ws2812_periph (
 );
 
 parameter SIZE   = 8;
-parameter N_LEDS = 2**SIZE;
+parameter N_LEDS = 8'h2**SIZE;
 
 wire init_led;
 wire rst_addr;

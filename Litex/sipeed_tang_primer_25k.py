@@ -22,6 +22,7 @@ from litedram.phy import GENSDRPHY, HalfRateGENSDRPHY
 from board import sipeed_tang_primer_25k
 
 from Led_panel_12bpp import led_panel_4k
+from mult import mult_32
 
 # CRG ----------------------------------------------------------------------------------------------
 
@@ -117,7 +118,9 @@ class BaseSoC(SoCCore):
         SoCCore.add_csr(self,"led_panel0")
         self.submodules.led_panel0 = led_panel_4k.LED_PANEL(platform.request("led_panel",0))
 
-
+        #MULTIPLIER
+        SoCCore.add_csr(self,"mult0")
+        self.submodules.mult0 = mult_32.Mult32(platform)
 
         # SPI Flash --------------------------------------------------------------------------------
         if with_spi_flash:
