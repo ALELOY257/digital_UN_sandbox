@@ -71,7 +71,7 @@ echo "[7/7] Copiando .init y sintetizando para simulación..."
 cp ${BUILD_DIR}/gateware/colorlight_i5_rom.init .
 cp ${BUILD_DIR}/gateware/colorlight_i5_sram.init .
 echo "      OK: archivos .init copiados"
-make sim_lattice
+#make sim_lattice
 
 echo ""
 echo "========================================================"

@@ -11,8 +11,8 @@ parameter c_BIT_PERIOD     = 8680;
    reg       CLK;
    reg       RESET;
    reg       RXD;
-   reg       TXD;
-
+   wire      TXD;
+   
    colorlight_i5 uut(
     .clk25(CLK),
     .cpu_reset_n(!RESET),
@@ -64,14 +64,15 @@ parameter c_BIT_PERIOD     = 8680;
 
     $dumpfile("colorlight_i5_TB.vcd");
     $dumpvars(-1,colorlight_i5_TB);
-    //for(idx = 0; idx < 32; idx = idx +1)  $dumpvars(0, top_tb.uut.\adc_reader.dpram0.ram[idx]);
+
+    for(idx = 0; idx < 63; idx = idx +1)  $dumpvars(0, colorlight_i5_TB.uut.ws2812_periph.mem0.MEM[idx]);
     //$dumpvars(0, bench.uut.CPU.registerFile[10],bench);
 
     //for(idx = 0; idx < 50; idx = idx +1)  $dumpvars(0, bench.uut.dpram_p0.dpram0.ram[idx]);
     //$dumpvars(0, bench.uut.CPU.registerFile[10],bench);
 
 
-    #(tck*5000000) $finish;
+    #(tck*100000) $finish;
  end
  
  

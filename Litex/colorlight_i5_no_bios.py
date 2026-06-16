@@ -28,7 +28,7 @@ from litedram.phy import GENSDRPHY, HalfRateGENSDRPHY
 from liteeth.phy.ecp5rgmii import LiteEthPHYRGMII
 
 from mult import mult_32
-#from ws2812 import ws2812
+from ws2812 import ws2812
 
 import os
 
@@ -138,7 +138,7 @@ class BaseSoC(SoCCore):
 
         kwargs.pop("integrated_rom_size", None)
         kwargs.pop("integrated_rom_init", None)
-        kwargs["integrated_rom_size"] = 0xC000
+        kwargs["integrated_rom_size"] = 0x10000
         kwargs["cpu_reset_address"]   = 0x00000000
         rom_bin = "NO_bios_fw/firmware.bin"
         if os.path.exists(rom_bin):
@@ -158,8 +158,8 @@ class BaseSoC(SoCCore):
         self.submodules.mult0 = mult_32.Mult32(platform)
 
         # LED MATRIX
-#        SoCCore.add_csr(self,"disp0")
-#        self.submodules.disp0 = ws2812.WS2812(platform, platform.request("led_matrix",0))
+        SoCCore.add_csr(self,"disp0")
+        self.submodules.disp0 = ws2812.WS2812(platform, platform.request("led_matrix",0))
 
         # SPI Flash --------------------------------------------------------------------------------
         if board == "i5":
@@ -170,15 +170,16 @@ class BaseSoC(SoCCore):
         from litespi.opcodes import SpiNorFlashOpCodes as Codes
         self.add_spi_flash(mode="1x", module=SpiFlashModule(Codes.READ_1_1_1))
 
-        # SDR SDRAM --------------------------------------------------------------------------------
+        # SDR SDRAM - deshabilitado para simulación
         if not self.integrated_main_ram_size:
-            sdrphy_cls = HalfRateGENSDRPHY if sdram_rate == "1:2" else GENSDRPHY
-            self.sdrphy = sdrphy_cls(platform.request("sdram"))
-            self.add_sdram("sdram",
-                phy           = self.sdrphy,
-                module        = M12L64322A(sys_clk_freq, sdram_rate),
-                l2_cache_size = kwargs.get("l2_size", 8192)
-            )
+            if not os.environ.get('SIMULATION'):
+                sdrphy_cls = HalfRateGENSDRPHY if sdram_rate == "1:2" else GENSDRPHY
+                self.sdrphy = sdrphy_cls(platform.request("sdram"))
+                self.add_sdram("sdram",
+                    phy           = self.sdrphy,
+                    module        = M12L64322A(sys_clk_freq, sdram_rate),
+                    l2_cache_size = kwargs.get("l2_size", 8192)
+                )
 
         # Ethernet / Etherbone ---------------------------------------------------------------------
         if with_ethernet or with_etherbone:

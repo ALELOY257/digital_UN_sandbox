@@ -47,25 +47,27 @@ static int read_int(void)
 int main(void)
 {
 	int a,b,c;
-//	printf("Testing verilog hw multiplier \n");
+	printf("Testing verilog hw multiplier \n");
 	while(1) {
-//        printf("Ingrese A: ");
-//        a = read_int();
-//        printf("Ingrese B: ");
-//        b = read_int();
-		mult0__A_write(0x10);
-		mult0__B_write(0x20);
-		mult0_init_write(1);
-		mult0_init_write(0);
-        while(mult0_done_read() == 0)
-		c = mult0_pp_read();
-		mult0__A_write(0x20);
-		mult0__B_write(0x20);
-		mult0_init_write(1);
-		mult0_init_write(0);
+        printf("Ingrese A: ");
+        a = read_int();
+        printf("Ingrese B: ");
+        b = read_int();
+
+        mult0_init_write(1);
+        mult0_init_write(1);
+        mult0_init_write(0);
         while(mult0_done_read() == 0){}
-		c = mult0_pp_read();
-        printf("A = %d, B = %d, A*B = %d\n\n", a, b, c);
+        c = mult0_pp_read();
+        printf("A = %d, B = %d, A*B = %d\n", a, b, c);
+/*
+        for(a=0; a < 64; a++){
+            disp0_w_data_write(a);
+            disp0_w_address_write(a);
+        }
+        disp0_init_write(1);
+        disp0_init_write(0);
+*/
 	}
 	return 0;
 }
