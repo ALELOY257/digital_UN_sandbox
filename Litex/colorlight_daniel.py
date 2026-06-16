@@ -12,7 +12,7 @@ from litex.gen import *
 
 from litex.build.io import DDROutput
 
-from board import colorlight_i5
+from board import colorlight_daniel
 
 from litex.soc.cores.clock import *
 from litex.soc.integration.soc_core import *
@@ -25,13 +25,10 @@ from litex.soc.interconnect.csr import *
 from litedram.modules import M12L64322A # Compatible with EM638325-6H.
 from litedram.phy import GENSDRPHY, HalfRateGENSDRPHY
 
-from liteeth.phy.ecp5rgmii import LiteEthPHYRGMII
+from liteeth.phy.rmii import LiteEthPHYRMII
 
-from mult import mult_32
-#from ws2812 import ws2812
 
-import os
-
+from Led_panel_12bpp import led_panel_4k
 
 # CRG ----------------------------------------------------------------------------------------------
 
@@ -101,7 +98,7 @@ class _CRG(LiteXModule):
 
 class BaseSoC(SoCCore):
     def __init__(self, board="i5", revision="7.0", toolchain="trellis", sys_clk_freq=60e6,
-        with_ethernet          = False,
+        with_ethernet          = True,
         with_etherbone         = False,
         local_ip               = "",
         remote_ip              = "",
@@ -114,18 +111,14 @@ class BaseSoC(SoCCore):
         **kwargs):
         board = board.lower()
         assert board in ["i5", "i9"]
-        platform = colorlight_i5.Platform(board=board, revision=revision, toolchain=toolchain)
-
-########################################################################################################
-######                        INCLUIR LOS ARCHIVOS VERILOG ACA                              ############
-########################################################################################################
-
-#        for src in ["rsr.v", "lsr_mult.v", "comp.v", "acc.v", "control_mult.v", "mult_32.v"]:
-#            platform.add_source(os.path.join(src_dir, src))
-
-########################################################################################################
-
-
+        platform = colorlight_daniel.Platform(board=board, revision=revision, toolchain=toolchain)
+        platform.add_source("Led_panel_12bpp/led_panel_4k.v")
+        platform.add_source("Led_panel_12bpp/mux_led.v")
+        platform.add_source("Led_panel_12bpp/memory_V2.v")
+        platform.add_source("Led_panel_12bpp/lsr_led.v")
+        platform.add_source("Led_panel_12bpp/ctrl_lp4k.v")
+        platform.add_source("Led_panel_12bpp/count.v")
+        platform.add_source("Led_panel_12bpp/comp.v")
         # CRG --------------------------------------------------------------------------------------
         with_usb_pll   = kwargs.get("uart_name", None) == "usb_acm"
         with_video_pll = with_video_terminal or with_video_framebuffer
@@ -136,30 +129,13 @@ class BaseSoC(SoCCore):
             sdram_rate       = sdram_rate
         )
 
-        kwargs.pop("integrated_rom_size", None)
-        kwargs.pop("integrated_rom_init", None)
-        kwargs["integrated_rom_size"] = 0xC000
-        kwargs["cpu_reset_address"]   = 0x00000000
-        rom_bin = "NO_bios_fw/firmware.bin"
-        if os.path.exists(rom_bin):
-            kwargs["integrated_rom_init"] = "NO_bios_fw/firmware.bin"
         # SoCCore ----------------------------------------------------------------------------------
-        SoCCore.__init__(self, platform, int(sys_clk_freq), 
-                         ident = "LiteX SoC on Colorlight " + board.upper(), **kwargs)
+        SoCCore.__init__(self, platform, int(sys_clk_freq), ident = "LiteX SoC on Colorlight " + board.upper(), **kwargs)
 
         # Leds -------------------------------------------------------------------------------------
         if with_led_chaser:
             ledn = platform.request_all("user_led_n")
             self.leds = LedChaser(pads=ledn, sys_clk_freq=sys_clk_freq)
-
-
-        #MULTIPLIER
-        SoCCore.add_csr(self,"mult0")
-        self.submodules.mult0 = mult_32.Mult32(platform)
-
-        # LED MATRIX
-#        SoCCore.add_csr(self,"disp0")
-#        self.submodules.disp0 = ws2812.WS2812(platform, platform.request("led_matrix",0))
 
         # SPI Flash --------------------------------------------------------------------------------
         if board == "i5":
@@ -170,22 +146,27 @@ class BaseSoC(SoCCore):
         from litespi.opcodes import SpiNorFlashOpCodes as Codes
         self.add_spi_flash(mode="1x", module=SpiFlashModule(Codes.READ_1_1_1))
 
-        # SDR SDRAM --------------------------------------------------------------------------------
-        if not self.integrated_main_ram_size:
-            sdrphy_cls = HalfRateGENSDRPHY if sdram_rate == "1:2" else GENSDRPHY
-            self.sdrphy = sdrphy_cls(platform.request("sdram"))
-            self.add_sdram("sdram",
-                phy           = self.sdrphy,
-                module        = M12L64322A(sys_clk_freq, sdram_rate),
-                l2_cache_size = kwargs.get("l2_size", 8192)
+        # SDR SDRAM --------------------------
+        sdrphy_cls = HalfRateGENSDRPHY if sdram_rate == "1:2" else GENSDRPHY
+        self.sdrphy = sdrphy_cls(platform.request("sdram"))
+        self.add_sdram("sdram",
+            phy           = self.sdrphy,
+            module        = M12L64322A(sys_clk_freq, sdram_rate),
+            l2_cache_size = kwargs.get("l2_size", 8192)
             )
+            
+        #LED_PANEL module
+        SoCCore.add_csr(self,"led_panel0")
+        self.submodules.led_panel0 = led_panel_4k.LED_PANEL(platform.request("led_panel",0))
+
 
         # Ethernet / Etherbone ---------------------------------------------------------------------
         if with_ethernet or with_etherbone:
-            self.ethphy = LiteEthPHYRGMII(
-                clock_pads = self.platform.request("eth_clocks", eth_phy),
-                pads       = self.platform.request("eth", eth_phy),
-                tx_delay = 0)
+            self.ethphy = LiteEthPHYRMII(
+                clock_pads = self.platform.request("eth_clocks"),
+                pads       = self.platform.request("eth"),
+                refclk_cd  = None
+                )
             if with_ethernet:
                 self.add_ethernet(phy=self.ethphy)
             if with_etherbone:
@@ -217,7 +198,7 @@ class BaseSoC(SoCCore):
 
 def main():
     from litex.build.parser import LiteXArgumentParser
-    parser = LiteXArgumentParser(platform=colorlight_i5.Platform, description="LiteX SoC on Colorlight I5.")
+    parser = LiteXArgumentParser(platform=colorlight_daniel.Platform, description="LiteX SoC on Colorlight I5.")
     parser.add_target_argument("--board",            default="i5",             help="Board type (i5).")
     parser.add_target_argument("--revision",         default="7.0",            help="Board revision (7.0).")
     parser.add_target_argument("--sys-clk-freq",     default=60e6, type=float, help="System clock frequency.")
@@ -251,7 +232,7 @@ def main():
         with_video_framebuffer = args.with_video_framebuffer,
         **parser.soc_argdict
     )
-    soc.platform.add_extension(colorlight_i5._sdcard_pmod_io)
+    soc.platform.add_extension(colorlight_daniel._sdcard_pmod_io)
     if args.with_spi_sdcard:
         soc.add_spi_sdcard()
     if args.with_sdcard:
@@ -267,15 +248,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-'''
-# 1. Primera pasada: solo genera headers (sin compilar BIOS ni firmware)
-./colorlight_i5_no_bios.py --no-compile-gateware
-
-# 2. Compila tu firmware
-make -C NO_bios_fw/
-
-# 3. Build final: embebe firmware.bin en la ROM del bitstream
-./colorlight_i5_no_bios.py --build
-'''

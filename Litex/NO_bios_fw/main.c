@@ -5,6 +5,7 @@
 #include <uart.h>
 #include <console.h>
 #include <generated/csr.h>
+
 void my_busy_wait(unsigned int ms)
 {
 	timer0_en_write(0);
@@ -56,7 +57,13 @@ int main(void)
 		mult0__B_write(0x20);
 		mult0_init_write(1);
 		mult0_init_write(0);
-        while(mult0_done_read() == 0);
+        while(mult0_done_read() == 0)
+		c = mult0_pp_read();
+		mult0__A_write(0x20);
+		mult0__B_write(0x20);
+		mult0_init_write(1);
+		mult0_init_write(0);
+        while(mult0_done_read() == 0){}
 		c = mult0_pp_read();
         printf("A = %d, B = %d, A*B = %d\n\n", a, b, c);
 	}

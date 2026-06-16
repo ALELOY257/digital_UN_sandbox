@@ -1,4 +1,4 @@
-`timescale 1us / 1ns
+`timescale 1ns / 1ps
 `define SIMULATION
 
 module colorlight_i5_TB();
@@ -12,9 +12,12 @@ parameter c_BIT_PERIOD     = 8680;
    reg       RESET;
    reg       RXD;
    reg       TXD;
+
    colorlight_i5 uut(
-     .clk25(CLK),
-     .cpu_reset_n(!RESET)
+    .clk25(CLK),
+    .cpu_reset_n(!RESET),
+    .serial_tx(TXD),
+    .serial_rx(RXD)
    );
     // Generación de clock principal
     initial begin
@@ -67,7 +70,8 @@ parameter c_BIT_PERIOD     = 8680;
     //for(idx = 0; idx < 50; idx = idx +1)  $dumpvars(0, bench.uut.dpram_p0.dpram0.ram[idx]);
     //$dumpvars(0, bench.uut.CPU.registerFile[10],bench);
 
-    #(tck*50000) $finish;
+
+    #(tck*5000000) $finish;
  end
  
  

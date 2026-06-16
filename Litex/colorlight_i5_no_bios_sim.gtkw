@@ -1,0 +1,44 @@
+[*]
+[*] GTKWave Analyzer v3.3.121 (w)1999-2024 BSI
+[*] Tue Jun 16 19:38:03 2026
+[*]
+[dumpfile] "/Work/Embedded/digital_UN/Litex/colorlight_i5_TB.vcd"
+[dumpfile_mtime] "Tue Jun 16 19:37:32 2026"
+[dumpfile_size] 3313664
+[savefile] "/Work/Embedded/digital_UN/Litex/colorlight_i5_no_bios_sim.gtkw"
+[timestart] 0
+[size] 1648 951
+[pos] -1 -1
+*-22.788158 9370000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] colorlight_i5_TB.
+[treeopen] colorlight_i5_TB.uut.
+[treeopen] colorlight_i5_TB.uut.mult_32.
+[treeopen] colorlight_i5_TB.uut.VexRiscv.
+[sst_width] 470
+[signals_width] 311
+[sst_expanded] 1
+[sst_vpaned_height] 608
+@28
+colorlight_i5_TB.uut.sys_clk
+colorlight_i5_TB.uut.cpu_reset_n
+colorlight_i5_TB.uut.sys_rst
+@22
+colorlight_i5_TB.uut.VexRiscv.decode_PC[31:0]
+colorlight_i5_TB.uut.mult_32.A[15:0]
+colorlight_i5_TB.uut.mult_32.B[15:0]
+@28
+colorlight_i5_TB.uut.mult_32.init
+colorlight_i5_TB.uut.mult_32.w_add
+colorlight_i5_TB.uut.mult_32.w_sh
+colorlight_i5_TB.uut.mult_32.done
+colorlight_i5_TB.uut.mult_32.control0.state[2:0]
+colorlight_i5_TB.uut.mult_32.done
+@22
+colorlight_i5_TB.uut.mult_32.pp[31:0]
+@28
+colorlight_i5_TB.uut.mult_32.control0.rst
+colorlight_i5_TB.uut.mult_32.control0.init
+colorlight_i5_TB.uut.serial_rx
+colorlight_i5_TB.uut.serial_tx
+[pattern_trace] 1
+[pattern_trace] 0

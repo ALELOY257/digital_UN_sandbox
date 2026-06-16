@@ -5,7 +5,7 @@ COMMONFLAGS += -DUART_POLLING
 
 include $(BUILD_DIR)/software/include/generated/variables.mak
 include $(SOC_DIRECTORY)/software/common.mak
-OBJECTS= crt0.o isr.o helpers.o main.o uart.o
+OBJECTS= crt0.o isr.o main.o uart.o
 
 
 define compile
