@@ -1,13 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.121 (w)1999-2024 BSI
-[*] Tue Jun 16 23:34:11 2026
+[*] Wed Jun 17 00:18:13 2026
 [*]
-[dumpfile] "(null)"
+[dumpfile] "/Work/Embedded/digital_UN/Litex/colorlight_i5_TB.vcd"
+[dumpfile_mtime] "Wed Jun 17 00:17:20 2026"
+[dumpfile_size] 688270002
 [savefile] "/Work/Embedded/digital_UN/Litex/colorlight_i5_no_bios_sim.gtkw"
 [timestart] 0
 [size] 1648 951
 [pos] -1 -1
-*-22.788158 9450000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-29.788158 2201000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] colorlight_i5_TB.
 [treeopen] colorlight_i5_TB.uut.
 [treeopen] colorlight_i5_TB.uut.VexRiscv.
@@ -54,7 +56,9 @@ colorlight_i5_TB.uut.ws2812_periph.dout
 colorlight_i5_TB.uut.ws2812_periph.ctrl0.state[2:0]
 colorlight_i5_TB.uut.ws2812_periph.done_led
 colorlight_i5_TB.uut.ws2812_periph.ctrl0.init_m
-@23
+@29
+colorlight_i5_TB.uut.ws2812_periph.done
+@22
 colorlight_i5_TB.uut.ws2812_periph.mem0.\MEM[0][23:0]
 colorlight_i5_TB.uut.ws2812_periph.mem0.\MEM[1][23:0]
 colorlight_i5_TB.uut.ws2812_periph.mem0.\MEM[2][23:0]

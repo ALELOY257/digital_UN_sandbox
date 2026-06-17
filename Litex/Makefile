@@ -54,7 +54,7 @@ all: sim
 
 
 fw_no_bios:
-	rm -rf *vpp *.vcd build
+	rm -rf *vpp *.vcd build $(FW_NB_DIR)/*bin
 	dd if=/dev/zero of=$(FW_NB_DIR)/firmware.bin bs=1 count=$(ROM_SIZE) status=none
 
 	@echo "=== [2/6] Generando regions.ld y headers CSR ==="
@@ -78,6 +78,7 @@ sim_efinix:
 	gtkwave $(TARGET)_TB.vcd
 	
 sim_lattice:
+	rm -rf build *vpp *vcd $(FW_NB_DIR)/*bin
 	@echo "=== [1/6] Creando firmware.bin dummy ==="
 	dd if=/dev/zero of=$(FW_NB_DIR)/firmware.bin bs=1 count=$(ROM_SIZE) status=none
 
