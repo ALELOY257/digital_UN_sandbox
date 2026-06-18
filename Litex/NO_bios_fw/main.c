@@ -66,8 +66,10 @@ int main(void)
 //        printf("A = %d, B = %d, A*B = %d\n", a, b, c);
 
         for(a=0; a < 64; a++){
-            disp0_w_data_write(a+b);
             disp0_w_address_write(a);
+            disp0_w_data_write(a+b);
+            disp0_we_a_write(1);
+            disp0_we_a_write(0);
         }
         disp0_init_write(1);
         disp0_init_write(0);

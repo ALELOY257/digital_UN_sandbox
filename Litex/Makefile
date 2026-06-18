@@ -37,6 +37,7 @@ COMM_OBJS+= ws2812/mux_ws.v
 
 OBJS = build/colorlight_i5/gateware/colorlight_i5.v
 OBJS+= VexRiscv.v
+	python3 $(SOC_SCRIPT) --build --no-compile-gateware --no-compile-software 2>&1 | \
 
 OBJS += $(COMM_OBJS)
 
@@ -79,29 +80,14 @@ sim_efinix:
 	
 sim_lattice:
 	rm -rf build *vpp *vcd $(FW_NB_DIR)/*bin
-	@echo "=== [1/6] Creando firmware.bin dummy ==="
 	dd if=/dev/zero of=$(FW_NB_DIR)/firmware.bin bs=1 count=$(ROM_SIZE) status=none
-
-	@echo "=== [2/6] Generando regions.ld y headers CSR ==="
 	python3 $(SOC_SCRIPT) --build --no-compile-gateware --no-compile-software 2>&1 | \
-	    grep -E "INFO|ERROR|WARNING|rom|sram" || true
-	@grep "rom" build/colorlight_i5/software/include/generated/regions.ld
-
-	@echo "=== [3/6] Compilando librerías software (picolibc…) ==="
 	python3 $(SOC_SCRIPT) --build --no-compile-gateware 2>&1 | tail -5
-
-	@echo "=== [4/6] Compilando firmware ==="
 	$(MAKE) -C $(FW_NB_DIR)/
-	@echo "Firmware: $$(ls -lah $(FW_NB_DIR)/firmware.bin | awk '{print $$5}') bytes"
-
-	@echo "=== [5/6] Embebiendo firmware y copiando .init ==="
 	SIMULATION=1 python3 $(SOC_SCRIPT) --build --no-compile-gateware --no-compile-software 2>&1 | \
 	    grep -E "INFO|ERROR|WARNING" || true
 	cp build/colorlight_i5/gateware/colorlight_i5_rom.init .
 	cp build/colorlight_i5/gateware/colorlight_i5_sram.init .
-	@echo "ROM init: $$(wc -l < colorlight_i5_rom.init) líneas"
-
-	@echo "=== [6/6] Compilando simulación RTL (sin síntesis Yosys) ==="
 	iverilog -I ./lattice_sim \
 	    -o $@_PS.vpp \
 	    -s $(TARGET)_TB \

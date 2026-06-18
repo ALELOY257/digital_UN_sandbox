@@ -14,6 +14,8 @@ class WS2812(Module, AutoCSR):
         self.rst_cmd   = CSRStorage(1)
         self.w_data    = CSRStorage(24)
         self.w_address = CSRStorage(8)        
+        self.we_a      = CSRStorage(1)
+
         self.done      = CSRStatus(1)
         self.dout      = data.dout
 
@@ -22,6 +24,7 @@ class WS2812(Module, AutoCSR):
             i_reset     = ResetSignal("sys"),
             i_init_m    = self.init.storage,
             i_rst_cmd   = self.rst_cmd.storage,
+            i_we_a      = self.we_a.storage,
             i_w_data    = self.w_data.storage,
             i_w_address = self.w_address.storage,
             o_done      = self.done.status,

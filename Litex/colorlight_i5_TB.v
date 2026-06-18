@@ -56,7 +56,7 @@ parameter c_BIT_PERIOD     = 8680;
         #0   RXD   = 1;
         #0   RESET = 1;
         #80  RESET = 1;
-        #160 RESET = 0;
+        RESET = 0;
     end
 
     integer idx; 
