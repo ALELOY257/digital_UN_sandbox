@@ -37,7 +37,6 @@ COMM_OBJS+= ws2812/mux_ws.v
 
 OBJS = build/colorlight_i5/gateware/colorlight_i5.v
 OBJS+= VexRiscv.v
-	python3 $(SOC_SCRIPT) --build --no-compile-gateware --no-compile-software 2>&1 | \
 
 OBJS += $(COMM_OBJS)
 
