@@ -9,9 +9,7 @@
 from migen import *
 
 from litex.gen import *
-
 from litex.build.io import DDROutput
-
 from board import colorlight_i5
 
 from litex.soc.cores.clock import *
@@ -19,13 +17,20 @@ from litex.soc.integration.soc_core import *
 from litex.soc.integration.builder import *
 from litex.soc.cores.video import VideoHDMIPHY
 from litex.soc.cores.led import LedChaser
-
 from litex.soc.interconnect.csr import *
-
 from litedram.modules import M12L64322A # Compatible with EM638325-6H.
 from litedram.phy import GENSDRPHY, HalfRateGENSDRPHY
-
 from liteeth.phy.ecp5rgmii import LiteEthPHYRGMII
+
+
+# DMA related
+from litex.soc.cores.dma import WishboneDMAReader
+from litex.soc.cores.dma import WishboneDMAWriter
+from litex.soc.cores.spi import SPIMaster
+from litespi.core.master import LiteSPIMaster
+from litex.soc.interconnect import stream, wishbone
+from migen.genlib.fifo import SyncFIFO
+
 
 from mult import mult_32
 from ws2812 import ws2812
