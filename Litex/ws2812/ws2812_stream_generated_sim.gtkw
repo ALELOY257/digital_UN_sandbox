@@ -1,0 +1,54 @@
+[*]
+[*] GTKWave Analyzer v3.3.121 (w)1999-2024 BSI
+[*] Mon Jun 22 19:59:12 2026
+[*]
+[dumpfile] "/Work/Embedded/digital_UN/Litex/ws2812/ws2812_streamer_generated_TB.vcd"
+[dumpfile_mtime] "Mon Jun 22 19:58:26 2026"
+[dumpfile_size] 19009724
+[savefile] "/Work/Embedded/digital_UN/Litex/ws2812/ws2812_stream_generated_sim.gtkw"
+[timestart] 0
+[size] 1648 951
+[pos] -1 -1
+*-31.000000 550000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] ws2812_streamer_generated_TB.
+[treeopen] ws2812_streamer_generated_TB.dut.
+[treeopen] ws2812_streamer_generated_TB.dut.ws2812_periph.
+[treeopen] ws2812_streamer_generated_TB.dut.ws2812_periph.ws2812_0.
+[sst_width] 278
+[signals_width] 214
+[sst_expanded] 1
+[sst_vpaned_height] 280
+@28
+ws2812_streamer_generated_TB.dut.sys_clk
+ws2812_streamer_generated_TB.dut.sys_rst
+@22
+[color] 2
+ws2812_streamer_generated_TB.dut.sink_payload_data[31:0]
+@28
+[color] 2
+ws2812_streamer_generated_TB.dut.sink_ready
+[color] 2
+ws2812_streamer_generated_TB.dut.sink_valid
+ws2812_streamer_generated_TB.dut.storage
+ws2812_streamer_generated_TB.dut.storage_1
+ws2812_streamer_generated_TB.dut.storage_2
+ws2812_streamer_generated_TB.dut.dout
+ws2812_streamer_generated_TB.dut.ws2812_periph.done_led
+@22
+ws2812_streamer_generated_TB.dut.ws2812_periph.mem0.\MEM[0][23:0]
+ws2812_streamer_generated_TB.dut.ws2812_periph.mem0.\MEM[1][23:0]
+ws2812_streamer_generated_TB.dut.ws2812_periph.mem0.\MEM[2][23:0]
+ws2812_streamer_generated_TB.dut.ws2812_periph.mem0.\MEM[3][23:0]
+ws2812_streamer_generated_TB.dut.ws2812_periph.mem0.\MEM[4][23:0]
+ws2812_streamer_generated_TB.dut.ws2812_periph.mem0.\MEM[5][23:0]
+ws2812_streamer_generated_TB.dut.ws2812_periph.mem0.\MEM[6][23:0]
+ws2812_streamer_generated_TB.dut.ws2812_periph.mem0.\MEM[7][23:0]
+ws2812_streamer_generated_TB.dut.ws2812_periph.mem0.\MEM[8][23:0]
+ws2812_streamer_generated_TB.dut.ws2812_periph.mem0.\MEM[9][23:0]
+ws2812_streamer_generated_TB.dut.ws2812_periph.mem0.\MEM[10][23:0]
+@23
+ws2812_streamer_generated_TB.dut.ws2812_periph.mem0.\MEM[11][23:0]
+@28
+ws2812_streamer_generated_TB.dut.ws2812_periph.done
+[pattern_trace] 1
+[pattern_trace] 0

@@ -1,5 +1,12 @@
 TARGET = DEMO_ws2812_led_array
 ICE40_SIM_CELLS=./lattice_sim/cells_sim_ecp5.v
+STREAMER_GEN     = ws2812_streamer_generated.v
+STREAMER_GEN_TB  = ws2812_streamer_generated_TB
+STREAMER_GEN_VVP = $(STREAMER_GEN_TB).vvp
+STREAMER_OBJS    = comp_ws.v count_ws.v ctrl_ws.v mux_ws.v ws2812.v \
+	lsr_wsled.v count_wsled.v ctrl_wsled.v ws2812_led.v \
+	led_mem_dual.v count_addr.v ctrl_ws_arr.v comp_ws_arr.v \
+	ws2812_periph.v
 
 ifeq ($(TARGET), ws2812)
     OBJS = comp_ws.v  count_ws.v  ctrl_ws.v  mux_ws.v  ws2812.v
@@ -21,6 +28,11 @@ else ifeq ($(TARGET), ws2812_periph)
 	led_mem_dual.v count_addr.v ctrl_ws_arr.v comp_ws_arr.v \
 	ws2812_periph.v
 
+else ifeq ($(TARGET), ws2812_streamer_generated)
+    OBJS = comp_ws.v  count_ws.v  ctrl_ws.v  mux_ws.v  ws2812.v \
+	lsr_wsled.v count_wsled.v ctrl_wsled.v ws2812_led.v         \
+	led_mem_dual.v count_addr.v ctrl_ws_arr.v comp_ws_arr.v \
+	ws2812_periph.v ws2812_streamer_generated.v
 
 else
     OBJS = ${TARGET}.v
@@ -31,6 +43,27 @@ sim:
 	iverilog  -DBENCH $(TARGET)_TB.v $(OBJS)
 	vvp a.out
 	gtkwave $(TARGET)_TB.vcd
+
+.PHONY: streamer_v sim_streamer sim_streamer_view
+
+streamer_v:
+	python3 generate_ws2812_streamer_verilog.py
+
+svg_streamer_v: $(OBJS)
+	rm -rf *svg *out *dot
+	yosys -p "prep -top ws2812_streamer_top; memory -nomap; opt; opt_expr; techmap; abc -g AND,OR,XOR; write_json ws2812_streamer_top.json" ${OBJS}
+	netlistsvg ws2812_streamer_top.json -o ws2812_streamer_top.svg
+	google-chrome ws2812_streamer_top.svg
+
+sim_streamer: streamer_v abc -g AND,OR,XOR
+	rm -f $(STREAMER_GEN_VVP) ws2812_streamer_generated_TB.vcd
+	iverilog -g2012 -o $(STREAMER_GEN_VVP) \
+		$(STREAMER_GEN_TB).v $(STREAMER_GEN) $(STREAMER_OBJS)
+	vvp $(STREAMER_GEN_VVP)
+
+sim_streamer_view: sim_streamer
+	gtkwave ws2812_streamer_generated_TB.vcd
+
 sim_post_syn:
 	yosys -v3 -l synth.log -p 'synth_ecp5 -top $(TARGET) -json $(TARGET).json; write_verilog -attr2comment $(TARGET)_synth.v' $(OBJS)
 	iverilog  -I ./lattice_sim  $(TARGET)_TB.v $(TARGET)_synth.v $(ICE40_SIM_CELLS) 
@@ -57,4 +90,4 @@ configure_lattice: $(TARGET).bit   # TDI:TDO:TCK:TMS TXD:CTS:DTR:RXD
 	sudo openFPGALoader -c ft232RL --pins=TXD:CTS:DTR:RXD -m  ${TARGET}.bit	
 
 clean:
-	rm -rf *svg *out *dot a.out *.vcd *json *_synth.v *log *bit *rpt *svf *out.config
+	rm -rf *svg *out *dot a.out *.vcd *.vvp *json *_synth.v *log *bit *rpt *svf *out.config
