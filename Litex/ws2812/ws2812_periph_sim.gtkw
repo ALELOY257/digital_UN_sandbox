@@ -1,22 +1,24 @@
 [*]
 [*] GTKWave Analyzer v3.3.121 (w)1999-2024 BSI
-[*] Thu Jun 11 22:23:39 2026
+[*] Mon Jun 22 21:47:35 2026
 [*]
 [dumpfile] "/Work/Embedded/digital_UN/Litex/ws2812/ws2812_periph_TB.vcd"
-[dumpfile_mtime] "Thu Jun 11 22:22:11 2026"
-[dumpfile_size] 28413856
+[dumpfile_mtime] "Mon Jun 22 21:47:22 2026"
+[dumpfile_size] 24883116
 [savefile] "/Work/Embedded/digital_UN/Litex/ws2812/ws2812_periph_sim.gtkw"
-[timestart] 0
+[timestart] 4250080000
 [size] 1648 951
-[pos] -325 -176
-*-31.000000 3170000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[pos] 25 22
+*-24.000000 4300000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] ws2812_periph_TB.
 [treeopen] ws2812_periph_TB.uut.
 [treeopen] ws2812_periph_TB.uut.ws2812_0.ws28120.
 [sst_width] 278
 [signals_width] 158
 [sst_expanded] 1
-[sst_vpaned_height] 608
+[sst_vpaned_height] 571
+@29
+ws2812_periph_TB.uut.clk
 @28
 ws2812_periph_TB.init_m
 ws2812_periph_TB.uut.done

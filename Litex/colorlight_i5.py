@@ -33,7 +33,7 @@ from migen.genlib.fifo import SyncFIFO
 
 
 from mult import mult_32
-from ws2812 import ws2812
+from ws2812 import ws2812_streamer
 
 
 
@@ -155,7 +155,22 @@ class BaseSoC(SoCCore):
 
         # LED MATRIX
         SoCCore.add_csr(self,"disp0")
-        self.submodules.disp0 = ws2812.WS2812(platform, platform.request("led_matrix",0))
+        self.submodules.disp0 = ws2812_streamer.WS2812(
+            platform,
+            platform.request("led_matrix", 0),
+            n_leds=256,
+        )
+
+        ws2812_dma_bus = wishbone.Interface(
+            data_width = self.bus.data_width,
+            adr_width  = self.bus.get_address_width(standard="wishbone"),
+            addressing = "word",
+        )
+        self.submodules.disp0_dma = WishboneDMAReader(ws2812_dma_bus, with_csr=True)
+        self.bus.add_master("disp0_dma", master=ws2812_dma_bus)
+        self.add_csr("disp0_dma")
+
+        self.comb += self.disp0_dma.source.connect(self.disp0.sink)
 
         # SPI Flash --------------------------------------------------------------------------------
         if board == "i5":

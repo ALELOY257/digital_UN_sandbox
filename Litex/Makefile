@@ -42,7 +42,9 @@ OBJS += $(COMM_OBJS)
 
 BUILD_DIR = build
 SOC_SCRIPT="colorlight_i5_no_bios.py"
+SOC_SCRIPT_DMA="colorlight_i5_no_bios_dma.py"
 FW_NB_DIR = NO_bios_fw
+FW_NB_DMA_DIR = NO_bios_fw_dma
 
 BUILD_DIR="build/colorlight_i5"
 ROM_SIZE=65536
@@ -84,6 +86,26 @@ sim_lattice:
 	python3 $(SOC_SCRIPT) --build --no-compile-gateware 2>&1 | tail -5
 	$(MAKE) -C $(FW_NB_DIR)/
 	SIMULATION=1 python3 $(SOC_SCRIPT) --build --no-compile-gateware --no-compile-software 2>&1 | \
+	    grep -E "INFO|ERROR|WARNING" || true
+	cp build/colorlight_i5/gateware/colorlight_i5_rom.init .
+	cp build/colorlight_i5/gateware/colorlight_i5_sram.init .
+	iverilog -I ./lattice_sim \
+	    -o $@_PS.vpp \
+	    -s $(TARGET)_TB \
+	    $(TARGET)_TB.v \
+	    $(OBJS) \
+	    $(LATTICE_SIM_CELLS)
+	vvp $@_PS.vpp
+	gtkwave $(TARGET)_TB.vcd
+
+sim_lattice_dma:
+	rm -rf build *vpp *vcd $(FW_NB_DMA_DIR)/*bin
+	dd if=/dev/zero of=$(FW_NB_DMA_DIR)/firmware.bin bs=1 count=$(ROM_SIZE) status=none
+	python3 $(SOC_SCRIPT_DMA) --build --no-compile-gateware --no-compile-software 2>&1 | \
+	    grep -E "INFO|ERROR|WARNING|rom|sram|disp0" || true
+	python3 $(SOC_SCRIPT_DMA) --build --no-compile-gateware 2>&1 | tail -5
+	$(MAKE) -C $(FW_NB_DMA_DIR)/
+	SIMULATION=1 python3 $(SOC_SCRIPT_DMA) --build --no-compile-gateware --no-compile-software 2>&1 | \
 	    grep -E "INFO|ERROR|WARNING" || true
 	cp build/colorlight_i5/gateware/colorlight_i5_rom.init .
 	cp build/colorlight_i5/gateware/colorlight_i5_sram.init .

@@ -68,23 +68,30 @@ module ws2812_streamer_generated_TB;
 
         // Start stream loader: pulse loader.start.re.
         @(negedge sys_clk);
-        storage_2 = 1'b1;
         re = 1'b1;
         @(negedge sys_clk);
-        storage_2 = 1'b0;
         re = 1'b0;
-
-        stream_word(32'h00112233);
-        stream_word(32'h00445566);
-        stream_word(32'h00778899);
-        stream_word(32'h00aabbcc);
-        stream_word(32'h00010203);
-        stream_word(32'h00040506);
-        stream_word(32'h00070809);
-        stream_word(32'h000a0b0c);
         repeat (8) @(negedge sys_clk);
         storage = 1'b1;
         @(negedge sys_clk)
+        storage = 1'b0;
+        wait(ws2812_streamer_generated_TB.dut.status == 1);
+            stream_word(32'h00111111);
+        stream_word(32'h00222222);
+        stream_word(32'h00333333);
+        stream_word(32'h00444444);
+        stream_word(32'h00555555);
+        stream_word(32'h00666666);
+        stream_word(32'h00777777);
+        stream_word(32'h00888888);
+        repeat (8) @(negedge sys_clk);
+        @(negedge sys_clk);
+        re = 1'b1;
+        @(negedge sys_clk);
+        re = 1'b0;
+        repeat (8) @(negedge sys_clk);
+        storage = 1'b1;
+        repeat (2) @(negedge sys_clk);
         storage = 1'b0;
         repeat (250000) @(negedge sys_clk);
         $finish;

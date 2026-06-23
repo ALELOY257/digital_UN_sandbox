@@ -11,7 +11,7 @@ STREAMER_OBJS    = comp_ws.v count_ws.v ctrl_ws.v mux_ws.v ws2812.v \
 ifeq ($(TARGET), ws2812)
     OBJS = comp_ws.v  count_ws.v  ctrl_ws.v  mux_ws.v  ws2812.v
 else ifeq ($(TARGET), ws2812_led)
-    OBJS = comp_ws.v  count_ws.v  ctrl_ws.v  mux_ws.v  ws2812.v 
+    OBJS = comp_ws.v  count_ws.v  ctrl_ws.v  mux_ws.v  ws2812.v \
 	       lsr_wsled.v count_wsled.v ctrl_wsled.v ws2812_led.v
 else ifeq ($(TARGET), ws2812_led_array)
     OBJS = comp_ws.v  count_ws.v  ctrl_ws.v  mux_ws.v  ws2812.v \
@@ -42,7 +42,7 @@ sim:
 	rm -f a.out *.vcd
 	iverilog  -DBENCH $(TARGET)_TB.v $(OBJS)
 	vvp a.out
-	gtkwave $(TARGET)_TB.vcd
+	gtkwave $(TARGET)_TB.vcd ${TARGET}_sim.gtkw
 
 .PHONY: streamer_v sim_streamer sim_streamer_view
 
