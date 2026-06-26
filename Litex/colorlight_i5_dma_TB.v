@@ -3,30 +3,15 @@
 
 module colorlight_i5_dma_TB();
     parameter tck = 40;
-    // Tiempo máximo de simulación en ciclos del clock de entrada.
-    // Subir este valor si se necesita observar más tiempo antes del $finish.
     parameter sim_cycles = 50000;
-    // Dump completo del diseño generado por LiteX.
-    // 1: vuelca todos los módulos/señales bajo uut.
-    // 0: vuelca solo señales seleccionadas para un VCD pequeño.
     parameter dump_all_design = 0;
     parameter enable_vcd = 0;
-    // Monitor textual detallado del bus DMA. Mantener en 0 salvo debug puntual,
-    // porque imprimir cada ciclo puede hacer que vvp parezca detenido.
     parameter verbose_dma_bus = 0;
     parameter verbose_dma_events = 0;
     parameter verbose_heartbeat = 0;
-    // Para depurar la carga DMA de la RAM WS2812, terminar apenas el loader
-    // haya recibido los N_LEDS words. Esto evita correr hasta el timeout largo
-    // de seguridad o hasta la transmisión WS2812 completa.
     parameter finish_on_loader_done = 0;
     parameter finish_on_expected_writes = 0;
-    // Si está en 1, la simulación termina apenas el loader y el DMA terminan
-    // la carga de la RAM WS2812. Para depurar la fase siguiente
-    // (disp0_init/transmisión WS2812), dejarlo en 0.
     parameter finish_on_both_done = 0;
-    // Por ahora no detener la simulación por watchdog basado en loader_done;
-    // queremos observar el bloqueo sin que el TB lo corte automáticamente.
     parameter enable_loader_watchdog = 0;
 
     reg  CLK;
@@ -41,9 +26,6 @@ module colorlight_i5_dma_TB();
         .serial_rx(RXD)
     );
 
-    // Aliases normales para poder ver la memoria interna mem0.MEM[] en GTKWave.
-    // GTKWave/Icarus a veces no muestran cómodamente arrays internos volcados
-    // directamente como uut.ws2812_periph.mem0.MEM[index].
     wire [23:0] ws2812_mem0_0 = uut.ws2812_periph.mem0.MEM[0];
     wire [23:0] ws2812_mem0_1 = uut.ws2812_periph.mem0.MEM[1];
     wire [23:0] ws2812_mem0_2 = uut.ws2812_periph.mem0.MEM[2];

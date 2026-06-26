@@ -166,7 +166,6 @@ class BaseSoC(SoCCore):
             platform.request("led_matrix", 0),
             n_leds=256,
         )
-
         ws2812_dma_bus = wishbone.Interface(
             data_width = self.bus.data_width,
             adr_width  = self.bus.get_address_width(standard="wishbone"),
@@ -175,10 +174,6 @@ class BaseSoC(SoCCore):
         self.submodules.disp0_dma = WishboneDMAReader(ws2812_dma_bus, with_csr=True)
         self.bus.add_master("disp0_dma", master=ws2812_dma_bus)
         self.csr.add("disp0_dma")
-
-        # Direct stream path. The WS2812 loader keeps ready asserted while
-        # loading/draining, so the DMA reader can always deliver the final beat
-        # carrying source.last and complete the transfer.
         self.comb += [
             self.disp0_dma.source.connect(self.disp0.sink),
         ]

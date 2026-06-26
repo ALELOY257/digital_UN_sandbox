@@ -42,7 +42,7 @@ OBJS += $(COMM_OBJS)
 
 BUILD_DIR = build
 SOC_SCRIPT="colorlight_i5_no_bios.py"
-SOC_SCRIPT_DMA="colorlight_i5_no_bios_dma.py"
+SOC_SCRIPT_DMA="colorlight_i5_no_bios_dma"
 FW_NB_DIR = NO_bios_fw
 FW_NB_DMA_DIR = NO_bios_fw_dma
 
@@ -101,68 +101,27 @@ sim_lattice:
 sim_lattice_dma:
 	rm -rf build *vpp *vcd $(FW_NB_DMA_DIR)/*bin
 	dd if=/dev/zero of=$(FW_NB_DMA_DIR)/firmware.bin bs=1 count=$(ROM_SIZE) status=none
-	SIMULATION=1 python3 $(SOC_SCRIPT_DMA) --build --no-compile-gateware --no-compile-software 2>&1 | \
+	SIMULATION=1 python3 $(SOC_SCRIPT_DMA).py --build --no-compile-gateware --no-compile-software 2>&1 | \
 	    grep -E "INFO|ERROR|WARNING|rom|sram|disp0" || true
-	SIMULATION=1 python3 $(SOC_SCRIPT_DMA) --build --no-compile-gateware --no-compile-software
+	SIMULATION=1 python3 $(SOC_SCRIPT_DMA).py --build --no-compile-gateware --no-compile-software
 	mkdir -p build/colorlight_i5/software/libc
 	cp $$(grep '^LIBC_DIRECTORY=' build/colorlight_i5/software/include/generated/variables.mak | cut -d= -f2)/picolibc-minimal.h build/colorlight_i5/software/libc/picolibc.h
 	printf '#define FORMAT_DEFAULT_INTEGER\n#define __IO_DEFAULT '\''i'\''\n' >> build/colorlight_i5/software/libc/picolibc.h
 	$(MAKE) -C $(FW_NB_DMA_DIR)/
-	SIMULATION=1 python3 $(SOC_SCRIPT_DMA) --build --no-compile-gateware --no-compile-software 2>&1 | \
+	SIMULATION=1 python3 $(SOC_SCRIPT_DMA).py --build --no-compile-gateware --no-compile-software 2>&1 | \
 	    grep -E "INFO|ERROR|WARNING" || true
 	cp build/colorlight_i5/gateware/colorlight_i5_rom.init .
 	cp build/colorlight_i5/gateware/colorlight_i5_sram.init .
 	iverilog -I ./lattice_sim \
 	    -o $@_PS.vpp \
-	    -s colorlight_i5_dma_TB \
+	    -s $(SOC_SCRIPT_DMA)_TB \
 	    -P colorlight_i5_dma_TB.enable_vcd=1 \
-	    colorlight_i5_dma_TB.v \
+	    $(SOC_SCRIPT_DMA)_TB.v \
 	    $(OBJS) \
 	    $(LATTICE_SIM_CELLS)
 	vvp $@_PS.vpp
 	gtkwave colorlight_i5_dma_TB.vcd colorlight_i5_no_bios_dma_sim.gtkw
 
-sim_lattice_dma_reader:
-	rm -rf build *vpp *vcd $(FW_NB_DMA_DIR)/*bin
-	dd if=/dev/zero of=$(FW_NB_DMA_DIR)/firmware.bin bs=1 count=$(ROM_SIZE) status=none
-	SIMULATION=1 python3 $(SOC_SCRIPT_DMA) --build --no-compile-gateware --no-compile-software 2>&1 | \
-	    grep -E "INFO|ERROR|WARNING|rom|sram|disp0" || true
-	SIMULATION=1 python3 $(SOC_SCRIPT_DMA) --build --no-compile-gateware --no-compile-software
-	mkdir -p build/colorlight_i5/software/libc
-	cp $$(grep '^LIBC_DIRECTORY=' build/colorlight_i5/software/include/generated/variables.mak | cut -d= -f2)/picolibc-minimal.h build/colorlight_i5/software/libc/picolibc.h
-	printf '#define FORMAT_DEFAULT_INTEGER\n#define __IO_DEFAULT '\''i'\''\n' >> build/colorlight_i5/software/libc/picolibc.h
-	$(MAKE) -C $(FW_NB_DMA_DIR)/
-	SIMULATION=1 python3 $(SOC_SCRIPT_DMA) --build --no-compile-gateware --no-compile-software 2>&1 | \
-	    grep -E "INFO|ERROR|WARNING" || true
-	cp build/colorlight_i5/gateware/colorlight_i5_rom.init .
-	cp build/colorlight_i5/gateware/colorlight_i5_sram.init .
-	iverilog -I ./lattice_sim \
-	    -o $@_PS.vpp \
-	    -s colorlight_i5_dma_reader_TB \
-	    -P colorlight_i5_dma_reader_TB.enable_vcd=0 \
-	    colorlight_i5_dma_reader_TB.v \
-	    $(OBJS) \
-	    $(LATTICE_SIM_CELLS)
-	stdbuf -oL -eL vvp $@_PS.vpp
-
-sim_lattice_dma_pc:
-	rm -rf build *vpp *vcd $(FW_NB_DMA_DIR)/*bin
-	dd if=/dev/zero of=$(FW_NB_DMA_DIR)/firmware.bin bs=1 count=$(ROM_SIZE) status=none
-	SIMULATION=1 python3 $(SOC_SCRIPT_DMA) --build --no-compile-gateware --no-compile-software 2>&1 | \
-	    grep -E "INFO|ERROR|WARNING|rom|sram|disp0" || true
-	SIMULATION=1 python3 $(SOC_SCRIPT_DMA) --build --no-compile-gateware 2>&1 | tail -5
-	$(MAKE) -C $(FW_NB_DMA_DIR)/
-	SIMULATION=1 python3 $(SOC_SCRIPT_DMA) --build --no-compile-gateware --no-compile-software 2>&1 | \
-	    grep -E "INFO|ERROR|WARNING" || true
-	cp build/colorlight_i5/gateware/colorlight_i5_rom.init .
-	cp build/colorlight_i5/gateware/colorlight_i5_sram.init .
-	iverilog -I ./lattice_sim \
-	    -o $@_PS.vpp \
-	    -s colorlight_i5_dma_pc_TB \
-	    colorlight_i5_dma_pc_TB.v \
-	    $(OBJS) \
-	    $(LATTICE_SIM_CELLS)
-	vvp $@_PS.vpp
 
 svg:
 	yosys -p "prep -top ${TARGET}; write_json ${TARGET}.json" -DPASSTHROUGH_PLL -DBOARD_FREQ=27 -DCPU_FREQ=27  ${OBJS}
