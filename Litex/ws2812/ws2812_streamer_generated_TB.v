@@ -93,7 +93,7 @@ module ws2812_streamer_generated_TB;
         storage = 1'b1;
         repeat (2) @(negedge sys_clk);
         storage = 1'b0;
-        repeat (250000) @(negedge sys_clk);
+        repeat (25000000) @(negedge sys_clk);
         $finish;
     end
 endmodule

@@ -1,0 +1,166 @@
+[*]
+[*] GTKWave Analyzer v3.3.121 (w)1999-2024 BSI
+[*] Thu Jun 25 15:44:02 2026
+[*]
+[dumpfile] "/Work/Embedded/digital_UN/Litex/colorlight_i5_dma_TB.vcd"
+[dumpfile_mtime] "Thu Jun 25 15:39:40 2026"
+[dumpfile_size] 2301952
+[savefile] "/Work/Embedded/digital_UN/Litex/colorlight_i5_dma.gtkw"
+[timestart] 0
+[size] 1648 951
+[pos] -1 -1
+*-25.000000 127500000 0 0 0 0 0 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] colorlight_i5_dma_TB.
+[treeopen] colorlight_i5_dma_TB.uut.
+[sst_width] 347
+[signals_width] 460
+[sst_expanded] 1
+[sst_vpaned_height] 280
+@200
+-00 Clocks / Reset
+@28
+colorlight_i5_dma_TB.CLK
+colorlight_i5_dma_TB.RESET
+@200
+-01 VexRiscv PC / Pipeline
+@22
+colorlight_i5_dma_TB.uut.VexRiscv.IBusCachedPlugin_fetchPc_pcReg[31:0]
+colorlight_i5_dma_TB.uut.VexRiscv.IBusCachedPlugin_fetchPc_pc[31:0]
+colorlight_i5_dma_TB.uut.VexRiscv.decode_PC[31:0]
+colorlight_i5_dma_TB.uut.VexRiscv.execute_PC[31:0]
+colorlight_i5_dma_TB.uut.VexRiscv.memory_PC[31:0]
+colorlight_i5_dma_TB.uut.VexRiscv.writeBack_PC[31:0]
+colorlight_i5_dma_TB.uut.VexRiscv.lastStagePc[31:0]
+colorlight_i5_dma_TB.uut.VexRiscv.CsrPlugin_mepc[31:0]
+@200
+-02 CPU instruction bus
+@28
+colorlight_i5_dma_TB.uut.basesoc_ibus_cyc
+colorlight_i5_dma_TB.uut.basesoc_ibus_stb
+colorlight_i5_dma_TB.uut.basesoc_ibus_ack
+@22
+colorlight_i5_dma_TB.uut.basesoc_ibus_adr[29:0]
+colorlight_i5_dma_TB.uut.basesoc_ibus_dat_r[31:0]
+@200
+-03 CPU data bus - stuck CSR read check
+@28
+colorlight_i5_dma_TB.uut.basesoc_dbus_cyc
+colorlight_i5_dma_TB.uut.basesoc_dbus_stb
+colorlight_i5_dma_TB.uut.basesoc_dbus_ack
+colorlight_i5_dma_TB.uut.basesoc_dbus_we
+@22
+colorlight_i5_dma_TB.uut.basesoc_dbus_adr[29:0]
+colorlight_i5_dma_TB.uut.basesoc_dbus_dat_r[31:0]
+colorlight_i5_dma_TB.uut.basesoc_dbus_dat_w[31:0]
+@200
+-04 Shared bus interconnect / decoder
+@28
+colorlight_i5_dma_TB.uut.socbushandler_shared_cyc
+colorlight_i5_dma_TB.uut.socbushandler_shared_stb
+colorlight_i5_dma_TB.uut.socbushandler_shared_ack
+@22
+colorlight_i5_dma_TB.uut.socbushandler_shared_adr[31:0]
+colorlight_i5_dma_TB.uut.socbushandler_request[2:0]
+colorlight_i5_dma_TB.uut.socbushandler_grant[1:0]
+colorlight_i5_dma_TB.uut.socbushandler_slave_sel[3:0]
+colorlight_i5_dma_TB.uut.socbushandler_slave_sel_r[3:0]
+@200
+-05 CSR Wishbone selected slave interface0
+@28
+colorlight_i5_dma_TB.uut.basesoc_interface0_cyc
+colorlight_i5_dma_TB.uut.basesoc_interface0_stb
+colorlight_i5_dma_TB.uut.basesoc_interface0_ack
+@22
+colorlight_i5_dma_TB.uut.basesoc_interface0_adr[29:0]
+@200
+-06 CSR bridge internal interface1
+@28
+colorlight_i5_dma_TB.uut.basesoc_interface1_re
+colorlight_i5_dma_TB.uut.basesoc_interface1_we
+@22
+colorlight_i5_dma_TB.uut.basesoc_interface1_adr[13:0]
+@200
+-07 CSR bankarray disp0 decode
+@28
+colorlight_i5_dma_TB.uut.csr_bankarray_csrbank1_sel
+colorlight_i5_dma_TB.uut.csr_bankarray_csrbank1_loader_done_re
+colorlight_i5_dma_TB.uut.csr_bankarray_csrbank1_loader_done_we
+@22
+colorlight_i5_dma_TB.uut.csr_bankarray_interface1_bank_bus_dat_r[31:0]
+colorlight_i5_dma_TB.uut.csr_bankarray_interface1_bank_bus_dat_w[31:0]
+@200
+-08 CSR bankarray disp0_dma decode
+@22
+colorlight_i5_dma_TB.uut.disp0_dma_length_storage[31:0]
+colorlight_i5_dma_TB.uut.disp0_dma_enable_storage
+[color] 3
+colorlight_i5_dma_TB.uut.disp0_dma_done
+@200
+-09 DMA Wishbone read bus
+@28
+colorlight_i5_dma_TB.uut.ws2812_dma_bus_cyc
+colorlight_i5_dma_TB.uut.ws2812_dma_bus_stb
+colorlight_i5_dma_TB.uut.ws2812_dma_bus_ack
+@22
+[color] 3
+colorlight_i5_dma_TB.uut.ws2812_dma_bus_adr[31:0]
+colorlight_i5_dma_TB.uut.ws2812_dma_bus_dat_r[31:0]
+@23
+[color] 3
+colorlight_i5_dma_TB.uut.disp0_loader_w_address[7:0]
+@200
+-10 DMA internal source / FIFO
+@28
+colorlight_i5_dma_TB.uut.disp0_dma_sink_sink_valid
+colorlight_i5_dma_TB.uut.disp0_dma_sink_sink_ready
+colorlight_i5_dma_TB.uut.disp0_dma_fifo_sink_valid
+colorlight_i5_dma_TB.uut.disp0_dma_fifo_sink_ready
+@22
+colorlight_i5_dma_TB.uut.disp0_dma_sink_sink_payload_address[31:0]
+colorlight_i5_dma_TB.uut.disp0_dma_fifo_level[4:0]
+colorlight_i5_dma_TB.uut.disp0_dma_offset1[31:0]
+@200
+-11 DMA stream to WS2812 loader
+@28
+colorlight_i5_dma_TB.uut.disp0_dma_source_source_valid
+colorlight_i5_dma_TB.uut.disp0_dma_source_source_ready
+@22
+colorlight_i5_dma_TB.uut.disp0_dma_source_source_payload_data[31:0]
+@200
+-12 WS2812 loader control / status
+@28
+colorlight_i5_dma_TB.uut.disp0_loader_start_storage
+colorlight_i5_dma_TB.uut.disp0_loader_start_re
+colorlight_i5_dma_TB.uut.disp0_loader_busy
+[color] 3
+colorlight_i5_dma_TB.uut.disp0_loader_done
+colorlight_i5_dma_TB.uut.disp0_loader_done_we
+@200
+-13 WS2812 loader sink / writes
+@28
+colorlight_i5_dma_TB.uut.disp0_loader_sink_valid
+colorlight_i5_dma_TB.uut.disp0_loader_sink_ready
+colorlight_i5_dma_TB.uut.disp0_loader_we
+@22
+colorlight_i5_dma_TB.uut.disp0_loader_sink_payload_data[31:0]
+colorlight_i5_dma_TB.uut.disp0_loader_w_data[23:0]
+@200
+-14 WS2812 engine
+@28
+colorlight_i5_dma_TB.uut.disp0_init_storage
+colorlight_i5_dma_TB.uut.disp0_init_re
+colorlight_i5_dma_TB.uut.ws2812_periph.done
+colorlight_i5_dma_TB.uut.ws2812_periph.dout
+@200
+-15 WS2812 video RAM mem0 aliases
+@22
+colorlight_i5_dma_TB.ws2812_mem0_0[23:0]
+colorlight_i5_dma_TB.ws2812_mem0_1[23:0]
+colorlight_i5_dma_TB.ws2812_mem0_2[23:0]
+colorlight_i5_dma_TB.ws2812_mem0_3[23:0]
+colorlight_i5_dma_TB.ws2812_mem0_4[23:0]
+colorlight_i5_dma_TB.ws2812_mem0_5[23:0]
+colorlight_i5_dma_TB.ws2812_mem0_6[23:0]
+colorlight_i5_dma_TB.ws2812_mem0_7[23:0]
+[pattern_trace] 1
+[pattern_trace] 0

@@ -17,16 +17,24 @@ class WS2812StreamLoader(Module, AutoCSR):
         self.w_address = Signal(max=n_leds)
         self.we        = Signal()
 
-        addr = Signal(max=n_leds)
-        busy = Signal(reset=0)
-        done = Signal(reset=0)
+        addr     = Signal(max=n_leds)
+        loading  = Signal(reset=0)
+        draining = Signal(reset=0)
+        done     = Signal(reset=0)
+        busy     = Signal(reset=0)
+        active   = Signal()
 
         self.comb += [
+            active.eq(loading | draining),
+            busy.eq(active),
+
             self.busy.status.eq(busy),
             self.done.status.eq(done),
 
             # Backpressure toward DMA Reader.
-            # DMA words are accepted only while the loader is active.
+            # While loading, accepted words are written to the WS2812 RAM.
+            # After the last LED word has been written, keep accepting/draining
+            # any remaining DMA words until sink.last so the DMA can complete.
             sink.ready.eq(busy),
         ]
 
@@ -39,22 +47,41 @@ class WS2812StreamLoader(Module, AutoCSR):
             self.we.eq(0),
             If(self.start.re,
                 addr.eq(0),
-                busy.eq(1),
+                loading.eq(1),
+                draining.eq(0),
                 done.eq(0),
                 self.w_address.eq(0),
                 self.w_data.eq(0)
-            ).Elif(busy,
+            ).Elif(loading,
                 If(sink.valid & sink.ready,
                     # One 32-bit DMA word per LED: 0x00RRGGBB.
-                    self.w_data.eq(sink.data[0:24]),
+                    # WishboneDMAReader presents 0x00RRGGBB from SRAM as
+                    # 0xBBGGRR00 on the stream. Restore RGB before writing
+                    # the WS2812 RAM.
+                    self.w_data.eq(Cat(
+                        sink.data[24:32],  # B -> bits [7:0]
+                        sink.data[16:24],  # G -> bits [15:8]
+                        sink.data[8:16],   # R -> bits [23:16]
+                    )),
                     self.w_address.eq(addr),
                     self.we.eq(1),
                     If(addr == (n_leds - 1),
                         addr.eq(0),
-                        busy.eq(0),
-                        done.eq(1)
+                        loading.eq(0),
+                        done.eq(1),
+                        If(sink.last,
+                            draining.eq(0)
+                        ).Else(
+                            draining.eq(1)
+                        )
                     ).Else(
                         addr.eq(addr + 1)
+                    )
+                )
+            ).Elif(draining,
+                If(sink.valid & sink.ready,
+                    If(sink.last,
+                        draining.eq(0)
                     )
                 )
             )
