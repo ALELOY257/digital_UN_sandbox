@@ -29,10 +29,14 @@ from litedram.phy import GENSDRPHY, HalfRateGENSDRPHY
 
 from liteeth.phy.ecp5rgmii import LiteEthPHYRGMII
 
+from litex.build.generic_platform import Subsignal, Pins, IOStandard
+from litex.soc.cores.uart import UARTPHY, UART
+
 from mult import mult_32
 from ws2812 import ws2812_streamer
 
 import os
+
 
 
 # CRG ----------------------------------------------------------------------------------------------
@@ -153,6 +157,23 @@ class BaseSoC(SoCCore):
         if with_led_chaser:
             ledn = platform.request_all("user_led_n")
             self.leds = LedChaser(pads=ledn, sys_clk_freq=sys_clk_freq)
+
+        self.platform.add_extension([
+            ("serial", 1,
+                Subsignal("tx", Pins("Y4")),   # pin dummy, no se conecta
+                Subsignal("rx", Pins("Y6")),   # pin real del Colorlight i5
+                IOStandard("LVCMOS33"),
+            ),
+        ])
+        #UART
+        self.submodules.uart_frame_phy = UARTPHY(
+            platform.request("serial", 1),
+            clk_freq=sys_clk_freq,
+            baudrate=115200,
+        )
+        self.submodules.uart_frame = UART(self.uart_frame_phy)
+        self.csr.add("uart_frame")
+
 
 
         #MULTIPLIER

@@ -17,7 +17,7 @@ static void dma_sim_wait(unsigned int cycles)
  static void fill_ws2812_buffer(uint32_t base)
 {
     unsigned int i;
-    for (i = 0; i < 5; i++) {
+    for (i = 0; i < 32; i++) {
         uint32_t r = (base + i) & 0xff;
         uint32_t g = (base + (i << 1)) & 0xff;
         uint32_t b = (base + (i << 2)) & 0xff;
