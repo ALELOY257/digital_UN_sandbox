@@ -67,14 +67,23 @@ end//-----------------------------------------------mux_4
 //# ---------------------------------------#
 //# ---------------------------------------#
 
-mult_32 mult1 (
-  .rst(reset),
+// mult_32 mult1 (
+//   .rst(reset),
+//   .clk(clk),
+//   .init(init),
+//   .done(done),
+//   .pp(result),
+//   .A(A),
+//   .B(B)
+//  );
+
+paridad_top paridad1(
   .clk(clk),
+  .rst(reset),
   .init(init),
-  .done(done),
-  .pp(result),
-  .A(A),
-  .B(B)
- );
+  .par(A),
+  .res(result),
+  .done(done)
+);
 
 endmodule
