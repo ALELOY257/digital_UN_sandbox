@@ -67,14 +67,23 @@ end//-----------------------------------------------mux_4
 //# ---------------------------------------#
 //# ---------------------------------------#
 
-mult_32 mult1 (
-  .rst(reset),
+// mult_32 mult1 (
+//   .rst(reset),
+//   .clk(clk),
+//   .init(init),
+//   .done(done),
+//   .pp(result),
+//   .A(A),
+//   .B(B)
+//  );
+
+bin2bcd_top bin2bcd1(
   .clk(clk),
+  .rst(reset),
   .init(init),
-  .done(done),
-  .pp(result),
-  .A(A),
-  .B(B)
- );
+  .bcd_in(A),
+  .res(result),
+  .done(done)
+);
 
 endmodule
