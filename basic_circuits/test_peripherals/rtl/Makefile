@@ -56,12 +56,19 @@ COMM_OBJS += cores/bram/bram.v
 # --------------------------------------------------------------#
 
 COMM_OBJS+= cores/test/perip_test.v
-COMM_OBJS+= cores/test/mult/mult_32.v
-COMM_OBJS+= cores/test/mult/acc.v
-COMM_OBJS+= cores/test/mult/comp.v
-COMM_OBJS+= cores/test/mult/lsr_mult.v
-COMM_OBJS+= cores/test/mult/control_mult.v
-COMM_OBJS+= cores/test/mult/rsr.v
+# COMM_OBJS+= cores/test/mult/mult_32.v
+# COMM_OBJS+= cores/test/mult/acc.v
+# COMM_OBJS+= cores/test/mult/comp.v
+# COMM_OBJS+= cores/test/mult/lsr_mult.v
+# COMM_OBJS+= cores/test/mult/control_mult.v
+# COMM_OBJS+= cores/test/mult/rsr.v
+COMM_OBJS+= cores/test/bcd2bin/bcd2bin_top.v
+COMM_OBJS+= cores/test/bcd2bin/internal/bcd_in_reg.v
+COMM_OBJS+= cores/test/bcd2bin/internal/bin_res_reg.v
+COMM_OBJS+= cores/test/bcd2bin/internal/comp.v
+COMM_OBJS+= cores/test/bcd2bin/internal/control_bcd2bin.v
+COMM_OBJS+= cores/test/bcd2bin/internal/count.v
+COMM_OBJS+= cores/test/bcd2bin/internal/restador.v
 
 COMM_OBJS +=  SOC.v
 
