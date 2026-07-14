@@ -13,7 +13,7 @@ always @(posedge clk) begin
    if(ld)
         counter <= value;
     else begin
-        if (dec)
+        if (dec)    
             counter <= counter - 1;
     end
 end

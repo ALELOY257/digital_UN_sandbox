@@ -4,8 +4,8 @@ ICE40_SIM_CELLS=./lattice_sim/cells_sim_ecp5.v
 ifeq ($(TARGET), ws2812)
     OBJS = comp_ws.v  count_ws.v  ctrl_ws.v  mux_ws.v  ws2812.v
 else ifeq ($(TARGET), ws2812_led)
-    OBJS = comp_ws.v  count_ws.v  ctrl_ws.v  mux_ws.v  ws2812.v 
-	       lsr_wsled.v count_wsled.v ctrl_wsled.v ws2812_led.v
+    OBJS = comp_ws.v  count_ws.v  ctrl_ws.v  mux_ws.v  ws2812.v \
+           lsr_wsled.v count_wsled.v ctrl_wsled.v ws2812_led.v
 else ifeq ($(TARGET), ws2812_led_array)
     OBJS = comp_ws.v  count_ws.v  ctrl_ws.v  mux_ws.v  ws2812.v \
 	lsr_wsled.v count_wsled.v ctrl_wsled.v ws2812_led.v         \

@@ -15,7 +15,7 @@ wire        dec;
 wire        ld;
 wire        z;
 wire        done_t;
-wire [23:0] s_A;
+wire [23:0] s_A ;
 
 lsr_wsled    lsr0    ( .clk(clk), .in_A(rgb), .load(ld), .shift(sh), .s_A(s_A) );
 count_wsled  count0  ( .clk(clk), .ld(ld), .dec(dec), .z(z) );
